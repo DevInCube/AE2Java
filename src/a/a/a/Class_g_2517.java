@@ -1,6 +1,6 @@
 package a.a.a;
 
-import aeii.Class_c_0282;
+import aeii.Class_c_MainCanvas;
 import aeii.Class_d_0033;
 
 import java.io.IOException;
@@ -85,7 +85,7 @@ public class Class_g_2517 {
 		return null;
 	}
 
-	private static Class_c_0013 sub_db4(Connection paramConnection) {
+	private static Class_c_AbstractConnection sub_db4(Connection paramConnection) {
 		/*
 		 * switch () { case 1: return new Class_e_0115(paramConnection); case 2:
 		 * return new Class_d_0114(paramConnection); case 3: return new
@@ -157,16 +157,16 @@ public class Class_g_2517 {
 			int i3;
 			int i4;
 			int i5;
-			if ((localInputStream = Class_c_0282.sub_2fb7(paramString
+			if ((localInputStream = Class_c_MainCanvas.getResourceStream(paramString
 					+ ".sprite")) != null) {
 				String str;
-				while ((str = Class_c_0282.sub_1b49(localInputStream)) != null) {
+				while ((str = Class_c_MainCanvas.streamToString(localInputStream)) != null) {
 					if ((i1 = str.indexOf(';')) >= 0) {
 						str = str.substring(0, i1);
 					}
 					if ((str = str.trim()).length() != 0) {
 						String[] arrayOfString;
-						if ((arrayOfString = Class_c_0282.sub_1bda(str, ' '))[0]
+						if ((arrayOfString = Class_c_MainCanvas.sub_1bda(str, ' '))[0]
 								.equalsIgnoreCase("FrameCount")) {
 							arrayOfInt1 = new int[i = (byte) Integer
 									.parseInt(arrayOfString[1])][2];
@@ -214,8 +214,8 @@ public class Class_g_2517 {
 					}
 				}
 			} else {
-				arrayOfInt1 = new int[i = (byte) (localInputStream = Class_c_0282
-						.sub_2fb7(paramString + ".sprbin")).read()][2];
+				arrayOfInt1 = new int[i = (byte) (localInputStream = Class_c_MainCanvas
+						.getResourceStream(paramString + ".sprbin")).read()][2];
 				arrayOfInt2 = new int[i][2];
 				this.var_c20 = ((byte) localInputStream.read());
 				this.var_c28 = ((byte) localInputStream.read());
@@ -439,7 +439,7 @@ public class Class_g_2517 {
 					paramGraphics.fillArc(this.var_c08, this.var_c10 - 15, 30,
 							30, 0, 360);
 					paramGraphics.fillRect(j, this.var_c10 - 15,
-							Class_c_0282.var_17bf - j, 30);
+							Class_c_MainCanvas.canvasWidth - j, 30);
 					return;
 				}
 				paramGraphics.fillArc(this.var_c08 - 30, this.var_c10 - 15, 30,
@@ -463,13 +463,13 @@ public class Class_g_2517 {
 				i = this.var_c08 + paramInt1;
 				j = this.var_c10 + paramInt2;
 				if (this.var_cb0 != null) {
-					Class_c_0282.sub_2007(paramGraphics, this.var_cb0, i, j,
+					Class_c_MainCanvas.sub_2007(paramGraphics, this.var_cb0, i, j,
 							this.var_cb8, 33);
 					return;
 				}
 				if (this.var_c90 > 0) {
-					i += Class_c_0282.sub_1a08(-4, 5);
-					j += Class_c_0282.sub_1a08(-1, 2);
+					i += Class_c_MainCanvas.getRandomWithin(-4, 5);
+					j += Class_c_MainCanvas.getRandomWithin(-1, 2);
 				}
 				k = this.var_bf8[this.var_c00];
 				this.var_bf0[k].sub_1115(paramGraphics, i, j);
@@ -499,8 +499,8 @@ public class Class_g_2517 {
 
 	public static Class_g_2517 sub_2009(String paramString, int paramInt1, int paramInt2, byte paramByte)
   {
-    paramInt1 = Class_c_0282.sub_1e71(paramByte, paramString); //@todo WTF! @upd I addded paramByte
-    paramInt2 = Class_c_0282.sub_1e99((byte)1);
+    paramInt1 = Class_c_MainCanvas.sub_1e71(paramByte, paramString); //@todo WTF! @upd I addded paramByte
+    paramInt2 = Class_c_MainCanvas.sub_1e99((byte)1);
     Class_g_2517 clas;
     (clas = new Class_g_2517(paramInt1, paramInt2)).var_cb8 = 1;
     clas.var_cb0 = paramString;
@@ -528,18 +528,18 @@ public class Class_g_2517 {
 				for (int i = 0; i < 5; i++) {
 					paramClass_g_2517.var_cf0[i] = true;
 					if (paramByte == 4) {
-						paramClass_g_2517.var_cd8[i][0] = ((short) (Class_c_0282.var_17f7
+						paramClass_g_2517.var_cd8[i][0] = ((short) (Class_c_MainCanvas.random
 								.nextInt() % 4 << 10));
-						paramClass_g_2517.var_cd8[i][1] = ((short) (Class_c_0282.var_17f7
+						paramClass_g_2517.var_cd8[i][1] = ((short) (Class_c_MainCanvas.random
 								.nextInt() % 4 << 10));
 					} else {
 						paramClass_g_2517.var_cd8[i][0] = ((short) (Math
-								.abs(Class_c_0282.var_17f7.nextInt()) % 8192 + -4096));
+								.abs(Class_c_MainCanvas.random.nextInt()) % 8192 + -4096));
 						paramClass_g_2517.var_cd8[i][1] = ((short) (Math
-								.abs(Class_c_0282.var_17f7.nextInt()) % 4096 + -2048));
+								.abs(Class_c_MainCanvas.random.nextInt()) % 4096 + -2048));
 					}
 					paramClass_g_2517.var_ce8[i] = ((byte) (Math
-							.abs(Class_c_0282.var_17f7.nextInt()) % 2 + 1));
+							.abs(Class_c_MainCanvas.random.nextInt()) % 2 + 1));
 				}
 			}
 		}

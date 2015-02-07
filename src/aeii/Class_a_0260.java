@@ -85,7 +85,7 @@ public final class Class_a_0260 extends Class_g_2517 {
 			if ((theInt = this.var_dfb / 2) > 3) {
 				theInt = 3;
 			}
-			this.var_df3 = Class_f_0145.sub_c07(139 + (this.var_e2b << 2)
+			this.var_df3 = Class_f_0145.getLangString(139 + (this.var_e2b << 2)
 					+ theInt);
 		}
 	}
@@ -144,7 +144,7 @@ public final class Class_a_0260 extends Class_g_2517 {
 
 	public final void sub_124c(int paramInt) {
 		this.var_eeb = ((byte) paramInt);
-		this.var_df3 = Class_f_0145.sub_c07(paramInt + 93);
+		this.var_df3 = Class_f_0145.getLangString(paramInt + 93);
 	}
 
 	public final int sub_1278(Class_a_0260 paramClass_a_0260) {
@@ -190,7 +190,7 @@ public final class Class_a_0260 extends Class_g_2517 {
 	}
 
 	public final int sub_13f9(Class_a_0260 paramClass_a_0260) {
-		int i = Class_c_0282.sub_1a08(this.var_e5b, this.var_e63)
+		int i = Class_c_MainCanvas.getRandomWithin(this.var_e5b, this.var_e63)
 				+ sub_1278(paramClass_a_0260);
 		int j = paramClass_a_0260.var_e6b + paramClass_a_0260.sub_135c(this);
 		if ((i = (i - j) * this.var_e7b / 100) < 0) {
@@ -607,7 +607,7 @@ public final class Class_a_0260 extends Class_g_2517 {
 						&& (++this.var_edb >= 24 / var_de3 / 2)) {
 					localClass_g_2517 = var_deb.sub_6c4a(var_deb.var_4a72,
 							this.var_c08, this.var_c10, 0, 0, 1,
-							Class_c_0282.sub_1a08(1, 4) * 50);
+							Class_c_MainCanvas.getRandomWithin(1, 4) * 50);
 					this.var_edb = 0;
 				}
 				if (i < this.var_c08) {
@@ -720,7 +720,7 @@ public final class Class_a_0260 extends Class_g_2517 {
 				} else {
 					j = 2;
 				}
-				Class_c_0282.sub_1a32();
+				Class_c_MainCanvas.getRandomNumber();
 				i = 0;
 				super.sub_1d20(paramGraphics, paramInt1 + j, paramInt2 + i);
 			} else if ((!paramBoolean) && (this.var_e83 != 2)) {
@@ -748,7 +748,7 @@ public final class Class_a_0260 extends Class_g_2517 {
 		paramInt1 = this.var_c08 + paramInt1;
 		paramInt2 = this.var_c10 + paramInt2;
 		if ((this.var_e83 != 3) && (this.var_e7b < 100)) {
-			Class_c_0282.sub_20c1(paramGraphics, "" + this.var_e7b, paramInt1,
+			Class_c_MainCanvas.sub_20c1(paramGraphics, "" + this.var_e7b, paramInt1,
 					paramInt2 + this.var_c28 - 7, 0);
 		}
 	}
@@ -758,17 +758,17 @@ public final class Class_a_0260 extends Class_g_2517 {
 		try {
 			for (int it = 0; it < var_f0b.length; it++) {
 				InputStream stream;
-				stream = Class_c_0282.sub_2fb7(var_f0b[it]
+				stream = Class_c_MainCanvas.getResourceStream(var_f0b[it]
 						+ ".unit");
 				String str;
-				while ((str = Class_c_0282.sub_1b49((InputStream) stream)) != null) {
+				while ((str = Class_c_MainCanvas.streamToString((InputStream) stream)) != null) {
 					int kIndex;
 					if ((kIndex = str.indexOf(';')) >= 0) {
 						str = str.substring(0, kIndex);
 					}
 					if ((str = str.trim()).length() != 0) {
 						String[] arrayOfString;
-						if ((arrayOfString = Class_c_0282.sub_1bda(str, ' '))[0]
+						if ((arrayOfString = Class_c_MainCanvas.sub_1bda(str, ' '))[0]
 								.equalsIgnoreCase("MoveRange")) {
 							var_f13[it] = ((byte) Integer
 									.parseInt(arrayOfString[1]));
@@ -812,7 +812,7 @@ public final class Class_a_0260 extends Class_g_2517 {
 			try {
 				int k;
 				Object localObject = new DataInputStream(
-						Class_c_0282.sub_2fb7("units.bin"));
+						Class_c_MainCanvas.getResourceStream("units.bin"));
 				for (int i = 0; i < 12; i++) {
 					var_f13[i] = ((DataInputStream) localObject).readByte();
 					var_f1b[i][0] = ((DataInputStream) localObject).readByte();

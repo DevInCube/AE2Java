@@ -1,8 +1,8 @@
 package aeii;
 
-import a.a.Class_b_0110;
-import a.a.a.Class_a_0411;
-import a.a.a.Class_c_0013;
+import a.a.Class_b_EnumerationExt;
+import a.a.a.Class_a_StaticFileConnection;
+import a.a.a.Class_c_AbstractConnection;
 import a.a.a.Class_g_2517;
 
 import java.util.Enumeration;
@@ -19,10 +19,10 @@ public final class Class_b_0081
     try
     {
       if (this.var_60f == null) {
-        return Class_a_0411.getListRoots();
+        return Class_a_StaticFileConnection.getListRoots();
       }
-      Class_c_0013 conn;
-      Enumeration localEnumeration = (conn = (Class_c_0013)Class_g_2517.sub_d70("file:///" + this.var_60f, 1)).sub_null_2();
+      Class_c_AbstractConnection conn;
+      Enumeration localEnumeration = (conn = (Class_c_AbstractConnection)Class_g_2517.sub_d70("file:///" + this.var_60f, 1)).sub_null_2();
       conn.close();
       Vector vec = new Vector();
       if (paramString == null) {
@@ -66,11 +66,11 @@ public final class Class_b_0081
     }
   }
   
-  public final Class_c_0013 sub_81a(String paramString)
+  public final Class_c_AbstractConnection sub_81a(String paramString)
   {
     try
     {
-      return (Class_c_0013)Class_g_2517.sub_d2f("file:///" + this.var_60f + paramString);
+      return (Class_c_AbstractConnection)Class_g_2517.sub_d2f("file:///" + this.var_60f + paramString);
     }
     catch (Exception localException) {}
     return null;
@@ -103,9 +103,9 @@ public final class Class_b_0081
     if (localVector2.size() > 0) {
       sub_98f(localVector2, 0, localVector2.size() - 1);
     }
-    Class_b_0110 enumClass;
-    (enumClass = new Class_b_0110()).sub_2ac(localVector1.elements());
-    enumClass.sub_2ac(localVector2.elements());
+    Class_b_EnumerationExt enumClass;
+    (enumClass = new Class_b_EnumerationExt()).addEnumeration(localVector1.elements());
+    enumClass.addEnumeration(localVector2.elements());
     return enumClass;
   }
   

@@ -125,7 +125,7 @@ public final class Class_h_0417 {
 		this.var_c7f = new byte[this.var_c27][this.var_c2f];
 		for (k = 0; k < this.var_c27; k++) {
 			for (j = 0; j < this.var_c2f; j++) {
-				this.var_c7f[k][j] = ((byte) Math.abs(Class_c_0282.var_17f7
+				this.var_c7f[k][j] = ((byte) Math.abs(Class_c_MainCanvas.random
 						.nextInt() % this.var_bff.length));
 			}
 		}
@@ -209,13 +209,13 @@ public final class Class_h_0417 {
 			this.var_bf7[k].var_c68 = 0;
 			if (this.var_b4f == 6) {
 				this.var_bf7[k].var_ca0 = true;
-				this.var_c57[k] = Class_c_0282.sub_19e8(360);
+				this.var_c57[k] = Class_c_MainCanvas.getRandomMax(360);
 				this.var_bf7[k].var_c38 = (-6 + 4
 						* Class_f_0145.sub_f0f(this.var_c57[k]) >> 10);
 			} else if (this.var_b4f == 4) {
 				this.var_bf7[k].var_ca0 = true;
-				this.var_bf7[k].var_c38 = (-5 - Class_c_0282.sub_19e8(10));
-				this.var_c57[k] = Class_c_0282.sub_19e8(360);
+				this.var_bf7[k].var_c38 = (-5 - Class_c_MainCanvas.getRandomMax(10));
+				this.var_c57[k] = Class_c_MainCanvas.getRandomMax(360);
 			} else if (this.var_b4f == 9) {
 				this.var_bf7[k].var_cc0 = this.var_c87;
 				this.var_bf7[k].var_cc8 = this.var_c8f;
@@ -273,13 +273,13 @@ public final class Class_h_0417 {
 									(clas = Class_g_2517
 											.sub_2054(
 													localClass_h_04171.var_b3f.var_4a72,
-													Class_c_0282
-															.sub_1a08(-1, 2),
+													Class_c_MainCanvas
+															.getRandomWithin(-1, 2),
 													0, 0, 1, 100, (byte) 0))
 											.sub_1b36(
 													localClass_h_04171.var_bf7[k].var_c08
-															+ Class_c_0282
-																	.sub_19e8(localClass_h_04171.var_bb7.var_c20
+															+ Class_c_MainCanvas
+																	.getRandomMax(localClass_h_04171.var_bb7.var_c20
 																			- ((Class_g_2517) clas).var_c20),
 													localClass_h_04171.var_bf7[k].var_c10
 															+ localClass_h_04171.var_bb7.var_c28
@@ -306,12 +306,12 @@ public final class Class_h_0417 {
 										0, 0, 1, 50, (byte) 0))
 										.sub_1b36(
 												localClass_h_04171.var_c0f.var_bf7[k].var_c08
-														+ Class_c_0282
-																.sub_19e8(localClass_h_04171.var_c0f.var_bf7[k].var_c20
+														+ Class_c_MainCanvas
+																.getRandomMax(localClass_h_04171.var_c0f.var_bf7[k].var_c20
 																		- ((Class_g_2517) clas).var_c20),
 												localClass_h_04171.var_c0f.var_bf7[k].var_c10
-														+ Class_c_0282
-																.sub_19e8(localClass_h_04171.var_c0f.var_bf7[k].var_c28
+														+ Class_c_MainCanvas
+																.getRandomMax(localClass_h_04171.var_c0f.var_bf7[k].var_c28
 																		- ((Class_g_2517) clas).var_c28));
 								((Class_g_2517) clas).var_c88 = true;
 								localClass_h_04171.var_b3f
@@ -390,12 +390,12 @@ public final class Class_h_0417 {
 							for (k = 0; k < 3; k++) {
 								(localClass_g_25172 = Class_g_2517.sub_2054(
 										this.var_b3f.var_4a72,
-										Class_c_0282.sub_1a08(-1, 2), 0, -1, 1,
+										Class_c_MainCanvas.getRandomWithin(-1, 2), 0, -1, 1,
 										100, (byte) 0))
 										.sub_1b36(
 												this.var_bf7[this.var_c6f].var_c08
-														+ Class_c_0282
-																.sub_19e8(this.var_bb7.var_c20
+														+ Class_c_MainCanvas
+																.getRandomMax(this.var_bb7.var_c20
 																		- localClass_g_25172.var_c20),
 												this.var_bf7[this.var_c6f].var_c10
 														+ this.var_bb7.var_c28
@@ -487,8 +487,8 @@ public final class Class_h_0417 {
 					this.var_ba7 = 6;
 					this.var_c0f.sub_331c();
 					this.var_b3f.sub_188ce(200);
-					Class_c_0282.sub_2af6(200);
-					Class_c_0282.sub_2c63(14, 1);
+					Class_c_MainCanvas.sub_2af6(200);
+					Class_c_MainCanvas.playMusicLooped(14, 1);
 					this.var_bef = this.var_b3f.var_479a;
 					break;
 				case 4:
@@ -607,9 +607,9 @@ public final class Class_h_0417 {
 								if (localClass_h_04172.var_bf7[i1].var_c00 == 1) {
 									localClass_h_04172.var_bf7[i1].var_c38 = 0;
 									localClass_h_04172.var_bf7[i1].var_ca8 = 1;
-									Class_c_0282.sub_2af6(200);
+									Class_c_MainCanvas.sub_2af6(200);
 									localClass_h_04172.var_b3f.sub_188ce(1200);
-									Class_c_0282.sub_2c63(14, 1);
+									Class_c_MainCanvas.playMusicLooped(14, 1);
 									for (i3 = 0; i3 < 2; i3++) {
 										Class_g_2517 localClass_g_25171;
 										(localClass_g_25171 = Class_g_2517
@@ -619,13 +619,13 @@ public final class Class_h_0417 {
 														0,
 														-1,
 														1,
-														Class_c_0282
-																.sub_19e8(4) * 50,
+														Class_c_MainCanvas
+																.getRandomMax(4) * 50,
 														(byte) 0))
 												.sub_1b36(
 														localClass_h_04172.var_bf7[i1].var_c08
-																+ Class_c_0282
-																		.sub_19e8(localClass_h_04172.var_bb7.var_c20
+																+ Class_c_MainCanvas
+																		.getRandomMax(localClass_h_04172.var_bb7.var_c20
 																				- localClass_g_25171.var_c20),
 														localClass_h_04172.var_bf7[i1].var_c10
 																+ localClass_h_04172.var_bb7.var_c28
@@ -642,7 +642,7 @@ public final class Class_h_0417 {
 													0,
 													-1,
 													1,
-													Class_c_0282.sub_19e8(4) * 50,
+													Class_c_MainCanvas.getRandomMax(4) * 50,
 													(byte) 0))
 											.sub_1b36(
 													localClass_h_04172.var_bf7[i1].var_c08,
@@ -660,7 +660,7 @@ public final class Class_h_0417 {
 													0,
 													-1,
 													1,
-													Class_c_0282.sub_19e8(4) * 50,
+													Class_c_MainCanvas.getRandomMax(4) * 50,
 													(byte) 0))
 											.sub_1b36(
 													localClass_h_04172.var_bf7[i1].var_c08
@@ -690,8 +690,8 @@ public final class Class_h_0417 {
 									} else if (localClass_h_04172.var_bf7[i1].var_ca8 == 2) {
 										localClass_h_04172.var_bf7[i1].var_c38 = -6;
 										localClass_h_04172.var_bf7[i1].var_ca0 = true;
-										localClass_h_04172.var_bf7[i1].var_c70 = Class_c_0282
-												.sub_1a08(-2, 3);
+										localClass_h_04172.var_bf7[i1].var_c70 = Class_c_MainCanvas
+												.getRandomWithin(-2, 3);
 										localClass_h_04172.var_bf7[i1]
 												.sub_1bce(
 														0,
@@ -754,13 +754,13 @@ public final class Class_h_0417 {
 										(localClass_g_25174 = Class_g_2517
 												.sub_2054(
 														localClass_h_04172.var_b3f.var_4a72,
-														Class_c_0282.sub_1a08(
+														Class_c_MainCanvas.getRandomWithin(
 																-1, 2),
 														0,
 														0,
 														1,
-														Class_c_0282
-																.sub_19e8(4) * 50,
+														Class_c_MainCanvas
+																.getRandomMax(4) * 50,
 														(byte) 0))
 												.sub_1b36(
 														localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c08
@@ -828,9 +828,9 @@ public final class Class_h_0417 {
 																			localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c20 + 2),
 													localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c10 + 30);
 									localClass_h_04172.var_c97[localClass_h_04172.var_ca7].var_c88 = true;
-									Class_c_0282.sub_2af6(200);
+									Class_c_MainCanvas.sub_2af6(200);
 									localClass_h_04172.var_b3f.sub_188ce(1200);
-									Class_c_0282.sub_2c63(14, 1);
+									Class_c_MainCanvas.playMusicLooped(14, 1);
 									localClass_h_04172.var_b3f
 											.sub_18887(localClass_h_04172.var_c97[localClass_h_04172.var_ca7]);
 								}
@@ -883,9 +883,9 @@ public final class Class_h_0417 {
 							(localClass_g_25175 = Class_g_2517.sub_2054(
 									localClass_h_04172.var_b3f.var_4a72,
 									var_baf[localClass_h_04172.var_b97]
-											* Class_c_0282.sub_1a08(1, 4),
-									Class_c_0282.sub_1a08(-2, 3), 0, 1,
-									50 * Class_c_0282.sub_19e8(4), (byte) 0))
+											* Class_c_MainCanvas.getRandomWithin(1, 4),
+									Class_c_MainCanvas.getRandomWithin(-2, 3), 0, 1,
+									50 * Class_c_MainCanvas.getRandomMax(4), (byte) 0))
 									.sub_1b36(
 											localClass_h_04172.var_bf7[i1].var_c08
 													+ localClass_h_04172
@@ -893,8 +893,8 @@ public final class Class_h_0417 {
 																	localClass_g_25175,
 																	localClass_h_04172.var_bb7.var_c20),
 											localClass_h_04172.var_c97[i1].var_c10
-													+ Class_c_0282
-															.sub_19e8(30 - localClass_h_04172.var_c97[i1].var_c28)
+													+ Class_c_MainCanvas
+															.getRandomMax(30 - localClass_h_04172.var_c97[i1].var_c28)
 													- 15);
 							localClass_g_25175.var_c88 = true;
 							localClass_h_04172.var_b3f
@@ -931,8 +931,8 @@ public final class Class_h_0417 {
 					if (localClass_h_04172.var_b4f != 1) {
 						localClass_h_04172.var_b3f.sub_188ce(200);
 					}
-					Class_c_0282.sub_2af6(200);
-					Class_c_0282.sub_2c63(14, 1);
+					Class_c_MainCanvas.sub_2af6(200);
+					Class_c_MainCanvas.playMusicLooped(14, 1);
 					if (localClass_h_04172.var_bc7 != null) {
 						localClass_h_04172.var_c9f = Class_a_0260.var_f3b[localClass_h_04172.var_b4f].length;
 					}
@@ -962,8 +962,8 @@ public final class Class_h_0417 {
 						|| (localClass_h_04172.var_b4f == 1)) {
 					localClass_g_25177.var_c80 = false;
 				}
-				int i5 = Class_c_0282
-						.sub_19e8(localClass_h_04172.var_b3f.var_459a / 2
+				int i5 = Class_c_MainCanvas
+						.getRandomMax(localClass_h_04172.var_b3f.var_459a / 2
 								- localClass_g_25177.var_c20);
 				i1 = 0;
 				if (localClass_h_04172.var_c0f.var_c07 != null) {
@@ -989,12 +989,12 @@ public final class Class_h_0417 {
 							&& (localClass_h_04172.var_b4f != 6)) {
 						(localClass_g_25178 = Class_g_2517.sub_2054(
 								localClass_h_04172.var_b3f.var_4a72,
-								Class_c_0282.sub_1a08(-1, 2), 0, -1, 1, 100,
+								Class_c_MainCanvas.getRandomWithin(-1, 2), 0, -1, 1, 100,
 								(byte) 0))
 								.sub_1b36(
 										i5
-												+ Class_c_0282
-														.sub_19e8(localClass_g_25177.var_c20
+												+ Class_c_MainCanvas
+														.getRandomMax(localClass_g_25177.var_c20
 																- localClass_g_25178.var_c20),
 										m + localClass_g_25177.var_c28
 												- localClass_g_25178.var_c28
@@ -1002,13 +1002,13 @@ public final class Class_h_0417 {
 					} else {
 						(localClass_g_25178 = Class_g_2517.sub_2054(
 								localClass_h_04172.var_b3f.var_4742,
-								Class_c_0282.sub_1a08(-1, 2), 0,
-								Class_c_0282.sub_1a08(-2, 0), 1,
-								Class_c_0282.sub_19e8(4) * 50, (byte) 0))
+								Class_c_MainCanvas.getRandomWithin(-1, 2), 0,
+								Class_c_MainCanvas.getRandomWithin(-2, 0), 1,
+								Class_c_MainCanvas.getRandomMax(4) * 50, (byte) 0))
 								.sub_1b36(
 										i5
-												+ Class_c_0282
-														.sub_19e8(localClass_g_25177.var_c20
+												+ Class_c_MainCanvas
+														.getRandomMax(localClass_g_25177.var_c20
 																- localClass_g_25178.var_c20),
 										localClass_g_25177.var_c38
 												+ localClass_g_25177.var_c28
@@ -1023,11 +1023,11 @@ public final class Class_h_0417 {
 				m = 1;
 				for (i1 = 0; i1 < localClass_h_04172.var_c97.length; i1++) {
 					if ((localClass_h_04172.var_b4f == 9)
-							&& (Class_c_0282.sub_19e8(2) == 0)) {
+							&& (Class_c_MainCanvas.getRandomMax(2) == 0)) {
 						Class_g_2517 localClass_g_25176;
 						(localClass_g_25176 = Class_g_2517.sub_2054(
 								localClass_h_04172.var_b3f.var_4a72,
-								Class_c_0282.sub_1a08(-2, 1), 0, -1, 1, 100,
+								Class_c_MainCanvas.getRandomWithin(-2, 1), 0, -1, 1, 100,
 								(byte) 0))
 								.sub_1b36(
 										localClass_h_04172.var_c97[i1].var_c08
@@ -1142,8 +1142,8 @@ public final class Class_h_0417 {
 			for (i = 0; i < 3; i++) {
 				(localClass_g_25172 = Class_g_2517.sub_2054(
 						this.var_b3f.var_4a72, i + -1, 0,
-						Class_c_0282.sub_1a08(-4, -1), 1,
-						Class_c_0282.sub_19e8(4) * 50, (byte) 0))
+						Class_c_MainCanvas.getRandomWithin(-4, -1), 1,
+						Class_c_MainCanvas.getRandomMax(4) * 50, (byte) 0))
 						.sub_1b36(
 								this.var_bf7[j].var_c08
 										+ (this.var_bf7[j].var_c20 - localClass_g_25172.var_c20)
@@ -1221,7 +1221,7 @@ public final class Class_h_0417 {
 		int i = this.var_b3f.k - Class_g_1956.var_4592 / 2; // @todo see
 															// "long k" and
 															// "byte k"
-		Class_c_0282.sub_2007(paramGraphics, this.var_c3f + "/" + 100,
+		Class_c_MainCanvas.sub_2007(paramGraphics, this.var_c3f + "/" + 100,
 				this.var_b3f.var_45aa / 2, i, 1, 3);
 	}
 

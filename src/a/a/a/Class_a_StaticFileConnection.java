@@ -7,9 +7,9 @@ import java.util.Enumeration;
  * @author DevInCube
  *
  */
-public final class Class_a_0411 {
+public final class Class_a_StaticFileConnection {
 
-	private static int var_2d0 = -1;
+	private static int fileConCode = -1;
 
 	/**
 	 * Resolve Connection
@@ -17,20 +17,20 @@ public final class Class_a_0411 {
 	 * @return
 	 */
 	static int getAvailableFileConnectionCode() {
-		if (var_2d0 < 0) {
+		if (fileConCode < 0) {
 			if (classExists("javax.microedition.io.file.FileConnection")) {
-				var_2d0 = 1;
+				fileConCode = 1;
 			} else if (classExists("com.siemens.mp.io.file.FileConnection")) {
-				var_2d0 = 2;
+				fileConCode = 2;
 			} else if (classExists("com.motorola.io.FileConnection")) {
-				var_2d0 = 3;
+				fileConCode = 3;
 			} else if (classExists("com.motorola.io.file.FileConnection")) {
-				var_2d0 = 4;
+				fileConCode = 4;
 			} else {
-				var_2d0 = 0;
+				fileConCode = 0;
 			}
 		}
-		return var_2d0;
+		return fileConCode;
 	}
 
 	/**
