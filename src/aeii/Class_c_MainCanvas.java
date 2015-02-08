@@ -304,14 +304,14 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 		} else if ((paramInt4 & 0x2) != 0) {
 			paramInt2 -= sub_1e99((byte) paramInt3) / 2;
 		}
-		sub_20c1(paramGraphics, paramString, paramInt1, paramInt2, paramInt3);
+		drawAString(paramGraphics, paramString, paramInt1, paramInt2, paramInt3);
 	}
 
-	public static final void sub_20c1(Graphics paramGraphics, String paramString, int paramInt1, int paramInt2, int paramInt3) {
+	public static final void drawAString(Graphics paramGraphics, String str, int paramInt1, int paramInt2, int paramInt3) {
 		int charPos = 0;
-		int strLength = paramString.length();
+		int strLength = str.length();
 		while (charPos < strLength) {
-			int aChar = paramString.charAt(charPos);
+			int aChar = str.charAt(charPos);
 			if ((aChar >= var_1777[paramInt3]) && (aChar <= var_177f[paramInt3])) {
 				int m = var_1787[paramInt3][(aChar - var_1777[paramInt3])];
 				if (m  != -1) {

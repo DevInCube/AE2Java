@@ -15,8 +15,8 @@ public class Class_g_Sprite {
 	public Class_d_ImageWrap[] frameImages;
 	private byte[] currentFrameSequence;
 	public int currentFrameIndex;
-	public int var_c08; // m
-	public int var_c10; // n
+	public int pixelX; // m
+	public int pixelY; // n
 	public boolean var_c18;
 	public int spriteFrameWidth;
 	public int spriteFrameHeight;
@@ -48,8 +48,8 @@ public class Class_g_Sprite {
 
 	public Class_g_Sprite() {
 		this.currentFrameIndex = 0;
-		this.var_c08 = 0;
-		this.var_c10 = 0;
+		this.pixelX = 0;
+		this.pixelY = 0;
 		this.var_c18 = true;
 		this.var_c40 = 0;
 		this.var_c48 = -1;
@@ -75,8 +75,8 @@ public class Class_g_Sprite {
 		this.frameImages = sprite.frameImages;
 		this.currentFrameSequence = sprite.currentFrameSequence;
 		this.currentFrameIndex = sprite.currentFrameIndex;
-		this.var_c08 = sprite.var_c08;
-		this.var_c10 = sprite.var_c10;
+		this.pixelX = sprite.pixelX;
+		this.pixelY = sprite.pixelY;
 		this.var_c38 = sprite.var_c38;
 		this.var_c18 = sprite.var_c18;
 		this.spriteFrameWidth = sprite.spriteFrameWidth;
@@ -281,9 +281,9 @@ public class Class_g_Sprite {
 		}
 	}
 
-	public void sub_1b36(int paramInt1, int paramInt2) {
-		this.var_c08 = ((short) paramInt1);
-		this.var_c10 = ((short) paramInt2);
+	public void setPixelPosition(int pixX, int pixY) {
+		this.pixelX = ((short) pixX);
+		this.pixelY = ((short) pixY);
 	}
 
 	public void nextFrame() {
@@ -316,8 +316,8 @@ public class Class_g_Sprite {
 	public void drawFrame(Graphics paramGraphics, int imageIndex, int paramInt2, int paramInt3, int paramInt4) {
 		if ((this.var_c40 != 2) && (this.var_c40 != 4) && (this.var_c40 != 3)) {
 			if (this.var_c18) {
-				paramInt2 = this.var_c08 + paramInt2;
-				paramInt3 = this.var_c10 + paramInt3;
+				paramInt2 = this.pixelX + paramInt2;
+				paramInt3 = this.pixelY + paramInt3;
 				this.frameImages[imageIndex]
 						.drawOnGraphics(paramGraphics, paramInt2, paramInt3, paramInt4);
 			}
@@ -342,27 +342,27 @@ public class Class_g_Sprite {
 					graphics.setColor(16777215); // #FFFFFF
 				}
 				if (this.var_c60 > 0) {
-					j = this.var_c08 + 15;
-					graphics.fillArc(this.var_c08, this.var_c10 - 15, 30, 30, 0, 360);
-					graphics.fillRect(j, this.var_c10 - 15, Class_c_MainCanvas.canvasWidth - j, 30);
+					j = this.pixelX + 15;
+					graphics.fillArc(this.pixelX, this.pixelY - 15, 30, 30, 0, 360);
+					graphics.fillRect(j, this.pixelY - 15, Class_c_MainCanvas.canvasWidth - j, 30);
 					return;
 				}
-				graphics.fillArc(this.var_c08 - 30, this.var_c10 - 15, 30, 30, 0, 360);
-				graphics.fillRect(0, this.var_c10 - 15, this.var_c08 - 15, 30);
+				graphics.fillArc(this.pixelX - 30, this.pixelY - 15, 30, 30, 0, 360);
+				graphics.fillRect(0, this.pixelY - 15, this.pixelX - 15, 30);
 				return;
 			}
 			if (this.var_c40 == 3) {
 				graphics.setColor(0);
 				if (this.var_c60 > 0) {
-					graphics.drawLine(this.var_c08, this.var_c10, this.var_c08 + 4, this.var_c10 - 2);
+					graphics.drawLine(this.pixelX, this.pixelY, this.pixelX + 4, this.pixelY - 2);
 					return;
 				}
-				graphics.drawLine(this.var_c08 - 4, this.var_c10 - 2, this.var_c08, this.var_c10);
+				graphics.drawLine(this.pixelX - 4, this.pixelY - 2, this.pixelX, this.pixelY);
 				return;
 			}
 			if (this.var_c18) {
-				i = this.var_c08 + inIntArg1;
-				j = this.var_c10 + inIntArg2;
+				i = this.pixelX + inIntArg1;
+				j = this.pixelY + inIntArg2;
 				if (this.var_cb0 != null) {
 					Class_c_MainCanvas
 							.sub_2007(graphics, this.var_cb0, i, j, this.var_cb8, 33);
@@ -390,8 +390,8 @@ public class Class_g_Sprite {
 			graphics.setColor(this.someColorInt);
 			for (int k1 = 0; k1 < 5; k1++) {
 				if (this.var_cf0[k1] != false) {
-					i = (this.var_cd0[k1][0] >> 10) + inIntArg1 + this.var_c08;
-					j = (this.var_cd0[k1][1] >> 10) + inIntArg2 + this.var_c10;
+					i = (this.var_cd0[k1][0] >> 10) + inIntArg1 + this.pixelX;
+					j = (this.var_cd0[k1][1] >> 10) + inIntArg2 + this.pixelY;
 					graphics.fillRect(i, j, this.var_ce8[k1], this.var_ce8[k1]);
 				}
 			}
@@ -464,11 +464,11 @@ public class Class_g_Sprite {
 				sub_23d5();
 				return;
 			case 3:
-				sub_1b36(this.var_c08 + this.var_c60, this.var_c10 + this.var_c68);
+				setPixelPosition(this.pixelX + this.var_c60, this.pixelY + this.var_c68);
 				return;
 			case 5:
 				if (this.var_c48 == -1) {
-					sub_1b36(this.var_c08 + this.var_c60, this.var_c10);
+					setPixelPosition(this.pixelX + this.var_c60, this.pixelY);
 					this.var_c38 += this.var_c70;
 					if (this.var_c38 < 0) {
 						this.var_c70 += 1;
@@ -493,7 +493,7 @@ public class Class_g_Sprite {
 				}
 				break;
 			default:
-				sub_1b36(this.var_c08 + this.var_c60, this.var_c10 + this.var_c68);
+				setPixelPosition(this.pixelX + this.var_c60, this.pixelY + this.var_c68);
 				this.var_c38 += this.var_c70;
 				if ((this.var_c48 != 0) && (this.var_c50 >= this.frameDelay)) {
 					nextFrame();

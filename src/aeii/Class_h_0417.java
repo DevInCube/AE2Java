@@ -14,7 +14,7 @@ public final class Class_h_0417 {
 			"wizard", "wisp", "spider", "golem", "catapult", "wyvern", "king",
 			"skeleton" };
 	private Class_g_1956 var_b3f;
-	public Class_a_0260 var_b47;
+	public Class_a_Unit var_b47;
 	private byte var_b4f;
 	public boolean var_b57 = false;
 	public boolean var_b5f = false;
@@ -62,12 +62,12 @@ public final class Class_h_0417 {
 	private Object localClass_h_04172;
 
 	public Class_h_0417(Class_g_1956 paramClass_g_1956,
-			Class_a_0260 paramClass_a_0260, Class_h_0417 paramClass_h_0417) {
+			Class_a_Unit paramClass_a_0260, Class_h_0417 paramClass_h_0417) {
 		this.var_b3f = paramClass_g_1956;
 		this.var_b47 = paramClass_a_0260;
-		this.var_b4f = paramClass_a_0260.var_e2b;
+		this.var_b4f = paramClass_a_0260.unitType;
 		this.var_c0f = paramClass_h_0417;
-		this.var_b6f = ((byte) paramClass_a_0260.var_e7b);
+		this.var_b6f = ((byte) paramClass_a_0260.health);
 		this.var_c3f = this.var_b6f;
 		this.var_b7f = ((byte) paramClass_a_0260.sub_16bf());
 		this.var_b8f = this.var_b7f;
@@ -81,8 +81,8 @@ public final class Class_h_0417 {
 			this.var_b97 = 1;
 			this.var_ba7 = 0;
 		}
-		this.var_c17 = paramClass_g_1956.sub_11671(paramClass_a_0260.var_e3b,
-				paramClass_a_0260.var_e43);
+		this.var_c17 = paramClass_g_1956.getMapTileType(paramClass_a_0260.posX,
+				paramClass_a_0260.posY);
 		int j = var_b2f[this.var_c17];
 		int k = var_b27[this.var_c17];
 		if ((paramClass_h_0417 != null)
@@ -130,7 +130,7 @@ public final class Class_h_0417 {
 			}
 		}
 		this.var_bb7 = new Class_g_Sprite(var_b37[this.var_b4f],
-				paramClass_g_1956.var_4832[paramClass_a_0260.var_e33]);
+				paramClass_g_1956.var_4832[paramClass_a_0260.teamId]);
 		if ((paramClass_h_0417 != null)
 				&& (paramClass_h_0417.var_b4f == this.var_b4f)) {
 			if (paramClass_h_0417.var_bcf != null) {
@@ -184,16 +184,16 @@ public final class Class_h_0417 {
 			this.var_c8f.setFrameSequenceByIndex(0, this.var_b9f);
 			this.var_c8f.setCurrentFrameIndex(paramClass_a_0260.var_eeb);
 		}
-		this.var_c4f = new int[paramClass_a_0260.var_e0b.length][2];
+		this.var_c4f = new int[paramClass_a_0260.chars.length][2];
 		for (k = 0; k < this.var_c4f.length; k++) {
-			this.var_c4f[k][0] = (paramClass_a_0260.var_e0b[k][0]
+			this.var_c4f[k][0] = (paramClass_a_0260.chars[k][0]
 					* paramClass_g_1956.j / 128); // @todo see "long j" or
 													// "int j" or "byte j"
 			if (this.var_b97 == 1) {
 				this.var_c4f[k][0] = (paramClass_g_1956.var_45aa
 						- this.var_c4f[k][0] - this.var_bb7.spriteFrameWidth + i);
 			}
-			this.var_c4f[k][1] = (paramClass_a_0260.var_e0b[k][1]
+			this.var_c4f[k][1] = (paramClass_a_0260.chars[k][1]
 					* paramClass_g_1956.var_4eba / 128 - this.var_bb7.spriteFrameHeight);
 		}
 		this.var_bf7 = new Class_g_Sprite[this.var_b7f];
@@ -203,7 +203,7 @@ public final class Class_h_0417 {
 		for (k = 0; k < this.var_b7f; k++) {
 			this.var_bf7[k] = new Class_g_Sprite(this.var_bb7);
 			paramClass_g_1956.sub_18887(this.var_bf7[k]);
-			this.var_bf7[k].sub_1b36(this.var_c4f[k][0], this.var_c4f[k][1]);
+			this.var_bf7[k].setPixelPosition(this.var_c4f[k][0], this.var_c4f[k][1]);
 			this.var_bf7[k].setFrameSequenceByIndex(0, this.var_b9f);
 			this.var_bf7[k].var_c80 = false;
 			this.var_bf7[k].var_c68 = 0;
@@ -276,12 +276,12 @@ public final class Class_h_0417 {
 													Class_c_MainCanvas
 															.getRandomWithin(-1, 2),
 													0, 0, 1, 100, (byte) 0))
-											.sub_1b36(
-													localClass_h_04171.var_bf7[k].var_c08
+											.setPixelPosition(
+													localClass_h_04171.var_bf7[k].pixelX
 															+ Class_c_MainCanvas
 																	.getRandomMax(localClass_h_04171.var_bb7.spriteFrameWidth
 																			- ((Class_g_Sprite) clas).spriteFrameWidth),
-													localClass_h_04171.var_bf7[k].var_c10
+													localClass_h_04171.var_bf7[k].pixelY
 															+ localClass_h_04171.var_bb7.spriteFrameHeight
 															- ((Class_g_Sprite) clas).spriteFrameHeight
 															+ 1);
@@ -304,12 +304,12 @@ public final class Class_h_0417 {
 								(clas = Class_g_Sprite.sub_2054(
 										localClass_h_04171.var_b3f.var_4752, 0,
 										0, 0, 1, 50, (byte) 0))
-										.sub_1b36(
-												localClass_h_04171.var_c0f.var_bf7[k].var_c08
+										.setPixelPosition(
+												localClass_h_04171.var_c0f.var_bf7[k].pixelX
 														+ Class_c_MainCanvas
 																.getRandomMax(localClass_h_04171.var_c0f.var_bf7[k].spriteFrameWidth
 																		- ((Class_g_Sprite) clas).spriteFrameWidth),
-												localClass_h_04171.var_c0f.var_bf7[k].var_c10
+												localClass_h_04171.var_c0f.var_bf7[k].pixelY
 														+ Class_c_MainCanvas
 																.getRandomMax(localClass_h_04171.var_c0f.var_bf7[k].spriteFrameHeight
 																		- ((Class_g_Sprite) clas).spriteFrameHeight));
@@ -344,10 +344,10 @@ public final class Class_h_0417 {
 						Class_g_Sprite localClass_g_25173;
 						(localClass_g_25173 = Class_g_Sprite.sub_2054(null, 0, 0,
 								0, 1, 500, (byte) 4))
-								.sub_1b36(
-										localClass_h_04171.var_bf7[n].var_c08
+								.setPixelPosition(
+										localClass_h_04171.var_bf7[n].pixelX
 												+ (localClass_h_04171.var_bf7[n].spriteFrameWidth >> 1),
-										localClass_h_04171.var_bf7[n].var_c10
+										localClass_h_04171.var_bf7[n].pixelY
 												+ (localClass_h_04171.var_bf7[n].spriteFrameHeight >> 1)
 												+ localClass_h_04171.var_bdf);
 						localClass_h_04171.var_b3f
@@ -355,7 +355,7 @@ public final class Class_h_0417 {
 					}
 					i3 = localClass_h_04171.var_bf7[n].spriteFrameWidth / 3;
 					localClass_h_04171.var_bf7[n]
-							.sub_1b36(
+							.setPixelPosition(
 									localClass_h_04171.var_c4f[n][0]
 											+ (i3
 													* Class_f_0145
@@ -392,12 +392,12 @@ public final class Class_h_0417 {
 										this.var_b3f.var_4a72,
 										Class_c_MainCanvas.getRandomWithin(-1, 2), 0, -1, 1,
 										100, (byte) 0))
-										.sub_1b36(
-												this.var_bf7[this.var_c6f].var_c08
+										.setPixelPosition(
+												this.var_bf7[this.var_c6f].pixelX
 														+ Class_c_MainCanvas
 																.getRandomMax(this.var_bb7.spriteFrameWidth
 																		- localClass_g_25172.spriteFrameWidth),
-												this.var_bf7[this.var_c6f].var_c10
+												this.var_bf7[this.var_c6f].pixelY
 														+ this.var_bb7.spriteFrameHeight
 														- localClass_g_25172.spriteFrameHeight
 														+ 1);
@@ -421,22 +421,22 @@ public final class Class_h_0417 {
 									(localClass_g_25172 = Class_g_Sprite
 											.sub_2054(null, 0, 0, 0, 1, 800,
 													(byte) 2))
-											.sub_1b36(
-													this.var_bf7[k].var_c08
+											.setPixelPosition(
+													this.var_bf7[k].pixelX
 															+ sub_1640(
 																	localClass_g_25172,
 																	this.var_bb7.spriteFrameWidth),
-													this.var_bf7[k].var_c10
+													this.var_bf7[k].pixelY
 															+ this.var_bb7.spriteFrameHeight);
 									this.var_b3f.sub_18887(localClass_g_25172);
 									(localClass_g_25172 = Class_g_Sprite
 											.sub_2054(this.var_bcf, 0, 0, 0, 1,
-													150, (byte) 0)).sub_1b36(
-											this.var_bf7[k].var_c08
+													150, (byte) 0)).setPixelPosition(
+											this.var_bf7[k].pixelX
 													+ sub_1640(
 															localClass_g_25172,
 															24),
-											this.var_bf7[k].var_c10 + 3);
+											this.var_bf7[k].pixelY + 3);
 									this.var_b3f.sub_18887(localClass_g_25172);
 								} else {
 									i = 0;
@@ -454,12 +454,12 @@ public final class Class_h_0417 {
 								if (this.var_b4f == 0) {
 									(localClass_g_25172 = Class_g_Sprite
 											.sub_2054(this.var_bcf, 0, 0, 0, 1,
-													150, (byte) 0)).sub_1b36(
-											this.var_bf7[k].var_c08
+													150, (byte) 0)).setPixelPosition(
+											this.var_bf7[k].pixelX
 													+ sub_1640(
 															localClass_g_25172,
 															14),
-											this.var_bf7[k].var_c10
+											this.var_bf7[k].pixelY
 													+ this.var_bf7[k].spriteFrameHeight);
 									localClass_g_25172.var_c38 = (4 - this.var_bf7[k].spriteFrameHeight);
 									this.var_b3f.sub_18887(localClass_g_25172);
@@ -467,12 +467,12 @@ public final class Class_h_0417 {
 									(localClass_g_25172 = Class_g_Sprite
 											.sub_2054(this.var_b3f.var_4752, 0,
 													0, 0, 1, 50, (byte) 0))
-											.sub_1b36(
-													this.var_bf7[k].var_c08
+											.setPixelPosition(
+													this.var_bf7[k].pixelX
 															+ sub_1640(
 																	localClass_g_25172,
 																	this.var_bb7.spriteFrameWidth * 3 / 4),
-													this.var_bf7[k].var_c10
+													this.var_bf7[k].pixelY
 															+ this.var_bf7[k].spriteFrameHeight);
 									localClass_g_25172.var_c38 = (-localClass_g_25172.spriteFrameHeight);
 									this.var_b3f.sub_18887(localClass_g_25172);
@@ -622,12 +622,12 @@ public final class Class_h_0417 {
 														Class_c_MainCanvas
 																.getRandomMax(4) * 50,
 														(byte) 0))
-												.sub_1b36(
-														localClass_h_04172.var_bf7[i1].var_c08
+												.setPixelPosition(
+														localClass_h_04172.var_bf7[i1].pixelX
 																+ Class_c_MainCanvas
 																		.getRandomMax(localClass_h_04172.var_bb7.spriteFrameWidth
 																				- localClass_g_25171.spriteFrameWidth),
-														localClass_h_04172.var_bf7[i1].var_c10
+														localClass_h_04172.var_bf7[i1].pixelY
 																+ localClass_h_04172.var_bb7.spriteFrameHeight
 																- localClass_g_25171.spriteFrameHeight
 																+ 2);
@@ -644,9 +644,9 @@ public final class Class_h_0417 {
 													1,
 													Class_c_MainCanvas.getRandomMax(4) * 50,
 													(byte) 0))
-											.sub_1b36(
-													localClass_h_04172.var_bf7[i1].var_c08,
-													localClass_h_04172.var_bf7[i1].var_c10
+											.setPixelPosition(
+													localClass_h_04172.var_bf7[i1].pixelX,
+													localClass_h_04172.var_bf7[i1].pixelY
 															+ localClass_h_04172.var_bb7.spriteFrameHeight
 															- localClass_g_25174.spriteFrameHeight
 															+ 2);
@@ -662,11 +662,11 @@ public final class Class_h_0417 {
 													1,
 													Class_c_MainCanvas.getRandomMax(4) * 50,
 													(byte) 0))
-											.sub_1b36(
-													localClass_h_04172.var_bf7[i1].var_c08
+											.setPixelPosition(
+													localClass_h_04172.var_bf7[i1].pixelX
 															+ localClass_h_04172.var_bb7.spriteFrameWidth
 															- localClass_g_25174.spriteFrameWidth,
-													localClass_h_04172.var_bf7[i1].var_c10
+													localClass_h_04172.var_bf7[i1].pixelY
 															+ localClass_h_04172.var_bb7.spriteFrameHeight
 															- localClass_g_25174.spriteFrameHeight
 															+ 2);
@@ -738,13 +738,13 @@ public final class Class_h_0417 {
 										0, (byte) 0)).setFrameSequenceByIndex(1,
 										localClass_h_04172.var_b9f);
 								localClass_g_25177
-										.sub_1b36(
-												localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c08
+										.setPixelPosition(
+												localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].pixelX
 														+ localClass_h_04172
 																.sub_1640(
 																		localClass_g_25177,
 																		localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].spriteFrameWidth),
-												localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c10);
+												localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].pixelY);
 								localClass_h_04172.var_b3f
 										.sub_18887(localClass_g_25177);
 							} else {
@@ -762,11 +762,11 @@ public final class Class_h_0417 {
 														Class_c_MainCanvas
 																.getRandomMax(4) * 50,
 														(byte) 0))
-												.sub_1b36(
-														localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c08
+												.setPixelPosition(
+														localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].pixelX
 																+ localClass_h_04172.var_bb7.spriteFrameWidth
 																/ 2,
-														localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c10);
+														localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].pixelY);
 										localClass_g_25174.var_c88 = true;
 										localClass_h_04172.var_b3f
 												.sub_18887(localClass_g_25174);
@@ -777,9 +777,9 @@ public final class Class_h_0417 {
 											.sub_2054(
 													localClass_h_04172.var_bcf,
 													0, 0, 0, 1, 200, (byte) 0))
-											.sub_1b36(
-													localClass_h_04172.var_bf7[0].var_c08,
-													localClass_h_04172.var_bf7[0].var_c10
+											.setPixelPosition(
+													localClass_h_04172.var_bf7[0].pixelX,
+													localClass_h_04172.var_bf7[0].pixelY
 															+ localClass_h_04172.var_bb7.spriteFrameHeight);
 									localClass_g_25177.var_c38 = (-localClass_h_04172.var_bb7.spriteFrameHeight);
 									localClass_h_04172.var_b3f
@@ -789,23 +789,23 @@ public final class Class_h_0417 {
 													localClass_h_04172.var_bbf,
 													var_baf[localClass_h_04172.var_b97] * 3,
 													-2, 0, -1, 100, (byte)0);
-									int i4 = localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c08
+									int i4 = localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].pixelX
 											+ localClass_h_04172
 													.sub_1640(
 															localClass_h_04172.var_c97[localClass_h_04172.var_ca7],
 															localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].spriteFrameWidth / 2);
-									i1 = localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c10
+									i1 = localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].pixelY
 											+ localClass_h_04172.var_bb7.spriteFrameHeight
 											- localClass_h_04172.var_c97[localClass_h_04172.var_ca7].spriteFrameHeight
 											+ 2;
-									localClass_h_04172.var_c97[0].sub_1b36(i4,
+									localClass_h_04172.var_c97[0].setPixelPosition(i4,
 											i1);
 									localClass_h_04172.var_c97[1] = Class_g_Sprite
 											.sub_2054(
 													localClass_h_04172.var_bbf,
 													var_baf[localClass_h_04172.var_b97] * 3,
 													1, 0, -1, 100, (byte)0);
-									localClass_h_04172.var_c97[1].sub_1b36(i4,
+									localClass_h_04172.var_c97[1].setPixelPosition(i4,
 											i1);
 									localClass_h_04172.var_b3f
 											.sub_18887(localClass_h_04172.var_c97[1]);
@@ -820,13 +820,13 @@ public final class Class_h_0417 {
 													var_baf[localClass_h_04172.var_b97],
 													0, 0, -1, 2000, (byte)6);
 									localClass_h_04172.var_c97[localClass_h_04172.var_ca7]
-											.sub_1b36(
-													localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c08
+											.setPixelPosition(
+													localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].pixelX
 															+ localClass_h_04172
 																	.sub_1640(
 																			localClass_h_04172.var_c97[localClass_h_04172.var_ca7],
 																			localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].spriteFrameWidth + 2),
-													localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c10 + 30);
+													localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].pixelY + 30);
 									localClass_h_04172.var_c97[localClass_h_04172.var_ca7].var_c88 = true;
 									Class_c_MainCanvas.sub_2af6(200);
 									localClass_h_04172.var_b3f.sub_188ce(1200);
@@ -840,13 +840,13 @@ public final class Class_h_0417 {
 									.sub_2054(localClass_h_04172.var_bbf, 0, 0,
 											0, 1, 50, (byte)0);
 							localClass_h_04172.var_c97[localClass_h_04172.var_ca7]
-									.sub_1b36(
-											localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c08
+									.setPixelPosition(
+											localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].pixelX
 													+ localClass_h_04172
 															.sub_1640(
 																	localClass_h_04172.var_c97[localClass_h_04172.var_ca7],
 																	localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].spriteFrameWidth),
-											localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].var_c10);
+											localClass_h_04172.var_bf7[localClass_h_04172.var_ca7].pixelY);
 							localClass_h_04172.var_b3f
 									.sub_18887(localClass_h_04172.var_c97[localClass_h_04172.var_ca7]);
 						}
@@ -886,13 +886,13 @@ public final class Class_h_0417 {
 											* Class_c_MainCanvas.getRandomWithin(1, 4),
 									Class_c_MainCanvas.getRandomWithin(-2, 3), 0, 1,
 									50 * Class_c_MainCanvas.getRandomMax(4), (byte) 0))
-									.sub_1b36(
-											localClass_h_04172.var_bf7[i1].var_c08
+									.setPixelPosition(
+											localClass_h_04172.var_bf7[i1].pixelX
 													+ localClass_h_04172
 															.sub_1640(
 																	localClass_g_25175,
 																	localClass_h_04172.var_bb7.spriteFrameWidth),
-											localClass_h_04172.var_c97[i1].var_c10
+											localClass_h_04172.var_c97[i1].pixelY
 													+ Class_c_MainCanvas
 															.getRandomMax(30 - localClass_h_04172.var_c97[i1].spriteFrameHeight)
 													- 15);
@@ -902,13 +902,13 @@ public final class Class_h_0417 {
 						}
 					}
 					if (m != 0) {
-						if (localClass_h_04172.var_b47.var_e2b == 9) {
+						if (localClass_h_04172.var_b47.unitType == 9) {
 							localClass_h_04172.var_ba7 = 6;
 						} else {
 							localClass_h_04172.var_ba7 = 4;
 						}
 						localClass_h_04172.var_c77 = 400;
-						if (localClass_h_04172.var_b47.var_e2b == 8) {
+						if (localClass_h_04172.var_b47.unitType == 8) {
 							localClass_h_04172.var_c77 = 0;
 						}
 						localClass_h_04172.var_bef = localClass_h_04172.var_b3f.var_479a;
@@ -934,7 +934,7 @@ public final class Class_h_0417 {
 					Class_c_MainCanvas.sub_2af6(200);
 					Class_c_MainCanvas.playMusicLooped(14, 1);
 					if (localClass_h_04172.var_bc7 != null) {
-						localClass_h_04172.var_c9f = Class_a_0260.var_f3b[localClass_h_04172.var_b4f].length;
+						localClass_h_04172.var_c9f = Class_a_Unit.unitsChars[localClass_h_04172.var_b4f].length;
 					}
 					localClass_h_04172.var_c6f = 1;
 					break;
@@ -971,7 +971,7 @@ public final class Class_h_0417 {
 				}
 				m = (localClass_h_04172.var_b3f.var_4eba - i1)
 						* ((localClass_h_04172.var_c9f << 1) + 1)
-						/ (Class_a_0260.var_f3b[localClass_h_04172.var_b4f].length << 1)
+						/ (Class_a_Unit.unitsChars[localClass_h_04172.var_b4f].length << 1)
 						- localClass_g_25177.spriteFrameHeight / 2 + i1;
 				if (localClass_h_04172.var_b97 == 0) {
 					i5 += localClass_h_04172.var_b3f.var_45aa;
@@ -981,7 +981,7 @@ public final class Class_h_0417 {
 					localClass_g_25177.var_c38 = m;
 					m = 0;
 				}
-				localClass_g_25177.sub_1b36(i5, m);
+				localClass_g_25177.setPixelPosition(i5, m);
 				localClass_h_04172.var_b3f.sub_18887(localClass_g_25177);
 				for (i1 = 0; i1 < 3; i1++) {
 					Class_g_Sprite localClass_g_25178;
@@ -991,7 +991,7 @@ public final class Class_h_0417 {
 								localClass_h_04172.var_b3f.var_4a72,
 								Class_c_MainCanvas.getRandomWithin(-1, 2), 0, -1, 1, 100,
 								(byte) 0))
-								.sub_1b36(
+								.setPixelPosition(
 										i5
 												+ Class_c_MainCanvas
 														.getRandomMax(localClass_g_25177.spriteFrameWidth
@@ -1005,7 +1005,7 @@ public final class Class_h_0417 {
 								Class_c_MainCanvas.getRandomWithin(-1, 2), 0,
 								Class_c_MainCanvas.getRandomWithin(-2, 0), 1,
 								Class_c_MainCanvas.getRandomMax(4) * 50, (byte) 0))
-								.sub_1b36(
+								.setPixelPosition(
 										i5
 												+ Class_c_MainCanvas
 														.getRandomMax(localClass_g_25177.spriteFrameWidth
@@ -1029,13 +1029,13 @@ public final class Class_h_0417 {
 								localClass_h_04172.var_b3f.var_4a72,
 								Class_c_MainCanvas.getRandomWithin(-2, 1), 0, -1, 1, 100,
 								(byte) 0))
-								.sub_1b36(
-										localClass_h_04172.var_c97[i1].var_c08
+								.setPixelPosition(
+										localClass_h_04172.var_c97[i1].pixelX
 												+ localClass_h_04172
 														.sub_1640(
 																localClass_h_04172.var_c97[i1],
 																0),
-										localClass_h_04172.var_c97[i1].var_c10
+										localClass_h_04172.var_c97[i1].pixelY
 												+ localClass_h_04172.var_c97[i1].spriteFrameHeight
 												- localClass_g_25176.spriteFrameHeight);
 						if (localClass_h_04172.var_c97[i1].var_ca8 == 1) {
@@ -1048,13 +1048,13 @@ public final class Class_h_0417 {
 					}
 					if (localClass_h_04172.var_b4f == 9) {
 						if (localClass_h_04172.var_b97 == 0) {
-							if (localClass_h_04172.var_c97[i1].var_c08 >= localClass_h_04172.var_b3f.var_459a) {
+							if (localClass_h_04172.var_c97[i1].pixelX >= localClass_h_04172.var_b3f.var_459a) {
 								if (localClass_h_04172.var_c97[i1].var_ca8 == 0) {
 									localClass_h_04172.var_c97[i1]
-											.sub_1b36(
+											.setPixelPosition(
 													localClass_h_04172.var_b3f.var_45aa
 															- localClass_h_04172.var_c97[i1].spriteFrameWidth,
-													localClass_h_04172.var_c97[i1].var_c10);
+													localClass_h_04172.var_c97[i1].pixelY);
 									localClass_h_04172.var_c97[i1].var_c98 = localClass_h_04172.var_c0f.var_b97;
 									localClass_h_04172.var_c97[i1].var_ca8 = 1;
 								} else {
@@ -1074,13 +1074,13 @@ public final class Class_h_0417 {
 							if (localClass_h_04172.var_b97 != 1) {
 								continue;
 							}
-							if (localClass_h_04172.var_c97[i1].var_c08
+							if (localClass_h_04172.var_c97[i1].pixelX
 									+ localClass_h_04172.var_c97[i1].spriteFrameWidth < 0) {
 								if (localClass_h_04172.var_c97[i1].var_ca8 == 0) {
 									localClass_h_04172.var_c97[i1]
-											.sub_1b36(
+											.setPixelPosition(
 													localClass_h_04172.var_b3f.var_45aa,
-													localClass_h_04172.var_c97[i1].var_c10);
+													localClass_h_04172.var_c97[i1].pixelY);
 									localClass_h_04172.var_c97[i1].var_c98 = localClass_h_04172.var_c0f.var_b97;
 									localClass_h_04172.var_c97[i1].var_ca8 = 1;
 								} else {
@@ -1131,10 +1131,10 @@ public final class Class_h_0417 {
 			this.var_b3f.sub_188aa(this.var_bf7[j]);
 			Class_g_Sprite localClass_g_25171;
 			(localClass_g_25171 = Class_g_Sprite.sub_2054(this.var_b3f.var_4752,
-					0, 0, 0, 1, 0, (byte) 0)).sub_1b36(this.var_bf7[j].var_c08
+					0, 0, 0, 1, 0, (byte) 0)).setPixelPosition(this.var_bf7[j].pixelX
 					+ (this.var_bf7[j].spriteFrameWidth - localClass_g_25171.spriteFrameWidth)
 					/ 2, this.var_b3f.k); // @todo see "long k" or "long byte"
-			localClass_g_25171.var_c38 = (this.var_bf7[j].var_c10
+			localClass_g_25171.var_c38 = (this.var_bf7[j].pixelY
 					+ (this.var_bf7[j].spriteFrameHeight - localClass_g_25171.spriteFrameHeight)
 					/ 2 - this.var_b3f.k); // @todo see "long k" or "long byte"
 			this.var_b3f.sub_18887(localClass_g_25171);
@@ -1144,20 +1144,20 @@ public final class Class_h_0417 {
 						this.var_b3f.var_4a72, i + -1, 0,
 						Class_c_MainCanvas.getRandomWithin(-4, -1), 1,
 						Class_c_MainCanvas.getRandomMax(4) * 50, (byte) 0))
-						.sub_1b36(
-								this.var_bf7[j].var_c08
+						.setPixelPosition(
+								this.var_bf7[j].pixelX
 										+ (this.var_bf7[j].spriteFrameWidth - localClass_g_25172.spriteFrameWidth)
-										/ 2, this.var_bf7[j].var_c10
+										/ 2, this.var_bf7[j].pixelY
 										+ this.var_bf7[j].spriteFrameHeight
 										- localClass_g_25172.spriteFrameHeight + 3);
 				this.var_b3f.sub_18887(localClass_g_25172);
 			}
 			(localClass_g_25172 = Class_g_Sprite.sub_2054(this.var_b3f.var_4742,
 					0, 0, -1, 1, 200, (byte) 0))
-					.sub_1b36(
-							this.var_bf7[j].var_c08
+					.setPixelPosition(
+							this.var_bf7[j].pixelX
 									+ (this.var_bf7[j].spriteFrameWidth - localClass_g_25172.spriteFrameWidth)
-									/ 2, this.var_bf7[j].var_c10
+									/ 2, this.var_bf7[j].pixelY
 									+ this.var_bf7[j].spriteFrameHeight
 									- localClass_g_25172.spriteFrameHeight + 3);
 			this.var_b3f.sub_18887(localClass_g_25172);
@@ -1170,8 +1170,8 @@ public final class Class_h_0417 {
 				+ (this.var_b77 - this.var_b6f), 0, -4, (byte) 1);
 		int k;
 		if (this.var_b87 == 1) {
-			k = this.var_bf7[0].var_c08 + this.var_bf7[0].spriteFrameWidth / 2;
-			i = this.var_bf7[0].var_c10 + this.var_bf7[0].spriteFrameHeight + 1;
+			k = this.var_bf7[0].pixelX + this.var_bf7[0].spriteFrameWidth / 2;
+			i = this.var_bf7[0].pixelY + this.var_bf7[0].spriteFrameHeight + 1;
 		} else {
 			k = this.var_b3f.var_45aa / 2;
 			if (this.var_b97 == 1) {
@@ -1179,7 +1179,7 @@ public final class Class_h_0417 {
 			}
 			i = (this.var_b3f.var_4eba + this.var_c1f) / 2;
 		}
-		localClass_g_25171.sub_1b36(k, i);
+		localClass_g_25171.setPixelPosition(k, i);
 		localClass_g_25171.var_c88 = true;
 		this.var_b3f.sub_18887(localClass_g_25171);
 	}
@@ -1231,8 +1231,8 @@ public final class Class_h_0417 {
 			Class_g_Sprite localClass_g_2517 = this.var_bf7[i];
 			if ((this.var_b4f == 0) || (this.var_b4f == 4)
 					|| (this.var_b4f == 5) || (this.var_b4f == 6)) {
-				paramGraphics.fillArc(localClass_g_2517.var_c08,
-						localClass_g_2517.var_c10
+				paramGraphics.fillArc(localClass_g_2517.pixelX,
+						localClass_g_2517.pixelY
 								+ (localClass_g_2517.spriteFrameHeight << 2) / 5,
 						localClass_g_2517.spriteFrameWidth,
 						localClass_g_2517.spriteFrameHeight / 4, 0, 360);

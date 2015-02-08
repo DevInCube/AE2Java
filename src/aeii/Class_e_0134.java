@@ -33,7 +33,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 	private int var_1092;
 	private boolean var_109a = false;
 	private boolean var_10a2 = false;
-	public Class_a_0260[] var_10aa;
+	public Class_a_Unit[] var_10aa;
 	private int var_10b2;
 	private int var_10ba;
 	private byte var_10c2 = -1;
@@ -45,7 +45,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 	public int var_10f2 = -1;
 	private boolean var_10fa = true;
 	private int var_1102;
-	public Class_a_0260 var_110a;
+	public Class_a_Unit var_110a;
 	private boolean var_1112 = true;
 	public Class_f_0145 var_111a;
 	private int var_1122;
@@ -139,7 +139,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 				if ((paramInt & 0x2) == 0) {
 					this.var_1042 += 5;
 				}
-				this.var_10aa = Class_a_0260.sub_27b7(var_1012.var_4842);
+				this.var_10aa = Class_a_Unit.sub_27b7(var_1012.var_4842);
 				this.var_1062 = this.var_10aa.length;
 				int pInt = (int) (this.var_103a - (var_1012.var_4722.spriteFrameWidth << 1));
 				if ((paramInt & 0x4) == 0) {
@@ -166,9 +166,9 @@ public final class Class_e_0134 extends Class_f_0145 {
 						+ (var_1012.var_4a12.spriteFrameHeight << 1) + var_ff2 + var_ff2 + 1);
 				if (paramByte == 5) {
 					this.var_1042 += var_ffa + Class_c_MainCanvas.fontBaselinePos;
-					this.var_110a = var_1012.sub_1156a(var_1012.var_4772,
+					this.var_110a = var_1012.getUnitAtPos(var_1012.var_4772,
 							var_1012.var_477a, (byte) 0);
-					this.var_105a = this.var_110a.var_e2b;
+					this.var_105a = this.var_110a.unitType;
 					this.var_103a = var_1012.var_459a;
 				} else {
 					this.var_103a = var_1012.var_459a;
@@ -382,7 +382,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 	private void sub_1dd0() {
 		for (int i = 0; i < this.var_112a.length; i++) {
 			this.var_112a[i].var_c18 = true;
-			this.var_112a[i].sub_1b36(
+			this.var_112a[i].setPixelPosition(
 					Class_c_MainCanvas.getRandomMax(this.var_1252.spriteFrameWidth),
 					Class_c_MainCanvas.getRandomMax(this.var_1252.spriteFrameHeight));
 			this.var_112a[i].setCurrentFrameIndex(Class_c_MainCanvas.getRandomMax(this.var_112a[i]
@@ -581,7 +581,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 								.getImagesCount() - 1) {
 							if (this.var_1232 == 0) {
 								this.var_112a[i]
-										.sub_1b36(
+										.setPixelPosition(
 												Class_c_MainCanvas
 														.getRandomMax(this.var_1252.spriteFrameWidth
 																- this.var_112a[i].spriteFrameWidth),
@@ -1134,16 +1134,16 @@ public final class Class_e_0134 extends Class_f_0145 {
 					k = bool2 + this.var_110a.p / 2;
 					paramGraphics.setFont(Class_c_MainCanvas.theFont);
 					paramGraphics.setColor(this.var_fea);
-					Class_c_MainCanvas.showString(paramGraphics, this.var_110a.var_df3,
+					Class_c_MainCanvas.showString(paramGraphics, this.var_110a.unitName,
 							bool2 + this.var_110a.o + bool2, k
 									- Class_c_MainCanvas.fontBaselinePos / 2, 20);
 					String str2;
 					if (this.var_108a == 2) {
-						str2 = "" + this.var_110a.var_efb;
+						str2 = "" + this.var_110a.cost;
 						var_1012.var_4a2a.drawFrame(paramGraphics, 1, bool1 - bool2
 								- Class_c_MainCanvas.sub_1e71((byte) 1, str2), k, 10);
 					} else {
-						str2 = "" + this.var_110a.var_e7b;
+						str2 = "" + this.var_110a.health;
 					}
 					Class_c_MainCanvas.sub_2007(paramGraphics, str2, bool1 - bool2, k, 1,
 							10);
@@ -1163,7 +1163,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 								.getLangString(97));
 						int sumBool;
 						sumBool = bool2 + bool4 + bool2;
-						String str1 = "" + this.var_110a.var_dfb;
+						String str1 = "" + this.var_110a.level;
 						i2 = Class_c_MainCanvas.sub_1e71((byte) 0, str1);
 						int bool13 = bool1 - sumBool - bool2
 								- var_1012.var_4a22.spriteFrameWidth - i2 - bool2;
@@ -1171,8 +1171,8 @@ public final class Class_e_0134 extends Class_f_0145 {
 						sub_3421(paramGraphics, sumBool, bool3, bool13, bool5);
 						paramGraphics.setColor(2370117);
 						int bool6;
-						if ((bool6 = bool13 * this.var_110a.var_e03
-								/ this.var_110a.sub_14ba()) <= 0) {
+						if ((bool6 = bool13 * this.var_110a.maybeExperience
+								/ this.var_110a.getLevelExperience()) <= 0) {
 							bool6 = 1;
 						}
 						paramGraphics.fillRect(sumBool + 1, bool3 + 1,
@@ -1209,19 +1209,19 @@ public final class Class_e_0134 extends Class_f_0145 {
 								bool12 = 0;
 								if (i4 == 0) {
 									if (this.var_108a == 5) {
-										i3 = this.var_110a.sub_1278(null);
+										i3 = this.var_110a.getSomeAttackValueMaybe1(null);
 									}
-									str2 = this.var_110a.var_e5b + i3 + "-"
-											+ (this.var_110a.var_e63 + i3);
+									str2 = this.var_110a.attackMin + i3 + "-"
+											+ (this.var_110a.attackMax + i3);
 								} else if (i4 == 1) {
 									if (this.var_108a == 5) {
-										i3 = this.var_110a.sub_135c(null);
+										i3 = this.var_110a.getSomeUnitResistance(null);
 									}
-									str2 = "" + (this.var_110a.var_e6b + i3);
+									str2 = "" + (this.var_110a.defence + i3);
 								} else if (i4 == 2) {
 									var_1012.var_4622[5].drawOnGraphics(paramGraphics,
 											i2, bool3 + bool6, 3);
-									str2 = "" + this.var_110a.var_e73;
+									str2 = "" + this.var_110a.moveRange;
 								}
 								Class_c_MainCanvas.sub_2007(paramGraphics, str2,
 										sumBool + bool13 + 1, bool3 + bool6,
@@ -1273,7 +1273,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 							var_1012.var_4a0a.drawFrame(paramGraphics, 0, m, bool3,
 									3);
 						}
-						Class_a_0260 localClass_a_0260 = this.var_10aa[bool5];
+						Class_a_Unit localClass_a_0260 = this.var_10aa[bool5];
 						int bool7int = m - localClass_a_0260.m - localClass_a_0260.o / 2; //m
 						int bool9int = bool3 - localClass_a_0260.n - localClass_a_0260.p //n p
 								/ 2;
@@ -1282,7 +1282,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 										paramGraphics,
 										bool7int,
 										bool9int,
-										localClass_a_0260.var_efb > var_1012.var_486a[var_1012.var_4842]);
+										localClass_a_0260.cost > var_1012.var_486a[var_1012.var_4842]);
 						if (bool5 == this.var_105a) {
 							k = m - this.var_1252.spriteFrameWidth / 2;
 							int bool11int = bool3 - this.var_1252.spriteFrameWidth / 2;
@@ -1440,20 +1440,20 @@ public final class Class_e_0134 extends Class_f_0145 {
 						m = -this.var_1162 * bool11 + 4;
 						k = -this.var_116a * bool10 + 4;
 						bool8 = 0;
-						bool5 = var_1012.var_47fa.size();
+						bool5 = var_1012.mapUnitsMaybe.size();
 						while (bool8 < bool5) {
-							Class_a_0260 paramBooleanCl;
-							if (((paramBooleanCl = (Class_a_0260) var_1012.var_47fa
-									.elementAt(bool8)).var_e3b >= this.var_1162)
-									&& (paramBooleanCl.var_e3b < i3)
-									&& (paramBooleanCl.var_e43 >= this.var_116a)
-									&& (paramBooleanCl.var_e43 < i4)) {
+							Class_a_Unit paramBooleanCl;
+							if (((paramBooleanCl = (Class_a_Unit) var_1012.mapUnitsMaybe
+									.elementAt(bool8)).posX >= this.var_1162)
+									&& (paramBooleanCl.posX < i3)
+									&& (paramBooleanCl.posY >= this.var_116a)
+									&& (paramBooleanCl.posY < i4)) {
 								var_1012.var_4a62
 										.drawFrame(
 												paramGraphics,
-												var_1012.var_4832[paramBooleanCl.var_e33] - 1,
-												paramBooleanCl.var_e3b * bool11 + m,
-												paramBooleanCl.var_e43 * bool10 + k,
+												var_1012.var_4832[paramBooleanCl.teamId] - 1,
+												paramBooleanCl.posX * bool11 + m,
+												paramBooleanCl.posY * bool10 + k,
 												0);
 							}
 							bool8++;
