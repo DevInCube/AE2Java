@@ -5,7 +5,7 @@ import java.util.Vector;
 import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Graphics;
 
-public final class Class_e_0134 extends Class_f_0145 {
+public final class Class_e_0134 extends Class_f_StringManager {
 
 	private boolean[] var_fe2 = { false, false };
 	public int var_fea = 13553358;
@@ -47,9 +47,9 @@ public final class Class_e_0134 extends Class_f_0145 {
 	private int var_1102;
 	public Class_a_Unit var_110a;
 	private boolean var_1112 = true;
-	public Class_f_0145 var_111a;
+	public Class_f_StringManager stringManager;
 	private int var_1122;
-	private Class_g_Sprite[] var_112a;
+	private Class_g_Sprite[] someSprites;
 	private int var_1132;
 	private boolean var_113a = false;
 	private Vector var_1142;
@@ -90,7 +90,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 
 	public final void sub_1272() {
 		this.var_1232 = 0;
-		if (this.var_112a != null) {
+		if (this.someSprites != null) {
 			sub_1dd0();
 		}
 		this.var_1132 = 4;
@@ -116,8 +116,8 @@ public final class Class_e_0134 extends Class_f_0145 {
 		this.var_fe2[paramByte] = paramBoolean;
 	}
 
-	public final void sub_1350(Class_f_0145 paramClass_f_0145) {
-		this.var_111a = paramClass_f_0145;
+	public final void sub_1350(Class_f_StringManager paramClass_f_0145) {
+		this.stringManager = paramClass_f_0145;
 		this.var_fe2[1] = (boolean) (paramClass_f_0145 != null ? true : false);
 	}
 
@@ -286,7 +286,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 		}
 		int intVal;
 		intVal = paramInt1 - this.var_10da - 16;
-		this.var_101a = Class_f_0145.sub_843(paramString, intVal,
+		this.var_101a = Class_f_StringManager.wrapStringText(paramString, intVal,
 				Class_c_MainCanvas.theFont);
 		sub_1a89(null, this.var_101a, paramInt1, paramInt2);
 		this.var_113a = false;
@@ -305,7 +305,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 		this.var_113a = false;
 		paramInt1 = paramInt1 - this.var_10da - 16;
 		if (paramString != null) {
-			this.var_10ea = Class_f_0145.sub_843(paramString, paramInt1,
+			this.var_10ea = Class_f_StringManager.wrapStringText(paramString, paramInt1,
 					Class_c_MainCanvas.theFont);
 		}
 		this.var_101a = paramArrayOfString;
@@ -360,32 +360,32 @@ public final class Class_e_0134 extends Class_f_0145 {
 		if ((this.var_1092 & 0x8) == 0) {
 			i -= 8;
 		}
-		this.var_101a = Class_f_0145.sub_843(paramString2, i,
+		this.var_101a = Class_f_StringManager.wrapStringText(paramString2, i,
 				Class_c_MainCanvas.theFont);
 		sub_1a89(paramString1, this.var_101a, paramInt1, paramInt2);
 		if (this.var_113a) {
 			i -= var_1012.var_472a.spriteFrameWidth;
-			this.var_101a = Class_f_0145.sub_843(paramString2, i,
+			this.var_101a = Class_f_StringManager.wrapStringText(paramString2, i,
 					Class_c_MainCanvas.theFont);
 			sub_1a89(paramString1, this.var_101a, paramInt1, paramInt2);
 		}
 	}
 
 	private final void sub_1d69() {
-		this.var_112a = new Class_g_Sprite[3];
-		for (int i = 0; i < this.var_112a.length; i++) {
-			this.var_112a[i] = new Class_g_Sprite(var_1012.var_4762);
+		this.someSprites = new Class_g_Sprite[3];
+		for (int i = 0; i < this.someSprites.length; i++) {
+			this.someSprites[i] = new Class_g_Sprite(var_1012.var_4762);
 		}
 		sub_1dd0();
 	}
 
 	private void sub_1dd0() {
-		for (int i = 0; i < this.var_112a.length; i++) {
-			this.var_112a[i].var_c18 = true;
-			this.var_112a[i].setPixelPosition(
+		for (int i = 0; i < this.someSprites.length; i++) {
+			this.someSprites[i].var_c18 = true;
+			this.someSprites[i].setPixelPosition(
 					Class_c_MainCanvas.getRandomMax(this.var_1252.spriteFrameWidth),
 					Class_c_MainCanvas.getRandomMax(this.var_1252.spriteFrameHeight));
-			this.var_112a[i].setCurrentFrameIndex(Class_c_MainCanvas.getRandomMax(this.var_112a[i]
+			this.someSprites[i].setCurrentFrameIndex(Class_c_MainCanvas.getRandomMax(this.someSprites[i]
 					.getImagesCount()));
 		}
 	}
@@ -512,14 +512,14 @@ public final class Class_e_0134 extends Class_f_0145 {
 		if (this.var_1062 == 1) {
 			this.var_1202 = 0;
 		} else if (paramInt3 <= 0) {
-			this.var_1202 = ((this.var_1252.spriteFrameWidth << 10) / (2 * Class_f_0145
+			this.var_1202 = ((this.var_1252.spriteFrameWidth << 10) / (2 * Class_f_StringManager
 					.sub_f0f(45)));
 			this.var_120a = (this.var_1202 + this.var_1252.spriteFrameWidth / 2);
 			paramInt3 = (this.var_120a << 1) + Class_c_MainCanvas.var_1767 + 2;
 		} else {
 			int someInt;
 			someInt = (this.var_1252.spriteFrameWidth << 10)
-					/ Class_f_0145.sub_f0f(this.var_1222 / 2)
+					/ Class_f_StringManager.sub_f0f(this.var_1222 / 2)
 					+ this.var_1252.spriteFrameHeight / 2;
 			this.var_120a = ((paramInt3 - Class_c_MainCanvas.var_1767) / 2 - 2);
 			if (this.var_120a > someInt) {
@@ -568,37 +568,37 @@ public final class Class_e_0134 extends Class_f_0145 {
 			if ((paramBoolean) && (this.var_1002 == 2)) {
 				paramBoolean = false;
 				if ((this.var_fe2[0] != false)
-						&& ((Class_f_0145.mainCanvas
-								.sub_26d7(Class_g_1956.var_4602)) || (Class_f_0145.mainCanvas
+						&& ((Class_f_StringManager.mainCanvas
+								.sub_26d7(Class_g_1956.var_4602)) || (Class_f_StringManager.mainCanvas
 								.sub_26d7(16)))) {
 					paramBoolean = true;
-					Class_f_0145.mainCanvas.releaseGameAction(Class_g_1956.var_4602);
-					Class_f_0145.mainCanvas.releaseGameAction(16);
+					Class_f_StringManager.mainCanvas.releaseGameAction(Class_g_1956.var_4602);
+					Class_f_StringManager.mainCanvas.releaseGameAction(16);
 				}
 				if ((this.var_108a == 0) || (this.var_108a == 3)) {
-					for (int i = 0; i < this.var_112a.length; i++) {
-						if (this.var_112a[i].currentFrameIndex == this.var_112a[i]
+					for (int i = 0; i < this.someSprites.length; i++) {
+						if (this.someSprites[i].currentFrameIndex == this.someSprites[i]
 								.getImagesCount() - 1) {
 							if (this.var_1232 == 0) {
-								this.var_112a[i]
+								this.someSprites[i]
 										.setPixelPosition(
 												Class_c_MainCanvas
 														.getRandomMax(this.var_1252.spriteFrameWidth
-																- this.var_112a[i].spriteFrameWidth),
+																- this.someSprites[i].spriteFrameWidth),
 												Class_c_MainCanvas
 														.getRandomMax(this.var_1252.spriteFrameHeight
-																- this.var_112a[i].spriteFrameHeight));
+																- this.someSprites[i].spriteFrameHeight));
 							} else {
-								this.var_112a[i].var_c18 = false;
+								this.someSprites[i].var_c18 = false;
 							}
 						}
-						this.var_112a[i].nextFrame();
+						this.someSprites[i].nextFrame();
 					}
 					this.var_109a = true;
 				}
 				if ((!this.var_115a) && (this.var_114a >= 0)) {
 					int m;
-					if (Class_f_0145.mainCanvas.sub_26d7(1)) {
+					if (Class_f_StringManager.mainCanvas.sub_26d7(1)) {
 						((Class_e_0134) this.var_1142.elementAt(this.var_114a)).var_109a = true;
 						this.var_114a = sub_242b(-1);
 						Class_e_0134 localClass_e_01341;
@@ -617,7 +617,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 							m -= this.var_11da[j];
 						}
 					}
-					if (Class_f_0145.mainCanvas.sub_26d7(2)) {
+					if (Class_f_StringManager.mainCanvas.sub_26d7(2)) {
 						((Class_e_0134) this.var_1142.elementAt(this.var_114a)).var_109a = true;
 						this.var_114a = sub_242b(1);
 						Class_e_0134 localClass_e_01342;
@@ -650,14 +650,14 @@ public final class Class_e_0134 extends Class_f_0145 {
 				if (this.var_108a == 0) {
 					if (this.var_1002 == 2) {
 						this.var_109a = true;
-						if (Class_f_0145.mainCanvas.sub_26d7(4)) {
+						if (Class_f_StringManager.mainCanvas.sub_26d7(4)) {
 							this.var_1232 -= this.var_1222;
 							this.var_122a += this.var_1222;
 							this.var_105a -= 1;
 							if (this.var_105a < 0) {
 								this.var_105a = (this.var_1062 - 1);
 							}
-						} else if (Class_f_0145.mainCanvas.sub_26d7(8)) {
+						} else if (Class_f_StringManager.mainCanvas.sub_26d7(8)) {
 							this.var_1232 += this.var_1222;
 							this.var_122a -= this.var_1222;
 							if (this.var_122a < 0) {
@@ -677,14 +677,14 @@ public final class Class_e_0134 extends Class_f_0145 {
 							if (this.var_1232 == 0) {
 								sub_1dd0();
 							}
-						} else if (Class_f_0145.mainCanvas.isGameActionRunning(4)) {
+						} else if (Class_f_StringManager.mainCanvas.isGameActionRunning(4)) {
 							this.var_1232 -= this.var_1222;
 							this.var_122a += this.var_1222;
 							this.var_105a -= 1;
 							if (this.var_105a < 0) {
 								this.var_105a = (this.var_1062 - 1);
 							}
-						} else if (Class_f_0145.mainCanvas.isGameActionRunning(8)) {
+						} else if (Class_f_StringManager.mainCanvas.isGameActionRunning(8)) {
 							this.var_1232 += this.var_1222;
 							this.var_122a -= this.var_1222;
 							if (this.var_122a < 0) {
@@ -715,7 +715,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 									this.var_101a[this.var_105a], (byte) 0);
 							return;
 						}
-						if (Class_f_0145.mainCanvas.sub_26d7(4)) {
+						if (Class_f_StringManager.mainCanvas.sub_26d7(4)) {
 							if (this.var_105a < this.var_10ca) {
 								this.var_105a += this.var_1062;
 							}
@@ -732,7 +732,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 									(byte) 2);
 							sub_1dd0();
 							this.var_109a = true;
-						} else if (Class_f_0145.mainCanvas.sub_26d7(8)) {
+						} else if (Class_f_StringManager.mainCanvas.sub_26d7(8)) {
 							if (this.var_105a < this.var_10ca) {
 								this.var_105a += this.var_1062;
 							}
@@ -750,22 +750,22 @@ public final class Class_e_0134 extends Class_f_0145 {
 					} else if ((this.var_108a != 10) && (this.var_108a != 7)
 							&& (this.var_108a != 11)) {
 						if (this.var_108a == 8) {
-							if (Class_f_0145.mainCanvas.sub_26d7(1)) {
+							if (Class_f_StringManager.mainCanvas.sub_26d7(1)) {
 								if (this.var_116a > 0) {
 									this.var_116a -= 1;
 									this.var_109a = true;
 								}
-							} else if ((Class_f_0145.mainCanvas.sub_26d7(2))
+							} else if ((Class_f_StringManager.mainCanvas.sub_26d7(2))
 									&& (this.var_116a + this.var_117a < this.var_119a)) {
 								this.var_116a += 1;
 								this.var_109a = true;
 							}
-							if (Class_f_0145.mainCanvas.sub_26d7(4)) {
+							if (Class_f_StringManager.mainCanvas.sub_26d7(4)) {
 								if (this.var_1162 > 0) {
 									this.var_1162 -= 1;
 									this.var_109a = true;
 								}
-							} else if ((Class_f_0145.mainCanvas.sub_26d7(8))
+							} else if ((Class_f_StringManager.mainCanvas.sub_26d7(8))
 									&& (this.var_1162 + this.var_1172 < this.var_1192)) {
 								this.var_1162 += 1;
 								this.var_109a = true;
@@ -776,7 +776,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 							if (this.var_10f2 > 0) {
 								this.var_10f2 -= 50;
 							} else {
-								Class_f_0145.mainCanvas.sub_220e(this.var_111a);
+								Class_f_StringManager.mainCanvas.sub_220e(this.stringManager);
 							}
 						}
 						if (this.var_10e2 > 0) {
@@ -800,7 +800,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 								return;
 							}
 							if ((this.var_108a != 7)
-									&& (Class_f_0145.mainCanvas.sub_26d7(1))) {
+									&& (Class_f_StringManager.mainCanvas.sub_26d7(1))) {
 								if (this.var_108a == 11) {
 									this.var_105a -= 1;
 									if (this.var_105a < 0) {
@@ -821,10 +821,10 @@ public final class Class_e_0134 extends Class_f_0145 {
 									this.var_10ca -= 1;
 									this.var_109a = true;
 								}
-								Class_f_0145.mainCanvas.sub_26ad();
+								Class_f_StringManager.mainCanvas.sub_26ad();
 							}
-							if ((Class_f_0145.mainCanvas.sub_26d7(2))
-									|| ((this.var_108a == 7) && (Class_f_0145.mainCanvas
+							if ((Class_f_StringManager.mainCanvas.sub_26d7(2))
+									|| ((this.var_108a == 7) && (Class_f_StringManager.mainCanvas
 											.sub_26d7(2048)))) {
 								if (this.var_108a == 11) {
 									this.var_105a += 1;
@@ -847,11 +847,11 @@ public final class Class_e_0134 extends Class_f_0145 {
 									var_1012.sub_770a(this, 0, null, (byte) 0);
 									return;
 								}
-								Class_f_0145.mainCanvas.sub_26ad();
+								Class_f_StringManager.mainCanvas.sub_26ad();
 							}
 						}
 					}
-				} else if (Class_f_0145.mainCanvas.sub_26d7(4)) {
+				} else if (Class_f_StringManager.mainCanvas.sub_26d7(4)) {
 					this.var_105a -= 1;
 					if (this.var_105a < 0) {
 						this.var_105a = (this.var_1062 - 1);
@@ -860,7 +860,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 						var_1012.sub_770a(this, this.var_105a, null, (byte) 2);
 					}
 					this.var_109a = true;
-				} else if (Class_f_0145.mainCanvas.sub_26d7(8)) {
+				} else if (Class_f_StringManager.mainCanvas.sub_26d7(8)) {
 					this.var_105a += 1;
 					if (this.var_105a >= this.var_1062) {
 						this.var_105a = 0;
@@ -876,12 +876,12 @@ public final class Class_e_0134 extends Class_f_0145 {
 				}
 				if ((this.var_1002 == 2)
 						&& (this.var_fe2[1] != false)
-						&& (Class_f_0145.mainCanvas
+						&& (Class_f_StringManager.mainCanvas
 								.sub_26d7(Class_g_1956.var_460a))) {
-					Class_f_0145.mainCanvas.releaseGameAction(Class_g_1956.var_460a);
-					Class_f_0145.mainCanvas.sub_26ad();
-					if (this.var_111a != null) {
-						Class_f_0145.mainCanvas.sub_220e(this.var_111a);
+					Class_f_StringManager.mainCanvas.releaseGameAction(Class_g_1956.var_460a);
+					Class_f_StringManager.mainCanvas.sub_26ad();
+					if (this.stringManager != null) {
+						Class_f_StringManager.mainCanvas.sub_220e(this.stringManager);
 					}
 					if (this.var_101a != null) {
 						var_1012.sub_770a(this, this.var_105a,
@@ -931,7 +931,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 							this.var_11f2[it] = ((short) ((this.var_11f2[it] + this.var_1212) % 360));
 						}
 					}
-					if ((Class_f_0145.mainCanvas.sub_2677())
+					if ((Class_f_StringManager.mainCanvas.sub_2677())
 							|| ((this.var_11fa >= this.var_1202) && (this.var_11f2[0] == 0))) {
 						this.var_11fa = this.var_1202;
 						for (int it = 0; it < this.var_11f2.length; it++) {
@@ -939,7 +939,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 						}
 						this.var_1002 = 2;
 						if (this.var_1112) {
-							Class_f_0145.mainCanvas.sub_26ad();
+							Class_f_StringManager.mainCanvas.sub_26ad();
 						}
 					}
 				} else if (this.var_108a == 13) {
@@ -987,7 +987,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 			boolean paramBoolean) {
 		if ((this.var_1002 != 3) && (this.var_109a)) {
 			this.var_109a = false;
-			if (((Class_f_0145.mainCanvas.var_17b7 == this) && (this.var_10a2))
+			if (((Class_f_StringManager.mainCanvas.var_17b7 == this) && (this.var_10a2))
 					|| (this.var_108a == 0)) {
 				var_1012.sub_fe5d(paramGraphics);
 			}
@@ -1044,11 +1044,11 @@ public final class Class_e_0134 extends Class_f_0145 {
 						bool3 += 360;
 					}
 					int iInt = this.var_120a
-							+ (Class_f_0145.sub_f0f(bool3) * this.var_11fa >> 10);
+							+ (Class_f_StringManager.sub_f0f(bool3) * this.var_11fa >> 10);
 					bool3 = Class_c_MainCanvas.var_1767
 							+ this.var_120a
 							+ 2
-							- (Class_f_0145.sub_f35(bool3) * this.var_11fa >> 10);
+							- (Class_f_StringManager.sub_f35(bool3) * this.var_11fa >> 10);
 					if ((this.var_1002 == 2) && (bool4 == this.var_105a)) {
 						this.var_1252.drawFrame(paramGraphics, 1, iInt,
 								bool3, 3);
@@ -1056,8 +1056,8 @@ public final class Class_e_0134 extends Class_f_0145 {
 							bool5 = 0;
 						}
 					} else {
-						while (bool5 < this.var_112a.length) {
-							this.var_112a[bool5].drawCurrentFrame(paramGraphics,
+						while (bool5 < this.someSprites.length) {
+							this.someSprites[bool5].drawCurrentFrame(paramGraphics,
 									iInt - this.var_1242, bool3
 											- this.var_1242, 20);
 							bool5++;
@@ -1074,8 +1074,8 @@ public final class Class_e_0134 extends Class_f_0145 {
 					}
 				}
 				if (this.var_1002 == 2) {
-					for (bool4 = 0; bool4 < this.var_112a.length; bool4++) {
-						this.var_112a[bool4].drawCurrentFrame(paramGraphics,
+					for (bool4 = 0; bool4 < this.someSprites.length; bool4++) {
+						this.someSprites[bool4].drawCurrentFrame(paramGraphics,
 								(this.var_103a - this.var_123a) / 2,
 								Class_c_MainCanvas.var_1767, 3);
 					}
@@ -1158,8 +1158,8 @@ public final class Class_e_0134 extends Class_f_0145 {
 						bool5 = Class_c_MainCanvas.fontBaselinePos;
 						k = bool3 + bool5 / 1;
 						Class_c_MainCanvas.showString(paramGraphics,
-								Class_f_0145.getLangString(97), bool2, bool3, 20);
-						bool4 = Class_c_MainCanvas.theFont.stringWidth(Class_f_0145
+								Class_f_StringManager.getLangString(97), bool2, bool3, 20);
+						bool4 = Class_c_MainCanvas.theFont.stringWidth(Class_f_StringManager
 								.getLangString(97));
 						int sumBool;
 						sumBool = bool2 + bool4 + bool2;
@@ -1286,8 +1286,8 @@ public final class Class_e_0134 extends Class_f_0145 {
 						if (bool5 == this.var_105a) {
 							k = m - this.var_1252.spriteFrameWidth / 2;
 							int bool11int = bool3 - this.var_1252.spriteFrameWidth / 2;
-							for (int bool10int = 0; bool10int < this.var_112a.length; bool10int++) {
-								this.var_112a[bool10int].drawCurrentFrame(paramGraphics, k,
+							for (int bool10int = 0; bool10int < this.someSprites.length; bool10int++) {
+								this.someSprites[bool10int].drawCurrentFrame(paramGraphics, k,
 										bool11int, 20);
 							}
 						}
@@ -1554,7 +1554,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 			}
 			paramGraphics.translate(-paramInt1, -paramInt2);
 			paramGraphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);
-			if ((Class_f_0145.mainCanvas.var_17b7 == this) && (this.var_1002 == 2)) {
+			if ((Class_f_StringManager.mainCanvas.var_17b7 == this) && (this.var_1002 == 2)) {
 				if (this.var_fe2[0] != false) {
 					var_1012.sub_114f1(paramGraphics, Class_g_1956.var_4602, 0,
 							var_1012.var_45a2);

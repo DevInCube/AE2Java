@@ -313,16 +313,16 @@ public class Class_g_Sprite {
 		}
 	}
 
-	public void drawFrame(Graphics paramGraphics, int imageIndex, int paramInt2, int paramInt3, int paramInt4) {
+	public void drawFrame(Graphics paramGraphics, int imageIndex, int inX, int inY, int paramInt4) {
 		if ((this.var_c40 != 2) && (this.var_c40 != 4) && (this.var_c40 != 3)) {
 			if (this.var_c18) {
-				paramInt2 = this.pixelX + paramInt2;
-				paramInt3 = this.pixelY + paramInt3;
+				inX = this.pixelX + inX;
+				inY = this.pixelY + inY;
 				this.frameImages[imageIndex]
-						.drawOnGraphics(paramGraphics, paramInt2, paramInt3, paramInt4);
+						.drawOnGraphics(paramGraphics, inX, inY, paramInt4);
 			}
 		} else {
-			sub_1d20(paramGraphics, paramInt2, paramInt3);
+			sub_1d20(paramGraphics, inX, inY);
 		}
 	}
 
@@ -331,9 +331,9 @@ public class Class_g_Sprite {
 		drawFrame(paramGraphics, imageIndex, paramInt1, paramInt2, paramInt3);
 	}
 
-	public void sub_1d20(Graphics graphics, int inIntArg1, int inIntArg2) {
-		int j;
-		int i;
+	public void sub_1d20(Graphics graphics, int inX, int inY) {
+		int x;
+		int y;
 		if ((this.var_c40 != 2) && (this.var_c40 != 4)) {
 			if (this.var_c40 == 6) {
 				if (this.currentFrameIndex == 0) {
@@ -342,9 +342,9 @@ public class Class_g_Sprite {
 					graphics.setColor(16777215); // #FFFFFF
 				}
 				if (this.var_c60 > 0) {
-					j = this.pixelX + 15;
+					x = this.pixelX + 15;
 					graphics.fillArc(this.pixelX, this.pixelY - 15, 30, 30, 0, 360);
-					graphics.fillRect(j, this.pixelY - 15, Class_c_MainCanvas.canvasWidth - j, 30);
+					graphics.fillRect(x, this.pixelY - 15, Class_c_MainCanvas.canvasWidth - x, 30);
 					return;
 				}
 				graphics.fillArc(this.pixelX - 30, this.pixelY - 15, 30, 30, 0, 360);
@@ -361,19 +361,19 @@ public class Class_g_Sprite {
 				return;
 			}
 			if (this.var_c18) {
-				i = this.pixelX + inIntArg1;
-				j = this.pixelY + inIntArg2;
+				y = this.pixelX + inX;
+				x = this.pixelY + inY;
 				if (this.var_cb0 != null) {
 					Class_c_MainCanvas
-							.sub_2007(graphics, this.var_cb0, i, j, this.var_cb8, 33);
+							.sub_2007(graphics, this.var_cb0, y, x, this.var_cb8, 33);
 					return;
 				}
 				if (this.var_c90 > 0) {
-					i += Class_c_MainCanvas.getRandomWithin(-4, 5);
-					j += Class_c_MainCanvas.getRandomWithin(-1, 2);
+					y += Class_c_MainCanvas.getRandomWithin(-4, 5);
+					x += Class_c_MainCanvas.getRandomWithin(-1, 2);
 				}
 				int k = this.currentFrameSequence[this.currentFrameIndex];
-				this.frameImages[k].sub_1115(graphics, i, j);
+				this.frameImages[k].sub_1115(graphics, y, x);
 				if (this.var_cc0 != null) {
 					Class_g_Sprite cl;
 					int val = k % (getImagesCount() / 2);
@@ -381,18 +381,18 @@ public class Class_g_Sprite {
 						cl = this.var_cc8;
 					} else {
 						cl = this.var_cc0;
-						this.var_cc0.setCurrentFrameIndex(inIntArg1);
+						this.var_cc0.setCurrentFrameIndex(inX);
 					}
-					cl.sub_1d20(graphics, i, j);
+					cl.sub_1d20(graphics, y, x);
 				}
 			}
 		} else {
 			graphics.setColor(this.someColorInt);
 			for (int k1 = 0; k1 < 5; k1++) {
 				if (this.var_cf0[k1] != false) {
-					i = (this.var_cd0[k1][0] >> 10) + inIntArg1 + this.pixelX;
-					j = (this.var_cd0[k1][1] >> 10) + inIntArg2 + this.pixelY;
-					graphics.fillRect(i, j, this.var_ce8[k1], this.var_ce8[k1]);
+					y = (this.var_cd0[k1][0] >> 10) + inX + this.pixelX;
+					x = (this.var_cd0[k1][1] >> 10) + inY + this.pixelY;
+					graphics.fillRect(y, x, this.var_ce8[k1], this.var_ce8[k1]);
 				}
 			}
 		}
@@ -570,17 +570,13 @@ public class Class_g_Sprite {
 		return null;
 	}
 
-	private static Class_c_AbstractConnection getFileConnectionImpl(Connection paramConnection) {
-
-		switch (Class_a_StaticFileConnection.getAvailableFileConnectionCode()) { // i
-																					// added
-																					// this
-		/*
-		 * case 1: return new Class_e_0115(paramConnection); case 2: return new
-		 * Class_d_0114(paramConnection); case 3: return new
-		 * Class_b_0012(paramConnection); case 4: return new
-		 * Class_f_0116(paramConnection);
-		 */
+	private static Class_c_AConnection getFileConnectionImpl(Connection conn) {
+		// i added switch expr	
+		switch (Class_a_StaticFileConnection.getAvailableFileConnectionCode()) { 
+		  case 1: return new Class_e_StandardFileCon(conn);
+		  case 2: return new Class_d_SiemenFileCon(conn); 
+		  case 3: return new Class_b_MotorolaFileCon(conn); 
+		  case 4: return new Class_f_MotorolaFileCon2(conn);
 		}
 
 		return null;

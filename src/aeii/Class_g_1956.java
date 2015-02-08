@@ -1,6 +1,6 @@
 package aeii;
 
-import a.a.a.Class_c_AbstractConnection;
+import a.a.a.Class_c_AConnection;
 import a.a.a.Class_g_Sprite;
 
 import java.io.ByteArrayInputStream;
@@ -34,7 +34,7 @@ import javax.microedition.lcdui.TextField;
  * @author DevInCube
  *
  */
-public final class Class_g_1956 extends Class_f_0145 implements Runnable,
+public final class Class_g_1956 extends Class_f_StringManager implements Runnable,
 		CommandListener, ItemStateListener {
 	private static String[] var_4572;
 	private static String[] var_457a;
@@ -355,13 +355,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 	private DataOutputStream var_4f22;
 	private int var_4f2a;
 	private boolean var_4f32;
-	private Class_f_0145 var_4f3a;
+	private Class_f_StringManager var_4f3a;
 	private int var_4f42;
 	private Class_e_0134 var_4f4a;
 	private Class_e_0134 var_4f52;
 	private Class_e_0134 var_4f5a;
 	private Class_e_0134 var_4f62;
-	private Class_b_0081 var_4f6a;
+	private Class_b_FilesManager var_4f6a;
 	private String[] var_4f72;
 	private byte var_4f7a;
 	private byte var_4f82;
@@ -402,44 +402,44 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 
 	public Class_g_1956() {
 		var_4572 = new String[] { ".." };
-		var_457a = new String[] { Class_f_0145.getLangString(300), ".." };
-		var_4582 = new String[] { Class_f_0145.getLangString(305),
-				Class_f_0145.getLangString(306), Class_f_0145.getLangString(307),
-				Class_f_0145.getLangString(303), Class_f_0145.getLangString(70),
-				Class_f_0145.getLangString(293), Class_f_0145.getLangString(60) };
+		var_457a = new String[] { Class_f_StringManager.getLangString(300), ".." };
+		var_4582 = new String[] { Class_f_StringManager.getLangString(305),
+				Class_f_StringManager.getLangString(306), Class_f_StringManager.getLangString(307),
+				Class_f_StringManager.getLangString(303), Class_f_StringManager.getLangString(70),
+				Class_f_StringManager.getLangString(293), Class_f_StringManager.getLangString(60) };
 		this.var_4f92 = 0;
-		this.var_506a = new Command(Class_f_0145.getLangString(12), 4, 1);
-		this.var_5072 = new Command(Class_f_0145.getLangString(13), 3, 5);
-		this.var_507a = new Command(Class_f_0145.getLangString(301), 4, 3);
-		this.var_5082 = new Command(Class_f_0145.getLangString(302), 4, 4);
-		this.var_508a = new Command(Class_f_0145.getLangString(304), 4, 2);
-		this.var_5092 = new Command(Class_f_0145.getLangString(316), 4, 2);
+		this.var_506a = new Command(Class_f_StringManager.getLangString(12), 4, 1);
+		this.var_5072 = new Command(Class_f_StringManager.getLangString(13), 3, 5);
+		this.var_507a = new Command(Class_f_StringManager.getLangString(301), 4, 3);
+		this.var_5082 = new Command(Class_f_StringManager.getLangString(302), 4, 4);
+		this.var_508a = new Command(Class_f_StringManager.getLangString(304), 4, 2);
+		this.var_5092 = new Command(Class_f_StringManager.getLangString(316), 4, 2);
 		if (Class_c_MainCanvas.propDeveloperModeOn) {
-			this.var_4612 = new String[] { Class_f_0145.getLangString(66),
-					Class_f_0145.getLangString(70), Class_f_0145.getLangString(71),
-					Class_f_0145.getLangString(4), Class_f_0145.getLangString(314),
-					Class_f_0145.getLangString(60) };
+			this.var_4612 = new String[] { Class_f_StringManager.getLangString(66),
+					Class_f_StringManager.getLangString(70), Class_f_StringManager.getLangString(71),
+					Class_f_StringManager.getLangString(4), Class_f_StringManager.getLangString(314),
+					Class_f_StringManager.getLangString(60) };
 		} else {
-			this.var_4612 = new String[] { Class_f_0145.getLangString(66),
-					Class_f_0145.getLangString(70), Class_f_0145.getLangString(71),
-					Class_f_0145.getLangString(4), Class_f_0145.getLangString(60) };
+			this.var_4612 = new String[] { Class_f_StringManager.getLangString(66),
+					Class_f_StringManager.getLangString(70), Class_f_StringManager.getLangString(71),
+					Class_f_StringManager.getLangString(4), Class_f_StringManager.getLangString(60) };
 		}
-		this.var_461a = new String[] { Class_f_0145.getLangString(63),
-				Class_f_0145.getLangString(67), Class_f_0145.getLangString(68),
-				Class_f_0145.getLangString(62), Class_f_0145.getLangString(69),
-				Class_f_0145.getLangString(61), Class_f_0145.getLangString(64) };
+		this.var_461a = new String[] { Class_f_StringManager.getLangString(63),
+				Class_f_StringManager.getLangString(67), Class_f_StringManager.getLangString(68),
+				Class_f_StringManager.getLangString(62), Class_f_StringManager.getLangString(69),
+				Class_f_StringManager.getLangString(61), Class_f_StringManager.getLangString(64) };
 		this.var_4622 = new Class_d_ImageWrap[this.var_461a.length];
-		this.var_462a = new String[] { Class_f_0145.getLangString(1),
-				Class_f_0145.getLangString(2), Class_f_0145.getLangString(5),
-				Class_f_0145.getLangString(3), Class_f_0145.getLangString(6),
-				Class_f_0145.getLangString(8), Class_f_0145.getLangString(7),
-				Class_f_0145.getLangString(9), Class_f_0145.getLangString(10),
-				Class_f_0145.getLangString(11), Class_f_0145.getLangString(4) };
+		this.var_462a = new String[] { Class_f_StringManager.getLangString(1),
+				Class_f_StringManager.getLangString(2), Class_f_StringManager.getLangString(5),
+				Class_f_StringManager.getLangString(3), Class_f_StringManager.getLangString(6),
+				Class_f_StringManager.getLangString(8), Class_f_StringManager.getLangString(7),
+				Class_f_StringManager.getLangString(9), Class_f_StringManager.getLangString(10),
+				Class_f_StringManager.getLangString(11), Class_f_StringManager.getLangString(4) };
 		this.var_4632 = new Class_d_ImageWrap[this.var_462a.length];
-		this.var_463a = new String[] { Class_f_0145.getLangString(35),
-				Class_f_0145.getLangString(36), Class_f_0145.getLangString(37) };
-		this.var_4642 = new String[] { Class_f_0145.getLangString(29),
-				Class_f_0145.getLangString(30) };
+		this.var_463a = new String[] { Class_f_StringManager.getLangString(35),
+				Class_f_StringManager.getLangString(36), Class_f_StringManager.getLangString(37) };
+		this.var_4642 = new String[] { Class_f_StringManager.getLangString(29),
+				Class_f_StringManager.getLangString(30) };
 		this.var_464a = new byte[] { 0, 6, 5, 7, 8, 9 };
 		this.var_4652 = new byte[] { 0, 6, 5, 7, 8, 9 };
 		this.var_465a = new byte[] { 1, 2, 3, 4 };
@@ -472,11 +472,11 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		this.var_4ae2 = new Vector(2);
 		this.var_4b3a = 0;
 		this.var_4b42 = true;
-		this.var_4bd2 = new String[] { Class_f_0145.getLangString(46),
-				Class_f_0145.getLangString(47), Class_f_0145.getLangString(291) };
-		this.var_4bda = new String[] { Class_f_0145.getLangString(289),
-				Class_f_0145.getLangString(298), Class_f_0145.getLangString(48),
-				Class_f_0145.getLangString(49) };
+		this.var_4bd2 = new String[] { Class_f_StringManager.getLangString(46),
+				Class_f_StringManager.getLangString(47), Class_f_StringManager.getLangString(291) };
+		this.var_4bda = new String[] { Class_f_StringManager.getLangString(289),
+				Class_f_StringManager.getLangString(298), Class_f_StringManager.getLangString(48),
+				Class_f_StringManager.getLangString(49) };
 		this.var_4c3a = true;
 		this.var_4c42 = true;
 		this.var_4c4a = true;
@@ -517,7 +517,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		sub_5cdc(28);
 		Class_e_0134.var_1012 = this;
 		sub_5cdc(29);
-		Class_f_0145.sub_e73();
+		Class_f_StringManager.sub_e73();
 		sub_5cdc(30);
 		Class_c_MainCanvas.sub_28be();
 		sub_5cdc(32);
@@ -628,7 +628,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		this.var_45b2 = (this.var_45a2 >> 1);
 		this.var_490a = 0;
 		for (int m = 0; m < 12; m++) {
-			var_45c2[m] = Class_f_0145.getLangString(m + 101);
+			var_45c2[m] = Class_f_StringManager.getLangString(m + 101);
 		}
 		sub_6855();
 		sub_5cdc(74);
@@ -693,7 +693,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 					e.printStackTrace();
 				}
 			} else {
-				this.var_4b5a[m22] = ("\n" + Class_f_0145.getLangString(79) + "\n ");
+				this.var_4b5a[m22] = ("\n" + Class_f_StringManager.getLangString(79) + "\n ");
 			}
 		}
 		sub_5cdc(90);
@@ -731,24 +731,24 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 
 	private void sub_5cdc(int paramInt) {
 		this.var_4c62 = paramInt;
-		Class_f_0145.mainCanvas.repaintAll();
+		Class_f_StringManager.mainCanvas.repaintAll();
 	}
 
 	private String sub_5d02(int paramInt1, int paramInt2, int paramInt3) {
 		String str1;
 		if (paramInt1 == 0) {
-			str1 = Class_f_0145.getLangString(paramInt2 + 121);
+			str1 = Class_f_StringManager.getLangString(paramInt2 + 121);
 		} else {
 			str1 = sub_75cb(paramInt2);
 		}
 
 		/* @todo */
-		return Class_f_0145.getLangString(paramInt1 + 32) + "\n" + str1 + "\n"
+		return Class_f_StringManager.getLangString(paramInt1 + 32) + "\n" + str1 + "\n"
 				+ "Current turn: " + (paramInt3 + 1);
 	}
 
 	private boolean sub_5d81() {
-		return (this.var_4a4a) && (Class_f_0145.mainCanvas.var_17b7 == this);
+		return (this.var_4a4a) && (Class_f_StringManager.mainCanvas.var_17b7 == this);
 	}
 
 	private void sub_5dc1() {
@@ -899,8 +899,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			paramArrayOfByte.close();
 			if ((this.var_47a2 == 6) && (this.var_4e12 > 32)) {
 				this.var_49c2 = sub_14359(
-						Class_f_0145.getLangString(121 + this.var_47a2),
-						Class_f_0145.getLangString(138), this.var_45a2, -1);
+						Class_f_StringManager.getLangString(121 + this.var_47a2),
+						Class_f_StringManager.getLangString(138), this.var_45a2, -1);
 				this.var_49c2.sub_132e((byte) 0, true);
 				this.var_49c2.sub_1350(null);
 			}
@@ -917,7 +917,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 	}
 
 	/* Error */
-	private void sub_6431(int paramInt, Class_f_0145 paramClass_f_0145) {
+	private void sub_6431(int paramInt, Class_f_StringManager paramClass_f_0145) {
 		// ByteCodeError 1 @error
 	}
 
@@ -1053,7 +1053,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 	}
 
 	private void sub_6d11(byte[] paramArrayOfByte, int paramInt1,
-			int paramInt2, Class_f_0145 paramClass_f_0145) {
+			int paramInt2, Class_f_StringManager paramClass_f_0145) {
 		Class_e_0134 localClass_e_0134 = new Class_e_0134((byte) 0, 0);
 		this.var_4a32 = paramInt1;
 		this.var_4a3a = paramInt2;
@@ -1076,7 +1076,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		localClass_e_0134.sub_224f(arrayOfString, arrayOfClass_d_0033,
 				this.canvasWidthShift, this.var_4a32, this.var_4a3a, 3, (byte) 1);
 		localClass_e_0134.sub_1350(paramClass_f_0145);
-		Class_f_0145.mainCanvas.sub_220e(localClass_e_0134);
+		Class_f_StringManager.mainCanvas.sub_220e(localClass_e_0134);
 	}
 
 	private void sub_6e49(byte[] paramArrayOfByte) {
@@ -1096,7 +1096,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 					this.var_459a, 0, 8);
 		}
 		this.var_4882.sub_1350(this);
-		Class_f_0145.mainCanvas.sub_220e(this.var_4882);
+		Class_f_StringManager.mainCanvas.sub_220e(this.var_4882);
 	}
 
 	private Class_e_0134 sub_6f4c(String paramString,
@@ -1128,7 +1128,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		return localClass_e_01341;
 	}
 
-	private void sub_70c0(Class_f_0145 paramClass_f_0145) {
+	private void sub_70c0(Class_f_StringManager paramClass_f_0145) {
 		int i;
 		String[] localObject1 = new String[i = this.var_4eea.length];
 		int[] arrayOfInt2 = new int[i];
@@ -1152,12 +1152,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		this.var_4c0a = new Class_e_0134((byte) 15, 15);
 		Class_e_0134 localClass_e_0134;
 		(localClass_e_0134 = new Class_e_0134((byte) 10, 0)).sub_1ca8(null,
-				Class_f_0145.getLangString(48), this.var_459a, -1);
+				Class_f_StringManager.getLangString(48), this.var_459a, -1);
 		Object localObject2;
 		if (k == 0) {
 			Class_e_0134 clas;
 			(clas = new Class_e_0134((byte) 10, 0)).sub_1ca8(null,
-					Class_f_0145.getLangString(52), this.var_459a, this.var_45b2);
+					Class_f_StringManager.getLangString(52), this.var_459a, this.var_45b2);
 			this.var_4c0a.sub_1698((Class_e_0134) clas, 0,
 					(this.var_45a2 + localClass_e_0134.var_1042) / 2, 6);
 		} else {
@@ -1170,10 +1170,10 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			stringIt = sub_7651(this.var_4c32);
 			this.var_4c1a.sub_1ca8(
 					null,
-					Class_f_0145.sub_dcc(54,
+					Class_f_StringManager.getStrByIdAndReplaceUWith(54,
 							sub_7651(this.var_4efa[arrayOfInt1[0]]))
 							+ "\n"
-							+ Class_f_0145.sub_dcc(53, (String) stringIt),
+							+ Class_f_StringManager.getStrByIdAndReplaceUWith(53, (String) stringIt),
 					this.var_459a, -1);
 			this.var_4c12 = new Class_e_0134((byte) 11, 0);
 			this.var_4c12.sub_20ad((String[]) localObject2, this.var_45aa,
@@ -1193,13 +1193,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		this.var_4c0a.sub_1350(paramClass_f_0145);
 	}
 
-	private Class_e_0134 sub_7384(Class_f_0145 paramClass_f_0145) {
+	private Class_e_0134 sub_7384(Class_f_StringManager paramClass_f_0145) {
 		Class_e_0134 localClass_e_01341;
 		if (this.var_4bc2.length == 0) {
 			Class_e_0134 localClass_e_01342;
 			(localClass_e_01342 = (localClass_e_01341 = new Class_e_0134(
-					(byte) 10, 0)).sub_165b(Class_f_0145.getLangString(49))).var_11b2 = this.var_4632[6];
-			localClass_e_01341.sub_1ca8(null, Class_f_0145.getLangString(52),
+					(byte) 10, 0)).sub_165b(Class_f_StringManager.getLangString(49))).var_11b2 = this.var_4632[6];
+			localClass_e_01341.sub_1ca8(null, Class_f_StringManager.getLangString(52),
 					this.canvasWidth, -1);
 			localClass_e_01341.sub_1930(0,
 					(this.var_45a2 + localClass_e_01342.var_1042) / 2, 6);
@@ -1208,7 +1208,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			return localClass_e_01341;
 		}
 		this.var_4bfa = new Class_e_0134((byte) 11, 0);
-		(localClass_e_01341 = this.var_4bfa.sub_165b(Class_f_0145.getLangString(49))).var_11b2 = this.var_4632[6];
+		(localClass_e_01341 = this.var_4bfa.sub_165b(Class_f_StringManager.getLangString(49))).var_11b2 = this.var_4632[6];
 		this.var_4bfa.sub_20ad(this.var_4bc2, this.canvasWidth / 2,
 				(this.var_45a2 + localClass_e_01341.var_1042) / 2,
 				this.var_459a, this.var_45a2 - localClass_e_01341.var_1042, 3,
@@ -1309,7 +1309,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			} else {
 				if (paramClass_e_0134 == this.var_4b92) {
 					if (paramByte == 0) {
-						Class_f_0145.mainCanvas.stopThread();
+						Class_f_StringManager.mainCanvas.stopThread();
 						return;
 					}
 					this.var_4b92 = null;
@@ -1318,13 +1318,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 				if (paramClass_e_0134 == this.var_4b9a) {
 					if (paramByte == 0) {
 						sub_6d11(this.var_465a, this.var_4a32, this.var_4a3a,
-								paramClass_e_0134.var_111a);
+								paramClass_e_0134.stringManager);
 					}
 					this.var_4b9a = null;
 					return;
 				}
 				Object localObject1;
-				Class_c_AbstractConnection localObject3;
+				Class_c_AConnection localObject3;
 				Object localObject4;
 				Object localObject5;
 				if (paramClass_e_0134 == this.var_4f4a) {
@@ -1333,7 +1333,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 						if ((someStr = this.var_4f72[this.var_4f52.var_105a])
 								.endsWith(".aem")) {
 							localObject4 = (localObject3 = this.var_4f6a
-									.sub_81a((String) someStr))
+									.createSomeFileConnection((String) someStr))
 									.openInputStream();
 							localObject5 = new ByteArrayOutputStream();
 							int i4;
@@ -1342,7 +1342,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										.write(i4);
 							}
 							((InputStream) localObject4).close();
-							((Class_c_AbstractConnection) localObject3).close();
+							((Class_c_AConnection) localObject3).close();
 							localObject1 = ((String) someStr).substring(
 									0,
 									((String) someStr).length()
@@ -1352,22 +1352,22 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											.toByteArray());
 							((ByteArrayOutputStream) localObject5).close();
 							Class_e_0134 clas;
-							(clas = sub_14359(null, Class_f_0145.sub_dcc(45,
+							(clas = sub_14359(null, Class_f_StringManager.getStrByIdAndReplaceUWith(45,
 									(String) localObject1), this.var_45a2, 2000))
 									.sub_1350(this.var_4f4a);
-							Class_f_0145.mainCanvas.sub_220e((Class_f_0145) clas);
+							Class_f_StringManager.mainCanvas.sub_220e((Class_f_StringManager) clas);
 						} else {
-							this.var_4f6a.sub_759((String) localObject1);
-							this.var_4f72 = Class_b_0081.mergeThese(Class_b_0081
-									.sub_896(this.var_4f6a
-											.sub_653(".aem", true)),
+							this.var_4f6a.changeDirectory((String) localObject1);
+							this.var_4f72 = Class_b_FilesManager.mergeThese(Class_b_FilesManager
+									.sortFoldersAndFiles(this.var_4f6a
+											.getDirectoryPaths(".aem", true)),
 									this.var_4f6a.sub_877() != null ? var_4572
 											: null);
 							this.var_4f4a = new Class_e_0134((byte) 15, 15);
 							Class_e_0134 lo3;
 							(lo3 = this.var_4f4a.sub_165b(sub_7696(
 									this.var_4f6a.sub_877(),
-									Class_f_0145.getLangString(290)))).var_11b2 = this.var_4632[6];
+									Class_f_StringManager.getLangString(290)))).var_11b2 = this.var_4632[6];
 							this.var_4f52 = new Class_e_0134((byte) 0, 0);
 							this.var_4f52.sub_20ad(this.var_4f72, 0, 0,
 									this.var_459a, this.var_45a2
@@ -1387,7 +1387,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							this.var_4f4a.sub_132e((byte) 0, true);
 							this.var_4f4a.var_115a = true;
 							this.var_4f4a.sub_1350(this.var_4bea);
-							Class_f_0145.mainCanvas.sub_220e(this.var_4f4a);
+							Class_f_StringManager.mainCanvas.sub_220e(this.var_4f4a);
 							return;
 						}
 					} else {
@@ -1404,28 +1404,28 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							localObject1 = this.var_4f72[this.var_4f62.var_105a];
 						}
 						if (((String) localObject1).endsWith(".aem")) {
-							Class_c_AbstractConnection lo3;
+							Class_c_AConnection lo3;
 							if ((lo3 = this.var_4f6a
-									.sub_81a((String) localObject1)).sub_5d81()) {
-								((Class_c_AbstractConnection) lo3).a(0L);
+									.createSomeFileConnection((String) localObject1)).sub_5d81()) {
+								((Class_c_AConnection) lo3).a(0L);
 							} else {
-								((Class_c_AbstractConnection) lo3).sub_60da();
+								((Class_c_AConnection) lo3).sub_60da();
 							}
 							OutputStream ostream;
-							(ostream = ((Class_c_AbstractConnection) lo3).openOutputStream())
+							(ostream = ((Class_c_AConnection) lo3).openOutputStream())
 									.write(sub_751c(this.var_47aa));
 							((OutputStream) ostream).close();
-							((Class_c_AbstractConnection) lo3).close();
-							this.var_4f72 = Class_b_0081.mergeThese(Class_b_0081
-									.sub_896(this.var_4f6a
-											.sub_653(".aem", true)),
+							((Class_c_AConnection) lo3).close();
+							this.var_4f72 = Class_b_FilesManager.mergeThese(Class_b_FilesManager
+									.sortFoldersAndFiles(this.var_4f6a
+											.getDirectoryPaths(".aem", true)),
 									this.var_4f6a.sub_877() != null ? var_457a
 											: null);
 							this.var_4f5a = new Class_e_0134((byte) 15, 15);
 							Class_e_0134 loc5;
 							(loc5 = this.var_4f5a.sub_165b(sub_7696(
 									this.var_4f6a.sub_877(),
-									Class_f_0145.getLangString(299)))).var_11b2 = this.var_4632[6];
+									Class_f_StringManager.getLangString(299)))).var_11b2 = this.var_4632[6];
 							this.var_4f62 = new Class_e_0134((byte) 0, 0);
 							this.var_4f62.sub_20ad(this.var_4f72, 0, 0,
 									this.var_459a, this.var_45a2
@@ -1447,22 +1447,22 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							this.var_4f5a.sub_1350(this.var_4faa);
 							Class_e_0134 localClass_e_01344;
 							(localClass_e_01344 = sub_14359(null,
-									Class_f_0145.sub_dcc(45, this.var_4b52),
+									Class_f_StringManager.getStrByIdAndReplaceUWith(45, this.var_4b52),
 									this.var_45a2, 2000))
 									.sub_1350(this.var_4f5a);
-							Class_f_0145.mainCanvas.sub_220e(localClass_e_01344);
+							Class_f_StringManager.mainCanvas.sub_220e(localClass_e_01344);
 						} else {
-							this.var_4f6a.sub_759((String) localObject1);
-							this.var_4f72 = Class_b_0081.mergeThese(Class_b_0081
-									.sub_896(this.var_4f6a
-											.sub_653(".aem", true)),
+							this.var_4f6a.changeDirectory((String) localObject1);
+							this.var_4f72 = Class_b_FilesManager.mergeThese(Class_b_FilesManager
+									.sortFoldersAndFiles(this.var_4f6a
+											.getDirectoryPaths(".aem", true)),
 									this.var_4f6a.sub_877() != null ? var_457a
 											: null);
 							this.var_4f5a = new Class_e_0134((byte) 15, 15);
 							Class_e_0134 theflocalObject3;
 							(theflocalObject3 = this.var_4f5a
 									.sub_165b(sub_7696(this.var_4f6a.sub_877(),
-											Class_f_0145.getLangString(290)))).var_11b2 = this.var_4632[6];
+											Class_f_StringManager.getLangString(290)))).var_11b2 = this.var_4632[6];
 							this.var_4f62 = new Class_e_0134((byte) 0, 0);
 							this.var_4f62
 									.sub_20ad(
@@ -1487,7 +1487,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							this.var_4f5a.sub_132e((byte) 0, true);
 							this.var_4f5a.var_115a = true;
 							this.var_4f5a.sub_1350(this.var_4faa);
-							Class_f_0145.mainCanvas.sub_220e(this.var_4f5a);
+							Class_f_StringManager.mainCanvas.sub_220e(this.var_4f5a);
 							return;
 						}
 					} else {
@@ -1510,7 +1510,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							this.var_4b1a
 									.sub_1ca8(
 											null,
-											Class_f_0145
+											Class_f_StringManager
 													.getLangString(184 + this.var_4b12.var_10aa[paramInt].unitType),
 											this.var_459a, this.var_45a2
 													- this.var_4b0a.var_1042
@@ -1533,7 +1533,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										this.var_4772, this.var_477a);
 								this.var_49ea = true;
 								sub_6c83(this.var_47c2);
-								Class_f_0145.mainCanvas.sub_220e(this);
+								Class_f_StringManager.mainCanvas.sub_220e(this);
 							}
 							this.var_4b02 = null;
 							this.var_4b12 = null;
@@ -1543,7 +1543,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 						}
 						if (paramClass_e_0134 == this.var_49b2) {
 							if ((paramByte == 2) || (paramByte == 3)) {
-								String yylocalObject3 = Class_f_0145.getLangString(
+								String yylocalObject3 = Class_f_StringManager.getLangString(
 										var_499a[paramInt], true);
 								this.var_49ba.sub_1ca8(null,
 										(String) yylocalObject3, this.var_459a,
@@ -1560,7 +1560,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							}
 							if (paramClass_e_0134 == this.var_49c2) {
 								if (paramByte == 0) {
-									Class_f_0145.mainCanvas.sub_220e(this);
+									Class_f_StringManager.mainCanvas.sub_220e(this);
 									return;
 								}
 							} else {
@@ -1579,14 +1579,14 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 									(localClass_e_01341 = new Class_e_0134(
 											(byte) 10, 0)).var_11b2 = this.var_4632[4];
 									localClass_e_01341.sub_1ca8(null,
-											Class_f_0145.getLangString(34),
+											Class_f_StringManager.getLangString(34),
 											this.var_459a, -1);
 									this.var_4a82.sub_1698(localClass_e_01341,
 											0, 0, 20);
 									String[] str22;
 									str22 = new String[this.var_4baa];
 									for (i2 = 0; i2 < this.var_4baa; i2++) {
-										str22[i2] = Class_f_0145.sub_dcc(38, ""
+										str22[i2] = Class_f_StringManager.getStrByIdAndReplaceUWith(38, ""
 												+ (i2 + 1));
 									}
 									i2 = localClass_e_01341.var_1042;
@@ -1624,7 +1624,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										olocObj3[paramInt]
 												.sub_1ca8(
 														null,
-														Class_f_0145
+														Class_f_StringManager
 																.getLangString(this.var_4bb2[paramInt] - 1 + 89),
 														i3,
 														this.var_4a9a[paramInt].var_1042
@@ -1637,7 +1637,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 									Class_e_0134 localClass_e_01345;
 									(localClass_e_01345 = new Class_e_0134(
 											(byte) 10, 8)).sub_1ca8(null,
-											Class_f_0145.getLangString(40),
+											Class_f_StringManager.getLangString(40),
 											this.var_45aa, -1);
 									this.var_4a82.sub_1698(localClass_e_01345,
 											0, i2, 20);
@@ -1656,7 +1656,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 									i2 += localClass_e_01345.var_1042;
 									(localClass_e_01341 = new Class_e_0134(
 											(byte) 10, 8)).sub_1ca8(null,
-											Class_f_0145.getLangString(41),
+											Class_f_StringManager.getLangString(41),
 											this.var_45aa, -1);
 									this.var_4a82.sub_1698(localClass_e_01341,
 											0, i2, 20);
@@ -1674,7 +1674,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											this.canvasWidthShift, i2, 20);
 									this.var_4a82.sub_1350(paramClass_e_0134);
 									this.var_4a82.sub_132e((byte) 0, true);
-									Class_f_0145.mainCanvas
+									Class_f_StringManager.mainCanvas
 											.sub_220e(this.var_4a82);
 									return;
 								}
@@ -1705,16 +1705,16 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										}
 										if ((j < 2) || (i6 < 2)) {
 											((Class_e_0134) (localObject6 = sub_14359(null,
-													Class_f_0145.getLangString(39),
+													Class_f_StringManager.getLangString(39),
 													this.var_45a2, 2000)))
 													.sub_1350(this.var_4a82);
-											Class_f_0145.mainCanvas
-													.sub_220e((Class_f_0145) localObject6);
+											Class_f_StringManager.mainCanvas
+													.sub_220e((Class_f_StringManager) localObject6);
 											return;
 										}
 										this.var_4a82 = null;
 										this.var_4a7a = null;
-										Class_f_0145.mainCanvas.sub_220e(this);
+										Class_f_StringManager.mainCanvas.sub_220e(this);
 										this.var_45ea = var_45da[this.var_4a8a.var_105a];
 										this.var_45f2 = var_45e2[this.var_4a92.var_105a];
 										this.var_4a9a = null;
@@ -1724,7 +1724,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										this.var_45fa = 1;
 										this.var_49ca = 8;
 										this.var_4982 = true;
-										Class_f_0145.mainCanvas.repaintAll();
+										Class_f_StringManager.mainCanvas.repaintAll();
 										sub_5dc1();
 										sub_aca4(this.var_47aa);
 										this.var_47a2 = this.var_47aa;
@@ -1801,7 +1801,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											this.var_4a7a.sub_132e((byte) 0,
 													true);
 											this.var_4a7a.var_115a = true;
-											Class_f_0145.mainCanvas
+											Class_f_StringManager.mainCanvas
 													.sub_220e(this.var_4a7a);
 										}
 									} else if (paramClass_e_0134 == this.var_4f9a) {
@@ -1823,12 +1823,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											this.var_4b52 = this.var_4fa2.var_101a[k];
 											this.var_4f9a = null;
 											this.var_4fa2 = null;
-											Class_f_0145.mainCanvas.sub_220e(this);
+											Class_f_StringManager.mainCanvas.sub_220e(this);
 											this.var_45fa = 1;
 											this.var_49ca = 8;
 											this.var_4f92 = 1;
 											this.var_4982 = true;
-											Class_f_0145.mainCanvas.repaintAll();
+											Class_f_StringManager.mainCanvas.repaintAll();
 											sub_5dc1();
 											sub_aca4(this.var_47aa);
 											this.var_47a2 = this.var_47aa;
@@ -1847,13 +1847,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											this.var_47aa = sub_7465(k);
 											this.var_4b52 = this.var_4fb2.var_101a[k];
 											if (this.var_4f6a == null) {
-												this.var_4f6a = new Class_b_0081();
+												this.var_4f6a = new Class_b_FilesManager();
 											}
-											this.var_4f72 = Class_b_0081
+											this.var_4f72 = Class_b_FilesManager
 													.mergeThese(
-															Class_b_0081
-																	.sub_896(this.var_4f6a
-																			.sub_653(
+															Class_b_FilesManager
+																	.sortFoldersAndFiles(this.var_4f6a
+																			.getDirectoryPaths(
 																					".aem",
 																					true)),
 															this.var_4f6a
@@ -1865,7 +1865,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													.sub_165b(sub_7696(
 															this.var_4f6a
 																	.sub_877(),
-															Class_f_0145
+															Class_f_StringManager
 																	.getLangString(299)))).var_11b2 = this.var_4632[6];
 											this.var_4f62 = new Class_e_0134(
 													(byte) 0, 0);
@@ -1894,7 +1894,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											this.var_4f5a.var_115a = true;
 											this.var_4f5a
 													.sub_1350(this.var_4faa);
-											Class_f_0145.mainCanvas
+											Class_f_StringManager.mainCanvas
 													.sub_220e(this.var_4f5a);
 										}
 									} else if (paramClass_e_0134 == this.var_4aaa) {
@@ -1944,14 +1944,14 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 												sub_6431(k, paramClass_e_0134);
 											} else {
 												this.var_4ba2 = sub_14359(null,
-														Class_f_0145
+														Class_f_StringManager
 																.getLangString(88),
 														this.var_45a2, -1);
 												this.var_4ba2.sub_132e(
 														(byte) 0, true);
 												this.var_4ba2
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this.var_4ba2);
 											}
 										} else {
@@ -1974,10 +1974,10 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 												sub_1af6c();
 												this.var_4b82 = null;
 												this.var_4b8a = null;
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this);
 												this.var_4982 = true;
-												Class_f_0145.mainCanvas.repaintAll();
+												Class_f_StringManager.mainCanvas.repaintAll();
 												sub_5dc1();
 												sub_6109((byte[]) localObject7);
 												if (this.var_45fa == 0) {
@@ -2016,7 +2016,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													sub_18c91(
 															0,
 															"news",
-															Class_f_0145
+															Class_f_StringManager
 																	.getLangString(0),
 															paramClass_e_0134);
 													return;
@@ -2041,7 +2041,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																3, 0);
 												this.var_4bea
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this.var_4bea);
 											}
 											if (paramString
@@ -2065,14 +2065,14 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 												strs = new String[12];
 												for (n = 0; n < 12; n++) {
 													if (this.var_45d2[n] != false) {
-														strs[n] = Class_f_0145
+														strs[n] = Class_f_StringManager
 																.getLangString(42);
 													} else {
 														strs[n] = var_45c2[n];
 													}
 												}
 												String[] strArr;
-												(strArr = new String[12 + this.var_4bba + 1])[0] = Class_f_0145
+												(strArr = new String[12 + this.var_4bba + 1])[0] = Class_f_StringManager
 														.getLangString(292);
 												System.arraycopy(strs, 0,
 														strArr, 1, 12);
@@ -2105,7 +2105,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 														(byte) 0, true);
 												this.var_4f9a
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this.var_4f9a);
 											}
 										} else if (paramByte == 1) {
@@ -2116,13 +2116,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											if (paramString
 													.equals(this.var_4bda[0])) {
 												if (this.var_4f6a == null) {
-													this.var_4f6a = new Class_b_0081();
+													this.var_4f6a = new Class_b_FilesManager();
 												}
-												this.var_4f72 = Class_b_0081
+												this.var_4f72 = Class_b_FilesManager
 														.mergeThese(
-																Class_b_0081
-																		.sub_896(this.var_4f6a
-																				.sub_653(
+																Class_b_FilesManager
+																		.sortFoldersAndFiles(this.var_4f6a
+																				.getDirectoryPaths(
 																						".aem",
 																						true)),
 																this.var_4f6a
@@ -2135,7 +2135,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 														.sub_165b(sub_7696(
 																this.var_4f6a
 																		.sub_877(),
-																Class_f_0145
+																Class_f_StringManager
 																		.getLangString(290)))).var_11b2 = this.var_4632[6];
 												this.var_4f52 = new Class_e_0134(
 														(byte) 0, 0);
@@ -2164,7 +2164,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 												this.var_4f4a.var_115a = true;
 												this.var_4f4a
 														.sub_1350(this.var_4bea);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this.var_4f4a);
 											} else if (paramString
 													.equals(this.var_4bda[1])) {
@@ -2174,7 +2174,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 														(byte) 10, 0))
 														.sub_1ca8(
 																null,
-																Class_f_0145
+																Class_f_StringManager
 																		.getLangString(299),
 																this.var_459a,
 																-1);
@@ -2188,7 +2188,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 												String[] strs2 = new String[12];
 												for (n = 0; n < 12; n++) {
 													if (this.var_45d2[n] != false) {
-														strs2[n] = Class_f_0145
+														strs2[n] = Class_f_StringManager
 																.getLangString(42);
 													} else {
 														strs2[n] = var_45c2[n];
@@ -2227,7 +2227,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 														(byte) 0, true);
 												this.var_4faa
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this.var_4faa);
 											} else if (paramString
 													.equals(this.var_4bda[2])) {
@@ -2235,17 +2235,17 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													sub_18c91(
 															2,
 															"levels",
-															Class_f_0145
+															Class_f_StringManager
 																	.getLangString(0),
 															paramClass_e_0134);
 												} else {
 													sub_70c0(paramClass_e_0134);
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this.var_4c0a);
 												}
 											} else if (paramString
 													.equals(this.var_4bda[3])) {
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(sub_7384(paramClass_e_0134));
 											}
 										} else if (paramByte == 1) {
@@ -2258,7 +2258,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 												sub_18c91(
 														1,
 														this.var_4eda[paramInt],
-														Class_f_0145.getLangString(0),
+														Class_f_StringManager.getLangString(0),
 														paramClass_e_0134);
 											} else {
 												(localClass_e_01343 = sub_1437e(
@@ -2267,7 +2267,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 														this.var_45a2,
 														this.var_45a2 / 2, -1))
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(localClass_e_01343);
 											}
 										} else if (paramByte == 1) {
@@ -2280,16 +2280,16 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 												sub_18c91(
 														3,
 														this.var_4ef2[this.var_4eca],
-														Class_f_0145.getLangString(0),
+														Class_f_StringManager.getLangString(0),
 														paramClass_e_0134);
 											} else {
 												(localClass_e_01343 = sub_14359(
 														null,
-														Class_f_0145
+														Class_f_StringManager
 																.getLangString(55),
 														this.var_45a2, -1))
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(localClass_e_01343);
 											}
 										} else if (paramByte == 1) {
@@ -2304,13 +2304,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											this.var_4c1a
 													.sub_1ca8(
 															null,
-															Class_f_0145
-																	.sub_dcc(
+															Class_f_StringManager
+																	.getStrByIdAndReplaceUWith(
 																			54,
 																			sub_7651(this.var_4efa[this.var_4c12.var_11c2[paramInt]]))
 																	+ "\n"
-																	+ Class_f_0145
-																			.sub_dcc(
+																	+ Class_f_StringManager
+																			.getStrByIdAndReplaceUWith(
 																					53,
 																					str),
 															this.var_459a, -1);
@@ -2322,19 +2322,19 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													+ var_45c2.length == this.var_47a2) {
 												(localClass_e_01343 = sub_14359(
 														null,
-														Class_f_0145
+														Class_f_StringManager
 																.getLangString(56),
 														this.var_45a2, -1))
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(localClass_e_01343);
 											} else {
 												this.var_4c22 = paramInt;
 												this.var_4c2a = paramString;
 												this.var_4c02 = sub_1437e(
 														null,
-														Class_f_0145
-																.sub_dcc(50,
+														Class_f_StringManager
+																.getStrByIdAndReplaceUWith(50,
 																		paramString),
 														this.var_45a2,
 														this.var_45b2, -1);
@@ -2342,7 +2342,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 														.sub_1350(paramClass_e_0134);
 												this.var_4c02.sub_132e(
 														(byte) 0, true);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this.var_4c02);
 											}
 										} else if (paramByte == 1) {
@@ -2351,21 +2351,21 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 									} else if (paramClass_e_0134 == this.var_4c02) {
 										if (paramByte == 0) {
 											sub_19031(this.var_4c22);
-											localClass_e_01343 = sub_7384(this.var_4bfa.var_111a);
-											Class_f_0145 cll;
+											localClass_e_01343 = sub_7384(this.var_4bfa.stringManager);
+											Class_f_StringManager cll;
 											(cll = sub_14359(null,
-													Class_f_0145.sub_dcc(51,
+													Class_f_StringManager.getStrByIdAndReplaceUWith(51,
 															this.var_4c2a),
 													this.var_45a2, -1))
 													.sub_1350(localClass_e_01343);
-											Class_f_0145.mainCanvas
-													.sub_220e((Class_f_0145) cll);
+											Class_f_StringManager.mainCanvas
+													.sub_220e((Class_f_StringManager) cll);
 										}
 										this.var_4c02 = null;
 										this.var_4c2a = null;
 									}
 									if (paramClass_e_0134.var_108a == 7) {
-										Class_f_0145.mainCanvas.sub_220e(this);
+										Class_f_StringManager.mainCanvas.sub_220e(this);
 										return;
 									}
 									if ((paramString != null)
@@ -2375,14 +2375,14 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											if ((this.var_48e2 != 0)
 													&& (this.var_478a == 0)) {
 												this.var_4b9a = sub_14359(null,
-														Class_f_0145
+														Class_f_StringManager
 																.getLangString(87),
 														this.var_45a2, -1);
 												this.var_4b9a.sub_132e(
 														(byte) 0, true);
 												this.var_4b9a
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this.var_4b9a);
 												return;
 											}
@@ -2395,7 +2395,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										if ((!paramString
 												.equals(this.var_462a[1]))
 												&& (paramClass_e_0134 != this.var_49e2)) {
-											if (paramString.equals(Class_f_0145
+											if (paramString.equals(Class_f_StringManager
 													.getLangString(3))) {
 												this.var_49e2 = new Class_e_0134(
 														(byte) 11, 0);
@@ -2407,7 +2407,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 												String[] strs;
 												strs = new String[m];
 												for (i2 = 0; i2 < m; i2++) {
-													strs[i2] = (i2 + 1 + ". " + Class_f_0145
+													strs[i2] = (i2 + 1 + ". " + Class_f_StringManager
 															.getLangString(i2 + 121));
 												}
 												Class_e_0134 locOb;
@@ -2424,38 +2424,38 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																3, 4);
 												this.var_49e2
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this.var_49e2);
 												return;
 											}
-											if (paramString.equals(Class_f_0145
+											if (paramString.equals(Class_f_StringManager
 													.getLangString(4))) {
 												this.var_4b7a = sub_6f4c(
 														paramString,
 														this.var_4632[10]);
 												this.var_4b7a
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this.var_4b7a);
 												return;
 											}
-											if (paramString.equals(Class_f_0145
+											if (paramString.equals(Class_f_StringManager
 													.getLangString(5))) {
 												this.var_4b72 = sub_6f4c(
 														paramString,
 														this.var_4632[2]);
 												this.var_4b72
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this.var_4b72);
 												return;
 											}
 											int i1;
 											if (!paramString
-													.equals(Class_f_0145
+													.equals(Class_f_StringManager
 															.getLangString(6))) {
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(7))) {
 													this.var_4be2 = new Class_e_0134(
 															(byte) 11, 0);
@@ -2473,12 +2473,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																	3, 0);
 													this.var_4be2
 															.sub_1350(paramClass_e_0134);
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this.var_4be2);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(8))) {
 													this.var_4aaa = new Class_e_0134(
 															(byte) 15, 15);
@@ -2545,12 +2545,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													this.var_4aaa.var_114a = 2;
 													this.var_4aaa
 															.sub_1350(paramClass_e_0134);
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this.var_4aaa);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(9))) {
 													this.var_49aa = new Class_e_0134(
 															(byte) 15, 15);
@@ -2565,7 +2565,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													((Class_e_0134) lo2).var_11b2 = this.var_4632[7];
 													String[] strParam2 = new String[20];
 													for (i2 = 0; i2 < var_4992.length; i2++) {
-														strParam2[i2] = (Class_f_0145
+														strParam2[i2] = (Class_f_StringManager
 																.getLangString(var_4992[i2])
 																+ " "
 																+ i2
@@ -2581,7 +2581,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													this.var_49ba
 															.sub_1ca8(
 																	null,
-																	Class_f_0145
+																	Class_f_StringManager
 																			.getLangString(var_499a[0]),
 																	this.var_459a,
 																	this.var_45a2
@@ -2605,12 +2605,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													this.var_49aa
 															.sub_1350(paramClass_e_0134);
 													this.var_49aa.var_115a = true;
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this.var_49aa);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(10))) {
 													Class_e_0134 lo2;
 													lo2 = new Class_e_0134(
@@ -2627,8 +2627,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													localObject8 = new Class_e_0134(
 															(byte) 10, 0);
 													String lo9;
-													lo9 = Class_f_0145
-															.sub_dcc(
+													lo9 = Class_f_StringManager
+															.getStrByIdAndReplaceUWith(
 																	16,
 																	this.var_458a);
 													((Class_e_0134) localObject8)
@@ -2652,28 +2652,28 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													((Class_e_0134) lo2)
 															.sub_1350(paramClass_e_0134);
 													((Class_e_0134) lo2).var_115a = true;
-													Class_f_0145.mainCanvas
-															.sub_220e((Class_f_0145) lo2);
+													Class_f_StringManager.mainCanvas
+															.sub_220e((Class_f_StringManager) lo2);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(11))) {
 													this.var_4b92 = sub_14359(
 															null,
-															Class_f_0145
+															Class_f_StringManager
 																	.getLangString(86),
 															this.var_45a2, -1);
 													this.var_4b92.sub_132e(
 															(byte) 0, true);
 													this.var_4b92
 															.sub_1350(paramClass_e_0134);
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this.var_4b92);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(60))) {
 													sub_6d11(this.var_4652,
 															this.var_45b2,
@@ -2682,16 +2682,16 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(61))) {
 													this.var_49ea = false;
 													sub_6c83(this.var_47c2);
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(62))) {
 													sub_bcb2(this.var_47da, 0);
 													this.var_4792 = this.var_478a;
@@ -2717,12 +2717,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 															this.var_47ba[this.var_47b2].posY);
 													this.var_48d2 = true;
 													this.var_48da = true;
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(63))) {
 													this.var_4b02 = new Class_e_0134(
 															(byte) 15, 15);
@@ -2738,7 +2738,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													this.var_4b1a
 															.sub_1ca8(
 																	null,
-																	Class_f_0145
+																	Class_f_StringManager
 																			.getLangString(184 + this.var_4b12.var_10aa[0].unitType),
 																	this.var_459a,
 																	this.var_45a2
@@ -2761,12 +2761,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 															.sub_1350(this);
 													this.var_4b02.sub_132e(
 															(byte) 0, true);
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this.var_4b02);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(64))) {
 													this.var_47c2.sub_26fe();
 													sub_bc72();
@@ -2775,29 +2775,29 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 															this.var_477a,
 															(byte) 0);
 													this.var_478a = 0;
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(66))) {
 													sub_11699();
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(68))) {
 													sub_11aac(
 															(byte) 37,
 															this.var_47c2.posX,
 															this.var_47c2.posY);
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(sub_14359(
 																	null,
-																	Class_f_0145
+																	Class_f_StringManager
 																			.getLangString(74),
 																	this.var_45a2,
 																	1000));
@@ -2807,17 +2807,17 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(67))) {
 													if (sub_119f4(this.var_47c2)) {
 														sub_11ad0(
 																this.var_47c2.posX,
 																this.var_47c2.posY,
 																this.var_4832[this.var_47c2.teamId]);
-														Class_f_0145.mainCanvas
+														Class_f_StringManager.mainCanvas
 																.sub_220e(sub_14359(
 																		null,
-																		Class_f_0145
+																		Class_f_StringManager
 																				.getLangString(73),
 																		this.var_45a2,
 																		1000));
@@ -2830,7 +2830,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(69))) {
 													this.var_478a = 7;
 													this.var_47ba = this.var_47c2
@@ -2846,12 +2846,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																	this.var_47c2.posX,
 																	this.var_47c2.posY);
 													this.var_48d2 = true;
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(70))) {
 													Class_e_0134 localObject2 = new Class_e_0134(
 															(byte) 15, 15);
@@ -2886,40 +2886,40 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													((Class_e_0134) localObject2)
 															.sub_1350(paramClass_e_0134);
 													((Class_e_0134) localObject2).var_115a = true;
-													Class_f_0145.mainCanvas
-															.sub_220e((Class_f_0145) localObject2);
+													Class_f_StringManager.mainCanvas
+															.sub_220e((Class_f_StringManager) localObject2);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(71))) {
 													this.var_49c2.sub_132e(
 															(byte) 0, false);
 													this.var_49c2
 															.sub_1350(paramClass_e_0134);
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(this.var_49c2);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(293))) {
 													sub_19157(this.var_4b52,
 															sub_bb13());
 													(localObject9 = sub_14359(
 															null,
-															Class_f_0145
-																	.sub_dcc(
+															Class_f_StringManager
+																	.getStrByIdAndReplaceUWith(
 																			45,
 																			this.var_4b52),
 															this.var_45a2, 2000))
 															.sub_1350(this);
-													Class_f_0145.mainCanvas
-															.sub_220e((Class_f_0145) localObject9);
+													Class_f_StringManager.mainCanvas
+															.sub_220e((Class_f_StringManager) localObject9);
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(305))) {
 													sub_1a88b();
 													Class_c_MainCanvas
@@ -2927,7 +2927,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(306))) {
 													sub_1aaa3();
 													sub_1a91d();
@@ -2936,7 +2936,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(307))) {
 													sub_1aa08();
 													Class_c_MainCanvas
@@ -2944,7 +2944,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(303))) {
 													sub_1aaa3();
 													Class_c_MainCanvas
@@ -2952,7 +2952,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													return;
 												}
 												if (paramString
-														.equals(Class_f_0145
+														.equals(Class_f_StringManager
 																.getLangString(314))) {
 													sub_1afeb();
 													Class_c_MainCanvas
@@ -2980,7 +2980,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 												lo9 = new String[12];
 												for (i1 = 0; i1 < 12; i1++) {
 													if (this.var_45d2[i1] != false) {
-														lo9[i1] = Class_f_0145
+														lo9[i1] = Class_f_StringManager
 																.getLangString(42);
 													} else {
 														lo9[i1] = var_45c2[i1];
@@ -3019,12 +3019,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 														(byte) 0, true);
 												this.var_49da
 														.sub_1350(paramClass_e_0134);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.sub_220e(this.var_49da);
 												return;
 											}
 										} else {
-											Class_f_0145.mainCanvas.sub_220e(this);
+											Class_f_StringManager.mainCanvas.sub_220e(this);
 											if (paramClass_e_0134 == this.var_49e2) {
 												this.var_47a2 = paramInt;
 												this.var_49e2 = null;
@@ -3035,7 +3035,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											this.var_45fa = 0;
 											this.var_487a[1] = 0;
 											this.var_4982 = true;
-											Class_f_0145.mainCanvas.repaintAll();
+											Class_f_StringManager.mainCanvas.repaintAll();
 											System.gc();
 											sub_5dc1();
 											sub_aca4(this.var_47a2);
@@ -3116,7 +3116,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			Class_c_MainCanvas.initResPak();
 			DataInputStream localObject;
 			if (this.var_45fa == 0) {
-				this.var_4b52 = Class_f_0145.getLangString(paramInt + 113);
+				this.var_4b52 = Class_f_StringManager.getLangString(paramInt + 113);
 				localObject = new DataInputStream(Class_c_MainCanvas.getResourceStream("m"
 						+ paramInt + ".aem"));
 			} else {
@@ -3215,12 +3215,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			((DataInputStream) localObject).close();
 			if (this.var_45fa == 0) {
 				this.var_49c2 = sub_14359(
-						Class_f_0145.getLangString(121 + this.var_47a2),
-						Class_f_0145.getLangString(129 + this.var_47a2),
+						Class_f_StringManager.getLangString(121 + this.var_47a2),
+						Class_f_StringManager.getLangString(129 + this.var_47a2),
 						this.var_45a2, -1);
 			} else {
 				this.var_49c2 = (this.var_49c2 = sub_14359(
-						Class_f_0145.getLangString(71), Class_f_0145.getLangString(137),
+						Class_f_StringManager.getLangString(71), Class_f_StringManager.getLangString(137),
 						this.var_45a2, -1));
 			}
 			this.var_4e3a = false;
@@ -3551,7 +3551,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 					this.var_491a = 11;
 				}
 				this.var_490a += 1;
-				Class_f_0145.mainCanvas.sub_26ad();
+				Class_f_StringManager.mainCanvas.sub_26ad();
 				return;
 			}
 			break;
@@ -3573,7 +3573,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 				if (this.var_479a % 100L == 0L) {
 					this.var_498a = (!this.var_498a);
 				}
-				if (((this.var_48f2 == null) || (Class_f_0145.mainCanvas
+				if (((this.var_48f2 == null) || (Class_f_StringManager.mainCanvas
 						.sub_2677())) && (sub_5d81())) {
 					if (this.var_4902 != null) {
 						this.var_4a42 = (-this.var_4902.imageWidth);
@@ -3583,7 +3583,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 					sub_6d11(this.var_464a, (this.canvasHeight + i) / 2,
 							this.canvasHeight - i, this.var_48f2 == null ? null
 									: this);
-					Class_f_0145.mainCanvas.sub_26ad();
+					Class_f_StringManager.mainCanvas.sub_26ad();
 				}
 			}
 			break;
@@ -3636,7 +3636,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							.playMusicLooped(
 									var_4692[localObject1.var_4832[localObject1.var_4842]],
 									0);
-					Class_f_0145.mainCanvas.sub_26ad();
+					Class_f_StringManager.mainCanvas.sub_26ad();
 					((Class_g_1956) localObject1).var_4c42 = true;
 					((Class_g_1956) localObject1).var_4c4a = true;
 					return;
@@ -3678,7 +3678,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 					localObject1.var_491a += 1;
 				}
 				if ((((Class_g_1956) localObject1).var_4caa >= ((Class_g_1956) localObject1).var_4cba.length)
-						|| (Class_f_0145.mainCanvas.sub_272b(var_4602))) {
+						|| (Class_f_StringManager.mainCanvas.sub_272b(var_4602))) {
 					((Class_g_1956) localObject1).var_4cc2 = true;
 					if ((((Class_g_1956) localObject1).var_4cb2 != null)
 							|| (((Class_g_1956) localObject1).var_4caa < ((Class_g_1956) localObject1).var_4cba.length)) {
@@ -3702,14 +3702,14 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 				if (Class_c_MainCanvas.var_17ff[2] != false) {
 					Class_e_0134 lo1;
 					(lo1 = sub_1430a(
-							Class_f_0145.getLangString(196 + this.var_49a2, true),
+							Class_f_StringManager.getLangString(196 + this.var_49a2, true),
 							(byte) -1, (byte) 2)).var_11aa = 7831691;
 					((Class_e_0134) lo1).var_11a2 = 7831691;
 					((Class_e_0134) lo1).var_fea = 16250855;
 				}
 				this.var_49a2 = -1;
 			}
-			if (Class_f_0145.mainCanvas.var_17b7 == this) {
+			if (Class_f_StringManager.mainCanvas.var_17b7 == this) {
 				int i;
 				if (this.var_478a == 0) {
 					for (i = 0; i < this.var_4a6a.length; i++) {
@@ -3832,12 +3832,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										localObject2 = "?";
 									}
 									localObject2 = sub_14359(
-											Class_f_0145.getLangString(75),
-											Class_f_0145.sub_dcc(76,
+											Class_f_StringManager.getLangString(75),
+											Class_f_StringManager.getStrByIdAndReplaceUWith(76,
 													(String) localObject2),
 											this.var_45a2, 1500);
-									Class_f_0145.mainCanvas
-											.sub_220e((Class_f_0145) localObject2);
+									Class_f_StringManager.mainCanvas
+											.sub_220e((Class_f_StringManager) localObject2);
 									((Class_e_0134) localObject2).var_11a2 = var_468a[this.var_4832[this.var_4842]];
 									Class_c_MainCanvas
 											.sub_2bf1(
@@ -3894,7 +3894,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							if ((!this.var_4912)
 									&& (this.var_49f2 == 0)
 									&& ((this.var_45fa == 1)
-											|| (this.var_479a - this.var_481a >= 3000L) || (Class_f_0145.mainCanvas
+											|| (this.var_479a - this.var_481a >= 3000L) || (Class_f_StringManager.mainCanvas
 												.sub_2677()))) {
 								this.var_45a2 = this.canvasHeight;
 								this.var_45b2 = this.canvasHeightShift;
@@ -3991,12 +3991,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											(localClass_e_01342 = super
 													.sub_14359(
 															null,
-															Class_f_0145
+															Class_f_StringManager
 																	.getLangString(280),
 															this.var_45a2, 2000))
 													.sub_1930(this.var_45aa, 2,
 															17);
-											Class_f_0145.mainCanvas
+											Class_f_StringManager.mainCanvas
 													.sub_220e(localClass_e_01342);
 											this.var_4b3a = 1;
 										}
@@ -4149,11 +4149,11 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 												if ((localClass_a_0260.unitType != 9)
 														&& (localClass_a_0260.level <= 6)
 														&& (localClass_a_0260.level % 2 == 0)) {
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.sub_220e(super
 																	.sub_14359(
 																			null,
-																			Class_f_0145
+																			Class_f_StringManager
 																					.getLangString(80)
 																					+ "\n"
 																					+ localClass_a_0260.unitName,
@@ -4183,11 +4183,11 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											sub_1240c();
 										} else if (sub_5d81()) {
 											if ((this.var_48da)
-													&& (Class_f_0145.mainCanvas
+													&& (Class_f_StringManager.mainCanvas
 															.sub_272b(var_4602))) {
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.runGameAction(16);
-												Class_f_0145.mainCanvas
+												Class_f_StringManager.mainCanvas
 														.releaseGameAction(var_4602);
 											}
 											if ((this.var_478a != 6)
@@ -4196,13 +4196,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 														- this.var_467a >= 150L)
 														&& (this.var_4712.pixelX % 24 == 0)
 														&& (this.var_4712.pixelY % 24 == 0)) {
-													if ((!Class_f_0145.mainCanvas
+													if ((!Class_f_StringManager.mainCanvas
 															.sub_26d7(4))
-															&& (!Class_f_0145.mainCanvas
+															&& (!Class_f_StringManager.mainCanvas
 																	.isGameActionRunning(4))) {
-														if ((Class_f_0145.mainCanvas
+														if ((Class_f_StringManager.mainCanvas
 																.sub_26d7(8))
-																|| (Class_f_0145.mainCanvas
+																|| (Class_f_StringManager.mainCanvas
 																		.isGameActionRunning(8))) {
 															if (this.var_4772 < this.mapWidthMaybe - 1) {
 																this.var_4772 += 1;
@@ -4217,13 +4217,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 														this.var_495a = true;
 														this.var_467a = this.var_479a;
 													}
-													if ((!Class_f_0145.mainCanvas
+													if ((!Class_f_StringManager.mainCanvas
 															.sub_26d7(1))
-															&& (!Class_f_0145.mainCanvas
+															&& (!Class_f_StringManager.mainCanvas
 																	.isGameActionRunning(1))) {
-														if ((Class_f_0145.mainCanvas
+														if ((Class_f_StringManager.mainCanvas
 																.sub_26d7(2))
-																|| (Class_f_0145.mainCanvas
+																|| (Class_f_StringManager.mainCanvas
 																		.isGameActionRunning(2))) {
 															if (this.var_477a < this.mapHeightMaybe - 1) {
 																this.var_477a += 1;
@@ -4260,7 +4260,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 												}
 												if (((this.var_478a == 1) || (this.var_478a == 0))
 														&& (this.var_4f92 == 0)
-														&& (Class_f_0145.mainCanvas
+														&& (Class_f_StringManager.mainCanvas
 																.sub_26d7(256))) {
 													if ((localClass_a_0260 = getUnitAtPos(
 															this.var_4772,
@@ -4273,24 +4273,24 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 														Class_e_0134 localClass_e_01341;
 														(localClass_e_01341 = new Class_e_0134(
 																(byte) 10, 1)).var_1152 = true;
-														String str = Class_f_0145
+														String str = Class_f_StringManager
 																.getLangString(184 + localClass_a_0260.unitType);
 														if (localClass_a_0260.var_e8b != 0) {
 															StringBuffer localStringBuffer = new StringBuffer(
-																	Class_f_0145
+																	Class_f_StringManager
 																			.getLangString(98));
 															if ((localClass_a_0260.var_e8b & 0x2) != 0) {
 																localStringBuffer
 																		.append('\n');
 																localStringBuffer
-																		.append(Class_f_0145
+																		.append(Class_f_StringManager
 																				.getLangString(100));
 															}
 															if ((localClass_a_0260.var_e8b & 0x1) != 0) {
 																localStringBuffer
 																		.append('\n');
 																localStringBuffer
-																		.append(Class_f_0145
+																		.append(Class_f_StringManager
 																				.getLangString(99));
 															}
 															localStringBuffer
@@ -4319,14 +4319,14 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 														((Class_e_0134) localObject3).var_115a = true;
 														((Class_e_0134) localObject3)
 																.sub_1350(this);
-														Class_f_0145.mainCanvas
-																.sub_220e((Class_f_0145) localObject3);
+														Class_f_StringManager.mainCanvas
+																.sub_220e((Class_f_StringManager) localObject3);
 													}
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.releaseGameAction(256);
 												}
 												if (this.var_478a == 1) {
-													if ((Class_f_0145.mainCanvas
+													if ((Class_f_StringManager.mainCanvas
 															.sub_26d7(16))
 															&& (this.var_47c2 != null)) {
 														localClass_a_0260 = getUnitAtPos(
@@ -4355,20 +4355,20 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																			10,
 																			1);
 														}
-														Class_f_0145.mainCanvas
+														Class_f_StringManager.mainCanvas
 																.releaseGameAction(16);
 													}
 												} else if (this.var_478a == 0) {
 													int i4;
 													if (this.var_4f92 == 1) {
-														if (Class_f_0145.mainCanvas
+														if (Class_f_StringManager.mainCanvas
 																.sub_26d7(128)) {
 															if ((this.var_4f7a = (byte) (this.var_4f7a + 1)) >= this.var_470a.length) {
 																this.var_4f7a = 0;
 															}
 															this.var_4c42 = true;
 															this.var_4c4a = true;
-														} else if (Class_f_0145.mainCanvas
+														} else if (Class_f_StringManager.mainCanvas
 																.sub_26d7(64)) {
 															if ((this.var_4f7a = (byte) (this.var_4f7a - 1)) < 0) {
 																this.var_4f7a = ((byte) (this.var_470a.length - 1));
@@ -4377,7 +4377,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 															this.var_4c4a = true;
 														} else {
 															int i12;
-															if (Class_f_0145.mainCanvas
+															if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(16)) {
 																if (this.var_47e2) {
 																	if (this.var_47da[this.var_4772][this.var_477a] == 0) {
@@ -4401,7 +4401,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																	this.var_4782[this.var_4772][this.var_477a] = this.var_4f7a;
 																	sub_b87b();
 																}
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(512)) {
 																if (this.var_4f7a == this.var_4782[this.var_4772][this.var_477a]) {
 																	if ((this.var_4f7a = (byte) (this.var_4f7a + 1)) >= this.var_470a.length) {
@@ -4414,7 +4414,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																}
 																this.var_4c42 = true;
 																this.var_4c4a = true;
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(256)) {
 																if (this.var_4f7a == this.var_4782[this.var_4772][this.var_477a]) {
 																	if ((this.var_4f7a = (byte) (this.var_4f7a - 1)) < 0) {
@@ -4427,7 +4427,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																}
 																this.var_4c42 = true;
 																this.var_4c4a = true;
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(32)) {
 																if (this.var_47e2) {
 																	sub_b5bf(this.var_4fba);
@@ -4445,7 +4445,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																	this.var_4c42 = true;
 																	this.var_4c4a = true;
 																}
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(16384)) {
 																if (this.var_47e2) {
 																	if (this.var_47da[this.var_4772][this.var_477a] == 0) {
@@ -4502,7 +4502,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																	this.var_47da[this.var_4772][this.var_477a] = 1;
 																	this.var_47e2 = true;
 																}
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(8192)) {
 																if (this.var_4822 > 0) {
 																	sub_bcb2(
@@ -4515,7 +4515,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																	this.var_4c42 = true;
 																	this.var_4c4a = true;
 																}
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(var_4602)) {
 																this.var_4882 = new Class_e_0134(
 																		(byte) 11,
@@ -4531,14 +4531,14 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																				0);
 																this.var_4882
 																		.sub_1350(this);
-																Class_f_0145.mainCanvas
+																Class_f_StringManager.mainCanvas
 																		.sub_220e(this.var_4882);
 															}
 														}
 													} else {
 														Object localObject5;
 														if (this.var_4f92 == 2) {
-															if (Class_f_0145.mainCanvas
+															if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(128)) {
 																if ((this.var_4f82 = (byte) (this.var_4f82 + 1)) >= 12) {
 																	this.var_4f82 = 0;
@@ -4546,7 +4546,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																this.var_4f8a = null;
 																this.var_4c42 = true;
 																this.var_4c4a = true;
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(64)) {
 																if ((this.var_4f82 = (byte) (this.var_4f82 - 1)) < 0) {
 																	this.var_4f82 = 11;
@@ -4554,7 +4554,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																this.var_4f8a = null;
 																this.var_4c42 = true;
 																this.var_4c4a = true;
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(16)) {
 																if ((localObject5 = getUnitAtPos(
 																		this.var_4772,
@@ -4571,7 +4571,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																	((Class_a_Unit) localObject5)
 																			.killUnitMaybe();
 																}
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(512)) {
 																if ((localObject5 = getUnitAtPos(
 																		this.var_4772,
@@ -4605,7 +4605,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																this.var_4f8a = null;
 																this.var_4c42 = true;
 																this.var_4c4a = true;
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(256)) {
 																if ((localObject5 = getUnitAtPos(
 																		this.var_4772,
@@ -4639,7 +4639,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																this.var_4f8a = null;
 																this.var_4c42 = true;
 																this.var_4c4a = true;
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(8192)) {
 																if ((this.var_4842 = (byte) (this.var_4842 + 1)) >= this.var_4822) {
 																	this.var_4842 = 0;
@@ -4648,7 +4648,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																this.var_4f8a = null;
 																this.var_4c42 = true;
 																this.var_4c4a = true;
-															} else if (Class_f_0145.mainCanvas
+															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(var_4602)) {
 																this.var_4882 = new Class_e_0134(
 																		(byte) 11,
@@ -4664,10 +4664,10 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																				0);
 																this.var_4882
 																		.sub_1350(this);
-																Class_f_0145.mainCanvas
+																Class_f_StringManager.mainCanvas
 																		.sub_220e(this.var_4882);
 															}
-														} else if (Class_f_0145.mainCanvas
+														} else if (Class_f_StringManager.mainCanvas
 																.sub_26d7(512)) {
 															i4 = 0;
 															localObject5 = this.var_4852[this.var_4842];
@@ -4691,7 +4691,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																	break;
 																}
 															}
-														} else if (Class_f_0145.mainCanvas
+														} else if (Class_f_StringManager.mainCanvas
 																.sub_26d7(32)) {
 															if (this.var_47ea) {
 																sub_bcb2(
@@ -4715,11 +4715,11 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																	this.var_4c8a = 12;
 																}
 															}
-															Class_f_0145.mainCanvas
+															Class_f_StringManager.mainCanvas
 																	.releaseGameAction(32);
-														} else if ((Class_f_0145.mainCanvas
+														} else if ((Class_f_StringManager.mainCanvas
 																.sub_26d7(16))
-																|| (Class_f_0145.mainCanvas
+																|| (Class_f_StringManager.mainCanvas
 																		.sub_26d7(var_4602))) {
 															this.var_47c2 = getUnitAtPos(
 																	this.var_4772,
@@ -4771,34 +4771,34 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 																				0);
 																this.var_4882
 																		.sub_1350(this);
-																Class_f_0145.mainCanvas
+																Class_f_StringManager.mainCanvas
 																		.sub_220e(this.var_4882);
 																Class_c_MainCanvas
 																		.playMusicLooped(
 																				11,
 																				1);
 															}
-															Class_f_0145.mainCanvas
+															Class_f_StringManager.mainCanvas
 																	.sub_26ad();
 														}
 													}
 												}
 											} else {
-												if ((!Class_f_0145.mainCanvas
+												if ((!Class_f_StringManager.mainCanvas
 														.sub_26d7(4))
-														&& (!Class_f_0145.mainCanvas
+														&& (!Class_f_StringManager.mainCanvas
 																.sub_26d7(1))) {
-													if ((Class_f_0145.mainCanvas
+													if ((Class_f_StringManager.mainCanvas
 															.sub_26d7(8))
-															|| (Class_f_0145.mainCanvas
+															|| (Class_f_StringManager.mainCanvas
 																	.sub_26d7(2))) {
 														this.var_47b2 += 1;
 														if (this.var_47b2 >= this.var_47ba.length) {
 															this.var_47b2 = 0;
 														}
-														Class_f_0145.mainCanvas
+														Class_f_StringManager.mainCanvas
 																.releaseGameAction(8);
-														Class_f_0145.mainCanvas
+														Class_f_StringManager.mainCanvas
 																.releaseGameAction(2);
 														this.var_495a = true;
 													}
@@ -4807,9 +4807,9 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 													if (this.var_47b2 < 0) {
 														this.var_47b2 = (this.var_47ba.length - 1);
 													}
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.releaseGameAction(4);
-													Class_f_0145.mainCanvas
+													Class_f_StringManager.mainCanvas
 															.releaseGameAction(1);
 													this.var_495a = true;
 												}
@@ -4823,7 +4823,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 															(byte) 0);
 													this.var_4c4a = true;
 												}
-												if (Class_f_0145.mainCanvas
+												if (Class_f_StringManager.mainCanvas
 														.sub_26d7(16)) {
 													if (this.var_478a == 6) {
 														sub_6994(
@@ -4875,11 +4875,11 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								if (var_45ca[this.var_45ba] >= 0) {
 									localObject4 = var_45c2[var_45ca[this.var_45ba]];
 									localObject4 = sub_14359(null,
-											Class_f_0145.sub_dcc(82,
+											Class_f_StringManager.getStrByIdAndReplaceUWith(82,
 													(String) localObject4),
 											this.canvasHeight, 3000);
-									Class_f_0145.mainCanvas
-											.sub_220e((Class_f_0145) localObject4);
+									Class_f_StringManager.mainCanvas
+											.sub_220e((Class_f_StringManager) localObject4);
 								}
 								this.var_45ba = this.var_47a2;
 								try {
@@ -4914,7 +4914,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								localClass_g_1956.var_4c6a.n + 12);
 					}
 					if ((this.var_48d2)
-							&& (Class_f_0145.mainCanvas.sub_272b(var_460a))) {
+							&& (Class_f_StringManager.mainCanvas.sub_272b(var_460a))) {
 						if (this.var_478a == 1) {
 							this.var_478a = 0;
 							sub_bcb2(this.var_47da, 0);
@@ -4929,11 +4929,11 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							this.var_4712.setFrameSequence(var_4662[0]);
 							sub_f182(this.var_47c2.posX,
 									this.var_47c2.posY);
-							Class_f_0145.mainCanvas.sub_220e(this.var_4882);
+							Class_f_StringManager.mainCanvas.sub_220e(this.var_4882);
 						}
 						this.var_47e2 = false;
 						this.var_47ea = false;
-						Class_f_0145.mainCanvas.releaseGameAction(var_460a);
+						Class_f_StringManager.mainCanvas.releaseGameAction(var_460a);
 						this.var_48d2 = false;
 						this.var_48da = false;
 					}
@@ -5146,7 +5146,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		paramGraphics.setColor(0);
 		paramGraphics.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 		paramGraphics.setColor(16777215);
-		Class_c_MainCanvas.showString(paramGraphics, Class_f_0145.getLangString(58),
+		Class_c_MainCanvas.showString(paramGraphics, Class_f_StringManager.getLangString(58),
 				this.canvasWidth / 2,
 				(this.canvasHeight - Class_c_MainCanvas.theFont.getHeight()) / 2, 17);
 	}
@@ -5190,19 +5190,19 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			this.var_491a = 16;
 			this.var_4ca2 = (this.canvasHeight / this.var_4c92);
 		}
-		this.var_4cba = Class_f_0145.sub_843(
-				Class_f_0145.getLangString(introImageId + 215), this.canvasWidth,
+		this.var_4cba = Class_f_StringManager.wrapStringText(
+				Class_f_StringManager.getLangString(introImageId + 215), this.canvasWidth,
 				Class_c_MainCanvas.someFont);
 		this.var_4c9a = (this.canvasHeight - this.var_4c92);
 		this.var_4caa = 0;
 		this.var_4cc2 = false;
-		Class_f_0145.mainCanvas.sub_26ad();
+		Class_f_StringManager.mainCanvas.sub_26ad();
 		this.var_48e2 = 3;
 	}
 
 	private void sub_f6d8(String paramString) {
 		this.var_4cca = this.var_48e2;
-		this.var_4cba = Class_f_0145.sub_843(paramString, this.canvasWidth,
+		this.var_4cba = Class_f_StringManager.wrapStringText(paramString, this.canvasWidth,
 				Class_c_MainCanvas.someFont);
 		this.var_491a = 16;
 		this.var_4cc2 = false;
@@ -5213,7 +5213,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		this.var_4ca2 = (this.canvasHeight / this.var_4c92);
 		this.var_4c9a = (this.canvasHeight - this.var_4c92);
 		this.var_4caa = 0;
-		Class_f_0145.mainCanvas.sub_26ad();
+		Class_f_StringManager.mainCanvas.sub_26ad();
 		this.var_48e2 = 3;
 	}
 
@@ -5344,7 +5344,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 				if ((this.var_498a) && (this.var_48f2 != null)) {
 					paramGraphics.setColor(16777215);
 					paramGraphics.setFont(Class_c_MainCanvas.theFont);
-					sub_fdce(paramGraphics, Class_f_0145.getLangString(59),
+					sub_fdce(paramGraphics, Class_f_StringManager.getLangString(59),
 							this.canvasWidthShift, this.canvasHeight - this.var_4732.spriteFrameHeight
 									- 1, 33, 16777215, 0);
 				}
@@ -5394,7 +5394,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			inparamGraphics.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 			inparamGraphics.setFont(Class_c_MainCanvas.theFont);
 			inparamGraphics.setColor(0);
-			inparamGraphics.drawString(Class_f_0145.getLangString(58),
+			inparamGraphics.drawString(Class_f_StringManager.getLangString(58),
 					this.canvasWidth / 2, this.canvasHeight / 2 - 1, 33);
 			int i;
 			if ((i = this.canvasHeight / 18) < 12) {
@@ -5534,7 +5534,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		} else {
 			Object localObject1;
 			if ((this.var_478a == 11) && (!this.var_4912)) {
-				localObject1 = Class_f_0145.getLangString(57);
+				localObject1 = Class_f_StringManager.getLangString(57);
 				inparamGraphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);
 				inparamGraphics.setFont(Class_c_MainCanvas.theFont);
 				inparamGraphics.setColor(0);
@@ -6170,7 +6170,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		paramInt1 = paramInt1 * 360 / 40;
 		paramInt6 = paramInt6 * 360 / paramInt3;
 		for (int k = 0; k < paramInt3; k++) {
-			int m = paramInt2 * Class_f_0145.sub_f0f(paramInt1) >> 10;
+			int m = paramInt2 * Class_f_StringManager.sub_f0f(paramInt1) >> 10;
 			paramGraphics.setClip(paramInt4 + i - j / 2 + m, paramInt5 + k, j,
 					1);
 			paramClass_d_0033.sub_1115(paramGraphics, paramInt4 + m, paramInt5);
@@ -6262,9 +6262,9 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 	}
 
 	private void sub_1240c() {
-		if (Class_f_0145.mainCanvas.sub_26d7(var_4602)) {
+		if (Class_f_StringManager.mainCanvas.sub_26d7(var_4602)) {
 			sub_6d11(this.var_4652, this.var_45b2, this.var_45a2, this);
-			Class_f_0145.mainCanvas.sub_26ad();
+			Class_f_StringManager.mainCanvas.sub_26ad();
 			return;
 		}
 		if (this.var_4d22 == 4) {
@@ -6278,8 +6278,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 					}
 					sub_11ad0(this.var_47c2.posX, this.var_47c2.posY,
 							this.var_4832[this.var_47c2.teamId]);
-					Class_f_0145.mainCanvas.sub_220e(sub_14359(null,
-							Class_f_0145.getLangString(73), this.var_45a2, 1000));
+					Class_f_StringManager.mainCanvas.sub_220e(sub_14359(null,
+							Class_f_StringManager.getLangString(73), this.var_45a2, 1000));
 					Class_c_MainCanvas.playMusicLooped(9, 1);
 					this.var_478a = 9;
 					this.var_481a = this.var_479a;
@@ -6291,8 +6291,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 					}
 					sub_11aac((byte) 37, this.var_47c2.posX,
 							this.var_47c2.posY);
-					Class_f_0145.mainCanvas.sub_220e(sub_14359(null,
-							Class_f_0145.getLangString(74), this.var_45a2, 1000));
+					Class_f_StringManager.mainCanvas.sub_220e(sub_14359(null,
+							Class_f_StringManager.getLangString(74), this.var_45a2, 1000));
 					Class_c_MainCanvas.playMusicLooped(9, 1);
 					this.var_478a = 0;
 					this.var_481a = this.var_479a;
@@ -6959,7 +6959,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		int i = Class_c_MainCanvas.var_1767 * 3;
 		cll.sub_19f5(paramString, this.canvasWidth, i, paramByte1);
 		cll.sub_1930(0, this.canvasHeight - i, 0);
-		Class_f_0145.mainCanvas.sub_220e(cll);
+		Class_f_StringManager.mainCanvas.sub_220e(cll);
 		return cll;
 	}
 
@@ -6974,7 +6974,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		(localClass_e_0134 = new Class_e_0134((byte) 10, 12)).sub_1ca8(
 				paramString1, paramString2, this.canvasWidth, paramInt2);
 		localClass_e_0134.sub_1930(this.canvasWidthShift, paramInt1 / 2, 3);
-		localClass_e_0134.var_111a = this;
+		localClass_e_0134.stringManager = this;
 		localClass_e_0134.var_10f2 = paramInt3;
 		return localClass_e_0134;
 	}
@@ -7019,7 +7019,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			getUnitAtPos(8, 11, (byte) 0).sub_1c9f(8, 9, false);
 			getUnitAtPos(9, 12, (byte) 0).sub_1c9f(9, 10, false);
 			sub_186a6(7, 3);
-			Class_f_0145.mainCanvas.sub_220e(this.var_4dda);
+			Class_f_StringManager.mainCanvas.sub_220e(this.var_4dda);
 			return;
 		}
 		if (this.var_47a2 == 2) {
@@ -7038,7 +7038,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			this.var_4df2.sub_1c9f(8, 15, false);
 			this.var_4852[0].sub_1c9f(8, 14, false);
 			this.var_47f2 = false;
-			Class_f_0145.mainCanvas.sub_220e(this.var_4dda);
+			Class_f_StringManager.mainCanvas.sub_220e(this.var_4dda);
 			this.var_4e12 = 0;
 			return;
 		}
@@ -7084,7 +7084,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			localClass_a_02601.sub_1c9f(11, 0, false);
 			(localClass_a_02601 = getUnitAtPos(12, 0, (byte) 0)).sub_1686(12, -7);
 			localClass_a_02601.sub_1c9f(12, 0, false);
-			Class_f_0145.mainCanvas.sub_220e(this.var_4dda);
+			Class_f_StringManager.mainCanvas.sub_220e(this.var_4dda);
 			this.var_47f2 = false;
 			this.var_4e12 = 0;
 			return;
@@ -7098,7 +7098,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			sub_f182(5, 0);
 			this.var_4c72 = 4;
 			sub_186a6(this.var_4852[0].posX, this.var_4852[0].posY);
-			Class_f_0145.mainCanvas.sub_220e(this.var_4dda);
+			Class_f_StringManager.mainCanvas.sub_220e(this.var_4dda);
 			this.var_47f2 = false;
 			this.var_4e12 = 0;
 			return;
@@ -7126,7 +7126,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			sub_efe5(this.var_4852[0].posX, this.var_4852[0].posY);
 			sub_f182(this.var_4852[0].posX, this.var_4852[0].posY);
 			this.var_4c6a = this.var_4852[0];
-			Class_f_0145.mainCanvas.sub_220e(this.var_4dda);
+			Class_f_StringManager.mainCanvas.sub_220e(this.var_4dda);
 			this.var_47f2 = false;
 			this.var_4e12 = 0;
 			return;
@@ -7265,7 +7265,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			} else if (localObject1[0].equalsIgnoreCase("NextState")) {
 				this.var_4e12 += 1;
 			} else if (localObject1[0].equalsIgnoreCase("ShowMapName")) {
-				Class_f_0145.mainCanvas.sub_220e(this.var_4dda);
+				Class_f_StringManager.mainCanvas.sub_220e(this.var_4dda);
 			} else if (localObject1[0].equalsIgnoreCase("StartPlay")) {
 				sub_1864a();
 			} else if (localObject1[0].equalsIgnoreCase("CompleteMission")) {
@@ -7291,7 +7291,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 				}
 			} else if (localObject1[0].equalsIgnoreCase("ShowDialog")) {
 				sub_1430a(
-						Class_f_0145.getLangString(Integer.parseInt(localObject1[1])),
+						Class_f_StringManager.getLangString(Integer.parseInt(localObject1[1])),
 						(byte) Integer.parseInt(localObject1[2]),
 						(byte) Integer.parseInt(localObject1[3]));
 			} else if (localObject1[0].equalsIgnoreCase("ShowHelp")) {
@@ -7382,7 +7382,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								var_4692[this.var_4832[this.var_4842]], 0);
 						this.var_49c2.sub_132e((byte) 0, true);
 						this.var_49c2.sub_1350(null);
-						Class_f_0145.mainCanvas.sub_220e(this.var_49c2);
+						Class_f_StringManager.mainCanvas.sub_220e(this.var_49c2);
 						this.var_4e12 += 1;
 						return;
 					}
@@ -7404,25 +7404,25 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 						if (n != 0) {
 							this.var_4a4a = false;
 							this.var_47f2 = false;
-							localObject3 = Class_f_0145.sub_dcc(38, ""
+							localObject3 = Class_f_StringManager.getStrByIdAndReplaceUWith(38, ""
 									+ (this.var_483a[i] + 1));
-							String str = Class_f_0145.sub_dcc(81,
+							String str = Class_f_StringManager.getStrByIdAndReplaceUWith(81,
 									(String) localObject3) + "\n(";
 							for (n = 0; n < this.var_4822; n++) {
 								if ((this.var_487a[n] != 2)
 										&& (this.var_483a[n] == this.var_483a[i])) {
 									str = str
 											+ " "
-											+ Class_f_0145
+											+ Class_f_StringManager
 													.getLangString(88 + this.var_4832[n])
 											+ " ";
 								}
 							}
 							str = str + ")";
-							Class_f_0145 lo2;
+							Class_f_StringManager lo2;
 							(lo2 = sub_1437e(null, str, this.var_45a2,
 									this.var_45b2, -1)).sub_1350(this);
-							Class_f_0145.mainCanvas.sub_220e((Class_f_0145) lo2);
+							Class_f_StringManager.mainCanvas.sub_220e((Class_f_StringManager) lo2);
 							if (this.var_487a[i] == 1) {
 								Class_c_MainCanvas.sub_2bf1(6, 1);
 							} else {
@@ -7472,7 +7472,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 1:
-								Class_f_0145.mainCanvas.sub_220e(this.var_4dda);
+								Class_f_StringManager.mainCanvas.sub_220e(this.var_4dda);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
@@ -7495,7 +7495,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 5:
-								sub_1430a(Class_f_0145.getLangString(221),
+								sub_1430a(Class_f_StringManager.getLangString(221),
 										(byte) 2, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -7512,7 +7512,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 7:
-								sub_1430a(Class_f_0145.getLangString(222),
+								sub_1430a(Class_f_StringManager.getLangString(222),
 										(byte) 2, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -7540,13 +7540,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 11:
-								super.sub_1430a(Class_f_0145.getLangString(223),
+								super.sub_1430a(Class_f_StringManager.getLangString(223),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 12:
-								super.sub_1430a(Class_f_0145.getLangString(224),
+								super.sub_1430a(Class_f_StringManager.getLangString(224),
 										(byte) 5, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -7637,13 +7637,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										this.var_4852[0].posY);
 								break;
 							case 28:
-								super.sub_1430a(Class_f_0145.getLangString(225),
+								super.sub_1430a(Class_f_StringManager.getLangString(225),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 29:
-								super.sub_1430a(Class_f_0145.getLangString(226),
+								super.sub_1430a(Class_f_StringManager.getLangString(226),
 										(byte) 0, (byte) 4);
 								this.var_4a4a = true;
 								this.var_4e12 += 1;
@@ -7664,25 +7664,25 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 32:
-								super.sub_1430a(Class_f_0145.getLangString(227),
+								super.sub_1430a(Class_f_StringManager.getLangString(227),
 										(byte) 2, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 33:
-								super.sub_1430a(Class_f_0145.getLangString(228),
+								super.sub_1430a(Class_f_StringManager.getLangString(228),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 34:
-								super.sub_1430a(Class_f_0145.getLangString(229),
+								super.sub_1430a(Class_f_StringManager.getLangString(229),
 										(byte) 2, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 35:
-								super.sub_1430a(Class_f_0145.getLangString(230),
+								super.sub_1430a(Class_f_StringManager.getLangString(230),
 										(byte) 0, (byte) 4);
 								sub_142e5(15);
 								this.var_4e12 += 1;
@@ -7701,19 +7701,19 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								sub_186a6(12, 3);
 								break;
 							case 3:
-								super.sub_1430a(Class_f_0145.getLangString(231),
+								super.sub_1430a(Class_f_StringManager.getLangString(231),
 										(byte) 1, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 4:
-								super.sub_1430a(Class_f_0145.getLangString(232),
+								super.sub_1430a(Class_f_StringManager.getLangString(232),
 										(byte) 3, (byte) 4);
 								sub_186a6(this.var_4852[0].posX,
 										this.var_4852[0].posY);
 								break;
 							case 5:
-								super.sub_1430a(Class_f_0145.getLangString(233),
+								super.sub_1430a(Class_f_StringManager.getLangString(233),
 										(byte) 5, (byte) 4);
 								sub_186a6(7, 3);
 								break;
@@ -7739,7 +7739,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 											(byte) 0, (byte) 0, 7, 3);
 									this.var_4dfa.sub_1c9f(6, 2, false);
 									this.var_4dea.var_ee3 = null;
-									super.sub_1430a(Class_f_0145.getLangString(234),
+									super.sub_1430a(Class_f_StringManager.getLangString(234),
 											(byte) 2, (byte) 4);
 									this.var_4e12 += 1;
 								}
@@ -7755,7 +7755,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								}
 								break;
 							case 9:
-								super.sub_1430a(Class_f_0145.getLangString(235),
+								super.sub_1430a(Class_f_StringManager.getLangString(235),
 										(byte) 2, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
@@ -7782,12 +7782,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										this.var_4852[0].posY);
 								break;
 							case 12:
-								super.sub_1430a(Class_f_0145.getLangString(236),
+								super.sub_1430a(Class_f_StringManager.getLangString(236),
 										(byte) 5, (byte) 4);
 								this.var_4e12 += 1;
 								break;
 							case 13:
-								super.sub_1430a(Class_f_0145.getLangString(237),
+								super.sub_1430a(Class_f_StringManager.getLangString(237),
 										(byte) 1, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -7795,7 +7795,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								sub_186a6(3, 5);
 								break;
 							case 15:
-								super.sub_1430a(Class_f_0145.getLangString(238),
+								super.sub_1430a(Class_f_StringManager.getLangString(238),
 										(byte) 5, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -7846,12 +7846,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										this.var_4852[0].posY);
 								break;
 							case 25:
-								super.sub_1430a(Class_f_0145.getLangString(239),
+								super.sub_1430a(Class_f_StringManager.getLangString(239),
 										(byte) 1, (byte) 4);
 								this.var_4e12 += 1;
 								break;
 							case 26:
-								super.sub_1430a(Class_f_0145.getLangString(240),
+								super.sub_1430a(Class_f_StringManager.getLangString(240),
 										(byte) 5, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -7879,19 +7879,19 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4de2 = null;
 								this.var_4dea = null;
 								this.var_4df2 = null;
-								super.sub_1430a(Class_f_0145.getLangString(241),
+								super.sub_1430a(Class_f_StringManager.getLangString(241),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 3:
-								super.sub_1430a(Class_f_0145.getLangString(242),
+								super.sub_1430a(Class_f_StringManager.getLangString(242),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 4:
-								super.sub_1430a(Class_f_0145.getLangString(243),
+								super.sub_1430a(Class_f_StringManager.getLangString(243),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
@@ -7955,7 +7955,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								sub_142e5(20);
 								break;
 							case 12:
-								super.sub_1430a(Class_f_0145.getLangString(244),
+								super.sub_1430a(Class_f_StringManager.getLangString(244),
 										(byte) 5, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -7987,26 +7987,26 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 15:
-								super.sub_1430a(Class_f_0145.getLangString(245),
+								super.sub_1430a(Class_f_StringManager.getLangString(245),
 										(byte) 5, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 16:
-								super.sub_1430a(Class_f_0145.getLangString(246),
+								super.sub_1430a(Class_f_StringManager.getLangString(246),
 										(byte) -1, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 17:
-								super.sub_1430a(Class_f_0145.getLangString(247),
+								super.sub_1430a(Class_f_StringManager.getLangString(247),
 										(byte) 0, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 18:
-								Class_f_0145.mainCanvas.sub_220e(super.sub_14359(
-										null, Class_f_0145.getLangString(248),
+								Class_f_StringManager.mainCanvas.sub_220e(super.sub_14359(
+										null, Class_f_StringManager.getLangString(248),
 										this.var_45a2, 1500));
 								this.var_4e12 += 1;
 								break;
@@ -8054,7 +8054,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 						} else if (this.var_47a2 == 3) {
 							switch (this.var_4e12) {
 							case 0:
-								Class_f_0145.mainCanvas.sub_220e(this.var_4dda);
+								Class_f_StringManager.mainCanvas.sub_220e(this.var_4dda);
 								this.var_4ada = true;
 								this.var_4e12 += 1;
 								break;
@@ -8073,19 +8073,19 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 3:
-								super.sub_1430a(Class_f_0145.getLangString(249),
+								super.sub_1430a(Class_f_StringManager.getLangString(249),
 										(byte) 2, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 4:
-								super.sub_1430a(Class_f_0145.getLangString(250),
+								super.sub_1430a(Class_f_StringManager.getLangString(250),
 										(byte) 0, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 5:
-								super.sub_1430a(Class_f_0145.getLangString(251),
+								super.sub_1430a(Class_f_StringManager.getLangString(251),
 										(byte) 5, (byte) 4);
 								sub_f182(13, 3);
 								sub_efb8(312, 72);
@@ -8142,12 +8142,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 12:
-								super.sub_1430a(Class_f_0145.getLangString(252),
+								super.sub_1430a(Class_f_StringManager.getLangString(252),
 										(byte) 5, (byte) 4);
 								sub_186a6(7, 1);
 								break;
 							case 13:
-								super.sub_1430a(Class_f_0145.getLangString(253),
+								super.sub_1430a(Class_f_StringManager.getLangString(253),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
@@ -8169,13 +8169,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								}
 								break;
 							case 17:
-								super.sub_1430a(Class_f_0145.getLangString(254),
+								super.sub_1430a(Class_f_StringManager.getLangString(254),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 18:
-								super.sub_1430a(Class_f_0145.getLangString(255),
+								super.sub_1430a(Class_f_StringManager.getLangString(255),
 										(byte) 0, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8208,13 +8208,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 1:
-								super.sub_1430a(Class_f_0145.getLangString(256),
+								super.sub_1430a(Class_f_StringManager.getLangString(256),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 2:
-								super.sub_1430a(Class_f_0145.getLangString(257),
+								super.sub_1430a(Class_f_StringManager.getLangString(257),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
@@ -8260,7 +8260,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 9:
-								super.sub_1430a(Class_f_0145.getLangString(258),
+								super.sub_1430a(Class_f_StringManager.getLangString(258),
 										(byte) 5, (byte) 4);
 								sub_186a6(this.var_4852[0].posX,
 										this.var_4852[0].posY);
@@ -8381,7 +8381,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 24:
-								super.sub_1430a(Class_f_0145.getLangString(259),
+								super.sub_1430a(Class_f_StringManager.getLangString(259),
 										(byte) 0, (byte) 4);
 								this.var_4a4a = true;
 								this.var_47f2 = true;
@@ -8406,7 +8406,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 1:
-								super.sub_1430a(Class_f_0145.getLangString(260),
+								super.sub_1430a(Class_f_StringManager.getLangString(260),
 										(byte) 1, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -8428,7 +8428,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										this.var_4852[0].posY);
 								break;
 							case 5:
-								super.sub_1430a(Class_f_0145.getLangString(261),
+								super.sub_1430a(Class_f_StringManager.getLangString(261),
 										(byte) 0, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8456,13 +8456,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								}
 								break;
 							case 1:
-								super.sub_1430a(Class_f_0145.getLangString(262),
+								super.sub_1430a(Class_f_StringManager.getLangString(262),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 2:
-								super.sub_1430a(Class_f_0145.getLangString(263),
+								super.sub_1430a(Class_f_StringManager.getLangString(263),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
@@ -8519,7 +8519,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 9:
-								super.sub_1430a(Class_f_0145.getLangString(264),
+								super.sub_1430a(Class_f_StringManager.getLangString(264),
 										(byte) 5, (byte) 4);
 								this.var_4a4a = true;
 								this.var_47f2 = true;
@@ -8561,14 +8561,14 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 13:
-								super.sub_1430a(Class_f_0145.getLangString(265),
+								super.sub_1430a(Class_f_StringManager.getLangString(265),
 										(byte) 5, (byte) 4);
 								this.var_4c6a = this.var_4dea;
 								this.var_4e12 += 1;
 								break;
 							case 14:
 								if (this.var_4dea.var_e83 != 1) {
-									super.sub_1430a(Class_f_0145.getLangString(266),
+									super.sub_1430a(Class_f_StringManager.getLangString(266),
 											(byte) 0, (byte) 4);
 									this.var_4dea.sub_1c9f(-1,
 											this.var_4dea.posY, false);
@@ -8623,7 +8623,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 19:
-								super.sub_1430a(Class_f_0145.getLangString(267),
+								super.sub_1430a(Class_f_StringManager.getLangString(267),
 										(byte) 3, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -8655,13 +8655,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 25:
-								super.sub_1430a(Class_f_0145.getLangString(268),
+								super.sub_1430a(Class_f_StringManager.getLangString(268),
 										(byte) 5, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 26:
-								super.sub_1430a(Class_f_0145.getLangString(269),
+								super.sub_1430a(Class_f_StringManager.getLangString(269),
 										(byte) 0, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8687,7 +8687,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 29:
-								super.sub_1430a(Class_f_0145.getLangString(270),
+								super.sub_1430a(Class_f_StringManager.getLangString(270),
 										(byte) 1, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8703,13 +8703,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							case 32:
 								this.var_4a4a = true;
 								this.var_47f2 = true;
-								this.var_49c2 = super.sub_14359(Class_f_0145
+								this.var_49c2 = super.sub_14359(Class_f_StringManager
 										.getLangString(121 + this.var_47a2),
-										Class_f_0145.getLangString(138),
+										Class_f_StringManager.getLangString(138),
 										this.var_45a2, -1);
 								this.var_49c2.sub_132e((byte) 0, true);
 								this.var_49c2.sub_1350(null);
-								Class_f_0145.mainCanvas.sub_220e(this.var_49c2);
+								Class_f_StringManager.mainCanvas.sub_220e(this.var_49c2);
 								this.var_4e12 += 1;
 								break;
 							case 33:
@@ -8727,13 +8727,13 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 						} else if (this.var_47a2 == 7) {
 							switch (this.var_4e12) {
 							case 0:
-								Class_f_0145.mainCanvas.sub_220e(this.var_4dda);
+								Class_f_StringManager.mainCanvas.sub_220e(this.var_4dda);
 								this.var_4ada = true;
 								this.var_4e12 += 1;
 								break;
 							case 1:
 								if (!this.var_4ad2) {
-									super.sub_1430a(Class_f_0145.getLangString(271),
+									super.sub_1430a(Class_f_StringManager.getLangString(271),
 											(byte) 0, (byte) 4);
 									this.var_4e12 += 1;
 								}
@@ -8743,19 +8743,19 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 										this.var_4852[1].posY);
 								break;
 							case 3:
-								super.sub_1430a(Class_f_0145.getLangString(272),
+								super.sub_1430a(Class_f_StringManager.getLangString(272),
 										(byte) 4, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 4:
-								super.sub_1430a(Class_f_0145.getLangString(273),
+								super.sub_1430a(Class_f_StringManager.getLangString(273),
 										(byte) 1, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 5:
-								super.sub_1430a(Class_f_0145.getLangString(274),
+								super.sub_1430a(Class_f_StringManager.getLangString(274),
 										(byte) 4, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -8798,10 +8798,10 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							case 11:
 								Class_e_0134 localClass_e_0134;
 								(localClass_e_0134 = super.sub_14359(null,
-										Class_f_0145.getLangString(279),
+										Class_f_StringManager.getLangString(279),
 										this.var_45a2, 2000)).sub_1930(
 										this.var_45aa, 2, 17);
-								Class_f_0145.mainCanvas
+								Class_f_StringManager.mainCanvas
 										.sub_220e(localClass_e_0134);
 								this.var_4e12 += 1;
 								break;
@@ -8812,7 +8812,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								break;
 							case 13:
 								if (this.var_4b3a >= 2) {
-									super.sub_1430a(Class_f_0145.getLangString(275),
+									super.sub_1430a(Class_f_StringManager.getLangString(275),
 											(byte) 0, (byte) 4);
 									getUnitAtPos(9, 15, (byte) 0).killUnitMaybe();
 									this.var_4b42 = true;
@@ -8822,12 +8822,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								break;
 							case 14:
 								this.var_47f2 = false;
-								super.sub_1430a(Class_f_0145.getLangString(276),
+								super.sub_1430a(Class_f_StringManager.getLangString(276),
 										(byte) 4, (byte) 4);
 								this.var_4e12 += 1;
 								break;
 							case 15:
-								super.sub_1430a(Class_f_0145.getLangString(277),
+								super.sub_1430a(Class_f_StringManager.getLangString(277),
 										(byte) 1, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8842,7 +8842,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								break;
 							case 18:
 								this.var_4c72 = 12;
-								super.sub_1430a(Class_f_0145.getLangString(278),
+								super.sub_1430a(Class_f_StringManager.getLangString(278),
 										(byte) 5, (byte) 4);
 								sub_186a6(this.var_4852[0].posX,
 										this.var_4852[0].posY);
@@ -8894,20 +8894,20 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								break;
 							case 24:
 								if (this.var_4ac2 >= 16) {
-									super.sub_1430a(Class_f_0145.getLangString(281),
+									super.sub_1430a(Class_f_StringManager.getLangString(281),
 											(byte) 4, (byte) 4);
 									sub_142e5(15);
 									this.var_4e12 += 1;
 								}
 								break;
 							case 25:
-								super.sub_1430a(Class_f_0145.getLangString(282),
+								super.sub_1430a(Class_f_StringManager.getLangString(282),
 										(byte) 0, (byte) 4);
 								sub_142e5(8);
 								this.var_4e12 += 1;
 								break;
 							case 26:
-								super.sub_1430a(Class_f_0145.getLangString(283),
+								super.sub_1430a(Class_f_StringManager.getLangString(283),
 										(byte) 4, (byte) 4);
 								sub_142e5(15);
 								this.var_4e12 += 1;
@@ -8925,25 +8925,25 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 29:
-								super.sub_1430a(Class_f_0145.getLangString(284),
+								super.sub_1430a(Class_f_StringManager.getLangString(284),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 30:
-								super.sub_1430a(Class_f_0145.getLangString(285),
+								super.sub_1430a(Class_f_StringManager.getLangString(285),
 										(byte) 2, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 31:
-								super.sub_1430a(Class_f_0145.getLangString(286),
+								super.sub_1430a(Class_f_StringManager.getLangString(286),
 										(byte) 1, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 32:
-								super.sub_1430a(Class_f_0145.getLangString(287),
+								super.sub_1430a(Class_f_StringManager.getLangString(287),
 										(byte) 0, (byte) 4);
 								this.var_4aca = true;
 								this.var_4ac2 = 0;
@@ -8962,7 +8962,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								break;
 							case 35:
 								Class_c_MainCanvas.sub_2bf1(0, 0);
-								sub_f6d8(Class_f_0145.getLangString(288));
+								sub_f6d8(Class_f_StringManager.getLangString(288));
 								this.var_4e12 += 1;
 								break;
 							case 36:
@@ -8984,7 +8984,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		Class_a_Unit.var_de3 = Class_a_Unit.var_ddb;
 		this.var_49c2.sub_132e((byte) 0, true);
 		this.var_49c2.sub_132e((byte) 1, false);
-		Class_f_0145.mainCanvas.sub_220e(this.var_49c2);
+		Class_f_StringManager.mainCanvas.sub_220e(this.var_49c2);
 		this.var_47f2 = true;
 		this.var_4a4a = true;
 		this.var_4a5a = false;
@@ -9001,7 +9001,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 	private void sub_186db() {
 		Class_c_MainCanvas.stopCurrentMusicPlayer();
 		Class_c_MainCanvas.playMusicLooped(6, 1);
-		Class_f_0145.mainCanvas.sub_220e(sub_14359(null, Class_f_0145.getLangString(72),
+		Class_f_StringManager.mainCanvas.sub_220e(sub_14359(null, Class_f_StringManager.getLangString(72),
 				this.var_45a2, 3000));
 		this.var_481a = this.var_479a;
 		this.var_4e12 = -1;
@@ -9062,24 +9062,24 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		this.var_4e92 = this.var_479a;
 	}
 
-	private Class_e_0134 sub_188fc(Class_f_0145 paramClass_f_0145) {
+	private Class_e_0134 sub_188fc(Class_f_StringManager paramClass_f_0145) {
 		Class_e_0134 localClass_e_01341;
 		if (this.var_4ed2.length > 0) {
 			Class_e_0134 localClass_e_01342;
 			(localClass_e_01342 = (localClass_e_01341 = new Class_e_0134(
-					(byte) 11, 0)).sub_165b(Class_f_0145.getLangString(46))).var_11b2 = this.var_4632[6];
+					(byte) 11, 0)).sub_165b(Class_f_StringManager.getLangString(46))).var_11b2 = this.var_4632[6];
 			localClass_e_01341.sub_20ad(this.var_4ed2, this.var_459a / 2,
 					(this.var_45a2 + localClass_e_01342.var_1042) / 2,
 					this.var_459a, this.var_45a2 - localClass_e_01342.var_1042,
 					3, 4);
 		} else {
 			(localClass_e_01341 = new Class_e_0134((byte) 10, 0))
-					.sub_165b(Class_f_0145.getLangString(46)).var_11b2 = this.var_4632[6];
-			localClass_e_01341.sub_1ca8(null, Class_f_0145.getLangString(52),
+					.sub_165b(Class_f_StringManager.getLangString(46)).var_11b2 = this.var_4632[6];
+			localClass_e_01341.sub_1ca8(null, Class_f_StringManager.getLangString(52),
 					this.var_459a, -1);
 		}
 		localClass_e_01341.sub_1350(paramClass_f_0145);
-		Class_f_0145.mainCanvas.sub_220e(localClass_e_01341);
+		Class_f_StringManager.mainCanvas.sub_220e(localClass_e_01341);
 		return localClass_e_01341;
 	}
 
@@ -9118,7 +9118,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							this.var_4ed2[this.var_4ec2],
 							this.var_4ee2[this.var_4ec2], this.var_45a2,
 							this.var_45a2 / 2, -1)).sub_1350(this.var_4f3a);
-					Class_f_0145.mainCanvas.sub_220e(localClass_e_0134);
+					Class_f_StringManager.mainCanvas.sub_220e(localClass_e_0134);
 				} else if (this.var_4f42 == 2) {
 					i = paramArrayOfByte.readInt() / 3;
 					this.var_4eea = new String[i];
@@ -9131,17 +9131,17 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 								.readUTF());
 					}
 					sub_70c0(this.var_4f3a);
-					Class_f_0145.mainCanvas.sub_220e(this.var_4c0a);
+					Class_f_StringManager.mainCanvas.sub_220e(this.var_4c0a);
 				} else if (this.var_4f42 == 3) {
 					String str = this.var_4eea[this.var_4eca];
 					byte[] arrayOfByte = new byte[i];
 					paramArrayOfByte.readFully(arrayOfByte);
 					sub_19157(str, arrayOfByte);
-					sub_70c0(this.var_4c0a.var_111a);
+					sub_70c0(this.var_4c0a.stringManager);
 					Class_e_0134 cll;
-					(cll = sub_14359(null, Class_f_0145.sub_dcc(45, str),
+					(cll = sub_14359(null, Class_f_StringManager.getStrByIdAndReplaceUWith(45, str),
 							this.var_45a2, 2000)).sub_1350(this.var_4c0a);
-					Class_f_0145.mainCanvas.sub_220e(cll);
+					Class_f_StringManager.mainCanvas.sub_220e(cll);
 				}
 				this.var_4f3a = null;
 				return;
@@ -9151,14 +9151,14 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			localException.printStackTrace();
 		}
 		Class_e_0134 bbc;
-		(bbc = sub_14359(null, Class_f_0145.getLangString(44), this.var_45a2, -1))
+		(bbc = sub_14359(null, Class_f_StringManager.getLangString(44), this.var_45a2, -1))
 				.sub_1350(this.var_4f3a);
 		this.var_4f3a = null;
-		Class_f_0145.mainCanvas.sub_220e(bbc);
+		Class_f_StringManager.mainCanvas.sub_220e(bbc);
 	}
 
 	private void sub_18c91(int paramInt, String paramString1,
-			String paramString2, Class_f_0145 paramClass_f_0145) {
+			String paramString2, Class_f_StringManager paramClass_f_0145) {
 		try {
 			this.var_4f42 = paramInt;
 			this.var_4f3a = paramClass_f_0145;
@@ -9180,9 +9180,9 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			this.var_4f22.writeUTF("requestId");
 			this.var_4f22.writeUTF("0");
 			Class_e_0134 cl;
-			(cl = sub_14359(null, Class_f_0145.getLangString(43), this.var_45a2, -1))
+			(cl = sub_14359(null, Class_f_StringManager.getLangString(43), this.var_45a2, -1))
 					.sub_1350(paramClass_f_0145);
-			Class_f_0145.mainCanvas.sub_220e(cl);
+			Class_f_StringManager.mainCanvas.sub_220e(cl);
 
 			new Thread(this).start(); // THREAD here
 
@@ -9217,7 +9217,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			if (this.var_4b6a[paramInt] == i + var_45c2.length) {
 				this.var_4b62[paramInt] = -1;
 				this.var_4b6a[paramInt] = -1;
-				this.var_4b5a[paramInt] = ("\n" + Class_f_0145.getLangString(79) + "\n ");
+				this.var_4b5a[paramInt] = ("\n" + Class_f_StringManager.getLangString(79) + "\n ");
 				Class_c_MainCanvas.addSomeRecords("save", paramInt, new byte[0]);
 			}
 		}
@@ -9284,12 +9284,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 					return;
 				}
 				try {
-					Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_0145.mainCanvas);
-					Class_f_0145.mainCanvas.sub_220e(this);
+					Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_StringManager.mainCanvas);
+					Class_f_StringManager.mainCanvas.sub_220e(this);
 					this.var_45fa = 1;
 					this.var_4f92 = 1;
 					this.var_4982 = true;
-					Class_f_0145.mainCanvas.repaintAll();
+					Class_f_StringManager.mainCanvas.repaintAll();
 					sub_5dc1();
 					int[] arrayOfInt = this.var_4fba;
 					int i1 = intSomoeDiss;
@@ -9438,8 +9438,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 					itemStateChanged(this.var_501a);
 					return;
 				}
-				Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_0145.mainCanvas);
-				Class_f_0145.mainCanvas.sub_220e(this);
+				Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_StringManager.mainCanvas);
+				Class_f_StringManager.mainCanvas.sub_220e(this);
 				sub_1ae50();
 			}
 		} else {
@@ -9456,8 +9456,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 						return;
 					}
 					itemStateChanged(this.var_501a);
-					Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_0145.mainCanvas);
-					Class_f_0145.mainCanvas.sub_220e(this);
+					Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_StringManager.mainCanvas);
+					Class_f_StringManager.mainCanvas.sub_220e(this);
 					return;
 				}
 				if (inparamCommand == this.var_508a) {
@@ -9483,8 +9483,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 					itemStateChanged(this.var_501a);
 					return;
 				}
-				Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_0145.mainCanvas);
-				Class_f_0145.mainCanvas.sub_220e(this);
+				Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_StringManager.mainCanvas);
+				Class_f_StringManager.mainCanvas.sub_220e(this);
 				return;
 			}
 			if (inparamDisplayable == this.var_4fe2) {
@@ -9492,8 +9492,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 					if (this.var_5002.size() == 0) {
 						return;
 					}
-					Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_0145.mainCanvas);
-					Class_f_0145.mainCanvas.sub_220e(this);
+					Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_StringManager.mainCanvas);
+					Class_f_StringManager.mainCanvas.sub_220e(this);
 					this.var_4b52 = this.var_5002.getString();
 					return;
 				}
@@ -9502,8 +9502,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							System.currentTimeMillis(), 36).toUpperCase());
 					return;
 				}
-				Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_0145.mainCanvas);
-				Class_f_0145.mainCanvas.sub_220e(this);
+				Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_StringManager.mainCanvas);
+				Class_f_StringManager.mainCanvas.sub_220e(this);
 				return;
 			}
 			if (inparamDisplayable == this.var_4fea) {
@@ -9520,8 +9520,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							Integer.parseInt(this.var_5052.getString()),
 							this.var_4fba);
 				}
-				Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_0145.mainCanvas);
-				Class_f_0145.mainCanvas.sub_220e(this);
+				Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_StringManager.mainCanvas);
+				Class_f_StringManager.mainCanvas.sub_220e(this);
 				return;
 			}
 			if (inparamDisplayable == this.var_4ff2) {
@@ -9559,8 +9559,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							}
 						}
 					}
-					Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_0145.mainCanvas);
-					Class_f_0145.mainCanvas.sub_220e(this);
+					Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_StringManager.mainCanvas);
+					Class_f_StringManager.mainCanvas.sub_220e(this);
 					return;
 				}
 				if (inparamDisplayable == this.var_505a) {
@@ -9577,7 +9577,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 									sub_186db();
 								}
 							} else if (theppc[0].equals("fps")) {
-								Class_f_0145.mainCanvas.setFPSOverride(Integer
+								Class_f_StringManager.mainCanvas.setFPSOverride(Integer
 										.parseInt(theppc[1]));
 							} else if (theppc[0].equals("money")) {
 								if (theppc[1].equals("add")) {
@@ -9786,8 +9786,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 							return;
 						}
 					}
-					label3051: Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_0145.mainCanvas);
-					Class_f_0145.mainCanvas.sub_220e(this);
+					label3051: Class_c_MainCanvas.setDisplayableAsCurrent(Class_f_StringManager.mainCanvas);
+					Class_f_StringManager.mainCanvas.sub_220e(this);
 				}
 			}
 		}
@@ -9817,7 +9817,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 			return;
 		}
 		if (inparamItem == this.var_502a) {
-			this.var_502a.setLabel(Class_f_0145.sub_dcc(308,
+			this.var_502a.setLabel(Class_f_StringManager.getStrByIdAndReplaceUWith(308,
 					Integer.toString(this.var_502a.getValue() + 1)));
 			this.var_5032.setImage(this.var_501a.getImage(this.var_502a
 					.getValue()));
@@ -9831,7 +9831,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 						.parseInt(this.var_5022.getString());
 			}
 		} else if (inparamItem == this.var_5062) {
-			this.var_5062.setLabel(Class_f_0145.sub_dcc(315,
+			this.var_5062.setLabel(Class_f_StringManager.getStrByIdAndReplaceUWith(315,
 					Integer.toString(this.var_5062.getValue()) + "%"));
 		}
 	}
@@ -9840,8 +9840,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		if (this.var_4fe2 != null) {
 			return;
 		}
-		this.var_4fe2 = new Form(Class_f_0145.getLangString(304));
-		this.var_5002 = new TextField(Class_f_0145.getLangString(294), this.var_4b52,
+		this.var_4fe2 = new Form(Class_f_StringManager.getLangString(304));
+		this.var_5002 = new TextField(Class_f_StringManager.getLangString(294), this.var_4b52,
 				100, 0);
 		this.var_4fe2.append(this.var_5002);
 		this.var_4fe2.addCommand(this.var_506a);
@@ -9854,11 +9854,11 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		if (this.var_4fea != null) {
 			return;
 		}
-		this.var_4fea = new Form(Class_f_0145.getLangString(306));
-		this.var_503a = new TextField(Class_f_0145.getLangString(310), "0", 20, 2);
-		this.var_5042 = new TextField(Class_f_0145.getLangString(311), "0", 20, 2);
-		this.var_504a = new TextField(Class_f_0145.getLangString(312), "0", 20, 2);
-		this.var_5052 = new TextField(Class_f_0145.getLangString(313), "0", 20, 2);
+		this.var_4fea = new Form(Class_f_StringManager.getLangString(306));
+		this.var_503a = new TextField(Class_f_StringManager.getLangString(310), "0", 20, 2);
+		this.var_5042 = new TextField(Class_f_StringManager.getLangString(311), "0", 20, 2);
+		this.var_504a = new TextField(Class_f_StringManager.getLangString(312), "0", 20, 2);
+		this.var_5052 = new TextField(Class_f_StringManager.getLangString(313), "0", 20, 2);
 		this.var_4fea.append(this.var_503a);
 		this.var_4fea.append(this.var_5042);
 		this.var_4fea.append(this.var_504a);
@@ -9872,7 +9872,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		if (this.var_4ffa != null) {
 			return;
 		}
-		this.var_4ffa = new Form(Class_f_0145.getLangString(307));
+		this.var_4ffa = new Form(Class_f_StringManager.getLangString(307));
 		this.var_5062 = new Gauge("", true, 100, 100);
 		this.var_5062.setLayout(2049);
 		itemStateChanged(this.var_5062);
@@ -9887,8 +9887,8 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		if (this.var_4fda != null) {
 			return;
 		}
-		this.var_4fda = new Form(Class_f_0145.getLangString(303));
-		this.var_501a = new ChoiceGroup(Class_f_0145.getLangString(297), 2);
+		this.var_4fda = new Form(Class_f_StringManager.getLangString(303));
+		this.var_501a = new ChoiceGroup(Class_f_StringManager.getLangString(297), 2);
 		if (this.var_4fba == null) {
 			this.var_4fba = new int[this.var_470a.length];
 			for (int i = 0; i < this.var_4fba.length; i++) {
@@ -9899,7 +9899,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		this.var_4fca = new boolean[this.var_470a.length];
 		for (int i = 0; i < this.var_470a.length; i++) {
 			this.var_501a.append(
-					" " + Class_f_0145.sub_dcc(308, Integer.toString(i + 1))
+					" " + Class_f_StringManager.getStrByIdAndReplaceUWith(308, Integer.toString(i + 1))
 							+ " ", this.var_470a[i].createAnImage());
 			this.var_501a.setSelectedIndex(i, this.var_4fba[i] > 0);
 		}
@@ -9916,16 +9916,16 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 	}
 
 	private void sub_1ac39() {
-		this.var_4fd2 = new Form(Class_f_0145.getLangString(292));
-		this.var_5002 = new TextField(Class_f_0145.getLangString(294), Long.toString(
+		this.var_4fd2 = new Form(Class_f_StringManager.getLangString(292));
+		this.var_5002 = new TextField(Class_f_StringManager.getLangString(294), Long.toString(
 				System.currentTimeMillis(), 36).toUpperCase(), 100, 0);
 		int i = (this.canvasWidth + 23) / 24;
 		int j = (this.canvasHeight - var_4592 + 23) / 24;
-		this.var_500a = new TextField(Class_f_0145.getLangString(295),
+		this.var_500a = new TextField(Class_f_StringManager.getLangString(295),
 				Integer.toString(i), 3, 2);
-		this.var_5012 = new TextField(Class_f_0145.getLangString(296),
+		this.var_5012 = new TextField(Class_f_StringManager.getLangString(296),
 				Integer.toString(j), 3, 2);
-		this.var_501a = new ChoiceGroup(Class_f_0145.getLangString(297), 2);
+		this.var_501a = new ChoiceGroup(Class_f_StringManager.getLangString(297), 2);
 		if (this.var_4fba == null) {
 			this.var_4fba = new int[this.var_470a.length];
 			for (i = 0; i < this.var_4fba.length; i++) {
@@ -9936,7 +9936,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		this.var_4fca = new boolean[this.var_470a.length];
 		for (i = 0; i < this.var_470a.length; i++) {
 			this.var_501a.append(
-					" " + Class_f_0145.sub_dcc(308, Integer.toString(i + 1))
+					" " + Class_f_StringManager.getStrByIdAndReplaceUWith(308, Integer.toString(i + 1))
 							+ " ", this.var_470a[i].createAnImage());
 			this.var_501a.setSelectedIndex(i, this.var_4fba[i] > 0);
 		}
@@ -9967,12 +9967,12 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		if (this.var_4ff2 != null) {
 			return;
 		}
-		this.var_4ff2 = new Form(Class_f_0145.getLangString(304));
+		this.var_4ff2 = new Form(Class_f_StringManager.getLangString(304));
 		this.var_5032 = new ImageItem(null, null, 1, null);
 		this.var_5032.setLayout(2049);
 		this.var_502a = new Gauge("", true, this.var_470a.length - 1, 0);
 		this.var_502a.setLayout(2049);
-		this.var_5022 = new TextField(Class_f_0145.getLangString(309), "", 20, 2);
+		this.var_5022 = new TextField(Class_f_StringManager.getLangString(309), "", 20, 2);
 		this.var_5022.setLayout(2049);
 		this.var_4ff2.append(this.var_5032);
 		this.var_4ff2.append(this.var_502a);
@@ -10012,7 +10012,7 @@ public final class Class_g_1956 extends Class_f_0145 implements Runnable,
 		if (this.var_505a != null) {
 			return;
 		}
-		this.var_505a = new TextBox(Class_f_0145.getLangString(314), "", 100, 0);
+		this.var_505a = new TextBox(Class_f_StringManager.getLangString(314), "", 100, 0);
 		this.var_505a.addCommand(this.var_506a);
 		this.var_505a.addCommand(this.var_5072);
 		this.var_505a.setCommandListener(this);

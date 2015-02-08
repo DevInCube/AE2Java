@@ -12,14 +12,14 @@ import javax.microedition.io.Connection;
 /***
  * 
  * @author DevInCube
- * Seems to be Motorolla Connection Class
+ * Seems to be Motorola Connection Class
  */
-/*
-final class Class_b_0012 implements Class_c_0013 {
+
+final class Class_b_MotorolaFileCon implements Class_c_AConnection {
 	
 	private FileConnection var_26f;
 
-	public Class_b_0012(Connection paramConnection) {
+	public Class_b_MotorolaFileCon(Connection paramConnection) {
 		this.var_26f = ((FileConnection) paramConnection);
 	}
 
@@ -43,23 +43,23 @@ final class Class_b_0012 implements Class_c_0013 {
 		return this.var_26f.openDataOutputStream();
 	}
 
-	public final Enumeration sub_36a() {
+	public final Enumeration getList() {
 		return this.var_26f.list();
 	}
 
-	public final void sub_38e() {
+	public final void create() {
 		this.var_26f.create();
 	}
 
-	public final boolean sub_3b2() {
+	public final boolean exists() {
 		return this.var_26f.exists();
 	}
 
-	public final void sub_3d6(long paramLong) {
+	public final void truncate(long paramLong) {
 		this.var_26f.truncate(0L);
 	}
 }
-*/
+
 /*
  * Location: C:\Users\DevInCube\Desktop\deob\
  * 

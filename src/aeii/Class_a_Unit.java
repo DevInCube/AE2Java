@@ -746,7 +746,8 @@ public final class Class_a_Unit extends Class_g_Sprite {
 				InputStream stream = Class_c_MainCanvas
 						.getResourceStream("units.bin");
 				DataInputStream unitBinStream = new DataInputStream(stream);
-				for (int i = 0; i < 12; i++) {
+				int unitsCount = 12; // @todo
+				for (int i = 0; i < unitsCount; i++) {
 					unitsMoveRange[i] = unitBinStream.readByte();
 					unitsAttackValues[i][0] = unitBinStream.readByte();
 					unitsAttackValues[i][1] = unitBinStream.readByte();

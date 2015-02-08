@@ -40,7 +40,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 	private boolean var_179f = true;
 	private int frameDelay;
 	private String fpsValue = "";
-	public Class_f_0145 var_17b7;
+	public Class_f_StringManager var_17b7;
 	public static int canvasWidth;
 	public static int canvasHeight;
 	private int var_17cf = 0;
@@ -87,8 +87,8 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 		}
 		try {
 			setFullScreenMode(true);
-			Class_f_0145.mainCanvas = this;
-			Class_f_0145.loadLangDataFromFile("/lang.dat");
+			Class_f_StringManager.mainCanvas = this;
+			Class_f_StringManager.loadLangDataFromFile("/lang.dat");
 			canvasWidth = getWidth();
 			canvasHeight = getHeight();
 			Class_c_MainCanvas.midletDisplay = Display.getDisplay(paramMIDlet);
@@ -341,7 +341,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 		midletDisplay.setCurrent(paramDisplayable);
 	}
 
-	public final void sub_220e(Class_f_0145 paramClass_f_0145) {
+	public final void sub_220e(Class_f_StringManager paramClass_f_0145) {
 		sub_26ad();
 		paramClass_f_0145.sub_7f2();
 		this.var_17b7 = paramClass_f_0145;
@@ -359,7 +359,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 			paramGraphics.setFont(theFont);
 			paramGraphics.setColor(0);
 			paramGraphics
-					.drawString(Class_f_0145.getLangString(58), canvasWidth / 2, canvasHeight / 2 - 1, 33);
+					.drawString(Class_f_StringManager.getLangString(58), canvasWidth / 2, canvasHeight / 2 - 1, 33);
 		} else {
 			this.var_17b7.sub_828(paramGraphics);
 		}
@@ -539,8 +539,8 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 	public final void run() {
 		try {
 			repaintAll();
-			var_1807 = new String[] { Class_f_0145.getLangString(26), Class_f_0145
-					.getLangString(28), Class_f_0145.getLangString(25), Class_f_0145
+			var_1807 = new String[] { Class_f_StringManager.getLangString(26), Class_f_StringManager
+					.getLangString(28), Class_f_StringManager.getLangString(25), Class_f_StringManager
 					.getLangString(24) };
 			Class_g_1956 localClass_g_1956 = new Class_g_1956();
 			repaintAll();

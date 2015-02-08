@@ -7,7 +7,7 @@ import java.util.Vector;
 import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Graphics;
 
-public class Class_f_0145 {
+public class Class_f_StringManager {
 
 	public static Class_c_MainCanvas mainCanvas;
 	public int canvasWidth = mainCanvas.getWidth();
@@ -32,80 +32,80 @@ public class Class_f_0145 {
 		//
 	}
 
-	public static final String[] sub_843(String paramString, int paramInt,
-			Font paramFont) {
-		Vector localVector = new Vector();
-		int str1 = 0;
-		int i = paramString.length();
-		Object localObject1 = null;
+	public static final String[] wrapStringText(String inStr, int pixWidthMax,
+			Font inFont) {
+		Vector list = new Vector();
+		int startIndex = 0;
+		int strLen = inStr.length();
+		String subStr1 = null;
 		for (;;) {
-			int str2 = str1;
-			int str3 = paramString.indexOf('\n', str1);
+			int charIndex = startIndex;
+			int eolnIndex = inStr.indexOf('\n', startIndex);
 			do {
-				int str5 = str2;
-				Object localObject2 = localObject1;
-				str2 = sub_a64(paramString, str2);
-				if ((str3 >= 0) && (str3 < str2)) {
-					str2 = str3;
+				int sIndex = charIndex;
+				String subStr2 = subStr1;
+				charIndex = sub_a64(inStr, charIndex);
+				if ((eolnIndex >= 0) && (eolnIndex < charIndex)) {
+					charIndex = eolnIndex;
 				}
-				localObject1 = paramString.substring(str1, str2).trim();
-				String str4;
-				if (paramFont.stringWidth((String) localObject1) > paramInt) {
-					if (str5 == str1) {
-						for (str1 = ((String) localObject1).length() - 1; str1 > 0; str1--) {
-							str4 = ((String) localObject1).substring(0, str1);
-							if (paramFont.stringWidth(str4) <= paramInt) {
-								str2 = str5 + str1;
-								localObject1 = str4;
+				subStr1 = inStr.substring(startIndex, charIndex).trim();
+				String subStr3;
+				if (inFont.stringWidth(subStr1) > pixWidthMax) {
+					if (sIndex == startIndex) {
+						for (int it = subStr1.length() - 1; it > 0; it--) {
+							subStr3 = subStr1.substring(0, it);
+							if (inFont.stringWidth(subStr3) <= pixWidthMax) {
+								charIndex = sIndex + it;
+								subStr1 = subStr3;
 								break;
 							}
 						}
 						break;
 					}
-					str2 = str5;
-					localObject1 = localObject2;
+					charIndex = sIndex;
+					subStr1 = subStr2;
 					break;
 				}
 				/*
-				 * @ wtf if (str2 == str4) { str2++; break; }
+				 * @ wtf if (str2 == str4) { str2++; break; } //@todo
 				 */
-			} while (str2 < i);
-			localVector.addElement(localObject1);
-			str1 = str2;
-			if (str2 >= i) {
-				String[] arrayOfString = new String[localVector.size()];
-				localVector.copyInto(arrayOfString);
+			} while (charIndex < strLen);
+			list.addElement(subStr1);
+			startIndex = charIndex;
+			if (charIndex >= strLen) {
+				String[] arrayOfString = new String[list.size()];
+				list.copyInto(arrayOfString);
 				return arrayOfString;
 			}
 		}
 	}
 
-	private static final int sub_a64(String paramString, int paramInt) {
-		if (sub_b26(paramString.charAt(paramInt))) {
-			return paramInt + 1;
+	private static final int sub_a64(String paramString, int charIndex) {
+		if (isSomeInSomeCharInterval(paramString.charAt(charIndex))) {
+			return charIndex + 1;
 		}
-		int i;
-		while ((i = paramString.indexOf(' ', paramInt)) == 0) {
-			paramInt++;
+		int spaceIndex = paramString.indexOf(' ', charIndex);
+		while (spaceIndex == 0) {
+			charIndex++;
 		}
 		int j;
-		if (i == -1) {
+		if (spaceIndex == -1) {
 			j = paramString.length();
 		} else {
-			j = i + 1;
+			j = spaceIndex + 1;
 		}
-		for (int i2 = paramInt + 1; i2 < j; i2++) {
-			if (sub_b26(paramString.charAt(i2))) {
-				return i2;
+		for (int it = charIndex + 1; it < j; it++) {
+			if (isSomeInSomeCharInterval(paramString.charAt(it))) {
+				return it;
 			}
 		}
 		return j;
 	}
 
-	private static final boolean sub_b26(int paramInt) {
-		return ((paramInt >= 11904) && (paramInt < 44032))
-				|| ((paramInt >= 63744) && (paramInt < 64256))
-				|| ((paramInt >= 65280) && (paramInt < 65504));
+	private static final boolean isSomeInSomeCharInterval(int charInd) {
+		return ((charInd >= 11904) && (charInd < 44032))
+				|| ((charInd >= 63744) && (charInd < 64256))
+				|| ((charInd >= 65280) && (charInd < 65504));
 	}
 
 	public static final int loadLangDataFromFile(String langFileName) {
@@ -137,10 +137,10 @@ public class Class_f_0145 {
 		if (index < langStrings.length) {
 			String langString = langStrings[index];
 			if ((paramBoolean)
-					&& ((langString = sub_df5(
-							sub_df5(sub_df5(
-									sub_df5(langString, "%K5",
-											sub_dcc(20, mainCanvas.getCodeKeyName(16)),
+					&& ((langString = replaceStringInString(
+							replaceStringInString(replaceStringInString(
+									replaceStringInString(langString, "%K5",
+											getStrByIdAndReplaceUWith(20, mainCanvas.getCodeKeyName(16)),
 											true), "%K0", mainCanvas.getCodeKeyName(32),
 									true), "%K7", mainCanvas.getCodeKeyName(256), true),
 							"%K9", mainCanvas.getCodeKeyName(512), true)).indexOf("%KM") != -1)) {
@@ -157,41 +157,42 @@ public class Class_f_0145 {
 					buf.append('/');
 				}
 				buf.append(getLangString(19));
-				langString = sub_df5(langString, "%KM", buf.toString(), true);
+				langString = replaceStringInString(langString, "%KM", buf.toString(), true);
 			}
 			return langString;
 		}
 		return "?: " + index;
 	}
 
-	private static String sub_d68(int paramInt, String[] paramArrayOfString) {
-		String str = new String(getLangString(17));
-		for (int i = 0; i < paramArrayOfString.length; i++) {
-			str = sub_df5(str, "%U", paramArrayOfString[i], false);
+	private static String sub_d68(int unUsedInt, String[] inArr) {
+		String str = new String(getLangString(17)); // maybehere unUsedInt
+		for (int i = 0; i < inArr.length; i++) {
+			str = replaceStringInString(str, "%U", inArr[i], false);
 		}
 		return str;
 	}
 
-	public static final String sub_dcc(int paramInt, String paramString) {
-		return sub_df5(getLangString(paramInt, false), "%U", paramString,
-				false);
+	public static final String getStrByIdAndReplaceUWith(int strIndex, String inStr) {
+		String langStr = getLangString(strIndex, false);
+		return replaceStringInString(langStr, "%U", inStr, false);
 	}
 
-	private static String sub_df5(String paramString1, String paramString2,
-			String paramString3, boolean paramBoolean) {
+	private static String replaceStringInString(String originalStr, String toReplace,
+			String replacement, boolean manyTimes) {
 		do {
-			int i;
-			if ((i = paramString1.indexOf(paramString2)) == -1) {
+			int startIndex = originalStr.indexOf(toReplace);
+			if (startIndex == -1) {
 				break;
 			}
-			paramString1 = paramString1.substring(0, i) + paramString3
-					+ paramString1.substring(i + paramString2.length());
-		} while (paramBoolean);
-		return paramString1;
+			originalStr = originalStr.substring(0, startIndex) + replacement
+					+ originalStr.substring(startIndex + toReplace.length());
+		} while (manyTimes);
+		return originalStr;
 	}
 
 	public static final void sub_e73() {
-		var_78b = (Class_f_0145.var_783 = var_77b >> 1) >> 1;
+		Class_f_StringManager.var_783 = var_77b >> 1;
+		var_78b = Class_f_StringManager.var_783 >> 1;
 		var_773 = new short[var_77b];
 		int i = var_77b * 10000 / 2 / 31415;
 		int j = i * 1024;

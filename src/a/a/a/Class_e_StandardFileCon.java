@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Enumeration;
+
 import javax.microedition.io.Connection;
 
 /**
@@ -12,12 +13,12 @@ import javax.microedition.io.Connection;
  * @author DevInCube
  * 
  */
-/*
-final class Class_e_0115 implements Class_c_0013 {
+
+final class Class_e_StandardFileCon implements Class_c_AConnection {
 	
 	private FileConnection var_285;
 
-	public Class_e_0115(Connection paramConnection) {
+	public Class_e_StandardFileCon(Connection paramConnection) {
 		this.var_285 = ((FileConnection) paramConnection);
 	}
 
@@ -41,23 +42,23 @@ final class Class_e_0115 implements Class_c_0013 {
 		return this.var_285.openDataOutputStream();
 	}
 
-	public final Enumeration sub_380() {
+	public final Enumeration getList() {
 		return this.var_285.list();
 	}
 
-	public final void sub_3a4() {
+	public final void create() {
 		this.var_285.create();
 	}
 
-	public final boolean sub_3c8() {
+	public final boolean exists() {
 		return this.var_285.exists();
 	}
 
-	public final void sub_3ec(long paramLong) {
+	public final void truncate(long paramLong) {
 		this.var_285.truncate(0L);
 	}
 }
-*/
+
 /*
  * Location: C:\Users\DevInCube\Desktop\deob\
  * 

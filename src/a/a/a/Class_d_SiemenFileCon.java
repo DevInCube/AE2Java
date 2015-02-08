@@ -14,11 +14,12 @@ import javax.microedition.io.Connection;
  *
  *         SIEMENS File Connection
  */
-/*
-final class Class_d_0114 implements Class_c_0013 {
+
+final class Class_d_SiemenFileCon implements Class_c_AConnection {
+	
 	private FileConnection var_27d;
 
-	public Class_d_0114(Connection paramConnection) {
+	public Class_d_SiemenFileCon(Connection paramConnection) {
 		this.var_27d = ((FileConnection) paramConnection);
 	}
 
@@ -42,23 +43,23 @@ final class Class_d_0114 implements Class_c_0013 {
 		return this.var_27d.openDataOutputStream();
 	}
 
-	public final Enumeration sub_378() {
+	public final Enumeration getList() {
 		return this.var_27d.list();
 	}
 
-	public final void sub_39c() {
+	public final void create() {
 		this.var_27d.create();
 	}
 
-	public final boolean sub_3c0() {
+	public final boolean exists() {
 		return this.var_27d.exists();
 	}
 
-	public final void sub_3e4(long paramLong) {
+	public final void truncate(long paramLong) {
 		this.var_27d.truncate(0L);
 	}
 }
-*/
+
 /*
  * Location: C:\Users\DevInCube\Desktop\deob\
  * 

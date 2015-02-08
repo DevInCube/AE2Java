@@ -211,7 +211,7 @@ public final class Class_h_0417 {
 				this.var_bf7[k].var_ca0 = true;
 				this.var_c57[k] = Class_c_MainCanvas.getRandomMax(360);
 				this.var_bf7[k].var_c38 = (-6 + 4
-						* Class_f_0145.sub_f0f(this.var_c57[k]) >> 10);
+						* Class_f_StringManager.sub_f0f(this.var_c57[k]) >> 10);
 			} else if (this.var_b4f == 4) {
 				this.var_bf7[k].var_ca0 = true;
 				this.var_bf7[k].var_c38 = (-5 - Class_c_MainCanvas.getRandomMax(10));
@@ -358,11 +358,11 @@ public final class Class_h_0417 {
 							.setPixelPosition(
 									localClass_h_04171.var_c4f[n][0]
 											+ (i3
-													* Class_f_0145
+													* Class_f_StringManager
 															.sub_f35(localClass_h_04171.var_c57[n]) >> 10),
 									localClass_h_04171.var_c4f[n][1]
 											+ (i3
-													* Class_f_0145
+													* Class_f_StringManager
 															.sub_f0f(localClass_h_04171.var_c57[n])
 													/ 3 >> 10));
 					localClass_h_04171.var_c57[n] = ((localClass_h_04171.var_c57[n] + localClass_h_04171.var_c67) % 360);
@@ -1115,7 +1115,7 @@ public final class Class_h_0417 {
 			for (int j = 0; j < this.var_bf7.length; j++) {
 				if (this.var_bf7[j].var_ca0) {
 					this.var_bf7[j].var_c38 = (-6 + 4
-							* Class_f_0145.sub_f0f(this.var_c57[j]) >> 10);
+							* Class_f_StringManager.sub_f0f(this.var_c57[j]) >> 10);
 					this.var_c57[j] = ((this.var_c57[j] + 10) % 360);
 				}
 			}
