@@ -1,6 +1,6 @@
 package aeii;
 
-import a.a.a.Class_g_2517;
+import a.a.a.Class_g_Sprite;
 import java.util.Vector;
 import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Graphics;
@@ -16,7 +16,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 	private short var_100a = 3;
 	public static Class_g_1956 var_1012;
 	public String[] var_101a;
-	private Class_d_0033[] var_1022;
+	private Class_d_ImageWrap[] var_1022;
 	private int var_102a;
 	private int var_1032;
 	public int var_103a;
@@ -49,7 +49,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 	private boolean var_1112 = true;
 	public Class_f_0145 var_111a;
 	private int var_1122;
-	private Class_g_2517[] var_112a;
+	private Class_g_Sprite[] var_112a;
 	private int var_1132;
 	private boolean var_113a = false;
 	private Vector var_1142;
@@ -66,7 +66,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 	private int var_119a;
 	public int var_11a2 = 2370117;
 	public int var_11aa = 2370117;
-	public Class_d_0033 var_11b2;
+	public Class_d_ImageWrap var_11b2;
 	private Class_e_0134 var_11ba;
 	public int[] var_11c2;
 	private int var_11ca;
@@ -86,7 +86,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 	private int var_123a;
 	private int var_1242;
 	private byte var_124a;
-	private Class_g_2517 var_1252;
+	private Class_g_Sprite var_1252;
 
 	public final void sub_1272() {
 		this.var_1232 = 0;
@@ -125,7 +125,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 		this.var_108a = paramByte;
 		this.var_1092 = paramInt;
 		if (paramByte == 15) {
-			this.var_11e2 = (var_1012.var_45a2 - var_1012.var_4732.var_c28);
+			this.var_11e2 = (var_1012.var_45a2 - var_1012.var_4732.spriteFrameHeight);
 			this.var_10fa = true;
 		} else if ((paramByte != 0) && (paramByte != 11)) {
 			if (paramByte == 3) {
@@ -135,20 +135,20 @@ public final class Class_e_0134 extends Class_f_0145 {
 				this.var_1152 = true;
 				this.var_10b2 = (Class_c_MainCanvas.var_1767 - Class_c_MainCanvas.fontBaselinePos);
 				this.var_103a = var_1012.var_459a;
-				this.var_1042 = (var_1012.var_4a0a.var_c28 + var_ffa);
+				this.var_1042 = (var_1012.var_4a0a.spriteFrameHeight + var_ffa);
 				if ((paramInt & 0x2) == 0) {
 					this.var_1042 += 5;
 				}
 				this.var_10aa = Class_a_0260.sub_27b7(var_1012.var_4842);
 				this.var_1062 = this.var_10aa.length;
-				int pInt = (int) (this.var_103a - (var_1012.var_4722.var_c20 << 1));
+				int pInt = (int) (this.var_103a - (var_1012.var_4722.spriteFrameWidth << 1));
 				if ((paramInt & 0x4) == 0) {
 					pInt -= 8;
 				}
 				if ((paramInt & 0x8) == 0) {
 					pInt -= 8;
 				}
-				this.var_10d2 = (pInt / (var_1012.var_4a0a.var_c20 + 3));
+				this.var_10d2 = (pInt / (var_1012.var_4a0a.spriteFrameWidth + 3));
 				if (this.var_10d2 > this.var_1062) {
 					this.var_10d2 = this.var_1062;
 				}
@@ -163,7 +163,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 			} else {
 				this.var_10fa = false;
 				this.var_1042 = (5 + var_ff2 + 24 + var_ffa
-						+ (var_1012.var_4a12.var_c28 << 1) + var_ff2 + var_ff2 + 1);
+						+ (var_1012.var_4a12.spriteFrameHeight << 1) + var_ff2 + var_ff2 + 1);
 				if (paramByte == 5) {
 					this.var_1042 += var_ffa + Class_c_MainCanvas.fontBaselinePos;
 					this.var_110a = var_1012.sub_1156a(var_1012.var_4772,
@@ -197,7 +197,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 			for (int i = 0; i < 5; i++) {
 				this.var_11da[i] = this.var_11e2;
 				if (i > 0) {
-					this.var_11da[i] -= var_1012.var_4732.var_c28;
+					this.var_11da[i] -= var_1012.var_4732.spriteFrameHeight;
 				}
 			}
 		}
@@ -238,11 +238,11 @@ public final class Class_e_0134 extends Class_f_0145 {
 		this.var_10fa = true;
 		this.var_1192 = paramArrayOfByte.length;
 		this.var_119a = paramArrayOfByte[0].length;
-		this.var_103a = (this.var_1192 * var_1012.var_46c2[0].var_6b1 + 8);
-		this.var_1042 = (this.var_119a * var_1012.var_46c2[0].var_6b9 + 8);
+		this.var_103a = (this.var_1192 * var_1012.var_46c2[0].imageWidth + 8);
+		this.var_1042 = (this.var_119a * var_1012.var_46c2[0].imageHeight + 8);
 		if (this.var_103a > paramInt1) {
 			int someInt;
-			someInt = var_1012.var_46c2[0].var_6b1;
+			someInt = var_1012.var_46c2[0].imageWidth;
 			this.var_1172 = ((paramInt1 - 8) / someInt);
 			this.var_103a = (someInt * this.var_1172 + 8);
 		} else {
@@ -250,7 +250,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 		}
 		if (this.var_1042 > paramInt2) {
 			int someInt;
-			someInt = var_1012.var_46c2[0].var_6b9;
+			someInt = var_1012.var_46c2[0].imageHeight;
 			this.var_117a = ((paramInt2 - 8) / someInt);
 			this.var_1042 = (someInt * this.var_117a + 8);
 		} else {
@@ -282,7 +282,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 		if (paramByte == -1) {
 			this.var_1092 = 14;
 		} else {
-			this.var_10da = (var_1012.var_476a.var_c20 - 8);
+			this.var_10da = (var_1012.var_476a.spriteFrameWidth - 8);
 		}
 		int intVal;
 		intVal = paramInt1 - this.var_10da - 16;
@@ -364,7 +364,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 				Class_c_MainCanvas.theFont);
 		sub_1a89(paramString1, this.var_101a, paramInt1, paramInt2);
 		if (this.var_113a) {
-			i -= var_1012.var_472a.var_c20;
+			i -= var_1012.var_472a.spriteFrameWidth;
 			this.var_101a = Class_f_0145.sub_843(paramString2, i,
 					Class_c_MainCanvas.theFont);
 			sub_1a89(paramString1, this.var_101a, paramInt1, paramInt2);
@@ -372,9 +372,9 @@ public final class Class_e_0134 extends Class_f_0145 {
 	}
 
 	private final void sub_1d69() {
-		this.var_112a = new Class_g_2517[3];
+		this.var_112a = new Class_g_Sprite[3];
 		for (int i = 0; i < this.var_112a.length; i++) {
-			this.var_112a[i] = new Class_g_2517(var_1012.var_4762);
+			this.var_112a[i] = new Class_g_Sprite(var_1012.var_4762);
 		}
 		sub_1dd0();
 	}
@@ -383,15 +383,15 @@ public final class Class_e_0134 extends Class_f_0145 {
 		for (int i = 0; i < this.var_112a.length; i++) {
 			this.var_112a[i].var_c18 = true;
 			this.var_112a[i].sub_1b36(
-					Class_c_MainCanvas.getRandomMax(this.var_1252.var_c20),
-					Class_c_MainCanvas.getRandomMax(this.var_1252.var_c28));
-			this.var_112a[i].sub_1afa(Class_c_MainCanvas.getRandomMax(this.var_112a[i]
-					.sub_1ada()));
+					Class_c_MainCanvas.getRandomMax(this.var_1252.spriteFrameWidth),
+					Class_c_MainCanvas.getRandomMax(this.var_1252.spriteFrameHeight));
+			this.var_112a[i].setCurrentFrameIndex(Class_c_MainCanvas.getRandomMax(this.var_112a[i]
+					.getImagesCount()));
 		}
 	}
 
 	public final void sub_1e54(String[] paramArrayOfString,
-			Class_d_0033[] paramArrayOfClass_d_0033, int paramInt1,
+			Class_d_ImageWrap[] paramArrayOfClass_d_0033, int paramInt1,
 			int paramInt2, int paramInt3) {
 		this.var_1092 = 15;
 		this.var_101a = paramArrayOfString;
@@ -406,7 +406,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 		}
 		this.var_10b2 = (Class_c_MainCanvas.var_1767 - Class_c_MainCanvas.fontBaselinePos);
 		this.var_10ba = (this.var_10b2 / 2);
-		this.var_123a = var_1012.var_4a12.var_c20;
+		this.var_123a = var_1012.var_4a12.spriteFrameWidth;
 		this.var_104a = (this.var_123a + this.var_10b2);
 		this.var_103a += this.var_1062 * this.var_104a;
 		this.var_103a += 32;
@@ -434,14 +434,14 @@ public final class Class_e_0134 extends Class_f_0145 {
 				someInt = strWidth;
 			}
 		}
-		this.var_103a = (someInt + 16 + (var_1012.var_4722.var_c20 << 1));
+		this.var_103a = (someInt + 16 + (var_1012.var_4722.spriteFrameWidth << 1));
 		if (this.var_103a < paramInt1) {
 			this.var_103a = paramInt1;
 		}
 		if (this.var_1042 < 0) {
 			this.var_1042 = Class_c_MainCanvas.var_1767;
-			if (var_1012.var_4722.var_c28 > this.var_1042) {
-				this.var_1042 = var_1012.var_4722.var_c28;
+			if (var_1012.var_4722.spriteFrameHeight > this.var_1042) {
+				this.var_1042 = var_1012.var_4722.spriteFrameHeight;
 			}
 			if ((this.var_1092 & 0x1) == 0) {
 				this.var_1042 += 5;
@@ -483,14 +483,14 @@ public final class Class_e_0134 extends Class_f_0145 {
 		}
 		sub_1a89(null, this.var_101a, this.var_103a, this.var_1042);
 		if ((this.var_103a < this.canvasWidth) && (this.var_113a)) {
-			this.var_103a += var_1012.var_472a.var_c20;
+			this.var_103a += var_1012.var_472a.spriteFrameWidth;
 		}
 		this.var_108a = 11;
 		sub_1930(paramInt1, paramInt2, paramInt5);
 	}
 
 	public final void sub_224f(String[] paramArrayOfString,
-			Class_d_0033[] paramArrayOfClass_d_0033, int paramInt1,
+			Class_d_ImageWrap[] paramArrayOfClass_d_0033, int paramInt1,
 			int paramInt2, int paramInt3, int paramInt4, byte paramByte) {
 		this.var_124a = 1;
 		this.var_101a = paramArrayOfString;
@@ -499,7 +499,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 		this.var_1252 = var_1012.var_4a0a;
 		this.var_10b2 = (Class_c_MainCanvas.var_1767 - Class_c_MainCanvas.fontBaselinePos);
 		this.var_1092 = 15;
-		this.var_123a = this.var_1252.var_c20;
+		this.var_123a = this.var_1252.spriteFrameWidth;
 		this.var_1242 = (this.var_123a >> 1);
 		sub_1d69();
 		this.var_11f2 = new short[this.var_1062];
@@ -512,20 +512,20 @@ public final class Class_e_0134 extends Class_f_0145 {
 		if (this.var_1062 == 1) {
 			this.var_1202 = 0;
 		} else if (paramInt3 <= 0) {
-			this.var_1202 = ((this.var_1252.var_c20 << 10) / (2 * Class_f_0145
+			this.var_1202 = ((this.var_1252.spriteFrameWidth << 10) / (2 * Class_f_0145
 					.sub_f0f(45)));
-			this.var_120a = (this.var_1202 + this.var_1252.var_c20 / 2);
+			this.var_120a = (this.var_1202 + this.var_1252.spriteFrameWidth / 2);
 			paramInt3 = (this.var_120a << 1) + Class_c_MainCanvas.var_1767 + 2;
 		} else {
 			int someInt;
-			someInt = (this.var_1252.var_c20 << 10)
+			someInt = (this.var_1252.spriteFrameWidth << 10)
 					/ Class_f_0145.sub_f0f(this.var_1222 / 2)
-					+ this.var_1252.var_c28 / 2;
+					+ this.var_1252.spriteFrameHeight / 2;
 			this.var_120a = ((paramInt3 - Class_c_MainCanvas.var_1767) / 2 - 2);
 			if (this.var_120a > someInt) {
 				this.var_120a = someInt;
 			}
-			this.var_1202 = (this.var_120a - this.var_1252.var_c28 / 2);
+			this.var_1202 = (this.var_120a - this.var_1252.spriteFrameHeight / 2);
 		}
 		this.var_11fa = 0;
 		this.var_103a = (this.var_120a << 1);
@@ -577,22 +577,22 @@ public final class Class_e_0134 extends Class_f_0145 {
 				}
 				if ((this.var_108a == 0) || (this.var_108a == 3)) {
 					for (int i = 0; i < this.var_112a.length; i++) {
-						if (this.var_112a[i].var_c00 == this.var_112a[i]
-								.sub_1ada() - 1) {
+						if (this.var_112a[i].currentFrameIndex == this.var_112a[i]
+								.getImagesCount() - 1) {
 							if (this.var_1232 == 0) {
 								this.var_112a[i]
 										.sub_1b36(
 												Class_c_MainCanvas
-														.getRandomMax(this.var_1252.var_c20
-																- this.var_112a[i].var_c20),
+														.getRandomMax(this.var_1252.spriteFrameWidth
+																- this.var_112a[i].spriteFrameWidth),
 												Class_c_MainCanvas
-														.getRandomMax(this.var_1252.var_c28
-																- this.var_112a[i].var_c28));
+														.getRandomMax(this.var_1252.spriteFrameHeight
+																- this.var_112a[i].spriteFrameHeight));
 							} else {
 								this.var_112a[i].var_c18 = false;
 							}
 						}
-						this.var_112a[i].sub_1b5d();
+						this.var_112a[i].nextFrame();
 					}
 					this.var_109a = true;
 				}
@@ -1025,8 +1025,8 @@ public final class Class_e_0134 extends Class_f_0145 {
 			if ((this.var_11b2 != null)
 					&& ((this.var_101a == null) || (this.var_1052
 							.stringWidth(this.var_101a[0]) < bool1
-							- (this.var_11b2.var_6b1 << 1)))) {
-				this.var_11b2.sub_1139(paramGraphics, 0, bool2 / 1, 6);
+							- (this.var_11b2.imageWidth << 1)))) {
+				this.var_11b2.drawOnGraphics(paramGraphics, 0, bool2 / 1, 6);
 			}
 			if (paramBoolean) {
 				paramGraphics.setColor(5594742);
@@ -1050,32 +1050,32 @@ public final class Class_e_0134 extends Class_f_0145 {
 							+ 2
 							- (Class_f_0145.sub_f35(bool3) * this.var_11fa >> 10);
 					if ((this.var_1002 == 2) && (bool4 == this.var_105a)) {
-						this.var_1252.sub_1c69(paramGraphics, 1, iInt,
+						this.var_1252.drawFrame(paramGraphics, 1, iInt,
 								bool3, 3);
 						if (this.var_1232 == 0) {
 							bool5 = 0;
 						}
 					} else {
 						while (bool5 < this.var_112a.length) {
-							this.var_112a[bool5].sub_1cf3(paramGraphics,
+							this.var_112a[bool5].drawCurrentFrame(paramGraphics,
 									iInt - this.var_1242, bool3
 											- this.var_1242, 20);
 							bool5++;
 							continue;
-							this.var_1252.sub_1c69(paramGraphics, 0,
+							this.var_1252.drawFrame(paramGraphics, 0,
 									iInt, bool3, 3);
 						}
 					}
 					if ((this.var_101a[bool4] != null)
 							&& (this.var_1022 != null)
 							&& (this.var_1022[bool4] != null)) {
-						this.var_1022[bool4].sub_1139(paramGraphics,
+						this.var_1022[bool4].drawOnGraphics(paramGraphics,
 								iInt, bool3, 3);
 					}
 				}
 				if (this.var_1002 == 2) {
 					for (bool4 = 0; bool4 < this.var_112a.length; bool4++) {
-						this.var_112a[bool4].sub_1cf3(paramGraphics,
+						this.var_112a[bool4].drawCurrentFrame(paramGraphics,
 								(this.var_103a - this.var_123a) / 2,
 								Class_c_MainCanvas.var_1767, 3);
 					}
@@ -1140,7 +1140,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 					String str2;
 					if (this.var_108a == 2) {
 						str2 = "" + this.var_110a.var_efb;
-						var_1012.var_4a2a.sub_1c69(paramGraphics, 1, bool1 - bool2
+						var_1012.var_4a2a.drawFrame(paramGraphics, 1, bool1 - bool2
 								- Class_c_MainCanvas.sub_1e71((byte) 1, str2), k, 10);
 					} else {
 						str2 = "" + this.var_110a.var_e7b;
@@ -1166,7 +1166,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 						String str1 = "" + this.var_110a.var_dfb;
 						i2 = Class_c_MainCanvas.sub_1e71((byte) 0, str1);
 						int bool13 = bool1 - sumBool - bool2
-								- var_1012.var_4a22.var_c20 - i2 - bool2;
+								- var_1012.var_4a22.spriteFrameWidth - i2 - bool2;
 						paramGraphics.setColor(this.var_fea);
 						sub_3421(paramGraphics, sumBool, bool3, bool13, bool5);
 						paramGraphics.setColor(2370117);
@@ -1178,7 +1178,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 						paramGraphics.fillRect(sumBool + 1, bool3 + 1,
 								bool6, bool5 - 1);
 						sumBool = bool1 - bool2 - i2;
-						var_1012.var_4a22.sub_1c69(paramGraphics, 2, sumBool,
+						var_1012.var_4a22.drawFrame(paramGraphics, 2, sumBool,
 								k, 10);
 						Class_c_MainCanvas.sub_2007(paramGraphics, str1, sumBool, k,
 								0, 6);
@@ -1189,9 +1189,9 @@ public final class Class_e_0134 extends Class_f_0145 {
 						bool3 += 1 + var_ff2;
 					}
 					bool5 = (bool1 - bool2 * 1) / 2;
-					m = var_1012.var_4a22.var_c28;
-					int bool13 = var_1012.var_4a12.var_c28;
-					int bool6 = var_1012.var_4a12.var_c28 / 2;
+					m = var_1012.var_4a22.spriteFrameHeight;
+					int bool13 = var_1012.var_4a12.spriteFrameHeight;
+					int bool6 = var_1012.var_4a12.spriteFrameHeight / 2;
 					for (k = 0; k < 2; k++) {
 						int bool9Int = bool3 + bool6 - m / 2;
 						int sumBool;
@@ -1203,7 +1203,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 								var_1012.var_4a12.sub_1d20(paramGraphics,
 										sumBool, bool3);
 								if (((i4 = (k << 1) + bool11Int) == 0) || (i4 == 1)) {
-									var_1012.var_4a22.sub_1c69(paramGraphics, i4,
+									var_1012.var_4a22.drawFrame(paramGraphics, i4,
 											i2, bool3 + bool6, 3);
 								}
 								bool12 = 0;
@@ -1219,7 +1219,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 									}
 									str2 = "" + (this.var_110a.var_e6b + i3);
 								} else if (i4 == 2) {
-									var_1012.var_4622[5].sub_1139(paramGraphics,
+									var_1012.var_4622[5].drawOnGraphics(paramGraphics,
 											i2, bool3 + bool6, 3);
 									str2 = "" + this.var_110a.var_e73;
 								}
@@ -1227,10 +1227,10 @@ public final class Class_e_0134 extends Class_f_0145 {
 										sumBool + bool13 + 1, bool3 + bool6,
 										0, 6);
 								if (i3 > 0) {
-									var_1012.var_4b22.sub_1c69(paramGraphics, 1, i2
+									var_1012.var_4b22.drawFrame(paramGraphics, 1, i2
 											+ bool5 - bool6 - 1, bool3 + bool6, 10);
 								} else if (i3 < 0) {
-									var_1012.var_4b22.sub_1c69(paramGraphics, 2, i2
+									var_1012.var_4b22.drawFrame(paramGraphics, 2, i2
 											+ bool5 - bool6 - 1, bool3 + bool6, 10);
 								}
 								sumBool += bool5 + var_ff2;
@@ -1249,9 +1249,9 @@ public final class Class_e_0134 extends Class_f_0145 {
 					paramGraphics.setColor(11515819);
 					paramGraphics.drawLine(var_ff2, bool3, bool1 - (var_ff2 << 1),
 							bool3);
-					bool3 = bool3 + (1 + var_ff2) + var_1012.var_4a0a.var_c28 / 2;
+					bool3 = bool3 + (1 + var_ff2) + var_1012.var_4a0a.spriteFrameHeight / 2;
 					int sumB;
-					sumB = var_1012.var_4722.var_c20 + this.var_10e2
+					sumB = var_1012.var_4722.spriteFrameWidth + this.var_10e2
 							+ this.var_1122;
 					j = this.var_10ca;
 					i3 = this.var_10ca + this.var_10d2;
@@ -1267,10 +1267,10 @@ public final class Class_e_0134 extends Class_f_0145 {
 						}
 						m = sumB + this.var_104a / 2;
 						if (bool5 == this.var_105a) {
-							var_1012.var_4a0a.sub_1c69(paramGraphics, 1, m, bool3,
+							var_1012.var_4a0a.drawFrame(paramGraphics, 1, m, bool3,
 									3);
 						} else {
-							var_1012.var_4a0a.sub_1c69(paramGraphics, 0, m, bool3,
+							var_1012.var_4a0a.drawFrame(paramGraphics, 0, m, bool3,
 									3);
 						}
 						Class_a_0260 localClass_a_0260 = this.var_10aa[bool5];
@@ -1284,24 +1284,24 @@ public final class Class_e_0134 extends Class_f_0145 {
 										bool9int,
 										localClass_a_0260.var_efb > var_1012.var_486a[var_1012.var_4842]);
 						if (bool5 == this.var_105a) {
-							k = m - this.var_1252.var_c20 / 2;
-							int bool11int = bool3 - this.var_1252.var_c20 / 2;
+							k = m - this.var_1252.spriteFrameWidth / 2;
+							int bool11int = bool3 - this.var_1252.spriteFrameWidth / 2;
 							for (int bool10int = 0; bool10int < this.var_112a.length; bool10int++) {
-								this.var_112a[bool10int].sub_1cf3(paramGraphics, k,
+								this.var_112a[bool10int].drawCurrentFrame(paramGraphics, k,
 										bool11int, 20);
 							}
 						}
 						sumB += this.var_104a;
 					}
-					var_1012.var_4722.sub_1c69(paramGraphics, 0, 0, bool3, 6);
-					var_1012.var_4722.sub_1c69(paramGraphics, 1, bool1, bool3, 10);
+					var_1012.var_4722.drawFrame(paramGraphics, 0, 0, bool3, 6);
+					var_1012.var_4722.drawFrame(paramGraphics, 1, bool1, bool3, 10);
 					break;
 				case 7:
 				case 10:
 				case 11:
 					paramGraphics.setFont(Class_c_MainCanvas.theFont);
 					if (this.var_10c2 != -1) {
-						var_1012.var_476a.sub_1c69(paramGraphics, this.var_10c2,
+						var_1012.var_476a.drawFrame(paramGraphics, this.var_10c2,
 								-8, j, 36);
 					}
 					bool1 -= this.var_10da;
@@ -1335,7 +1335,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 					paramGraphics.setClip(this.var_10da, bool5, i, j - bool5);
 					k = i;
 					if (this.var_113a) {
-						k = i - var_1012.var_472a.var_c20;
+						k = i - var_1012.var_472a.spriteFrameWidth;
 					}
 					m = this.var_10da + k / 2;
 					for (bool9 = intbool10; bool9 < intparamBoolean; bool9++) {
@@ -1370,9 +1370,9 @@ public final class Class_e_0134 extends Class_f_0145 {
 						bool3 += this.var_104a;
 					}
 					if (this.var_113a) {
-						int i1 = var_1012.var_472a.var_c28;
-						bool5 = var_1012.var_472a.var_c20;
-						bool7 = var_1012.var_472a.var_c20 / 2;
+						int i1 = var_1012.var_472a.spriteFrameHeight;
+						bool5 = var_1012.var_472a.spriteFrameWidth;
+						bool7 = var_1012.var_472a.spriteFrameWidth / 2;
 						intparamBoolean = j - (i1 << 1) - 2;
 						bool3 = i - (bool5 + bool7) / 2;
 						if (intparamBoolean > 1) {
@@ -1387,17 +1387,17 @@ public final class Class_e_0134 extends Class_f_0145 {
 							sub_3421(paramGraphics, bool3 + 1, i1
 									+ (intparamBoolean - 1) * this.var_10ca
 									/ this.var_1062 + 2, bool7 - 1, k);
-							var_1012.var_472a.sub_1c69(paramGraphics, 0, i - bool5,
+							var_1012.var_472a.drawFrame(paramGraphics, 0, i - bool5,
 									0, 20);
-							var_1012.var_472a.sub_1c69(paramGraphics, 1, i - bool5,
+							var_1012.var_472a.drawFrame(paramGraphics, 1, i - bool5,
 									j, 36);
 						} else {
 							if (this.var_10ca > 0) {
-								var_1012.var_472a.sub_1c69(paramGraphics, 0, i
+								var_1012.var_472a.drawFrame(paramGraphics, 0, i
 										- bool5, 0, 20);
 							}
 							if (this.var_10ca + this.var_10d2 < this.var_1062) {
-								var_1012.var_472a.sub_1c69(paramGraphics, 1, i
+								var_1012.var_472a.drawFrame(paramGraphics, 1, i
 										- bool5, j, 36);
 							}
 						}
@@ -1410,14 +1410,14 @@ public final class Class_e_0134 extends Class_f_0145 {
 					if ((this.var_1092 & 0x2) == 0) {
 						i1 = j + 5;
 					}
-					var_1012.var_472a.sub_1c69(paramGraphics, 1, i + this.var_10da,
+					var_1012.var_472a.drawFrame(paramGraphics, 1, i + this.var_10da,
 							i1, 40);
 					break;
 				case 8:
 					Class_g_1956.sub_10f49(paramGraphics, 0, 0, this.var_103a,
 							this.var_1042);
-					bool11 = var_1012.var_46c2[0].var_6b1;
-					bool10 = var_1012.var_46c2[0].var_6b9;
+					bool11 = var_1012.var_46c2[0].imageWidth;
+					bool10 = var_1012.var_46c2[0].imageHeight;
 					i4 = this.var_117a + this.var_116a;
 					i3 = this.var_1172 + this.var_1162;
 					bool3 = 1;
@@ -1449,7 +1449,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 									&& (paramBooleanCl.var_e43 >= this.var_116a)
 									&& (paramBooleanCl.var_e43 < i4)) {
 								var_1012.var_4a62
-										.sub_1c69(
+										.drawFrame(
 												paramGraphics,
 												var_1012.var_4832[paramBooleanCl.var_e33] - 1,
 												paramBooleanCl.var_e3b * bool11 + m,
@@ -1463,18 +1463,18 @@ public final class Class_e_0134 extends Class_f_0145 {
 						break;
 					}
 					if (this.var_116a > 0) {
-						var_1012.var_472a.sub_1c69(paramGraphics, 0, i / 2, 0, 17);
+						var_1012.var_472a.drawFrame(paramGraphics, 0, i / 2, 0, 17);
 					}
 					if (this.var_116a + this.var_117a < this.var_119a) {
-						var_1012.var_472a.sub_1c69(paramGraphics, 1, i / 2, j, 33);
+						var_1012.var_472a.drawFrame(paramGraphics, 1, i / 2, j, 33);
 					}
 					if (this.var_1162 > 0) {
-						var_1012.var_4722.sub_1c69(paramGraphics, 0, 0, j / 2, 6);
+						var_1012.var_4722.drawFrame(paramGraphics, 0, 0, j / 2, 6);
 					}
 					if (this.var_1162 + this.var_1172 >= this.var_1192) {
 						break;
 					}
-					var_1012.var_4722.sub_1c69(paramGraphics, 1, i, j / 2, 10);
+					var_1012.var_4722.drawFrame(paramGraphics, 1, i, j / 2, 10);
 					break;
 				case 13:
 					m = Class_c_MainCanvas.var_1767;
@@ -1492,12 +1492,12 @@ public final class Class_e_0134 extends Class_f_0145 {
 			}
 			while (bool5>0) {
 				if (bool5 == this.var_105a) {
-					var_1012.var_4a12.sub_1c69(paramGraphics, 1, n, 0, 20);
+					var_1012.var_4a12.drawFrame(paramGraphics, 1, n, 0, 20);
 				} else {
-					var_1012.var_4a12.sub_1c69(paramGraphics, 0, n, 0, 20);
+					var_1012.var_4a12.drawFrame(paramGraphics, 0, n, 0, 20);
 				}
-				this.var_1022[bool5].sub_1139(paramGraphics, n
-						+ var_1012.var_4a12.var_c20 / 2, this.var_1042 / 2, 3);
+				this.var_1022[bool5].drawOnGraphics(paramGraphics, n
+						+ var_1012.var_4a12.spriteFrameWidth / 2, this.var_1042 / 2, 3);
 				n -= this.var_104a;
 				bool5--;
 				continue;
@@ -1508,8 +1508,8 @@ public final class Class_e_0134 extends Class_f_0145 {
 				Class_c_MainCanvas.showString(paramGraphics,
 						this.var_101a[this.var_105a], i / 2,
 						(j - Class_c_MainCanvas.fontBaselinePos) / 2, 17);
-				var_1012.var_4722.sub_1c69(paramGraphics, 0, 0, k, 6);
-				var_1012.var_4722.sub_1c69(paramGraphics, 1, i, k, 10);
+				var_1012.var_4722.drawFrame(paramGraphics, 0, 0, k, 6);
+				var_1012.var_4722.drawFrame(paramGraphics, 1, i, k, 10);
 				break;
 				m = 0;
 				bool3 = 0;
@@ -1519,7 +1519,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 					bool5 += this.var_11da[j];
 				}
 				if (this.var_11ca > 0) {
-					bool3 = -m + var_1012.var_4732.var_c28;
+					bool3 = -m + var_1012.var_4732.spriteFrameHeight;
 				}
 				for (j = 0; j < this.var_1142.size(); j++) {
 					Class_e_0134 intparamBoolean;
@@ -1535,19 +1535,19 @@ public final class Class_e_0134 extends Class_f_0145 {
 				if (this.var_11ca > 0) {
 					paramGraphics.setColor(2370117);
 					paramGraphics.fillRect(0, 0, this.canvasWidth,
-							var_1012.var_4732.var_c28);
-					var_1012.var_472a.sub_1c69(paramGraphics, 0,
+							var_1012.var_4732.spriteFrameHeight);
+					var_1012.var_472a.drawFrame(paramGraphics, 0,
 							var_1012.var_459a / 2, -this.var_106a, 17);
 				}
 				if (this.var_11ca < this.var_11d2) {
 					paramGraphics.setColor(2370117);
 					j = this.var_11da[this.var_11ca];
 					if (this.var_11ca > 0) {
-						j += var_1012.var_4732.var_c28;
+						j += var_1012.var_4732.spriteFrameHeight;
 					}
 					paramGraphics.fillRect(0, j, this.canvasWidth,
 							var_1012.var_45a2 - j);
-					var_1012.var_472a.sub_1c69(paramGraphics, 1,
+					var_1012.var_472a.drawFrame(paramGraphics, 1,
 							var_1012.var_459a / 2, var_1012.var_45a2
 									+ this.var_106a, 33);
 				}
@@ -1576,7 +1576,7 @@ public final class Class_e_0134 extends Class_f_0145 {
 	public static final void sub_5092(Graphics paramGraphics, int paramInt1,
 			int paramInt2, int paramInt3, int paramInt4, int paramInt5,
 			int paramInt6, int paramInt7, int paramInt8, int paramInt9) {
-		Class_g_2517 localClass_g_2517 = var_1012.var_473a;
+		Class_g_Sprite localClass_g_2517 = var_1012.var_473a;
 		paramGraphics.setClip(paramInt1, paramInt2, paramInt3, paramInt4);
 		paramGraphics.setColor(paramInt6);
 		paramGraphics.fillRect(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -1600,8 +1600,8 @@ public final class Class_e_0134 extends Class_f_0145 {
 			j = (paramInt5 & 0x8) == 0 ? 1 : 0;
 			k = (paramInt5 & 0x1) == 0 ? 1 : 0;
 			m = (paramInt5 & 0x2) == 0 ? 1 : 0;
-			paramInt5 = paramInt3 / localClass_g_2517.var_c20 - 2;
-			if (paramInt3 % localClass_g_2517.var_c20 != 0) {
+			paramInt5 = paramInt3 / localClass_g_2517.spriteFrameWidth - 2;
+			if (paramInt3 % localClass_g_2517.spriteFrameWidth != 0) {
 				paramInt5++;
 			}
 			if (i == 0) {
@@ -1610,8 +1610,8 @@ public final class Class_e_0134 extends Class_f_0145 {
 			if (j == 0) {
 				paramInt5++;
 			}
-			paramInt6 = paramInt4 / localClass_g_2517.var_c28 - 2;
-			if (paramInt4 % localClass_g_2517.var_c28 != 0) {
+			paramInt6 = paramInt4 / localClass_g_2517.spriteFrameHeight - 2;
+			if (paramInt4 % localClass_g_2517.spriteFrameHeight != 0) {
 				paramInt6++;
 			}
 			if (k == 0) {
@@ -1622,50 +1622,50 @@ public final class Class_e_0134 extends Class_f_0145 {
 			}
 			paramInt7 = paramInt1;
 			if (i != 0) {
-				paramInt7 = paramInt1 + localClass_g_2517.var_c20;
+				paramInt7 = paramInt1 + localClass_g_2517.spriteFrameWidth;
 			}
-			paramInt4 = paramInt2 + paramInt4 - localClass_g_2517.var_c28;
+			paramInt4 = paramInt2 + paramInt4 - localClass_g_2517.spriteFrameHeight;
 			for (paramInt8 = 0; paramInt8 < paramInt5; paramInt8++) {
 				if (k != 0) {
-					localClass_g_2517.sub_1c69(paramGraphics, 1, paramInt7,
+					localClass_g_2517.drawFrame(paramGraphics, 1, paramInt7,
 							paramInt2, 0);
 				}
 				if (m != 0) {
-					localClass_g_2517.sub_1c69(paramGraphics, 6, paramInt7,
+					localClass_g_2517.drawFrame(paramGraphics, 6, paramInt7,
 							paramInt4, 0);
 				}
-				paramInt7 += localClass_g_2517.var_c20;
+				paramInt7 += localClass_g_2517.spriteFrameWidth;
 			}
 			paramInt8 = paramInt2;
 			if (k != 0) {
-				paramInt8 = paramInt2 + localClass_g_2517.var_c28;
+				paramInt8 = paramInt2 + localClass_g_2517.spriteFrameHeight;
 			}
-			paramInt3 = paramInt1 + paramInt3 - localClass_g_2517.var_c20;
+			paramInt3 = paramInt1 + paramInt3 - localClass_g_2517.spriteFrameWidth;
 			for (paramInt5 = 0; paramInt5 < paramInt6; paramInt5++) {
 				if (i != 0) {
-					localClass_g_2517.sub_1c69(paramGraphics, 3, paramInt1,
+					localClass_g_2517.drawFrame(paramGraphics, 3, paramInt1,
 							paramInt8, 0);
 				}
 				if (j != 0) {
-					localClass_g_2517.sub_1c69(paramGraphics, 4, paramInt3,
+					localClass_g_2517.drawFrame(paramGraphics, 4, paramInt3,
 							paramInt8, 0);
 				}
-				paramInt8 += localClass_g_2517.var_c28;
+				paramInt8 += localClass_g_2517.spriteFrameHeight;
 			}
 			if ((i != 0) && (k != 0)) {
-				localClass_g_2517.sub_1c69(paramGraphics, 0, paramInt1,
+				localClass_g_2517.drawFrame(paramGraphics, 0, paramInt1,
 						paramInt2, 0);
 			}
 			if ((j != 0) && (k != 0)) {
-				localClass_g_2517.sub_1c69(paramGraphics, 2, paramInt3,
+				localClass_g_2517.drawFrame(paramGraphics, 2, paramInt3,
 						paramInt2, 0);
 			}
 			if ((i != 0) && (m != 0)) {
-				localClass_g_2517.sub_1c69(paramGraphics, 5, paramInt1,
+				localClass_g_2517.drawFrame(paramGraphics, 5, paramInt1,
 						paramInt4, 0);
 			}
 			if ((j != 0) && (m != 0)) {
-				localClass_g_2517.sub_1c69(paramGraphics, 7, paramInt3,
+				localClass_g_2517.drawFrame(paramGraphics, 7, paramInt3,
 						paramInt4, 0);
 			}
 		}

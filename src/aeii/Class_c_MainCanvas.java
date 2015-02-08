@@ -1,6 +1,6 @@
 package aeii;
 
-import a.a.a.Class_g_2517;
+import a.a.a.Class_g_Sprite;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -47,7 +47,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 	private int var_17d7;
 	private int gameActionCodeRunning = 0;
 	private long gameActionStartTime;
-	public static Class_g_2517[] var_17ef;
+	public static Class_g_Sprite[] sprites;
 	public static Random random = new Random();
 	public static boolean[] var_17ff = { true, true, true, true };
 	public static String[] var_1807;
@@ -162,7 +162,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 		}
 	}
 
-	public static String[] sub_1bda(String paramString, char paramChar1) {
+	public static String[] splitStringByChar(String paramString, char paramChar1) {
 		Vector paramChar = new Vector();
 		while (paramString.length() > 0) {
 			int i;
@@ -250,12 +250,12 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 		return size;
 	}
 
-	public static final int sub_1e71(byte paramByte, String paramString) {
-		return var_17ef[paramByte].var_c20 * paramString.length();
+	public static final int sub_1e71(byte spriteIndex, String paramString) {
+		return sprites[spriteIndex].spriteFrameWidth * paramString.length();
 	}
 
-	public static final int sub_1e99(byte paramByte) {
-		return var_17ef[paramByte].var_c28;
+	public static final int sub_1e99(byte spriteIndex) {
+		return sprites[spriteIndex].spriteFrameHeight;
 	}
 
 	public static final void setGraphicsColor(Graphics paramGraphics, int colorInt) {
@@ -315,10 +315,10 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 			if ((aChar >= var_1777[paramInt3]) && (aChar <= var_177f[paramInt3])) {
 				int m = var_1787[paramInt3][(aChar - var_1777[paramInt3])];
 				if (m  != -1) {
-					var_17ef[paramInt3].sub_1afa(m);
-					var_17ef[paramInt3]
+					sprites[paramInt3].setCurrentFrameIndex(m);
+					sprites[paramInt3]
 							.sub_1d20(paramGraphics, paramInt1, paramInt2);
-					paramInt1 += var_17ef[paramInt3].var_c20;
+					paramInt1 += sprites[paramInt3].spriteFrameWidth;
 				} else {
 					byte[] localObject = { (byte) aChar };
 					String localString = new String(localObject);
@@ -525,8 +525,8 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 	}
 
 	public static final void sub_28be() {
-		var_17ef[0] = new Class_g_2517("chars");
-		var_17ef[1] = new Class_g_2517("lchars");
+		sprites[0] = new Class_g_Sprite("chars");
+		sprites[1] = new Class_g_Sprite("lchars");
 	}
 
 	public final void setFPSOverride(int fps) {
@@ -764,7 +764,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 		var_1777 = new short[] { 45, 43 };
 		var_177f = new short[] { 57, 57 };
 		var_1787 = new byte[][] { { 10, 11, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, { 12, -1, 11, -1, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
-		var_17ef = new Class_g_2517[2];
+		sprites = new Class_g_Sprite[2];
 	}
 }
 

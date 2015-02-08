@@ -1,12 +1,12 @@
 package aeii;
 
-import a.a.a.Class_g_2517;
+import a.a.a.Class_g_Sprite;
 import java.io.DataInputStream;
 import java.io.InputStream;
 import java.util.Vector;
 import javax.microedition.lcdui.Graphics;
 
-public final class Class_a_0260 extends Class_g_2517 {
+public final class Class_a_0260 extends Class_g_Sprite {
 	
 	public static byte var_dd3 = 12;
 	public static byte var_ddb;
@@ -602,7 +602,7 @@ public final class Class_a_0260 extends Class_g_2517 {
 				int i = (arrayOfShort = (short[]) this.var_e13
 						.elementAt(this.var_e1b))[0] * 24;
 				int j = arrayOfShort[1] * 24;
-				Class_g_2517 localClass_g_2517 = null;
+				Class_g_Sprite localClass_g_2517 = null;
 				if ((this.var_ee3 == null)
 						&& (++this.var_edb >= 24 / var_de3 / 2)) {
 					localClass_g_2517 = var_deb.sub_6c4a(var_deb.var_4a72,
@@ -613,30 +613,30 @@ public final class Class_a_0260 extends Class_g_2517 {
 				if (i < this.var_c08) {
 					this.var_c08 -= var_de3;
 					if (localClass_g_2517 != null) {
-						localClass_g_2517.sub_1b36(this.var_c08 + this.var_c20,
-								this.var_c10 + this.var_c28
-										- localClass_g_2517.var_c28);
+						localClass_g_2517.sub_1b36(this.var_c08 + this.spriteFrameWidth,
+								this.var_c10 + this.spriteFrameHeight
+										- localClass_g_2517.spriteFrameHeight);
 					}
 				} else if (i > this.var_c08) {
 					this.var_c08 += var_de3;
 					if (localClass_g_2517 != null) {
 						localClass_g_2517.sub_1b36(this.var_c08
-								- localClass_g_2517.var_c20, this.var_c10
-								+ this.var_c28 - localClass_g_2517.var_c28);
+								- localClass_g_2517.spriteFrameWidth, this.var_c10
+								+ this.spriteFrameHeight - localClass_g_2517.spriteFrameHeight);
 					}
 				} else if (j < this.var_c10) {
 					this.var_c10 -= var_de3;
 					if (localClass_g_2517 != null) {
 						localClass_g_2517.sub_1b36(this.var_c08
-								+ (this.var_c20 - localClass_g_2517.var_c20)
-								/ 2, this.var_c10 + this.var_c28);
+								+ (this.spriteFrameWidth - localClass_g_2517.spriteFrameWidth)
+								/ 2, this.var_c10 + this.spriteFrameHeight);
 					}
 				} else if (j > this.var_c10) {
 					this.var_c10 += var_de3;
 					if (localClass_g_2517 != null) {
 						localClass_g_2517.sub_1b36(this.var_c08
-								+ (this.var_c20 - localClass_g_2517.var_c20)
-								/ 2, this.var_c10 - localClass_g_2517.var_c28);
+								+ (this.spriteFrameWidth - localClass_g_2517.spriteFrameWidth)
+								/ 2, this.var_c10 - localClass_g_2517.spriteFrameHeight);
 					}
 				}
 				if ((this.var_c08 == i) && (this.var_c10 == j)) {
@@ -733,12 +733,12 @@ public final class Class_a_0260 extends Class_g_2517 {
 				j = this.var_c08 + paramInt1;
 				i = this.var_c10 + paramInt2;
 				if ((paramBoolean) || (this.var_e83 == 2)) {
-					var_deb.var_4afa[1].sub_1c69(paramGraphics,
-							(this.var_eeb << 1) + this.var_c00, j, i, 0);
+					var_deb.var_4afa[1].drawFrame(paramGraphics,
+							(this.var_eeb << 1) + this.currentFrameIndex, j, i, 0);
 					return;
 				}
-				var_deb.var_4afa[0].sub_1c69(paramGraphics, (this.var_eeb << 1)
-						+ this.var_c00, j, i, 0);
+				var_deb.var_4afa[0].drawFrame(paramGraphics, (this.var_eeb << 1)
+						+ this.currentFrameIndex, j, i, 0);
 			}
 		}
 	}
@@ -749,7 +749,7 @@ public final class Class_a_0260 extends Class_g_2517 {
 		paramInt2 = this.var_c10 + paramInt2;
 		if ((this.var_e83 != 3) && (this.var_e7b < 100)) {
 			Class_c_MainCanvas.sub_20c1(paramGraphics, "" + this.var_e7b, paramInt1,
-					paramInt2 + this.var_c28 - 7, 0);
+					paramInt2 + this.spriteFrameHeight - 7, 0);
 		}
 	}
 
@@ -768,7 +768,7 @@ public final class Class_a_0260 extends Class_g_2517 {
 					}
 					if ((str = str.trim()).length() != 0) {
 						String[] arrayOfString;
-						if ((arrayOfString = Class_c_MainCanvas.sub_1bda(str, ' '))[0]
+						if ((arrayOfString = Class_c_MainCanvas.splitStringByChar(str, ' '))[0]
 								.equalsIgnoreCase("MoveRange")) {
 							var_f13[it] = ((byte) Integer
 									.parseInt(arrayOfString[1]));
