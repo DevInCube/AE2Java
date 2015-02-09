@@ -991,7 +991,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 				Class_g_Sprite localClass_g_2517;
 				(localClass_g_2517 = Class_g_Sprite.sub_2054(this.statusSprite, 0, 0,
 						-4, -1, 800, (byte) 5)).setPixelPosition(this.var_4942.pixelX
-						+ (this.var_4942.o - localClass_g_2517.spriteFrameWidth) / 2,
+						+ (this.var_4942.spriteFrameWidth - localClass_g_2517.spriteFrameWidth) / 2,
 						this.var_4942.pixelY - localClass_g_2517.spriteFrameHeight);
 				localClass_g_2517.setFrameSequence(var_466a);
 				this.var_488a.addElement(localClass_g_2517);
@@ -1394,12 +1394,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 							localObject1 = this.var_4f72[this.var_4f62.var_105a];
 						}
 						if (((String) localObject1).endsWith(".aem")) {
-							Class_c_AConnection lo3;
-							if ((lo3 = this.var_4f6a
-									.createSomeFileConnection((String) localObject1)).sub_5d81()) {
+							Class_c_AConnection lo3 = this.var_4f6a
+									.createSomeFileConnection((String) localObject1);
+							if (lo3.exists()) {
 								((Class_c_AConnection) lo3).truncate(0L);
 							} else {
-								((Class_c_AConnection) lo3).sub_60da();
+								((Class_c_AConnection) lo3).create();
 							}
 							OutputStream ostream;
 							(ostream = ((Class_c_AConnection) lo3).openOutputStream())
@@ -1851,12 +1851,13 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																	: null);
 											this.var_4f5a = new Class_e_0134(
 													(byte) 15, 15);
-											(localObject6 = this.var_4f5a
+											Class_e_0134 localObject61 = this.var_4f5a
 													.sub_165b(sub_7696(
 															this.var_4f6a
 																	.sub_877(),
 															Class_f_StringManager
-																	.getLangString(299)))).var_11b2 = this.menuIconsFrames[6];
+																	.getLangString(299)));
+											localObject61.var_11b2 = this.menuIconsFrames[6];
 											this.var_4f62 = new Class_e_0134(
 													(byte) 0, 0);
 											this.var_4f62
@@ -1866,7 +1867,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 															0,
 															this.someCanWidth,
 															this.someCanHeight
-																	- ((Class_e_0134) localObject6).var_1042
+																	- ((Class_e_0134) localObject61).var_1042
 																	- (this.buttonsSprite.spriteFrameHeight << 1),
 															3, 4);
 											if ((this.var_4f6a.sub_877() != null)
@@ -1877,7 +1878,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 													.sub_1698(
 															this.var_4f62,
 															this.someCanWidthShift,
-															(this.someCanHeight + ((Class_e_0134) localObject6).var_1042) / 2,
+															(this.someCanHeight + ((Class_e_0134) localObject61).var_1042) / 2,
 															3);
 											this.var_4f5a.sub_132e((byte) 0,
 													true);
@@ -2341,13 +2342,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 									} else if (paramClass_e_0134 == this.var_4c02) {
 										if (paramByte == 0) {
 											sub_19031(this.var_4c22);
-											localClass_e_01343 = sub_7384(this.var_4bfa.stringManager);
-											Class_f_StringManager cll;
-											(cll = sub_14359(null,
+											Class_e_0134 cl0134 = sub_7384(this.var_4bfa.stringManager);
+											Class_f_StringManager cll = sub_14359(null,
 													Class_f_StringManager.getStrByIdAndReplaceUWith(51,
 															this.var_4c2a),
-													this.someCanHeight, -1))
-													.sub_1350(localClass_e_01343);
+													this.someCanHeight, -1);
+											cll.sub_1350(cl0134);
 											Class_f_StringManager.mainCanvas
 													.sub_220e((Class_f_StringManager) cll);
 										}
@@ -2845,33 +2845,33 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																.getLangString(70))) {
 													Class_e_0134 localObject2 = new Class_e_0134(
 															(byte) 15, 15);
-													(localObject7 = new Class_e_0134(
-															(byte) 10, 0))
-															.sub_1ca8(
+													Class_e_0134 localObject71 = new Class_e_0134(
+															(byte) 10, 0);
+													localObject71.sub_1ca8(
 																	null,
 																	this.var_4b52,
 																	this.someCanWidth,
 																	-1);
-													(localObject8 = new Class_e_0134(
-															(byte) 8, 0))
-															.sub_17fe(
+													Class_e_0134 localObject81 = new Class_e_0134(
+															(byte) 8, 0);
+													localObject81.sub_17fe(
 																	this.someCanWidth,
 																	this.someCanHeight
-																			- ((Class_e_0134) localObject7).var_1042
+																			- ((Class_e_0134) localObject71).var_1042
 																			- this.buttonsSprite.spriteFrameHeight,
 																	this.var_4782,
 																	this.mapUnitsMaybe);
 													((Class_e_0134) localObject2)
 															.sub_1698(
-																	(Class_e_0134) localObject8,
+																	(Class_e_0134) localObject81,
 																	this.someCanWidthShift,
 																	this.someCanHeightShift
-																			+ (((Class_e_0134) localObject7).var_1042 - this.buttonsSprite.spriteFrameHeight)
+																			+ (((Class_e_0134) localObject71).var_1042 - this.buttonsSprite.spriteFrameHeight)
 																			/ 2,
 																	3);
 													((Class_e_0134) localObject2)
 															.sub_1698(
-																	(Class_e_0134) localObject7,
+																	(Class_e_0134) localObject71,
 																	0, 0, 0);
 													((Class_e_0134) localObject2)
 															.sub_1350(paramClass_e_0134);
@@ -2896,16 +2896,16 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																.getLangString(293))) {
 													sub_19157(this.var_4b52,
 															sub_bb13());
-													(localObject9 = sub_14359(
+													Object localObject91 = sub_14359(
 															null,
 															Class_f_StringManager
 																	.getStrByIdAndReplaceUWith(
 																			45,
 																			this.var_4b52),
-															this.someCanHeight, 2000))
-															.sub_1350(this);
+																			this.someCanHeight, 2000);
+													localObject91.sub_1350(this);
 													Class_f_StringManager.mainCanvas
-															.sub_220e((Class_f_StringManager) localObject9);
+															.sub_220e((Class_f_StringManager) localObject91);
 													return;
 												}
 												if (paramString
@@ -3501,7 +3501,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 
 	private void sub_bf69() {
 		if ((Class_c_MainCanvas.propDisableIntroOn) && (this.var_490a < 4)) {
-			this.var_48fa = new Class_d_ImageWrap("logo", this.j, -1); // @todo j?
+			this.var_48fa = new Class_d_ImageWrap("logo", this.canvasWidth, -1); // @todo j?
 			this.var_490a = 3;
 			this.var_491a = 40;
 		}
@@ -3524,7 +3524,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			return;
 		case 2:
 			initIntro(1, 2, 3);
-			this.var_48fa = new Class_d_ImageWrap("logo", this.j, -1); // j
+			this.var_48fa = new Class_d_ImageWrap("logo", this.canvasWidth, -1); // j
 			this.var_490a += 1;
 			return;
 		case 3:
@@ -3865,10 +3865,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												.createSomeSprite("+" + n, 0, -4,
 														(byte) 1)).setPixelPosition(
 												localClass_a_0260.pixelX
-														+ localClass_a_0260.o
+														+ localClass_a_0260.spriteFrameWidth
 														/ 2,
 												localClass_a_0260.pixelY
-														+ localClass_a_0260.p); // m
+														+ localClass_a_0260.spriteFrameHeight); // m
 																				// n
 										this.var_488a
 												.addElement(localClass_g_25171);
@@ -3906,7 +3906,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											this.var_4942.pixelY, 0, 0, 2, 50);
 									Class_g_Sprite localClass_g_25172 = Class_g_Sprite
 											.createSomeSprite("-" + i1, 0, -4, (byte) 1);
-									if ((i = this.var_4942.pixelX + this.var_4942.o
+									if ((i = this.var_4942.pixelX + this.var_4942.spriteFrameWidth
 											/ 2)
 											+ localClass_g_25172.spriteFrameWidth / 2 > this.var_46d2) {
 										i = this.var_46d2
@@ -3917,7 +3917,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										i = localClass_g_25172.spriteFrameWidth / 2;
 									}
 									localClass_g_25172.setPixelPosition(i,
-											this.var_4942.pixelY + this.var_4942.p);
+											this.var_4942.pixelY + this.var_4942.spriteFrameHeight);
 									this.var_488a
 											.addElement(localClass_g_25172);
 									this.var_4932 = this.var_479a;
@@ -3942,7 +3942,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 													.createSomeSprite("-" + i2, 0, -4,
 															(byte) 1);
 											if ((i = this.var_493a.pixelX
-													+ this.var_493a.o / 2)
+													+ this.var_493a.spriteFrameWidth / 2)
 													+ localClass_g_25173.spriteFrameWidth
 													/ 2 > this.var_46d2) {
 												i = this.var_46d2
@@ -3955,7 +3955,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											}
 											localClass_g_25173.setPixelPosition(i,
 													this.var_493a.pixelY
-															+ this.var_493a.p);
+															+ this.var_493a.spriteFrameHeight);
 											this.var_488a
 													.addElement(localClass_g_25173);
 											this.var_4932 = this.var_479a;
@@ -4003,7 +4003,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 													1, 50 * Class_c_MainCanvas
 															.getRandomMax(4));
 										}
-										if (this.var_4b2a.pixelY >= this.var_4b32.n) {
+										if (this.var_4b2a.pixelY >= this.var_4b32.pixelY) {
 											this.var_4b2a.var_c78 = false;
 											Class_c_MainCanvas.sub_2af6(200);
 											sub_188ce(500);
@@ -4014,17 +4014,18 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 													i3 = this.var_4b32.health;
 												}
 												this.var_4b32.health -= i3;
-												(localObject3 = Class_g_Sprite
+												Class_g_Sprite localObject31 = Class_g_Sprite
 														.createSomeSprite("-" + i3, 0,
-																-4, (byte) 1))
+																-4, (byte) 1);
+												localObject31 
 														.setPixelPosition(
 																this.var_4b32.pixelX
-																		+ this.var_4b32.o
+																		+ this.var_4b32.spriteFrameWidth
 																		/ 2,
 																this.var_4b32.pixelY
-																		+ this.var_4b32.p);
+																		+ this.var_4b32.spriteFrameHeight);
 												this.var_488a
-														.addElement(localObject3);
+														.addElement(localObject31 );
 											}
 											sub_ecee(this.var_4b32);
 											this.var_4b3a = 2;
@@ -4099,10 +4100,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 													this.smallSparkSprite,
 													localClass_a_0260.pixelX
 															+ Class_c_MainCanvas
-																	.getRandomMax(localClass_a_0260.o),
+																	.getRandomMax(localClass_a_0260.spriteFrameWidth),
 													localClass_a_0260.pixelY
 															+ Class_c_MainCanvas
-																	.getRandomMax(localClass_a_0260.p),
+																	.getRandomMax(localClass_a_0260.spriteFrameHeight),
 													0, 0, 1, 50);
 											if (this.var_4af2 == 1) {
 												Class_c_MainCanvas.playMusicLooped(13, 1);
@@ -4113,7 +4114,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 													i10 = 1000;
 												}
 												i = localClass_a_0260.pixelX
-														+ (localClass_a_0260.o - this.levelUpSprite.spriteFrameWidth)
+														+ (localClass_a_0260.spriteFrameWidth - this.levelUpSprite.spriteFrameWidth)
 														/ 2;
 												int i11 = localClass_a_0260.pixelY
 														- (this.var_4af2 << 2);
@@ -4663,22 +4664,24 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 															if ((this.unitAtCursorPos != null)
 																	&& (this.unitAtCursorPos.unitType == 9)) {
 															}
-															for (localObject5 = this.teamsUnits[this.someUnitTeamId][((this.unitAtCursorPos.unitId + 1) % this.teamsUnitsCount[this.someUnitTeamId])];; localObject5 = this.teamsUnits[this.someUnitTeamId][((localObject5.var_ef3 + 1) % this.teamsUnitsCount[this.someUnitTeamId])]) {
+															Class_a_Unit localObject51 = this.teamsUnits[this.someUnitTeamId][((this.unitAtCursorPos.unitId + 1) % this.teamsUnitsCount[this.someUnitTeamId])];
+															for (;;) {
 																i4++;
 																if ((i4 >= this.teamsUnitsCount[this.someUnitTeamId])
-																		|| (((Class_a_Unit) localObject5).var_e83 != 3)) {
-																	if ((localObject5 == null)
-																			|| (((Class_a_Unit) localObject5).var_e83 == 3)) {
+																		|| (((Class_a_Unit) localObject51).var_e83 != 3)) {
+																	if ((localObject51 == null)
+																			|| (((Class_a_Unit) localObject51).var_e83 == 3)) {
 																		break;
 																	}
 																	moveCursorToPos(
-																			((Class_a_Unit) localObject5).posX,
-																			((Class_a_Unit) localObject5).posY);
+																			((Class_a_Unit) localObject51).posX,
+																			((Class_a_Unit) localObject51).posY);
 																	sub_efb8(
-																			((Class_a_Unit) localObject5).pixelX + 12,
-																			((Class_a_Unit) localObject5).pixelY + 12);
+																			((Class_a_Unit) localObject51).pixelX + 12,
+																			((Class_a_Unit) localObject51).pixelY + 12);
 																	break;
 																}
+																localObject51 = this.teamsUnits[this.someUnitTeamId][((localObject51.unitId + 1) % this.teamsUnitsCount[this.someUnitTeamId])];
 															}
 														} else if (Class_f_StringManager.mainCanvas
 																.sub_26d7(32)) {
@@ -6962,12 +6965,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 
 	private Class_e_0134 sub_1437e(String paramString1, String paramString2,
 			int paramInt1, int paramInt2, int paramInt3) {
-		Class_e_0134 localClass_e_0134 = new Class_e_0134((byte) 10, 12);
-		localClass_e_0134.sub_1ca8(paramString1, paramString2, this.canvasWidth, paramInt2);
-		localClass_e_0134.sub_1930(this.canvasWidthShift, paramInt1 / 2, 3);
-		localClass_e_0134.stringManager = this;
-		localClass_e_0134.var_10f2 = paramInt3;
-		return localClass_e_0134;
+		Class_e_0134 strMan = new Class_e_0134((byte) 10, 12);
+		strMan.sub_1ca8(paramString1, paramString2, this.canvasWidth, paramInt2);
+		strMan.sub_1930(this.canvasWidthShift, paramInt1 / 2, 3);
+		strMan.stringManager = this;
+		strMan.var_10f2 = paramInt3;
+		return strMan;
 	}
 
 	private void sub_143ce() {

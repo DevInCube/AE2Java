@@ -1035,7 +1035,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 			int k;
 			int bool4;
 			int bool3;
-			int bool5;
+			int bool5 = 0; //@todo bool5 = 0 ? i wrote this
 			if (this.var_108a == 0) {
 				paramGraphics.setColor(16777215);
 				k = this.var_122a + this.var_1232;
@@ -1061,7 +1061,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 									iInt - this.var_1242, bool3
 											- this.var_1242, 20);
 							bool5++;
-							continue;
+							//continue; @todo i commented
 							this.var_1252.drawFrame(paramGraphics, 0,
 									iInt, bool3, 3);
 						}
@@ -1081,17 +1081,17 @@ public final class Class_e_0134 extends Class_f_StringManager {
 					}
 				}
 			}
-			int bool12;
-			int m;
-			int bool9;
-			int i4;
-			int i3;
-			int j;
-			int bool7;
-			int bool10;
-			int bool11;
-			int i;
-			int n;
+			int bool12 = 0;
+			int m = 0;
+			int bool9 = 0;
+			int i4 = 0;
+			int i3 = 0;
+			int j = 0;
+			int bool7  = 0;
+			int bool10  = 0;
+			int bool11 = 0;
+			int i  = 0;
+			int n  = 0;
 			switch (this.var_108a) {
 				case 0:
 					if (this.var_1002 == 2) {
@@ -1131,11 +1131,11 @@ public final class Class_e_0134 extends Class_f_StringManager {
 					someYVal = var_ff2;
 					this.someUnit0.sub_28d7(paramGraphics, -this.someUnit0.pixelX + someYVal,
 							-this.someUnit0.pixelY + someYVal);  // m n p o
-					k = someYVal + this.someUnit0.p / 2;
+					k = someYVal + this.someUnit0.spriteFrameHeight / 2;
 					paramGraphics.setFont(Class_c_MainCanvas.theFont);
 					paramGraphics.setColor(this.var_fea);
 					Class_c_MainCanvas.showString(paramGraphics, this.someUnit0.unitName,
-							someYVal + this.someUnit0.o + someYVal, k
+							someYVal + this.someUnit0.spriteFrameWidth + someYVal, k
 									- Class_c_MainCanvas.fontBaselinePos / 2, 20);
 					String str2;
 					if (this.var_108a == 2) {
@@ -1148,7 +1148,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 					Class_c_MainCanvas.sub_2007(paramGraphics, str2, someXVal - someYVal, k, 1,
 							10);
 					this.var_10b2 = (Class_c_MainCanvas.var_1767 - Class_c_MainCanvas.fontBaselinePos);
-					bool3 = someYVal + this.someUnit0.p + var_ff2;
+					bool3 = someYVal + this.someUnit0.spriteFrameHeight + var_ff2;
 					paramGraphics.setColor(this.var_fea);
 					paramGraphics.drawLine(someYVal, bool3, someXVal - someYVal - someYVal,
 							bool3);
@@ -1274,8 +1274,8 @@ public final class Class_e_0134 extends Class_f_StringManager {
 									3);
 						}
 						Class_a_Unit localClass_a_0260 = this.var_10aa[bool5];
-						int theXpos = m - localClass_a_0260.pixelX - localClass_a_0260.o / 2; //m
-						int theYPos = bool3 - localClass_a_0260.pixelY - localClass_a_0260.p //n p
+						int theXpos = m - localClass_a_0260.pixelX - localClass_a_0260.spriteFrameWidth / 2; //m
+						int theYPos = bool3 - localClass_a_0260.pixelY - localClass_a_0260.spriteFrameHeight //n p
 								/ 2;
 						localClass_a_0260
 								.sub_28fa(
@@ -1490,7 +1490,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 					n = this.var_103a - this.var_104a;
 					bool5 = this.var_1062 - 1;
 			}
-			while (bool5>0) {
+			while (bool5 > 0) {
 				if (bool5 == this.var_105a) {
 					var_1012.smallCircleSprite.drawFrame(paramGraphics, 1, n, 0, 20);
 				} else {
@@ -1500,7 +1500,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 						+ var_1012.smallCircleSprite.spriteFrameWidth / 2, this.var_1042 / 2, 3);
 				n -= this.var_104a;
 				bool5--;
-				continue;
+				//continue;@todo
 				paramGraphics.setFont(Class_c_MainCanvas.theFont);
 				paramGraphics.setColor(Class_g_1956.sub_f52a(16777215, 1645370,
 						this.var_1132, 5));
@@ -1510,7 +1510,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 						(j - Class_c_MainCanvas.fontBaselinePos) / 2, 17);
 				var_1012.sideArrowSprite.drawFrame(paramGraphics, 0, 0, k, 6);
 				var_1012.sideArrowSprite.drawFrame(paramGraphics, 1, i, k, 10);
-				break;
+				//break;@todo
 				m = 0;
 				bool3 = 0;
 				bool5 = this.var_11da[0];
