@@ -809,7 +809,8 @@ public final class Class_g_Game extends Class_f_StringManager implements Runnabl
 		}
 	}
 
-	public final void sub_60da() {
+	@Override
+	public final void someUnknownMethod() {
 		this.var_4c42 = true;
 		this.var_4c4a = true;
 		this.var_4eb2 = true;
@@ -3580,7 +3581,8 @@ public final class Class_g_Game extends Class_f_StringManager implements Runnabl
 		}
 	}
 
-	public final void sub_c279() {
+	@Override
+	public final void paintScene() {
 		this.var_479a += 50L;
 		Class_g_Game localObject1;
 		int m;
@@ -5382,7 +5384,8 @@ public final class Class_g_Game extends Class_f_StringManager implements Runnabl
 		gr.drawString(inStr, inX, inY, paramInt3);
 	}
 
-	public final void sub_fe5d(Graphics graphics) {
+	@Override
+	public final void startLoading(Graphics graphics) {
 		if (this.var_48e2 == 4) { //loading screen
 			graphics.setColor(16777215); // white
 			graphics.fillRect(0, 0, this.canvasWidth, this.canvasHeight);

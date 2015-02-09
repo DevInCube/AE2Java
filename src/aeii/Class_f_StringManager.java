@@ -20,16 +20,16 @@ public class Class_f_StringManager {
 	private static int var_783 = 0;
 	private static int var_78b = 0;
 
-	public void sub_7f2() {
-		//
+	public void someUnknownMethod() {
+		//@todo g should override this
 	}
 
-	public void sub_80d() {
-		//
+	public void paintScene() {
+		//@todo g should override this
 	}
 
-	public void sub_828(Graphics paramGraphics) {
-		//
+	public void startLoading(Graphics paramGraphics) {
+		//@todo g should override this sub_828
 	}
 
 	public static final String[] wrapStringText(String inStr, int pixWidthMax,

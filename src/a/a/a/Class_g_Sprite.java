@@ -18,8 +18,8 @@ public class Class_g_Sprite {
 	public int pixelX; // m
 	public int pixelY; // n
 	public boolean var_c18;
-	public int spriteFrameWidth;
-	public int spriteFrameHeight;
+	public int spriteFrameWidth; //o
+	public int spriteFrameHeight; //p
 	public byte[][] frameSequenceArr2;
 	public int var_c38;
 	public byte var_c40;

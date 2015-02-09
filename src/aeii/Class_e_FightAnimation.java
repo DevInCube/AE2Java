@@ -97,7 +97,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		this.var_109a = true;
 		this.var_10a2 = true;
 		if (var_1012 != null) {
-			var_1012.sub_60da();
+			var_1012.someUnknownMethod();
 		}
 		if (this.var_11ba != null) {
 			this.var_11ba.var_109a = true;
@@ -989,7 +989,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 			this.var_109a = false;
 			if (((Class_f_StringManager.mainCanvas.var_17b7 == this) && (this.var_10a2))
 					|| (this.var_108a == 0)) {
-				var_1012.sub_fe5d(paramGraphics);
+				var_1012.startLoading(paramGraphics);
 			}
 			this.var_10a2 = false;
 			paramGraphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);

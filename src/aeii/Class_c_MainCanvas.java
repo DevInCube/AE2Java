@@ -276,7 +276,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 		var_182f = false;
 		sub_26ad();
 		if (this.var_17b7 != null) {
-			this.var_17b7.sub_7f2();
+			this.var_17b7.someUnknownMethod();
 		}
 	}
 
@@ -343,7 +343,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 
 	public final void sub_220e(Class_f_StringManager paramClass_f_0145) {
 		sub_26ad();
-		paramClass_f_0145.sub_7f2();
+		paramClass_f_0145.someUnknownMethod();
 		this.var_17b7 = paramClass_f_0145;
 	}
 
@@ -361,7 +361,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 			paramGraphics
 					.drawString(Class_f_StringManager.getLangString(58), canvasWidth / 2, canvasHeight / 2 - 1, 33);
 		} else {
-			this.var_17b7.sub_828(paramGraphics);
+			this.var_17b7.startLoading(paramGraphics);
 		}
 		if (propDeveloperModeOn) {
 			paramGraphics.setFont(theFont);
@@ -561,7 +561,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 							var_181f = -1;
 						}
 					}
-					this.var_17b7.sub_80d();
+					this.var_17b7.paintScene();
 					repaintAll();
 				}
 				if (propDeveloperModeOn) {
