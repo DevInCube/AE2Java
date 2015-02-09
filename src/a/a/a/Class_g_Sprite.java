@@ -373,7 +373,7 @@ public class Class_g_Sprite {
 					x += Class_c_MainCanvas.getRandomWithin(-1, 2);
 				}
 				int k = this.currentFrameSequence[this.currentFrameIndex];
-				this.frameImages[k].sub_1115(graphics, y, x);
+				this.frameImages[k].drawOnGraphics(graphics, y, x);
 				if (this.var_cc0 != null) {
 					Class_g_Sprite cl;
 					int val = k % (getImagesCount() / 2);

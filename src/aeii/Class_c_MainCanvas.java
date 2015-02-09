@@ -49,7 +49,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 	private long gameActionStartTime;
 	public static Class_g_Sprite[] sprites;
 	public static Random random = new Random();
-	public static boolean[] var_17ff = { true, true, true, true };
+	public static boolean[] settings = { true, true, true, true };
 	public static String[] var_1807;
 	private static int[] var_180f;
 	private boolean var_1817 = false;
@@ -547,7 +547,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 			this.var_17b7 = localClass_g_1956;
 			this.var_179f = false;
 			this.isRunning = true;
-			localClass_g_1956.sub_5531();
+			localClass_g_1956.loadingProcess();
 			var_180f = new int[canvasWidth * canvasHeight];
 			long ticks = System.currentTimeMillis();
 			int j = 0;
@@ -596,7 +596,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 
 	public static final void sub_2af6(int paramInt) {
 		try {
-			if (var_17ff[1] != false) {
+			if (settings[1] != false) {
 				midletDisplay.vibrate(paramInt << 2);
 			}
 			return;
@@ -649,7 +649,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 			if (currentMusicPlayer != null) {
 				currentMusicPlayer.stop();
 			}
-			if ((var_183f[playerIndex] == 1) && (var_17ff[0] != false)) {
+			if ((var_183f[playerIndex] == 1) && (settings[0] != false)) {
 				if (playLoopCount == 0) {
 					playLoopCount = -1;
 				}

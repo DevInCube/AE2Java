@@ -89,7 +89,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 			if (theInt > 3) {
 				theInt = 3;
 			}
-			this.unitName = Class_f_0145
+			this.unitName = Class_f_StringManager
 					.getLangString(139 + (this.unitType << 2) + theInt);
 		}
 	}
@@ -143,7 +143,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 
 	public final void setKingName(int paramInt) {
 		this.var_eeb = ((byte) paramInt);
-		this.unitName = Class_f_0145.getLangString(paramInt + 93);
+		this.unitName = Class_f_StringManager.getLangString(paramInt + 93);
 	}
 
 	public final int getSomeAttackValueMaybe1(Class_a_Unit unit) {
@@ -518,7 +518,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 					return 1;
 				}
 			}
-			return Class_g_1956.var_46ba[paramInt1];
+			return Class_g_1956.tilesTypes[paramInt1];
 		}
 		return 10000;
 	}
@@ -549,7 +549,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 				Class_g_Sprite localClass_g_2517 = null;
 				if ((this.var_ee3 == null) && (++this.var_edb >= 24 / var_de3 / 2)) {
 					localClass_g_2517 = var_deb
-							.showSpriteOnMap(var_deb.var_4a72, this.pixelX, this.pixelY, 0, 0, 1, Class_c_MainCanvas
+							.showSpriteOnMap(var_deb.bSmokeSprite, this.pixelX, this.pixelY, 0, 0, 1, Class_c_MainCanvas
 									.getRandomWithin(1, 4) * 50);
 					this.var_edb = 0;
 				}
@@ -612,7 +612,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 			Class_a_Unit[] unitsInAttRange = getUnitsInAttackRange(this.posX, this.posY, 1, 2, (byte) 2);
 			for (int i = 0; i < unitsInAttRange.length; i++) {
 				unitsInAttRange[i].sub_1595((byte) 2);
-				var_deb.showSpriteOnMap(var_deb.wispEffectSpriteMaybe, unitsInAttRange[i].pixelX, unitsInAttRange[i].pixelY, 0, 0, 1, 50);
+				var_deb.showSpriteOnMap(var_deb.sparkSprite, unitsInAttRange[i].pixelX, unitsInAttRange[i].pixelY, 0, 0, 1, 50);
 			}
 		}
 		var_deb.var_4e0a = this;
@@ -664,11 +664,11 @@ public final class Class_a_Unit extends Class_g_Sprite {
 				x = this.pixelX + inX;
 				y = this.pixelY + inY;
 				if ((paramBoolean) || (this.var_e83 == 2)) {
-					var_deb.var_4afa[1]
+					var_deb.kingHeadsIcons[1]
 							.drawFrame(gr, (this.var_eeb << 1) + this.currentFrameIndex, x, y, 0);
 					return;
 				}
-				var_deb.var_4afa[0]
+				var_deb.kingHeadsIcons[0]
 						.drawFrame(gr, (this.var_eeb << 1) + this.currentFrameIndex, x, y, 0);
 			}
 		}
@@ -746,7 +746,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 				InputStream stream = Class_c_MainCanvas
 						.getResourceStream("units.bin");
 				DataInputStream unitBinStream = new DataInputStream(stream);
-				int unitsCount = 12; // @todo
+				int unitsCount = 12; // @todo move to class member
 				for (int i = 0; i < unitsCount; i++) {
 					unitsMoveRange[i] = unitBinStream.readByte();
 					unitsAttackValues[i][0] = unitBinStream.readByte();

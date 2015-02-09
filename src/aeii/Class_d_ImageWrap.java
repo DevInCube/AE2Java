@@ -134,18 +134,18 @@ public class Class_d_ImageWrap {
 		this.var_6c9 += paramInt2;
 	}
 
-	public void sub_1115(Graphics paramGraphics, int paramInt1, int paramInt2) {
-		drawOnGraphics(paramGraphics, paramInt1, paramInt2, 20);
+	public void drawOnGraphics(Graphics paramGraphics, int pX, int pY) {
+		drawOnGraphics(paramGraphics, pX, pY, 20);
 	}
 
-	public void drawOnGraphics(Graphics paramGraphics, int paramInt1, int paramInt2, int paramInt3) {
+	public void drawOnGraphics(Graphics paramGraphics, int pX, int pY, int paramInt3) {
 		if ((!this.var_699) && (this.var_6d1 == 0)) {
 			paramGraphics
-					.drawImage(this.anImage, paramInt1 + this.var_6c1, paramInt2 + this.var_6c9, paramInt3);
+					.drawImage(this.anImage, pX + this.var_6c1, pY + this.var_6c9, paramInt3);
 			return;
 		}
 		paramGraphics
-				.drawRegion(this.anImage, this.var_6a1, this.var_6a9, this.imageWidth, this.imageHeight, this.var_6d1, paramInt1 + this.var_6c1, paramInt2 + this.var_6c9, paramInt3);
+				.drawRegion(this.anImage, this.var_6a1, this.var_6a9, this.imageWidth, this.imageHeight, this.var_6d1, pX + this.var_6c1, pY + this.var_6c9, paramInt3);
 	}
 
 	public Image createAnImage() {
