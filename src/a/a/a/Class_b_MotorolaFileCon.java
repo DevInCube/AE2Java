@@ -14,7 +14,7 @@ import javax.microedition.io.Connection;
  * @author DevInCube
  * Seems to be Motorola Connection Class
  */
-
+/*
 final class Class_b_MotorolaFileCon implements Class_c_AConnection {
 	
 	private FileConnection var_26f;
@@ -59,7 +59,7 @@ final class Class_b_MotorolaFileCon implements Class_c_AConnection {
 		this.var_26f.truncate(0L);
 	}
 }
-
+*/
 /*
  * Location: C:\Users\DevInCube\Desktop\deob\
  * 

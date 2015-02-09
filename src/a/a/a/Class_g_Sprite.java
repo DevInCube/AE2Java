@@ -572,13 +572,14 @@ public class Class_g_Sprite {
 
 	private static Class_c_AConnection getFileConnectionImpl(Connection conn) {
 		// i added switch expr	
+		/*
 		switch (Class_a_StaticFileConnection.getAvailableFileConnectionCode()) { 
 		  case 1: return new Class_e_StandardFileCon(conn);
 		  case 2: return new Class_d_SiemenFileCon(conn); 
 		  case 3: return new Class_b_MotorolaFileCon(conn); 
 		  case 4: return new Class_f_MotorolaFileCon2(conn);
 		}
-
+		*/
 		return null;
 	}
 }

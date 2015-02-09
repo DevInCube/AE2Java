@@ -947,7 +947,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			Class_a_Unit paramClass_a_02602) {
 		if (paramClass_a_02602.var_e83 == 4) {
 			this.var_48a2 = paramClass_a_02602;
-			showSpriteOnMap(this.redsparkSprite, this.var_48a2.m, this.var_48a2.n, 0, 0, 1,
+			showSpriteOnMap(this.redsparkSprite, this.var_48a2.pixelX, this.var_48a2.pixelY, 0, 0, 1,
 					50); // m n
 			this.var_48ca = 6;
 			this.someActiveUnit.sub_26fe();
@@ -986,13 +986,13 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			this.var_489a = this.var_4942;
 		} else {
 			if (this.var_493a.hasProperty((short) 128)) {
-				showSpriteOnMap(this.sparkSprite, this.var_4942.m, this.var_4942.n, 0, 0,
+				showSpriteOnMap(this.sparkSprite, this.var_4942.pixelX, this.var_4942.pixelY, 0, 0,
 						1, 50); // m n
 				Class_g_Sprite localClass_g_2517;
 				(localClass_g_2517 = Class_g_Sprite.sub_2054(this.statusSprite, 0, 0,
-						-4, -1, 800, (byte) 5)).setPixelPosition(this.var_4942.m
+						-4, -1, 800, (byte) 5)).setPixelPosition(this.var_4942.pixelX
 						+ (this.var_4942.o - localClass_g_2517.spriteFrameWidth) / 2,
-						this.var_4942.n - localClass_g_2517.spriteFrameHeight);
+						this.var_4942.pixelY - localClass_g_2517.spriteFrameHeight);
 				localClass_g_2517.setFrameSequence(var_466a);
 				this.var_488a.addElement(localClass_g_2517);
 				this.var_4942.sub_1595((byte) 1);
@@ -1003,7 +1003,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 		}
 		if (this.var_489a != null) {
 			moveCursorToPos(this.var_489a.posX, this.var_489a.posY);
-			showSpriteOnMap(this.sparkSprite, this.var_489a.m, this.var_489a.n, 0, 0, 1,
+			showSpriteOnMap(this.sparkSprite, this.var_489a.pixelX, this.var_489a.pixelY, 0, 0, 1,
 					50);
 			Class_c_MainCanvas.playMusicLooped(12, 1);
 		}
@@ -1397,7 +1397,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 							Class_c_AConnection lo3;
 							if ((lo3 = this.var_4f6a
 									.createSomeFileConnection((String) localObject1)).sub_5d81()) {
-								((Class_c_AConnection) lo3).a(0L);
+								((Class_c_AConnection) lo3).truncate(0L);
 							} else {
 								((Class_c_AConnection) lo3).sub_60da();
 							}
@@ -1505,7 +1505,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											this.someCanWidth, this.someCanHeight
 													- this.var_4b0a.var_1042
 													- this.var_4b12.var_1042);
-							this.var_4b0a.var_110a = this.var_4b12.var_10aa[paramInt];
+							this.var_4b0a.someUnit0 = this.var_4b12.var_10aa[paramInt];
 							this.var_4b1a.sub_1272();
 							this.var_4b0a.sub_1272();
 							return;
@@ -2724,7 +2724,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 													this.var_4b1a = new Class_e_0134(
 															(byte) 10, 3);
 													this.var_4b1a.var_1152 = true;
-													this.var_4b0a.var_110a = this.var_4b12.var_10aa[0];
+													this.var_4b0a.someUnit0 = this.var_4b12.var_10aa[0];
 													this.var_4b1a
 															.sub_1ca8(
 																	null,
@@ -3691,7 +3691,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			if (this.var_49a2 != -1) {
 				if (Class_c_MainCanvas.settings[2] != false) {
 					Class_e_0134 lo1;
-					(lo1 = sub_1430a(
+					(lo1 = showUnitDialog(
 							Class_f_StringManager.getLangString(196 + this.var_49a2, true),
 							(byte) -1, (byte) 2)).var_11aa = 7831691;
 					((Class_e_0134) lo1).var_11a2 = 7831691;
@@ -3864,10 +3864,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										(localClass_g_25171 = Class_g_Sprite
 												.createSomeSprite("+" + n, 0, -4,
 														(byte) 1)).setPixelPosition(
-												localClass_a_0260.m
+												localClass_a_0260.pixelX
 														+ localClass_a_0260.o
 														/ 2,
-												localClass_a_0260.n
+												localClass_a_0260.pixelY
 														+ localClass_a_0260.p); // m
 																				// n
 										this.var_488a
@@ -3888,7 +3888,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												.sub_2677()))) {
 								this.someCanHeight = this.canvasHeight;
 								this.someCanHeightShift = this.canvasHeightShift;
-								super.sub_6d11(this.var_464a, this.canvasHeightShift,
+								sub_6d11(this.var_464a, this.canvasHeightShift,
 										this.canvasHeight, null);
 								this.var_49f2 = 1;
 								this.var_4ad2 = false;
@@ -3902,11 +3902,11 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											.getDamageWhenAttack(this.var_4942);
 									this.var_4942.sub_108f(400);
 									Class_c_MainCanvas.playMusicLooped(14, 1);
-									showSpriteOnMap(this.redsparkSprite, this.var_4942.m,
-											this.var_4942.n, 0, 0, 2, 50);
+									showSpriteOnMap(this.redsparkSprite, this.var_4942.pixelX,
+											this.var_4942.pixelY, 0, 0, 2, 50);
 									Class_g_Sprite localClass_g_25172 = Class_g_Sprite
 											.createSomeSprite("-" + i1, 0, -4, (byte) 1);
-									if ((i = this.var_4942.m + this.var_4942.o
+									if ((i = this.var_4942.pixelX + this.var_4942.o
 											/ 2)
 											+ localClass_g_25172.spriteFrameWidth / 2 > this.var_46d2) {
 										i = this.var_46d2
@@ -3917,7 +3917,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										i = localClass_g_25172.spriteFrameWidth / 2;
 									}
 									localClass_g_25172.setPixelPosition(i,
-											this.var_4942.n + this.var_4942.p);
+											this.var_4942.pixelY + this.var_4942.p);
 									this.var_488a
 											.addElement(localClass_g_25172);
 									this.var_4932 = this.var_479a;
@@ -3935,13 +3935,13 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											this.var_493a.sub_108f(400);
 											Class_c_MainCanvas.playMusicLooped(14, 1);
 											showSpriteOnMap(this.redsparkSprite,
-													this.var_493a.m,
-													this.var_493a.n, 0, 0, 2,
+													this.var_493a.pixelX,
+													this.var_493a.pixelY, 0, 0, 2,
 													50);
 											Class_g_Sprite localClass_g_25173 = Class_g_Sprite
 													.createSomeSprite("-" + i2, 0, -4,
 															(byte) 1);
-											if ((i = this.var_493a.m
+											if ((i = this.var_493a.pixelX
 													+ this.var_493a.o / 2)
 													+ localClass_g_25173.spriteFrameWidth
 													/ 2 > this.var_46d2) {
@@ -3954,7 +3954,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												i = localClass_g_25173.spriteFrameWidth / 2;
 											}
 											localClass_g_25173.setPixelPosition(i,
-													this.var_493a.n
+													this.var_493a.pixelY
 															+ this.var_493a.p);
 											this.var_488a
 													.addElement(localClass_g_25173);
@@ -3974,12 +3974,11 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										if (this.var_4c82) {
 											this.var_4b2a = showSpriteOnMap(
 													this.sparkSprite,
-													this.var_4b32.m,
+													this.var_4b32.pixelX,
 													-this.mapTopY, 0, 12, -1,
 													0);
 											Class_e_0134 localClass_e_01342;
-											(localClass_e_01342 = super
-													.sub_14359(
+											(localClass_e_01342 = sub_14359(
 															null,
 															Class_f_StringManager
 																	.getLangString(280),
@@ -4019,10 +4018,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 														.createSomeSprite("-" + i3, 0,
 																-4, (byte) 1))
 														.setPixelPosition(
-																this.var_4b32.m
+																this.var_4b32.pixelX
 																		+ this.var_4b32.o
 																		/ 2,
-																this.var_4b32.n
+																this.var_4b32.pixelY
 																		+ this.var_4b32.p);
 												this.var_488a
 														.addElement(localObject3);
@@ -4034,8 +4033,8 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										if (this.var_4b32.health <= 0) {
 											this.var_489a = this.var_4b32;
 											showSpriteOnMap(this.sparkSprite,
-													this.var_489a.m,
-													this.var_489a.n, 0, 0, 1,
+													this.var_489a.pixelX,
+													this.var_489a.pixelY, 0, 0, 1,
 													50);
 											Class_c_MainCanvas.playMusicLooped(12, 1);
 											this.var_48aa = this.var_479a;
@@ -4045,7 +4044,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								} else if (this.var_48a2 != null) {
 									if (--this.var_48ca <= 0) {
 										Class_c_MainCanvas.sub_2af6(100);
-										super.sub_ecee(this.var_48a2);
+										sub_ecee(this.var_48a2);
 										sub_11aac((byte) 27,
 												this.var_48a2.posX,
 												this.var_48a2.posY);
@@ -4061,8 +4060,8 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											this.var_4b4a = true;
 										} else {
 											showSpriteOnMap(this.smokeSprite,
-													this.var_489a.m,
-													this.var_489a.n, 0, -3, 1,
+													this.var_489a.pixelX,
+													this.var_489a.pixelY, 0, -3, 1,
 													100);
 											this.var_489a.var_e83 = 3;
 											this.var_489a.var_ecb = 3;
@@ -4098,10 +4097,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												localClass_a_0260.posY)) {
 											showSpriteOnMap(
 													this.smallSparkSprite,
-													localClass_a_0260.m
+													localClass_a_0260.pixelX
 															+ Class_c_MainCanvas
 																	.getRandomMax(localClass_a_0260.o),
-													localClass_a_0260.n
+													localClass_a_0260.pixelY
 															+ Class_c_MainCanvas
 																	.getRandomMax(localClass_a_0260.p),
 													0, 0, 1, 50);
@@ -4113,10 +4112,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												if (this.var_4af2 == 5) {
 													i10 = 1000;
 												}
-												i = localClass_a_0260.m
+												i = localClass_a_0260.pixelX
 														+ (localClass_a_0260.o - this.levelUpSprite.spriteFrameWidth)
 														/ 2;
-												int i11 = localClass_a_0260.n
+												int i11 = localClass_a_0260.pixelY
 														- (this.var_4af2 << 2);
 												if (i < 0) {
 													i = 0;
@@ -4140,8 +4139,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 														&& (localClass_a_0260.level <= 6)
 														&& (localClass_a_0260.level % 2 == 0)) {
 													Class_f_StringManager.mainCanvas
-															.sub_220e(super
-																	.sub_14359(
+															.sub_220e(sub_14359(
 																			null,
 																			Class_f_StringManager
 																					.getLangString(80)
@@ -4166,7 +4164,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										if (this.var_478a == 2) {
 											if ((this.someActiveUnit.var_e83 != 1)
 													&& (this.var_4c82)) {
-												super.sub_bd39(this.someActiveUnit);
+												sub_bd39(this.someActiveUnit);
 											}
 										} else if ((this.var_4f92 == 0)
 												&& (this.var_487a[this.someUnitTeamId] == 0)) {
@@ -4256,8 +4254,9 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 															this.cursorPosX,
 															this.cursorPosY,
 															(byte) 0)) != null) {
-														(localObject3 = new Class_e_0134(
-																(byte) 15, 15)).var_11e2 = this.someCanHeight;
+														Class_e_0134 localObject31  = new Class_e_0134(
+																(byte) 15, 15);
+														localObject31.var_11e2 = this.someCanHeight;
 														Class_e_0134 localClass_e_01343 = new Class_e_0134(
 																(byte) 5, 2);
 														Class_e_0134 localClass_e_01341;
@@ -4296,21 +4295,21 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																		this.someCanWidth,
 																		this.someCanHeight
 																				- localClass_e_01343.var_1042);
-														((Class_e_0134) localObject3)
+														((Class_e_0134) localObject31)
 																.sub_1698(
 																		localClass_e_01343,
 																		0, 0, 0);
-														((Class_e_0134) localObject3)
+														((Class_e_0134) localObject31)
 																.sub_1698(
 																		localClass_e_01341,
 																		0,
 																		localClass_e_01343.var_1042,
 																		0);
-														((Class_e_0134) localObject3).var_115a = true;
-														((Class_e_0134) localObject3)
+														((Class_e_0134) localObject31).var_115a = true;
+														((Class_e_0134) localObject31)
 																.sub_1350(this);
 														Class_f_StringManager.mainCanvas
-																.sub_220e((Class_f_StringManager) localObject3);
+																.sub_220e((Class_f_StringManager) localObject31);
 													}
 													Class_f_StringManager.mainCanvas
 															.releaseGameAction(256);
@@ -4676,8 +4675,8 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																			((Class_a_Unit) localObject5).posX,
 																			((Class_a_Unit) localObject5).posY);
 																	sub_efb8(
-																			((Class_a_Unit) localObject5).m + 12,
-																			((Class_a_Unit) localObject5).n + 12);
+																			((Class_a_Unit) localObject5).pixelX + 12,
+																			((Class_a_Unit) localObject5).pixelY + 12);
 																	break;
 																}
 															}
@@ -4900,8 +4899,8 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								localClass_g_1956.cursorSprite.pixelY + 12);
 					} else {
 						localClass_g_1956.sub_f012(
-								localClass_g_1956.var_4c6a.m + 12,
-								localClass_g_1956.var_4c6a.n + 12);
+								localClass_g_1956.var_4c6a.pixelX + 12,
+								localClass_g_1956.var_4c6a.pixelY + 12);
 					}
 					if ((this.var_48d2)
 							&& (Class_f_StringManager.mainCanvas.sub_272b(var_460a))) {
@@ -4948,30 +4947,30 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	}
 
 	private void sub_ecee(Class_a_Unit paramClass_a_0260) {
-		int i = paramClass_a_0260.n + 24; // n
-		showSpriteOnMap(this.smokeSprite, paramClass_a_0260.m, i - this.smokeSprite.spriteFrameHeight,
+		int i = paramClass_a_0260.pixelY + 24; // n
+		showSpriteOnMap(this.smokeSprite, paramClass_a_0260.pixelX, i - this.smokeSprite.spriteFrameHeight,
 				0, -2, 1, 100);
 		for (int j = 0; j < 5; j++) {
-			showSpriteOnMap(this.bSmokeSprite, paramClass_a_0260.m, i
+			showSpriteOnMap(this.bSmokeSprite, paramClass_a_0260.pixelX, i
 					- this.bSmokeSprite.spriteFrameHeight, j + -2,
 					Class_c_MainCanvas.getRandomWithin(-4, -1), 1,
 					50 + 50 * Class_c_MainCanvas.getRandomMax(4));
 		}
-		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.m, paramClass_a_0260.n, 0, 0,
+		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.pixelX, paramClass_a_0260.pixelX, 0, 0,
 				1, 100);
 	}
 
 	private void sub_ed9f(Class_a_Unit paramClass_a_0260, byte paramByte) {
 		this.var_48b2 = paramClass_a_0260;
 		this.var_48ba = paramByte;
-		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.m - 8,
-				paramClass_a_0260.n - 8, 1, 1, 3, 50);
-		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.m + 8,
-				paramClass_a_0260.n - 8, -1, 1, 3, 50);
-		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.m - 8,
-				paramClass_a_0260.n + 8, 1, -1, 3, 50);
-		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.m + 8,
-				paramClass_a_0260.n + 8, -1, -1, 3, 50);
+		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.pixelX - 8,
+				paramClass_a_0260.pixelY - 8, 1, 1, 3, 50);
+		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.pixelX + 8,
+				paramClass_a_0260.pixelY - 8, -1, 1, 3, 50);
+		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.pixelX - 8,
+				paramClass_a_0260.pixelY + 8, 1, -1, 3, 50);
+		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.pixelX + 8,
+				paramClass_a_0260.pixelY + 8, -1, -1, 3, 50);
 		this.var_48c2 = this.var_479a;
 	}
 
@@ -5572,8 +5571,8 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 					if (unit.var_e83 == 3) {
 						this.tombStoneImage.drawOnGraphics(
 										graphics,
-										this.mapLeftX + unit.m, //x
-										this.mapTopY + unit.n  //y
+										this.mapLeftX + unit.pixelX, //x
+										this.mapTopY + unit.pixelY  //y
 										);
 					} else if (unit != this.someActiveUnit) {
 						unit.sub_28d7(graphics,
@@ -6343,7 +6342,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			}
 			if (this.var_4d22 == 3) {
 				if (this.var_4d52 == 0) {
-					if (sub_ee3c(this.someActiveUnit.m + 12, this.someActiveUnit.n + 12)) // m
+					if (sub_ee3c(this.someActiveUnit.pixelX + 12, this.someActiveUnit.pixelY + 12)) // m
 					{
 						if ((this.var_45fa == 0) && (this.var_47a2 == 7)
 								&& (this.someActiveUnit == this.maybeTeamKings[1])) {
@@ -6946,12 +6945,11 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 		this.var_4e32 = true;
 	}
 
-	private Class_e_0134 sub_1430a(String paramString, byte paramByte1,
+	private Class_e_0134 showUnitDialog(String message, byte paramByte1,
 			byte paramByte2) {
-		Class_e_0134 cll;
-		cll = new Class_e_0134((byte) 7, 12);
+		Class_e_0134 cll = new Class_e_0134((byte) 7, 12);
 		int i = Class_c_MainCanvas.var_1767 * 3;
-		cll.sub_19f5(paramString, this.canvasWidth, i, paramByte1);
+		cll.sub_19f5(message, this.canvasWidth, i, paramByte1);
 		cll.sub_1930(0, this.canvasHeight - i, 0);
 		Class_f_StringManager.mainCanvas.sub_220e(cll);
 		return cll;
@@ -7062,7 +7060,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			this.var_49ca = 0;
 			this.var_486a[0] = 0;
 			this.var_486a[1] = 0;
-			sub_efb8(this.maybeTeamKings[0].m + 12, this.maybeTeamKings[0].n + 12); // m n pos
+			sub_efb8(this.maybeTeamKings[0].pixelX + 12, this.maybeTeamKings[0].pixelY + 12); // m n pos
 			moveCursorToPos(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			Class_a_Unit.var_de3 = 4;
 			(localClass_a_02601 = getUnitAtPos(11, 2, (byte) 0)).sub_1686(11, -3);
@@ -7135,7 +7133,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			this.maybeTeamKings[0] = localClass_a_02602;
 			localClass_a_02602.setKingName(0);
 			getUnitAtPos(6, 15, (byte) 0).setKingName(2);
-			sub_efb8(this.maybeTeamKings[0].m + 12, this.maybeTeamKings[0].n + 12); // m n pos
+			sub_efb8(this.maybeTeamKings[0].pixelX + 12, this.maybeTeamKings[0].pixelY + 12); // m n pos
 			moveCursorToPos(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			initIntro(4, 3, 3);
 			Class_c_MainCanvas.sub_2bf1(1, 1);
@@ -7208,7 +7206,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			} else if (localObject1[0].equalsIgnoreCase("Test")) {
 				int k = 0;
 				int m = 0;
-				Object localObject3 = null;
+				String localObject3 = null;
 				if (localObject1[1].equalsIgnoreCase("CurrentPlayer")) {
 					k = this.someUnitTeamId;
 				} else if (localObject1[1].equalsIgnoreCase("CurrentTurn")) {
@@ -7233,23 +7231,17 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 					localObject3 = localObject1[2];
 				}
 				/* WTF */
-				if ((((String) localObject1).equals("<=") ? 0
-						: k <= m ? 1
-								: ((String) localObject1).equals("<") ? 0
-										: k < m ? 1
-												: ((String) localObject1)
-														.equals(">=") ? 0
-														: k >= m ? 1
-																: ((String) localObject1)
-																		.equals(">") ? 0
-																		: k > m ? 1
-																				: ((String) localObject1)
-																						.equals("!=") ? 0
-																						: k != m ? 1
-																								: (localObject1 = localObject3)
-																										.equals("=") ? 0
-																										: k == m ? 1
-																												: 0) == 0) {
+				boolean boolExpr = false;
+				switch(localObject3){
+					case("<="): boolExpr = k <= m; break;
+					case("<"): boolExpr = k < m; break;
+					case(">="): boolExpr = k >= m; break;
+					case(">"): boolExpr = k > m; break;
+					case("!="): boolExpr = k != m; break;
+					case("=="): boolExpr = k == m; break;
+				}
+				if(boolExpr == false)
+				{
 					i = j;
 				}
 				j = -1;
@@ -7283,7 +7275,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 							.parseInt(localObject1[1]);
 				}
 			} else if (localObject1[0].equalsIgnoreCase("ShowDialog")) {
-				sub_1430a(
+				showUnitDialog(
 						Class_f_StringManager.getLangString(Integer.parseInt(localObject1[1])),
 						(byte) Integer.parseInt(localObject1[2]),
 						(byte) Integer.parseInt(localObject1[3]));
@@ -7342,7 +7334,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 					} else if (localObject1[1].equalsIgnoreCase("RedSpark")) {
 						localObject2 = this.redsparkSprite;
 					}
-					showSpriteOnMap((Class_g_Sprite) localObject2, unit.m, unit.n, // m, n pos
+					showSpriteOnMap((Class_g_Sprite) localObject2, unit.pixelX, unit.pixelY, // m, n pos
 							Integer.parseInt(localObject1[2]),
 							Integer.parseInt(localObject1[3]),
 							Integer.parseInt(localObject1[4]),
@@ -7412,9 +7404,9 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								}
 							}
 							str = str + ")";
-							Class_f_StringManager lo2;
-							(lo2 = sub_1437e(null, str, this.someCanHeight,
-									this.someCanHeightShift, -1)).sub_1350(this);
+							Class_e_0134 lo2 = sub_1437e(null, str, this.someCanHeight,
+									this.someCanHeightShift, -1);
+							lo2.sub_1350(this);
 							Class_f_StringManager.mainCanvas.sub_220e((Class_f_StringManager) lo2);
 							if (this.var_487a[i] == 1) {
 								Class_c_MainCanvas.sub_2bf1(6, 1);
@@ -7488,7 +7480,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 5:
-								sub_1430a(Class_f_StringManager.getLangString(221),
+								showUnitDialog(Class_f_StringManager.getLangString(221),
 										(byte) 2, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -7498,26 +7490,26 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								Class_c_MainCanvas.sub_2af6(100);
 								((Class_a_Unit) localObject2).sub_108f(400);
 								showSpriteOnMap(this.redsparkSprite,
-										((Class_a_Unit) localObject2).m,
-										((Class_a_Unit) localObject2).n, 0, 0,
+										((Class_a_Unit) localObject2).pixelX,
+										((Class_a_Unit) localObject2).pixelY, 0, 0,
 										2, 50);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 7:
-								sub_1430a(Class_f_StringManager.getLangString(222),
+								showUnitDialog(Class_f_StringManager.getLangString(222),
 										(byte) 2, (byte) 4);
 								this.var_4e12 += 1;
 								break;
 							case 8:
 								localObject1 = getUnitAtPos(9, 3, (byte) 0);
 								showSpriteOnMap(this.sparkSprite,
-										((Class_a_Unit) localObject1).m,
-										((Class_a_Unit) localObject1).n, 0, 0,
+										((Class_a_Unit) localObject1).pixelX,
+										((Class_a_Unit) localObject1).pixelY, 0, 0,
 										1, 50);
 								showSpriteOnMap(this.smokeSprite,
-										((Class_a_Unit) localObject1).m,
-										((Class_a_Unit) localObject1).n, 0, -3,
+										((Class_a_Unit) localObject1).pixelX,
+										((Class_a_Unit) localObject1).pixelY, 0, -3,
 										1, 100);
 								((Class_a_Unit) localObject1).killUnitMaybe();
 								sub_142e5(20);
@@ -7533,13 +7525,13 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 11:
-								super.sub_1430a(Class_f_StringManager.getLangString(223),
+								showUnitDialog(Class_f_StringManager.getLangString(223),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 12:
-								super.sub_1430a(Class_f_StringManager.getLangString(224),
+								showUnitDialog(Class_f_StringManager.getLangString(224),
 										(byte) 5, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -7630,13 +7622,13 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										this.maybeTeamKings[0].posY);
 								break;
 							case 28:
-								super.sub_1430a(Class_f_StringManager.getLangString(225),
+								showUnitDialog(Class_f_StringManager.getLangString(225),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 29:
-								super.sub_1430a(Class_f_StringManager.getLangString(226),
+								showUnitDialog(Class_f_StringManager.getLangString(226),
 										(byte) 0, (byte) 4);
 								this.var_4a4a = true;
 								this.var_4e12 += 1;
@@ -7657,25 +7649,25 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 32:
-								super.sub_1430a(Class_f_StringManager.getLangString(227),
+								showUnitDialog(Class_f_StringManager.getLangString(227),
 										(byte) 2, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 33:
-								super.sub_1430a(Class_f_StringManager.getLangString(228),
+								showUnitDialog(Class_f_StringManager.getLangString(228),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 34:
-								super.sub_1430a(Class_f_StringManager.getLangString(229),
+								showUnitDialog(Class_f_StringManager.getLangString(229),
 										(byte) 2, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 35:
-								super.sub_1430a(Class_f_StringManager.getLangString(230),
+								showUnitDialog(Class_f_StringManager.getLangString(230),
 										(byte) 0, (byte) 4);
 								sub_142e5(15);
 								this.var_4e12 += 1;
@@ -7694,19 +7686,19 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								sub_186a6(12, 3);
 								break;
 							case 3:
-								super.sub_1430a(Class_f_StringManager.getLangString(231),
+								showUnitDialog(Class_f_StringManager.getLangString(231),
 										(byte) 1, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 4:
-								super.sub_1430a(Class_f_StringManager.getLangString(232),
+								showUnitDialog(Class_f_StringManager.getLangString(232),
 										(byte) 3, (byte) 4);
 								sub_186a6(this.maybeTeamKings[0].posX,
 										this.maybeTeamKings[0].posY);
 								break;
 							case 5:
-								super.sub_1430a(Class_f_StringManager.getLangString(233),
+								showUnitDialog(Class_f_StringManager.getLangString(233),
 										(byte) 5, (byte) 4);
 								sub_186a6(7, 3);
 								break;
@@ -7732,7 +7724,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											(byte) 0, (byte) 0, 7, 3);
 									this.var_4dfa.sub_1c9f(6, 2, false);
 									this.var_4dea.var_ee3 = null;
-									super.sub_1430a(Class_f_StringManager.getLangString(234),
+									showUnitDialog(Class_f_StringManager.getLangString(234),
 											(byte) 2, (byte) 4);
 									this.var_4e12 += 1;
 								}
@@ -7741,23 +7733,23 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								if (this.var_4dfa.var_e83 != 1) {
 									Class_c_MainCanvas.sub_2af6(100);
 									this.var_4dfa.sub_108f(400);
-									showSpriteOnMap(this.redsparkSprite, this.var_4dfa.m,
-											this.var_4dfa.n, 0, 0, 2, 50);
+									showSpriteOnMap(this.redsparkSprite, this.var_4dfa.pixelX,
+											this.var_4dfa.pixelY, 0, 0, 2, 50);
 									sub_142e5(10);
 									this.var_4e12 += 1;
 								}
 								break;
 							case 9:
-								super.sub_1430a(Class_f_StringManager.getLangString(235),
+								showUnitDialog(Class_f_StringManager.getLangString(235),
 										(byte) 2, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 10:
-								showSpriteOnMap(this.smokeSprite, this.var_4dfa.m,
-										this.var_4dfa.n, 0, -3, 1, 100);
-								showSpriteOnMap(this.sparkSprite, this.var_4dfa.m,
-										this.var_4dfa.n, 0, 0, 1, 50);
+								showSpriteOnMap(this.smokeSprite, this.var_4dfa.pixelX,
+										this.var_4dfa.pixelY, 0, -3, 1, 100);
+								showSpriteOnMap(this.sparkSprite, this.var_4dfa.pixelX,
+										this.var_4dfa.pixelY, 0, 0, 1, 50);
 								this.var_4dfa.killUnitMaybe();
 								this.var_4dfa = null;
 								sub_142e5(15);
@@ -7775,12 +7767,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										this.maybeTeamKings[0].posY);
 								break;
 							case 12:
-								super.sub_1430a(Class_f_StringManager.getLangString(236),
+								showUnitDialog(Class_f_StringManager.getLangString(236),
 										(byte) 5, (byte) 4);
 								this.var_4e12 += 1;
 								break;
 							case 13:
-								super.sub_1430a(Class_f_StringManager.getLangString(237),
+								showUnitDialog(Class_f_StringManager.getLangString(237),
 										(byte) 1, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -7788,7 +7780,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								sub_186a6(3, 5);
 								break;
 							case 15:
-								super.sub_1430a(Class_f_StringManager.getLangString(238),
+								showUnitDialog(Class_f_StringManager.getLangString(238),
 										(byte) 5, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -7839,12 +7831,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										this.maybeTeamKings[0].posY);
 								break;
 							case 25:
-								super.sub_1430a(Class_f_StringManager.getLangString(239),
+								showUnitDialog(Class_f_StringManager.getLangString(239),
 										(byte) 1, (byte) 4);
 								this.var_4e12 += 1;
 								break;
 							case 26:
-								super.sub_1430a(Class_f_StringManager.getLangString(240),
+								showUnitDialog(Class_f_StringManager.getLangString(240),
 										(byte) 5, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -7872,19 +7864,19 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4de2 = null;
 								this.var_4dea = null;
 								this.var_4df2 = null;
-								super.sub_1430a(Class_f_StringManager.getLangString(241),
+								showUnitDialog(Class_f_StringManager.getLangString(241),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 3:
-								super.sub_1430a(Class_f_StringManager.getLangString(242),
+								showUnitDialog(Class_f_StringManager.getLangString(242),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 4:
-								super.sub_1430a(Class_f_StringManager.getLangString(243),
+								showUnitDialog(Class_f_StringManager.getLangString(243),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
@@ -7906,10 +7898,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 									this.var_49a2 = 15;
 									this.var_4e12 += 1;
 								}
-								localObject1 = super.sub_11e61(-1, 2, (byte) 0);
-								for (i = 0; i < localObject1.length; i++) {
-									if ((localObject1[i].posX <= 4)
-											|| (localObject1[i].posY <= 10)) {
+								Class_a_Unit[] localObject11 = getSomeUnitsOfTypeOfTeam(-1, 2, (byte) 0);//super. it returns array
+								for (i = 0; i < localObject11.length; i++) {
+									if ((localObject11[i].posX <= 4)
+											|| (localObject11[i].posY <= 10)) {
 										sub_142e5(10);
 										this.var_4a4a = false;
 										this.var_47f2 = false;
@@ -7948,7 +7940,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								sub_142e5(20);
 								break;
 							case 12:
-								super.sub_1430a(Class_f_StringManager.getLangString(244),
+								showUnitDialog(Class_f_StringManager.getLangString(244),
 										(byte) 5, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -7958,47 +7950,47 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								sub_142e5(15);
 								break;
 							case 14:
-								localObject1 = Class_a_Unit.createUnit((byte) 2,
+								Class_a_Unit localObject111 = Class_a_Unit.createUnit((byte) 2,
 										(byte) 1, 3, 8);
 								localObject2 = Class_a_Unit.createUnit((byte) 2,
 										(byte) 1, 4, 7);
 								localObject3 = Class_a_Unit.createUnit((byte) 2,
 										(byte) 1, 5, 8);
 								showSpriteOnMap(this.sparkSprite,
-										((Class_a_Unit) localObject1).m,
-										((Class_a_Unit) localObject1).n, 0, 0,
+										((Class_a_Unit) localObject111).pixelX,
+										((Class_a_Unit) localObject111).pixelY, 0, 0,
 										1, 50);
 								showSpriteOnMap(this.sparkSprite,
-										((Class_a_Unit) localObject2).m,
-										((Class_a_Unit) localObject2).n, 0, 0,
+										((Class_a_Unit) localObject2).pixelX,
+										((Class_a_Unit) localObject2).pixelY, 0, 0,
 										1, 50);
 								showSpriteOnMap(this.sparkSprite,
-										((Class_a_Unit) localObject3).m,
-										((Class_a_Unit) localObject3).n, 0, 0,
+										((Class_a_Unit) localObject3).pixelX,
+										((Class_a_Unit) localObject3).pixelY, 0, 0,
 										1, 50);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 15:
-								super.sub_1430a(Class_f_StringManager.getLangString(245),
+								showUnitDialog(Class_f_StringManager.getLangString(245),
 										(byte) 5, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 16:
-								super.sub_1430a(Class_f_StringManager.getLangString(246),
+								showUnitDialog(Class_f_StringManager.getLangString(246),
 										(byte) -1, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 17:
-								super.sub_1430a(Class_f_StringManager.getLangString(247),
+								showUnitDialog(Class_f_StringManager.getLangString(247),
 										(byte) 0, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 18:
-								Class_f_StringManager.mainCanvas.sub_220e(super.sub_14359(
+								Class_f_StringManager.mainCanvas.sub_220e(sub_14359(
 										null, Class_f_StringManager.getLangString(248),
 										this.someCanHeight, 1500));
 								this.var_4e12 += 1;
@@ -8007,23 +7999,23 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								getUnitAtPos(3, 8, (byte) 0).killUnitMaybe();
 								getUnitAtPos(4, 7, (byte) 0).killUnitMaybe();
 								getUnitAtPos(5, 8, (byte) 0).killUnitMaybe();
-								localObject1 = Class_a_Unit.createUnit((byte) 2,
+								Class_a_Unit localObject1111 = Class_a_Unit.createUnit((byte) 2,
 										(byte) 0, 3, 8);
 								localObject2 = Class_a_Unit.createUnit((byte) 2,
 										(byte) 0, 4, 7);
 								localObject3 = Class_a_Unit.createUnit((byte) 2,
 										(byte) 0, 5, 8);
 								showSpriteOnMap(this.sparkSprite,
-										((Class_a_Unit) localObject1).m,
-										((Class_a_Unit) localObject1).n, 0, 0,
+										((Class_a_Unit) localObject1111).pixelX,
+										((Class_a_Unit) localObject1111).pixelY, 0, 0,
 										1, 50);
 								showSpriteOnMap(this.sparkSprite,
-										((Class_a_Unit) localObject2).m,
-										((Class_a_Unit) localObject2).n, 0, 0,
+										((Class_a_Unit) localObject2).pixelX,
+										((Class_a_Unit) localObject2).pixelY, 0, 0,
 										1, 50);
 								showSpriteOnMap(this.sparkSprite,
-										((Class_a_Unit) localObject3).m,
-										((Class_a_Unit) localObject3).n, 0, 0,
+										((Class_a_Unit) localObject3).pixelX,
+										((Class_a_Unit) localObject3).pixelY, 0, 0,
 										1, 50);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8066,19 +8058,19 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 3:
-								super.sub_1430a(Class_f_StringManager.getLangString(249),
+								showUnitDialog(Class_f_StringManager.getLangString(249),
 										(byte) 2, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 4:
-								super.sub_1430a(Class_f_StringManager.getLangString(250),
+								showUnitDialog(Class_f_StringManager.getLangString(250),
 										(byte) 0, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 5:
-								super.sub_1430a(Class_f_StringManager.getLangString(251),
+								showUnitDialog(Class_f_StringManager.getLangString(251),
 										(byte) 5, (byte) 4);
 								moveCursorToPos(13, 3);
 								sub_efb8(312, 72);
@@ -8135,12 +8127,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 12:
-								super.sub_1430a(Class_f_StringManager.getLangString(252),
+								showUnitDialog(Class_f_StringManager.getLangString(252),
 										(byte) 5, (byte) 4);
 								sub_186a6(7, 1);
 								break;
 							case 13:
-								super.sub_1430a(Class_f_StringManager.getLangString(253),
+								showUnitDialog(Class_f_StringManager.getLangString(253),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
@@ -8162,13 +8154,13 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								}
 								break;
 							case 17:
-								super.sub_1430a(Class_f_StringManager.getLangString(254),
+								showUnitDialog(Class_f_StringManager.getLangString(254),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 18:
-								super.sub_1430a(Class_f_StringManager.getLangString(255),
+								showUnitDialog(Class_f_StringManager.getLangString(255),
 										(byte) 0, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8178,7 +8170,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 							}
 						} else if (this.var_47a2 == 4) {
 							if (this.var_4e02 == null) {
-								this.var_4e02 = super.sub_11e61(11, -1, 0)[0];
+								this.var_4e02 = getSomeUnitsOfTypeOfTeam(11, -1, (byte)0)[0]; //super. array
 							}
 							if ((this.var_4e12 == 25)
 									&& (this.var_4e02.posX >= 15)
@@ -8201,13 +8193,13 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 1:
-								super.sub_1430a(Class_f_StringManager.getLangString(256),
+								showUnitDialog(Class_f_StringManager.getLangString(256),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 2:
-								super.sub_1430a(Class_f_StringManager.getLangString(257),
+								showUnitDialog(Class_f_StringManager.getLangString(257),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
@@ -8217,11 +8209,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 4:
-								localObject1 = super
-										.sub_11e61(-1, -1, (byte) 0);
-								for (i = 0; i < localObject1.length; i++) {
-									if ((localObject1[i].var_e83 == 2)
-											&& (localObject1[i].posX <= 8)) {
+								Class_a_Unit[] localObject11 = getSomeUnitsOfTypeOfTeam(-1, -1, (byte) 0);//super. array
+								for (i = 0; i < localObject11.length; i++) {
+									if ((localObject11[i].var_e83 == 2)
+											&& (localObject11[i].posX <= 8)) {
 										this.var_4a4a = false;
 										sub_142e5(5);
 										this.var_4e12 += 1;
@@ -8253,7 +8244,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 9:
-								super.sub_1430a(Class_f_StringManager.getLangString(258),
+								showUnitDialog(Class_f_StringManager.getLangString(258),
 										(byte) 5, (byte) 4);
 								sub_186a6(this.maybeTeamKings[0].posX,
 										this.maybeTeamKings[0].posY);
@@ -8264,11 +8255,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 11:
-								localObject1 = super
-										.sub_11e61(-1, -1, (byte) 0);
-								for (i = 0; i < localObject1.length; i++) {
-									if ((localObject1[i].var_e83 == 2)
-											&& (localObject1[i].posY >= 7)) {
+								localObject11 = getSomeUnitsOfTypeOfTeam(-1, -1, (byte) 0);//super.
+								for (i = 0; i < localObject11.length; i++) {
+									if ((localObject11[i].var_e83 == 2)
+											&& (localObject11[i].posY >= 7)) {
 										this.var_4a4a = false;
 										this.var_47f2 = false;
 										sub_186a6(6, 10);
@@ -8298,12 +8288,11 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 15:
-								localObject1 = super
-										.sub_11e61(-1, -1, (byte) 0);
-								for (i = 0; i < localObject1.length; i++) {
-									if ((localObject1[i].var_e83 == 2)
-											&& (localObject1[i].posX >= 8)
-											&& (localObject1[i].posY >= 6)) {
+								localObject11 = getSomeUnitsOfTypeOfTeam(-1, -1, (byte) 0); //super. return unit[]
+								for (i = 0; i < localObject11.length; i++) {
+									if ((localObject11[i].var_e83 == 2)
+											&& (localObject11[i].posX >= 8)
+											&& (localObject11[i].posY >= 6)) {
 										this.var_4a4a = false;
 										this.var_47f2 = false;
 										sub_186a6(12, 5);
@@ -8333,12 +8322,11 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 19:
-								localObject1 = super
-										.sub_11e61(-1, -1, (byte) 0);
-								for (i = 0; i < localObject1.length; i++) {
-									if ((localObject1[i].var_e83 == 2)
-											&& (localObject1[i].posX >= 15)
-											&& (localObject1[i].posY >= 8)) {
+								localObject11 = getSomeUnitsOfTypeOfTeam(-1, -1, (byte) 0); //super.
+								for (i = 0; i < localObject11.length; i++) {
+									if ((localObject11[i].var_e83 == 2)
+											&& (localObject11[i].posX >= 15)
+											&& (localObject11[i].posY >= 8)) {
 										this.var_4a4a = false;
 										this.var_47f2 = false;
 										sub_186a6(18, 8);
@@ -8374,7 +8362,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 24:
-								super.sub_1430a(Class_f_StringManager.getLangString(259),
+								showUnitDialog(Class_f_StringManager.getLangString(259),
 										(byte) 0, (byte) 4);
 								this.var_4a4a = true;
 								this.var_47f2 = true;
@@ -8399,7 +8387,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 1:
-								super.sub_1430a(Class_f_StringManager.getLangString(260),
+								showUnitDialog(Class_f_StringManager.getLangString(260),
 										(byte) 1, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -8421,7 +8409,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										this.maybeTeamKings[0].posY);
 								break;
 							case 5:
-								super.sub_1430a(Class_f_StringManager.getLangString(261),
+								showUnitDialog(Class_f_StringManager.getLangString(261),
 										(byte) 0, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8432,7 +8420,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 						} else if (this.var_47a2 == 6) {
 							if (this.var_4e12 <= 10) {
 								if (this.var_4e02 == null) {
-									this.var_4e02 = super.sub_11e61(11, -1, 0)[0];
+									this.var_4e02 = getSomeUnitsOfTypeOfTeam(11, -1, (byte)0)[0]; //super.
 								}
 								if (this.var_4e02.var_e83 == 3) {
 									this.var_4e02 = null;
@@ -8449,22 +8437,21 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								}
 								break;
 							case 1:
-								super.sub_1430a(Class_f_StringManager.getLangString(262),
+								showUnitDialog(Class_f_StringManager.getLangString(262),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 2:
-								super.sub_1430a(Class_f_StringManager.getLangString(263),
+								showUnitDialog(Class_f_StringManager.getLangString(263),
 										(byte) 0, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 3:
-								localObject1 = super
-										.sub_11e61(-1, -1, (byte) 0);
-								for (i = 0; i < localObject1.length; i++) {
-									localObject1[i].var_ee3 = null;
+								Class_a_Unit[] localObject11 = getSomeUnitsOfTypeOfTeam(-1, -1, (byte) 0); //super.
+								for (i = 0; i < localObject11.length; i++) {
+									localObject11[i].var_ee3 = null;
 								}
 								sub_1864a();
 								this.var_4e12 += 1;
@@ -8478,28 +8465,28 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								}
 								break;
 							case 5:
-								(localObject1 = Class_a_Unit.createUnit((byte) 5,
-										(byte) 1, 11, 8))
-										.sub_20f8(this.var_47da);
-								((Class_a_Unit) localObject1).sub_1c9f(14, 7,
+								Class_a_Unit localObject111 = Class_a_Unit.createUnit((byte) 5,
+										(byte) 1, 11, 8);
+								localObject111.sub_20f8(this.var_47da);
+								localObject111.sub_1c9f(14, 7,
 										true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 6:
-								(localObject2 = Class_a_Unit.createUnit((byte) 0,
-										(byte) 1, 11, 8))
-										.sub_20f8(this.var_47da);
-								((Class_a_Unit) localObject2).sub_1c9f(13, 7,
+								Class_a_Unit localObject21= Class_a_Unit.createUnit((byte) 0,
+										(byte) 1, 11, 8);
+								localObject21.sub_20f8(this.var_47da);
+								localObject21.sub_1c9f(13, 7,
 										true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 7:
-								(localObject3 = Class_a_Unit.createUnit((byte) 3,
-										(byte) 1, 11, 8))
-										.sub_20f8(this.var_47da);
-								((Class_a_Unit) localObject3).sub_1c9f(12, 7,
+								Class_a_Unit localObject31 = Class_a_Unit.createUnit((byte) 3,
+										(byte) 1, 11, 8);
+								localObject31.sub_20f8(this.var_47da);
+								((Class_a_Unit) localObject31).sub_1c9f(12, 7,
 										true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8512,7 +8499,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 9:
-								super.sub_1430a(Class_f_StringManager.getLangString(264),
+								showUnitDialog(Class_f_StringManager.getLangString(264),
 										(byte) 5, (byte) 4);
 								this.var_4a4a = true;
 								this.var_47f2 = true;
@@ -8521,8 +8508,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								break;
 							case 10:
 								int i1 = 0;
-								Class_a_Unit[] arrayOfClass_a_0260 = super
-										.sub_11e61(-1, 2, (byte) 0);
+								Class_a_Unit[] arrayOfClass_a_0260 = getSomeUnitsOfTypeOfTeam(-1, 2, (byte) 0); //super.
 								for (int m = 0; m < arrayOfClass_a_0260.length; m++) {
 									if ((arrayOfClass_a_0260[m].posX <= 9)
 											|| (arrayOfClass_a_0260[m].posY >= 10)) {
@@ -8539,7 +8525,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								}
 								break;
 							case 11:
-								this.var_4de2 = super.sub_11e61(11, -1, 0)[0];
+								this.var_4de2 = getSomeUnitsOfTypeOfTeam(11, -1, (byte)0)[0]; //super.
 								this.var_4dea = Class_a_Unit.createUnit((byte) 8,
 										(byte) 1, this.mapWidthMaybe,
 										this.var_4de2.posY);
@@ -8554,14 +8540,14 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 13:
-								super.sub_1430a(Class_f_StringManager.getLangString(265),
+								showUnitDialog(Class_f_StringManager.getLangString(265),
 										(byte) 5, (byte) 4);
 								this.var_4c6a = this.var_4dea;
 								this.var_4e12 += 1;
 								break;
 							case 14:
 								if (this.var_4dea.var_e83 != 1) {
-									super.sub_1430a(Class_f_StringManager.getLangString(266),
+									showUnitDialog(Class_f_StringManager.getLangString(266),
 											(byte) 0, (byte) 4);
 									this.var_4dea.sub_1c9f(-1,
 											this.var_4dea.posY, false);
@@ -8590,7 +8576,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								sub_186a6(1, 9);
 								break;
 							case 18:
-								this.maybeTeamKings[1] = Class_a_Unit.createUnit(9, 1,
+								this.maybeTeamKings[1] = Class_a_Unit.createUnit((byte)9, (byte)1,
 										-2, 8);
 								this.maybeTeamKings[1].sub_1c9f(0, 8, false);
 								Class_a_Unit
@@ -8616,7 +8602,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 19:
-								super.sub_1430a(Class_f_StringManager.getLangString(267),
+								showUnitDialog(Class_f_StringManager.getLangString(267),
 										(byte) 3, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -8648,13 +8634,13 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 25:
-								super.sub_1430a(Class_f_StringManager.getLangString(268),
+								showUnitDialog(Class_f_StringManager.getLangString(268),
 										(byte) 5, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 26:
-								super.sub_1430a(Class_f_StringManager.getLangString(269),
+								showUnitDialog(Class_f_StringManager.getLangString(269),
 										(byte) 0, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8680,7 +8666,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 29:
-								super.sub_1430a(Class_f_StringManager.getLangString(270),
+								showUnitDialog(Class_f_StringManager.getLangString(270),
 										(byte) 1, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8696,7 +8682,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 							case 32:
 								this.var_4a4a = true;
 								this.var_47f2 = true;
-								this.var_49c2 = super.sub_14359(Class_f_StringManager
+								this.var_49c2 = sub_14359(Class_f_StringManager
 										.getLangString(121 + this.var_47a2),
 										Class_f_StringManager.getLangString(138),
 										this.someCanHeight, -1);
@@ -8726,7 +8712,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								break;
 							case 1:
 								if (!this.var_4ad2) {
-									super.sub_1430a(Class_f_StringManager.getLangString(271),
+									showUnitDialog(Class_f_StringManager.getLangString(271),
 											(byte) 0, (byte) 4);
 									this.var_4e12 += 1;
 								}
@@ -8736,19 +8722,19 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										this.maybeTeamKings[1].posY);
 								break;
 							case 3:
-								super.sub_1430a(Class_f_StringManager.getLangString(272),
+								showUnitDialog(Class_f_StringManager.getLangString(272),
 										(byte) 4, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 4:
-								super.sub_1430a(Class_f_StringManager.getLangString(273),
+								showUnitDialog(Class_f_StringManager.getLangString(273),
 										(byte) 1, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 5:
-								super.sub_1430a(Class_f_StringManager.getLangString(274),
+								showUnitDialog(Class_f_StringManager.getLangString(274),
 										(byte) 4, (byte) 4);
 								this.var_4e12 += 1;
 								break;
@@ -8790,7 +8776,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								break;
 							case 11:
 								Class_e_0134 localClass_e_0134;
-								(localClass_e_0134 = super.sub_14359(null,
+								(localClass_e_0134 = sub_14359(null,
 										Class_f_StringManager.getLangString(279),
 										this.someCanHeight, 2000)).sub_1930(
 										this.someCanWidthShift, 2, 17);
@@ -8800,12 +8786,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								break;
 							case 12:
 								this.var_4b42 = false;
-								super.sub_6963(getUnitAtPos(9, 15, (byte) 0));
+								sub_6963(getUnitAtPos(9, 15, (byte) 0));
 								this.var_4e12 += 1;
 								break;
 							case 13:
 								if (this.var_4b3a >= 2) {
-									super.sub_1430a(Class_f_StringManager.getLangString(275),
+									showUnitDialog(Class_f_StringManager.getLangString(275),
 											(byte) 0, (byte) 4);
 									getUnitAtPos(9, 15, (byte) 0).killUnitMaybe();
 									this.var_4b42 = true;
@@ -8815,12 +8801,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								break;
 							case 14:
 								this.var_47f2 = false;
-								super.sub_1430a(Class_f_StringManager.getLangString(276),
+								showUnitDialog(Class_f_StringManager.getLangString(276),
 										(byte) 4, (byte) 4);
 								this.var_4e12 += 1;
 								break;
 							case 15:
-								super.sub_1430a(Class_f_StringManager.getLangString(277),
+								showUnitDialog(Class_f_StringManager.getLangString(277),
 										(byte) 1, (byte) 4);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8835,7 +8821,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								break;
 							case 18:
 								this.var_4c72 = 12;
-								super.sub_1430a(Class_f_StringManager.getLangString(278),
+								showUnitDialog(Class_f_StringManager.getLangString(278),
 										(byte) 5, (byte) 4);
 								sub_186a6(this.maybeTeamKings[0].posX,
 										this.maybeTeamKings[0].posY);
@@ -8863,8 +8849,8 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 									sub_efe5(7, 2);
 									moveCursorToPos(7, 2);
 									sub_ac6f();
-									this.maybeTeamKings[1] = Class_a_Unit.createUnit(9,
-											1, 7, 2);
+									this.maybeTeamKings[1] = Class_a_Unit.createUnit((byte)9,
+											(byte)1, 7, 2);
 									this.maybeTeamKings[1].setKingName(3);
 									Class_a_Unit.createUnit((byte) 9, (byte) 0,
 											6, 3);
@@ -8887,20 +8873,20 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								break;
 							case 24:
 								if (this.var_4ac2 >= 16) {
-									super.sub_1430a(Class_f_StringManager.getLangString(281),
+									showUnitDialog(Class_f_StringManager.getLangString(281),
 											(byte) 4, (byte) 4);
 									sub_142e5(15);
 									this.var_4e12 += 1;
 								}
 								break;
 							case 25:
-								super.sub_1430a(Class_f_StringManager.getLangString(282),
+								showUnitDialog(Class_f_StringManager.getLangString(282),
 										(byte) 0, (byte) 4);
 								sub_142e5(8);
 								this.var_4e12 += 1;
 								break;
 							case 26:
-								super.sub_1430a(Class_f_StringManager.getLangString(283),
+								showUnitDialog(Class_f_StringManager.getLangString(283),
 										(byte) 4, (byte) 4);
 								sub_142e5(15);
 								this.var_4e12 += 1;
@@ -8918,25 +8904,25 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_4e12 += 1;
 								break;
 							case 29:
-								super.sub_1430a(Class_f_StringManager.getLangString(284),
+								showUnitDialog(Class_f_StringManager.getLangString(284),
 										(byte) 5, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 30:
-								super.sub_1430a(Class_f_StringManager.getLangString(285),
+								showUnitDialog(Class_f_StringManager.getLangString(285),
 										(byte) 2, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 31:
-								super.sub_1430a(Class_f_StringManager.getLangString(286),
+								showUnitDialog(Class_f_StringManager.getLangString(286),
 										(byte) 1, (byte) 4);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 32:
-								super.sub_1430a(Class_f_StringManager.getLangString(287),
+								showUnitDialog(Class_f_StringManager.getLangString(287),
 										(byte) 0, (byte) 4);
 								this.var_4aca = true;
 								this.var_4ac2 = 0;
@@ -10004,7 +9990,8 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 		if (this.var_505a != null) {
 			return;
 		}
-		this.var_505a = new TextBox(Class_f_StringManager.getLangString(314), "", 100, 0);
+		String consoleStr = Class_f_StringManager.getLangString(314);
+		this.var_505a = new TextBox(consoleStr, "", 100, 0);
 		this.var_505a.addCommand(this.var_506a);
 		this.var_505a.addCommand(this.var_5072);
 		this.var_505a.setCommandListener(this);

@@ -45,7 +45,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 	public int var_10f2 = -1;
 	private boolean var_10fa = true;
 	private int var_1102;
-	public Class_a_Unit var_110a;
+	public Class_a_Unit someUnit0;
 	private boolean var_1112 = true;
 	public Class_f_StringManager stringManager;
 	private int var_1122;
@@ -166,9 +166,9 @@ public final class Class_e_0134 extends Class_f_StringManager {
 						+ (var_1012.smallCircleSprite.spriteFrameHeight << 1) + var_ff2 + var_ff2 + 1);
 				if (paramByte == 5) {
 					this.var_1042 += var_ffa + Class_c_MainCanvas.fontBaselinePos;
-					this.var_110a = var_1012.getUnitAtPos(var_1012.cursorPosX,
+					this.someUnit0 = var_1012.getUnitAtPos(var_1012.cursorPosX,
 							var_1012.cursorPosY, (byte) 0);
-					this.var_105a = this.var_110a.unitType;
+					this.var_105a = this.someUnit0.unitType;
 					this.var_103a = var_1012.someCanWidth;
 				} else {
 					this.var_103a = var_1012.someCanWidth;
@@ -1004,33 +1004,33 @@ public final class Class_e_0134 extends Class_f_StringManager {
 						this.var_11a2, this.var_1132, 5);
 				paramGraphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);
 			}
-			int bool1 = this.var_103a;
-			int bool2 = this.var_1042;
+			int someXVal = this.var_103a;
+			int someYVal = this.var_1042;
 			if ((this.var_1092 & 0x1) == 0) {
-				bool2 -= 5;
+				someYVal -= 5;
 				paramInt2 += 5;
 			}
 			if ((this.var_1092 & 0x2) == 0) {
-				bool2 -= 5;
+				someYVal -= 5;
 			}
 			if ((this.var_1092 & 0x4) == 0) {
 				paramInt1 += 8;
-				bool1 -= 8;
+				someXVal -= 8;
 			}
 			if ((this.var_1092 & 0x8) == 0) {
-				bool1 -= 8;
+				someXVal -= 8;
 			}
 			paramGraphics.translate(paramInt1, paramInt2);
 			paramGraphics.setFont(this.var_1052);
 			if ((this.var_11b2 != null)
 					&& ((this.var_101a == null) || (this.var_1052
-							.stringWidth(this.var_101a[0]) < bool1
+							.stringWidth(this.var_101a[0]) < someXVal
 							- (this.var_11b2.imageWidth << 1)))) {
-				this.var_11b2.drawOnGraphics(paramGraphics, 0, bool2 / 1, 6);
+				this.var_11b2.drawOnGraphics(paramGraphics, 0, someYVal / 1, 6);
 			}
 			if (paramBoolean) {
 				paramGraphics.setColor(5594742);
-				drawRoundedRect(paramGraphics, 0, 0, bool1, bool2);
+				drawRoundedRect(paramGraphics, 0, 0, someXVal, someYVal);
 			}
 			int k;
 			int bool4;
@@ -1097,16 +1097,16 @@ public final class Class_e_0134 extends Class_f_StringManager {
 					if (this.var_1002 == 2) {
 						paramGraphics.setColor(1645370);
 						if (this.var_124a == 2) {
-							bool2 = this.var_103a;
+							someYVal = this.var_103a;
 							if (this.var_101a[this.var_105a] != null) {
 								bool12 = Class_c_MainCanvas.theFont
 										.stringWidth(this.var_101a[this.var_105a]) + 2;
-								if (bool2 < bool12) {
-									bool2 = bool12;
+								if (someYVal < bool12) {
+									someYVal = bool12;
 								}
 							}
-							drawRoundedRect(paramGraphics, (this.var_103a - bool2) / 2, 1,
-									bool2, Class_c_MainCanvas.var_1767);
+							drawRoundedRect(paramGraphics, (this.var_103a - someYVal) / 2, 1,
+									someYVal, Class_c_MainCanvas.var_1767);
 						} else {
 							drawRoundedRect(paramGraphics, 2 - this.var_102a, 1,
 									this.canvasWidth - 4, Class_c_MainCanvas.var_1767);
@@ -1127,30 +1127,30 @@ public final class Class_e_0134 extends Class_f_StringManager {
 					break;
 				case 2:
 				case 5:
-					paramGraphics.setClip(0, 0, bool1, bool2);
-					bool2 = var_ff2;
-					this.var_110a.sub_28d7(paramGraphics, -this.var_110a.m + bool2,
-							-this.var_110a.n + bool2);  // m n p o
-					k = bool2 + this.var_110a.p / 2;
+					paramGraphics.setClip(0, 0, someXVal, someYVal);
+					someYVal = var_ff2;
+					this.someUnit0.sub_28d7(paramGraphics, -this.someUnit0.pixelX + someYVal,
+							-this.someUnit0.pixelY + someYVal);  // m n p o
+					k = someYVal + this.someUnit0.p / 2;
 					paramGraphics.setFont(Class_c_MainCanvas.theFont);
 					paramGraphics.setColor(this.var_fea);
-					Class_c_MainCanvas.showString(paramGraphics, this.var_110a.unitName,
-							bool2 + this.var_110a.o + bool2, k
+					Class_c_MainCanvas.showString(paramGraphics, this.someUnit0.unitName,
+							someYVal + this.someUnit0.o + someYVal, k
 									- Class_c_MainCanvas.fontBaselinePos / 2, 20);
 					String str2;
 					if (this.var_108a == 2) {
-						str2 = "" + this.var_110a.cost;
-						var_1012.hudIcons2Sprite.drawFrame(paramGraphics, 1, bool1 - bool2
+						str2 = "" + this.someUnit0.cost;
+						var_1012.hudIcons2Sprite.drawFrame(paramGraphics, 1, someXVal - someYVal
 								- Class_c_MainCanvas.sub_1e71((byte) 1, str2), k, 10);
 					} else {
-						str2 = "" + this.var_110a.health;
+						str2 = "" + this.someUnit0.health;
 					}
-					Class_c_MainCanvas.sub_2007(paramGraphics, str2, bool1 - bool2, k, 1,
+					Class_c_MainCanvas.sub_2007(paramGraphics, str2, someXVal - someYVal, k, 1,
 							10);
 					this.var_10b2 = (Class_c_MainCanvas.var_1767 - Class_c_MainCanvas.fontBaselinePos);
-					bool3 = bool2 + this.var_110a.p + var_ff2;
+					bool3 = someYVal + this.someUnit0.p + var_ff2;
 					paramGraphics.setColor(this.var_fea);
-					paramGraphics.drawLine(bool2, bool3, bool1 - bool2 - bool2,
+					paramGraphics.drawLine(someYVal, bool3, someXVal - someYVal - someYVal,
 							bool3);
 					bool3 += 1 + var_ff2;
 					int i2;
@@ -1158,46 +1158,46 @@ public final class Class_e_0134 extends Class_f_StringManager {
 						bool5 = Class_c_MainCanvas.fontBaselinePos;
 						k = bool3 + bool5 / 1;
 						Class_c_MainCanvas.showString(paramGraphics,
-								Class_f_StringManager.getLangString(97), bool2, bool3, 20);
+								Class_f_StringManager.getLangString(97), someYVal, bool3, 20);
 						bool4 = Class_c_MainCanvas.theFont.stringWidth(Class_f_StringManager
 								.getLangString(97));
 						int sumBool;
-						sumBool = bool2 + bool4 + bool2;
-						String str1 = "" + this.var_110a.level;
+						sumBool = someYVal + bool4 + someYVal;
+						String str1 = "" + this.someUnit0.level;
 						i2 = Class_c_MainCanvas.sub_1e71((byte) 0, str1);
-						int bool13 = bool1 - sumBool - bool2
-								- var_1012.hudIconsSprite.spriteFrameWidth - i2 - bool2;
+						int bool13 = someXVal - sumBool - someYVal
+								- var_1012.hudIconsSprite.spriteFrameWidth - i2 - someYVal;
 						paramGraphics.setColor(this.var_fea);
 						drawRoundedRect(paramGraphics, sumBool, bool3, bool13, bool5);
 						paramGraphics.setColor(2370117);
 						int bool6;
-						if ((bool6 = bool13 * this.var_110a.maybeExperience
-								/ this.var_110a.getLevelExperience()) <= 0) {
+						if ((bool6 = bool13 * this.someUnit0.maybeExperience
+								/ this.someUnit0.getLevelExperience()) <= 0) {
 							bool6 = 1;
 						}
 						paramGraphics.fillRect(sumBool + 1, bool3 + 1,
 								bool6, bool5 - 1);
-						sumBool = bool1 - bool2 - i2;
+						sumBool = someXVal - someYVal - i2;
 						var_1012.hudIconsSprite.drawFrame(paramGraphics, 2, sumBool,
 								k, 10);
 						Class_c_MainCanvas.sub_2007(paramGraphics, str1, sumBool, k,
 								0, 6);
 						bool3 += bool5 + var_ff2;
 						paramGraphics.setColor(this.var_fea);
-						paramGraphics.drawLine(bool2, bool3, bool1 - bool2 - bool2,
+						paramGraphics.drawLine(someYVal, bool3, someXVal - someYVal - someYVal,
 								bool3);
 						bool3 += 1 + var_ff2;
 					}
-					bool5 = (bool1 - bool2 * 1) / 2;
+					bool5 = (someXVal - someYVal * 1) / 2;
 					m = var_1012.hudIconsSprite.spriteFrameHeight;
 					int bool13 = var_1012.smallCircleSprite.spriteFrameHeight;
 					int bool6 = var_1012.smallCircleSprite.spriteFrameHeight / 2;
 					for (k = 0; k < 2; k++) {
 						int bool9Int = bool3 + bool6 - m / 2;
 						int sumBool;
-						sumBool = bool2;
+						sumBool = someYVal;
 						for (int bool11Int = 0; bool11Int < 1; bool11Int++) {
-							if ((k == 0) || (!bool11)) {
+							if ((k == 0) || (bool11==0)) {
 								i2 = sumBool + bool6;
 								drawRoundedRect(paramGraphics, i2, bool9Int, bool5 - bool6, m);
 								var_1012.smallCircleSprite.sub_1d20(paramGraphics,
@@ -1209,19 +1209,19 @@ public final class Class_e_0134 extends Class_f_StringManager {
 								bool12 = 0;
 								if (i4 == 0) {
 									if (this.var_108a == 5) {
-										i3 = this.var_110a.getSomeAttackValueMaybe1(null);
+										i3 = this.someUnit0.getSomeAttackValueMaybe1(null);
 									}
-									str2 = this.var_110a.attackMin + i3 + "-"
-											+ (this.var_110a.attackMax + i3);
+									str2 = this.someUnit0.attackMin + i3 + "-"
+											+ (this.someUnit0.attackMax + i3);
 								} else if (i4 == 1) {
 									if (this.var_108a == 5) {
-										i3 = this.var_110a.getSomeUnitResistance(null);
+										i3 = this.someUnit0.getSomeUnitResistance(null);
 									}
-									str2 = "" + (this.var_110a.defence + i3);
+									str2 = "" + (this.someUnit0.defence + i3);
 								} else if (i4 == 2) {
 									var_1012.actionIconsFrames[5].drawOnGraphics(paramGraphics,
 											i2, bool3 + bool6, 3);
-									str2 = "" + this.var_110a.moveRange;
+									str2 = "" + this.someUnit0.moveRange;
 								}
 								Class_c_MainCanvas.sub_2007(paramGraphics, str2,
 										sumBool + bool13 + 1, bool3 + bool6,
@@ -1240,14 +1240,14 @@ public final class Class_e_0134 extends Class_f_StringManager {
 					}
 					bool3 += var_ff2;
 					paramGraphics.setColor(this.var_fea);
-					paramGraphics.drawLine(bool2, bool3, bool1 - bool2 - bool2,
+					paramGraphics.drawLine(someYVal, bool3, someXVal - someYVal - someYVal,
 							bool3);
 					break;
 				case 3:
-					paramGraphics.setClip(0, 0, bool1, bool2);
+					paramGraphics.setClip(0, 0, someXVal, someYVal);
 					bool3 = var_ff2;
 					paramGraphics.setColor(11515819);
-					paramGraphics.drawLine(var_ff2, bool3, bool1 - (var_ff2 << 1),
+					paramGraphics.drawLine(var_ff2, bool3, someXVal - (var_ff2 << 1),
 							bool3);
 					bool3 = bool3 + (1 + var_ff2) + var_1012.bigCircleSprite.spriteFrameHeight / 2;
 					int sumB;
@@ -1274,14 +1274,14 @@ public final class Class_e_0134 extends Class_f_StringManager {
 									3);
 						}
 						Class_a_Unit localClass_a_0260 = this.var_10aa[bool5];
-						int bool7int = m - localClass_a_0260.m - localClass_a_0260.o / 2; //m
-						int bool9int = bool3 - localClass_a_0260.n - localClass_a_0260.p //n p
+						int theXpos = m - localClass_a_0260.pixelX - localClass_a_0260.o / 2; //m
+						int theYPos = bool3 - localClass_a_0260.pixelY - localClass_a_0260.p //n p
 								/ 2;
 						localClass_a_0260
 								.sub_28fa(
 										paramGraphics,
-										bool7int,
-										bool9int,
+										theXpos,
+										theYPos,
 										localClass_a_0260.cost > var_1012.var_486a[var_1012.someUnitTeamId]);
 						if (bool5 == this.var_105a) {
 							k = m - this.var_1252.spriteFrameWidth / 2;
@@ -1294,7 +1294,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 						sumB += this.var_104a;
 					}
 					var_1012.sideArrowSprite.drawFrame(paramGraphics, 0, 0, bool3, 6);
-					var_1012.sideArrowSprite.drawFrame(paramGraphics, 1, bool1, bool3, 10);
+					var_1012.sideArrowSprite.drawFrame(paramGraphics, 1, someXVal, bool3, 10);
 					break;
 				case 7:
 				case 10:
@@ -1304,7 +1304,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 						var_1012.portraitsSprite.drawFrame(paramGraphics, this.var_10c2,
 								-8, j, 36);
 					}
-					bool1 -= this.var_10da;
+					someXVal -= this.var_10da;
 					paramGraphics.setClip(0, 0, i, this.var_1042 - 10);
 					bool5 = 0;
 					bool3 = 0;

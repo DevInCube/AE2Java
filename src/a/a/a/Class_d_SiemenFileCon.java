@@ -14,7 +14,7 @@ import javax.microedition.io.Connection;
  *
  *         SIEMENS File Connection
  */
-
+/*
 final class Class_d_SiemenFileCon implements Class_c_AConnection {
 	
 	private FileConnection var_27d;
@@ -59,7 +59,7 @@ final class Class_d_SiemenFileCon implements Class_c_AConnection {
 		this.var_27d.truncate(0L);
 	}
 }
-
+*/
 /*
  * Location: C:\Users\DevInCube\Desktop\deob\
  * 

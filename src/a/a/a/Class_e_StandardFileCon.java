@@ -13,7 +13,7 @@ import javax.microedition.io.Connection;
  * @author DevInCube
  * 
  */
-
+/*
 final class Class_e_StandardFileCon implements Class_c_AConnection {
 	
 	private FileConnection var_285;
@@ -58,7 +58,7 @@ final class Class_e_StandardFileCon implements Class_c_AConnection {
 		this.var_285.truncate(0L);
 	}
 }
-
+*/
 /*
  * Location: C:\Users\DevInCube\Desktop\deob\
  * 
