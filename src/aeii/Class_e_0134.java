@@ -139,7 +139,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 				if ((paramInt & 0x2) == 0) {
 					this.var_1042 += 5;
 				}
-				this.var_10aa = Class_a_Unit.sub_27b7(var_1012.var_4842);
+				this.var_10aa = Class_a_Unit.sub_27b7(var_1012.someUnitTeamId);
 				this.var_1062 = this.var_10aa.length;
 				int pInt = (int) (this.var_103a - (var_1012.sideArrowSprite.spriteFrameWidth << 1));
 				if ((paramInt & 0x4) == 0) {
@@ -1282,7 +1282,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 										paramGraphics,
 										bool7int,
 										bool9int,
-										localClass_a_0260.cost > var_1012.var_486a[var_1012.var_4842]);
+										localClass_a_0260.cost > var_1012.var_486a[var_1012.someUnitTeamId]);
 						if (bool5 == this.var_105a) {
 							k = m - this.var_1252.spriteFrameWidth / 2;
 							int bool11int = bool3 - this.var_1252.spriteFrameWidth / 2;
@@ -1414,7 +1414,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 							i1, 40);
 					break;
 				case 8:
-					Class_g_1956.sub_10f49(paramGraphics, 0, 0, this.var_103a,
+					Class_g_1956.drawRectBar(paramGraphics, 0, 0, this.var_103a,
 							this.var_1042);
 					bool11 = var_1012.smallTilesFrames[0].imageWidth;
 					bool10 = var_1012.smallTilesFrames[0].imageHeight;

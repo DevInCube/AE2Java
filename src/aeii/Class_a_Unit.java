@@ -231,7 +231,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		this.var_e8b = ((byte) (this.var_e8b | paramByte));
 		sub_160c();
 		if (paramByte == 1) {
-			this.var_ed3 = var_deb.var_4842;
+			this.var_ed3 = var_deb.someUnitTeamId;
 		}
 	}
 
@@ -622,8 +622,8 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		Class_a_Unit[] units = new Class_a_Unit[var_deb.teamsUnitsCount[paramByte]];
 		int i = 0;
 		for (int it = 0; it < units.length; it++) {
-			if ((var_deb.teamsUnits[var_deb.var_4842][it] != null) && (var_deb.teamsUnits[var_deb.var_4842][it].var_e83 == 3)) {
-				units[(i++)] = var_deb.teamsUnits[var_deb.var_4842][it];
+			if ((var_deb.teamsUnits[var_deb.someUnitTeamId][it] != null) && (var_deb.teamsUnits[var_deb.someUnitTeamId][it].var_e83 == 3)) {
+				units[(i++)] = var_deb.teamsUnits[var_deb.someUnitTeamId][it];
 			}
 		}
 		Class_a_Unit[] units2 = new Class_a_Unit[var_deb.var_49ca + 1 + i];
