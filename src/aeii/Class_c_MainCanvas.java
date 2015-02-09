@@ -365,7 +365,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 		}
 		if (propDeveloperModeOn) {
 			paramGraphics.setFont(theFont);
-			Class_g_1956
+			Class_g_Game
 					.sub_fdce(paramGraphics, this.fpsValue, 2, 2, 20, -1, 0);
 		}
 	}
@@ -542,7 +542,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 			var_1807 = new String[] { Class_f_StringManager.getLangString(26), Class_f_StringManager
 					.getLangString(28), Class_f_StringManager.getLangString(25), Class_f_StringManager
 					.getLangString(24) };
-			Class_g_1956 localClass_g_1956 = new Class_g_1956();
+			Class_g_Game localClass_g_1956 = new Class_g_Game();
 			repaintAll();
 			this.var_17b7 = localClass_g_1956;
 			this.var_179f = false;

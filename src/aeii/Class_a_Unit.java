@@ -11,7 +11,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 	public static byte var_dd3 = 12;
 	public static byte var_ddb;
 	public static byte var_de3 = Class_a_Unit.var_ddb = 6;
-	private static Class_g_1956 var_deb;
+	private static Class_g_Game var_deb;
 	public String unitName;
 	public short level;
 	public int maybeExperience;
@@ -178,7 +178,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 
 	private int getSomeUnitResistance2(int x, int y) {
 		int tileType = var_deb.getMapTileType(x, y);
-		int resist = this.var_ea3 + Class_g_1956.tilesExtraDefence[tileType];
+		int resist = this.var_ea3 + Class_g_Game.tilesExtraDefence[tileType];
 		if ((hasProperty((short) 2)) && (tileType == 5)) {
 			resist += 15;
 		}
@@ -353,7 +353,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 								units.addElement(unit);
 							}
 						} else if ((this.unitType == 7) && (var_deb
-								.getMapTileType(x, y) == 8) && (Class_g_1956
+								.getMapTileType(x, y) == 8) && (Class_g_Game
 								.sub_11b75(var_deb.var_4782[x][y])) && (!var_deb
 								.sub_11c55(x, y, var_deb.var_483a[this.teamId]))) {
 							Class_a_Unit fakeHouseUnit = createUnitWithBool((byte) 0, (byte) 0, x, y, false);
@@ -518,7 +518,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 					return 1;
 				}
 			}
-			return Class_g_1956.tilesTypes[paramInt1];
+			return Class_g_Game.tilesTypes[paramInt1];
 		}
 		return 10000;
 	}
@@ -683,7 +683,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		}
 	}
 
-	public static final void initializeUnitsData(Class_g_1956 ins) {
+	public static final void initializeUnitsData(Class_g_Game ins) {
 		var_deb = ins;
 		try {
 			for (int unitInd = 0; unitInd < unitNames.length; unitInd++) {

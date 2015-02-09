@@ -13,7 +13,7 @@ public final class Class_h_0417 {
 	private static String[] var_b37 = { "soldier", "archer", "lizard",
 			"wizard", "wisp", "spider", "golem", "catapult", "wyvern", "king",
 			"skeleton" };
-	private Class_g_1956 var_b3f;
+	private Class_g_Game var_b3f;
 	public Class_a_Unit var_b47;
 	private byte var_b4f;
 	public boolean var_b57 = false;
@@ -61,7 +61,7 @@ public final class Class_h_0417 {
 	private int var_ca7;
 	private Object localClass_h_04172;
 
-	public Class_h_0417(Class_g_1956 paramClass_g_1956,
+	public Class_h_0417(Class_g_Game paramClass_g_1956,
 			Class_a_Unit paramClass_a_0260, Class_h_0417 paramClass_h_0417) {
 		this.var_b3f = paramClass_g_1956;
 		this.var_b47 = paramClass_a_0260;
@@ -1218,7 +1218,7 @@ public final class Class_h_0417 {
 	}
 
 	public final void sub_36f9(Graphics paramGraphics) {
-		int i = this.var_b3f.canvasHeight - Class_g_1956.var_4592 / 2; 
+		int i = this.var_b3f.canvasHeight - Class_g_Game.var_4592 / 2; 
 		Class_c_MainCanvas.sub_2007(paramGraphics, this.var_c3f + "/" + 100,
 				this.var_b3f.someCanWidthShift / 2, i, 1, 3);
 	}

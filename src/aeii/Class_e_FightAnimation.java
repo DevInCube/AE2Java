@@ -5,16 +5,16 @@ import java.util.Vector;
 import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Graphics;
 
-public final class Class_e_0134 extends Class_f_StringManager {
+public final class Class_e_FightAnimation extends Class_f_StringManager {
 
 	private boolean[] var_fe2 = { false, false };
 	public int var_fea = 13553358;
 	private static int var_ff2;
-	private static int var_ffa = ((Class_e_0134.var_ff2 = Class_c_MainCanvas.canvasHeight <= 143 ? 1
+	private static int var_ffa = ((Class_e_FightAnimation.var_ff2 = Class_c_MainCanvas.canvasHeight <= 143 ? 1
 			: 2) << 1) + 1;
 	private byte var_1002 = 2;
 	private short var_100a = 3;
-	public static Class_g_1956 var_1012;
+	public static Class_g_Game var_1012;
 	public String[] var_101a;
 	private Class_d_ImageWrap[] var_1022;
 	private int var_102a;
@@ -67,7 +67,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 	public int var_11a2 = 2370117;
 	public int var_11aa = 2370117;
 	public Class_d_ImageWrap var_11b2;
-	private Class_e_0134 var_11ba;
+	private Class_e_FightAnimation var_11ba;
 	public int[] var_11c2;
 	private int var_11ca;
 	private int var_11d2;
@@ -104,8 +104,8 @@ public final class Class_e_0134 extends Class_f_StringManager {
 		}
 		if (this.var_108a == 15) {
 			for (int i = 0; i < this.var_1142.size(); i++) {
-				Class_e_0134 localClass_e_0134;
-				(localClass_e_0134 = (Class_e_0134) this.var_1142.elementAt(i))
+				Class_e_FightAnimation localClass_e_0134;
+				(localClass_e_0134 = (Class_e_FightAnimation) this.var_1142.elementAt(i))
 						.sub_1272();
 				localClass_e_0134.var_10a2 = false;
 			}
@@ -121,7 +121,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 		this.var_fe2[1] = (boolean) (paramClass_f_0145 != null ? true : false);
 	}
 
-	public Class_e_0134(byte paramByte, int paramInt) {
+	public Class_e_FightAnimation(byte paramByte, int paramInt) {
 		this.var_108a = paramByte;
 		this.var_1092 = paramInt;
 		if (paramByte == 15) {
@@ -181,13 +181,13 @@ public final class Class_e_0134 extends Class_f_StringManager {
 		this.var_109a = true;
 	}
 
-	public final Class_e_0134 sub_165b(String paramString) {
-		this.var_11ba = new Class_e_0134((byte) 10, 0);
+	public final Class_e_FightAnimation sub_165b(String paramString) {
+		this.var_11ba = new Class_e_FightAnimation((byte) 10, 0);
 		this.var_11ba.sub_1ca8(null, paramString, var_1012.someCanWidth, -1);
 		return this.var_11ba;
 	}
 
-	public final void sub_1698(Class_e_0134 paramClass_e_0134, int paramInt1,
+	public final void sub_1698(Class_e_FightAnimation paramClass_e_0134, int paramInt1,
 			int paramInt2, int paramInt3) {
 		if (this.var_1142 == null) {
 			this.var_1142 = new Vector();
@@ -219,11 +219,11 @@ public final class Class_e_0134 extends Class_f_StringManager {
 		}
 		boolean paramInt3bool = false;
 		paramInt2 = 0;
-		Class_e_0134 cl;
+		Class_e_FightAnimation cl;
 		(cl = paramClass_e_0134).var_fe2[paramInt2] = paramInt3bool;
 		paramInt3bool = false;
 		paramInt2 = 1;
-		Class_e_0134 cl2;
+		Class_e_FightAnimation cl2;
 		(cl2 = paramClass_e_0134).var_fe2[paramInt2] = paramInt3bool;
 		this.var_1142.addElement(paramClass_e_0134);
 	}
@@ -547,7 +547,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 				}
 				i = 0;
 			}
-		} while (!((Class_e_0134) this.var_1142.elementAt(i)).var_1152);
+		} while (!((Class_e_FightAnimation) this.var_1142.elementAt(i)).var_1152);
 		return i;
 	}
 
@@ -569,10 +569,10 @@ public final class Class_e_0134 extends Class_f_StringManager {
 				paramBoolean = false;
 				if ((this.var_fe2[0] != false)
 						&& ((Class_f_StringManager.mainCanvas
-								.sub_26d7(Class_g_1956.var_4602)) || (Class_f_StringManager.mainCanvas
+								.sub_26d7(Class_g_Game.var_4602)) || (Class_f_StringManager.mainCanvas
 								.sub_26d7(16)))) {
 					paramBoolean = true;
-					Class_f_StringManager.mainCanvas.releaseGameAction(Class_g_1956.var_4602);
+					Class_f_StringManager.mainCanvas.releaseGameAction(Class_g_Game.var_4602);
 					Class_f_StringManager.mainCanvas.releaseGameAction(16);
 				}
 				if ((this.var_108a == 0) || (this.var_108a == 3)) {
@@ -599,10 +599,10 @@ public final class Class_e_0134 extends Class_f_StringManager {
 				if ((!this.var_115a) && (this.var_114a >= 0)) {
 					int m;
 					if (Class_f_StringManager.mainCanvas.sub_26d7(1)) {
-						((Class_e_0134) this.var_1142.elementAt(this.var_114a)).var_109a = true;
+						((Class_e_FightAnimation) this.var_1142.elementAt(this.var_114a)).var_109a = true;
 						this.var_114a = sub_242b(-1);
-						Class_e_0134 localClass_e_01341;
-						(localClass_e_01341 = (Class_e_0134) this.var_1142
+						Class_e_FightAnimation localClass_e_01341;
+						(localClass_e_01341 = (Class_e_FightAnimation) this.var_1142
 								.elementAt(this.var_114a)).var_109a = true;
 						m = localClass_e_01341.var_1032;
 						for (int j = 0; j < 5; j++) {
@@ -618,10 +618,10 @@ public final class Class_e_0134 extends Class_f_StringManager {
 						}
 					}
 					if (Class_f_StringManager.mainCanvas.sub_26d7(2)) {
-						((Class_e_0134) this.var_1142.elementAt(this.var_114a)).var_109a = true;
+						((Class_e_FightAnimation) this.var_1142.elementAt(this.var_114a)).var_109a = true;
 						this.var_114a = sub_242b(1);
-						Class_e_0134 localClass_e_01342;
-						(localClass_e_01342 = (Class_e_0134) this.var_1142
+						Class_e_FightAnimation localClass_e_01342;
+						(localClass_e_01342 = (Class_e_FightAnimation) this.var_1142
 								.elementAt(this.var_114a)).var_109a = true;
 						m = localClass_e_01342.var_1032;
 						for (int k = 0; k < 5; k++) {
@@ -642,7 +642,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 					return;
 				}
 				int k = 0;
-				Class_e_0134 localClass_e_01343 = (Class_e_0134) this.var_1142
+				Class_e_FightAnimation localClass_e_01343 = (Class_e_FightAnimation) this.var_1142
 						.elementAt(k);
 				localClass_e_01343.sub_24ea(k == this.var_114a ? true
 						: this.var_115a ? true : false);
@@ -877,8 +877,8 @@ public final class Class_e_0134 extends Class_f_StringManager {
 				if ((this.var_1002 == 2)
 						&& (this.var_fe2[1] != false)
 						&& (Class_f_StringManager.mainCanvas
-								.sub_26d7(Class_g_1956.var_460a))) {
-					Class_f_StringManager.mainCanvas.releaseGameAction(Class_g_1956.var_460a);
+								.sub_26d7(Class_g_Game.var_460a))) {
+					Class_f_StringManager.mainCanvas.releaseGameAction(Class_g_Game.var_460a);
 					Class_f_StringManager.mainCanvas.sub_26ad();
 					if (this.stringManager != null) {
 						Class_f_StringManager.mainCanvas.sub_220e(this.stringManager);
@@ -1309,7 +1309,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 					bool5 = 0;
 					bool3 = 0;
 					if (this.var_10ea != null) {
-						paramGraphics.setColor(Class_g_1956.sub_f52a(16777215,
+						paramGraphics.setColor(Class_g_Game.sub_f52a(16777215,
 								this.var_11aa, this.var_1132, 5));
 						for (i4 = 0; i4 < this.var_10ea.length; i4++) {
 							Class_c_MainCanvas.showString(paramGraphics, this.var_10ea[i4],
@@ -1348,14 +1348,14 @@ public final class Class_e_0134 extends Class_f_StringManager {
 						if ((this.var_108a == 11) && (bool9 == this.var_105a)) {
 							paramGraphics.setColor(5594742);
 							drawRoundedRect(paramGraphics, 0, bool3, k, this.var_104a);
-							bool7 = Class_g_1956.sub_f52a(this.var_11aa, 16777215,
+							bool7 = Class_g_Game.sub_f52a(this.var_11aa, 16777215,
 									this.var_104a - bool5, this.var_104a);
 						} else {
-							bool7 = Class_g_1956.sub_f52a(this.var_11aa,
+							bool7 = Class_g_Game.sub_f52a(this.var_11aa,
 									this.var_fea, this.var_104a - bool5,
 									this.var_104a);
 						}
-						bool7 = Class_g_1956.sub_f52a(bool7, this.var_11aa,
+						bool7 = Class_g_Game.sub_f52a(bool7, this.var_11aa,
 								this.var_1132, 5);
 						paramGraphics.setColor(bool7);
 						if (this.var_11ea >= 0) {
@@ -1414,7 +1414,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 							i1, 40);
 					break;
 				case 8:
-					Class_g_1956.drawRectBar(paramGraphics, 0, 0, this.var_103a,
+					Class_g_Game.drawRectBar(paramGraphics, 0, 0, this.var_103a,
 							this.var_1042);
 					bool11 = var_1012.smallTilesFrames[0].imageWidth;
 					bool10 = var_1012.smallTilesFrames[0].imageHeight;
@@ -1426,7 +1426,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 						intparamBoolean = 1;
 						for (k = this.var_1162; k < i3; k++) {
 							bool8 = var_1012.tilesDefs[this.var_1182[k][m]];
-							if (Class_g_1956.sub_11b75(this.var_1182[k][m])) {
+							if (Class_g_Game.sub_11b75(this.var_1182[k][m])) {
 								bool5 = (this.var_1182[k][m] - 37) / 2;
 								bool8 = bool5 * 1 + 8 + bool8 - 8;
 							}
@@ -1479,7 +1479,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 				case 13:
 					m = Class_c_MainCanvas.var_1767;
 					k = (this.var_1042 - m) / 2;
-					paramGraphics.setColor(Class_g_1956.sub_f52a(1645370, 16777215,
+					paramGraphics.setColor(Class_g_Game.sub_f52a(1645370, 16777215,
 							this.var_1132, 5));
 					drawRoundedRect(paramGraphics, 0, k, this.var_103a, m);
 					paramGraphics.setFont(Class_c_MainCanvas.theFont);
@@ -1502,7 +1502,7 @@ public final class Class_e_0134 extends Class_f_StringManager {
 				bool5--;
 				//continue;@todo
 				paramGraphics.setFont(Class_c_MainCanvas.theFont);
-				paramGraphics.setColor(Class_g_1956.sub_f52a(16777215, 1645370,
+				paramGraphics.setColor(Class_g_Game.sub_f52a(16777215, 1645370,
 						this.var_1132, 5));
 				k = j / 2;
 				Class_c_MainCanvas.showString(paramGraphics,
@@ -1522,8 +1522,8 @@ public final class Class_e_0134 extends Class_f_StringManager {
 					bool3 = -m + var_1012.buttonsSprite.spriteFrameHeight;
 				}
 				for (j = 0; j < this.var_1142.size(); j++) {
-					Class_e_0134 intparamBoolean;
-					if (((intparamBoolean = (Class_e_0134) this.var_1142
+					Class_e_FightAnimation intparamBoolean;
+					if (((intparamBoolean = (Class_e_FightAnimation) this.var_1142
 							.elementAt(j)).var_1032 >= m)
 							&& (intparamBoolean.var_1032 < bool5)) {
 						intparamBoolean.sub_349e(paramGraphics, 0, bool3,
@@ -1556,11 +1556,11 @@ public final class Class_e_0134 extends Class_f_StringManager {
 			paramGraphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);
 			if ((Class_f_StringManager.mainCanvas.var_17b7 == this) && (this.var_1002 == 2)) {
 				if (this.var_fe2[0] != false) {
-					var_1012.drawButtonIcon(paramGraphics, Class_g_1956.var_4602, 0,
+					var_1012.drawButtonIcon(paramGraphics, Class_g_Game.var_4602, 0,
 							var_1012.someCanHeight);
 				}
 				if (this.var_fe2[1] != false) {
-					var_1012.drawButtonIcon(paramGraphics, Class_g_1956.var_460a, 1,
+					var_1012.drawButtonIcon(paramGraphics, Class_g_Game.var_460a, 1,
 							var_1012.someCanHeight);
 				}
 			}
@@ -1588,8 +1588,8 @@ public final class Class_e_0134 extends Class_f_StringManager {
 			i = paramInt4 / 4;
 			j = paramInt2 + 5;
 			for (k = 0; k < i; k++) {
-				m = Class_g_1956.sub_f52a(paramInt7, paramInt6, k, i);
-				paramGraphics.setColor(Class_g_1956.sub_f52a(m, paramInt6,
+				m = Class_g_Game.sub_f52a(paramInt7, paramInt6, k, i);
+				paramGraphics.setColor(Class_g_Game.sub_f52a(m, paramInt6,
 						paramInt8, paramInt9));
 				paramGraphics.fillRect(paramInt1, j, paramInt3, 1);
 				j++;

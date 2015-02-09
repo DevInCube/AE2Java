@@ -34,7 +34,7 @@ import javax.microedition.lcdui.TextField;
  * @author DevInCube
  *
  */
-public final class Class_g_1956 extends Class_f_StringManager implements Runnable,
+public final class Class_g_Game extends Class_f_StringManager implements Runnable,
 		CommandListener, ItemStateListener {
 	private static String[] var_4572;
 	private static String[] var_457a;
@@ -138,7 +138,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	public int[] var_486a;
 	private byte[][] var_4872;
 	private byte[] var_487a;
-	private Class_e_0134 var_4882;
+	private Class_e_FightAnimation var_4882;
 	private Vector var_488a;
 	private Vector spritesVector;
 	private Class_a_Unit var_489a;
@@ -177,14 +177,14 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	private static int[] var_499a = { 15, 196, 197, 198, 199, 200, 201, 202,
 			203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214 };
 	private int var_49a2;
-	private Class_e_0134 var_49aa;
-	private Class_e_0134 var_49b2;
-	private Class_e_0134 var_49ba;
-	private Class_e_0134 var_49c2;
+	private Class_e_FightAnimation var_49aa;
+	private Class_e_FightAnimation var_49b2;
+	private Class_e_FightAnimation var_49ba;
+	private Class_e_FightAnimation var_49c2;
 	public int var_49ca;
-	private Class_e_0134 var_49d2;
-	private Class_e_0134 var_49da;
-	private Class_e_0134 var_49e2;
+	private Class_e_FightAnimation var_49d2;
+	private Class_e_FightAnimation var_49da;
+	private Class_e_FightAnimation var_49e2;
 	private boolean var_49ea;
 	private int var_49f2;
 	private byte[][] var_49fa;
@@ -203,14 +203,14 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	public Class_g_Sprite miniIconsSprite;
 	private Class_g_Sprite[] var_4a6a;
 	public Class_g_Sprite bSmokeSprite;
-	private Class_e_0134 var_4a7a;
-	private Class_e_0134 var_4a82;
-	private Class_e_0134 var_4a8a;
-	private Class_e_0134 var_4a92;
-	private Class_e_0134[] var_4a9a;
-	private Class_e_0134[] var_4aa2;
-	private Class_e_0134 var_4aaa;
-	private Class_e_0134[] var_4ab2;
+	private Class_e_FightAnimation var_4a7a;
+	private Class_e_FightAnimation var_4a82;
+	private Class_e_FightAnimation var_4a8a;
+	private Class_e_FightAnimation var_4a92;
+	private Class_e_FightAnimation[] var_4a9a;
+	private Class_e_FightAnimation[] var_4aa2;
+	private Class_e_FightAnimation var_4aaa;
+	private Class_e_FightAnimation[] var_4ab2;
 	private Class_g_Sprite alphaMaskSprite;
 	private int var_4ac2;
 	private boolean var_4aca;
@@ -220,10 +220,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	private Class_g_Sprite levelUpSprite;
 	private int var_4af2;
 	public Class_g_Sprite[] kingHeadsIcons;
-	private Class_e_0134 var_4b02;
-	private Class_e_0134 var_4b0a;
-	private Class_e_0134 var_4b12;
-	private Class_e_0134 var_4b1a;
+	private Class_e_FightAnimation var_4b02;
+	private Class_e_FightAnimation var_4b0a;
+	private Class_e_FightAnimation var_4b12;
+	private Class_e_FightAnimation var_4b1a;
 	public Class_g_Sprite arrowIconsSprite;
 	private Class_g_Sprite var_4b2a;
 	private Class_a_Unit var_4b32;
@@ -234,13 +234,13 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	private String[] saveSlotsDescriptions;
 	private byte[] saveSlotBytes;
 	private int[] saveSlotsMapIds;
-	private Class_e_0134 var_4b72;
-	private Class_e_0134 var_4b7a;
-	private Class_e_0134 var_4b82;
-	private Class_e_0134 var_4b8a;
-	private Class_e_0134 var_4b92;
-	private Class_e_0134 var_4b9a;
-	private Class_e_0134 var_4ba2;
+	private Class_e_FightAnimation var_4b72;
+	private Class_e_FightAnimation var_4b7a;
+	private Class_e_FightAnimation var_4b82;
+	private Class_e_FightAnimation var_4b8a;
+	private Class_e_FightAnimation var_4b92;
+	private Class_e_FightAnimation var_4b9a;
+	private Class_e_FightAnimation var_4ba2;
 	private byte var_4baa;
 	private byte[] var_4bb2;
 	private int settingsCountMaybe;
@@ -248,14 +248,14 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	private int[] settingsIntListMaybe;
 	private String[] var_4bd2;
 	private String[] var_4bda;
-	private Class_e_0134 var_4be2;
-	private Class_e_0134 var_4bea;
-	private Class_e_0134 var_4bf2;
-	private Class_e_0134 var_4bfa;
-	private Class_e_0134 var_4c02;
-	private Class_e_0134 var_4c0a;
-	private Class_e_0134 var_4c12;
-	private Class_e_0134 var_4c1a;
+	private Class_e_FightAnimation var_4be2;
+	private Class_e_FightAnimation var_4bea;
+	private Class_e_FightAnimation var_4bf2;
+	private Class_e_FightAnimation var_4bfa;
+	private Class_e_FightAnimation var_4c02;
+	private Class_e_FightAnimation var_4c0a;
+	private Class_e_FightAnimation var_4c12;
+	private Class_e_FightAnimation var_4c1a;
 	private int var_4c22;
 	private String var_4c2a;
 	private int downloadAvailableSize;
@@ -311,7 +311,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	private Vector var_4dc2;
 	private boolean var_4dca;
 	private int var_4dd2;
-	private Class_e_0134 var_4dda;
+	private Class_e_FightAnimation var_4dda;
 	private Class_a_Unit var_4de2;
 	private Class_a_Unit var_4dea;
 	private Class_a_Unit var_4df2;
@@ -357,20 +357,20 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	private boolean var_4f32;
 	private Class_f_StringManager var_4f3a;
 	private int var_4f42;
-	private Class_e_0134 var_4f4a;
-	private Class_e_0134 var_4f52;
-	private Class_e_0134 var_4f5a;
-	private Class_e_0134 var_4f62;
+	private Class_e_FightAnimation var_4f4a;
+	private Class_e_FightAnimation var_4f52;
+	private Class_e_FightAnimation var_4f5a;
+	private Class_e_FightAnimation var_4f62;
 	private Class_b_FilesManager var_4f6a;
 	private String[] var_4f72;
 	private byte cursorTileId;
 	private byte someUnitTypeId;
 	private Class_a_Unit var_4f8a;
 	private byte var_4f92;
-	private Class_e_0134 var_4f9a;
-	private Class_e_0134 var_4fa2;
-	private Class_e_0134 var_4faa;
-	private Class_e_0134 var_4fb2;
+	private Class_e_FightAnimation var_4f9a;
+	private Class_e_FightAnimation var_4fa2;
+	private Class_e_FightAnimation var_4faa;
+	private Class_e_FightAnimation var_4fb2;
 	private int[] var_4fba;
 	private int[] var_4fc2;
 	private boolean[] var_4fca;
@@ -400,7 +400,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	private Command var_508a;
 	private Command var_5092;
 
-	public Class_g_1956() {
+	public Class_g_Game() {
 		var_4572 = new String[] { ".." };
 		var_457a = new String[] { Class_f_StringManager.getLangString(300), ".." };
 		var_4582 = new String[] { Class_f_StringManager.getLangString(305),
@@ -515,7 +515,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			setLoadProgress(i + 19);
 		}
 		setLoadProgress(28);
-		Class_e_0134.var_1012 = this;
+		Class_e_FightAnimation.var_1012 = this;
 		setLoadProgress(29);
 		Class_f_StringManager.sub_e73();
 		setLoadProgress(30);
@@ -1044,7 +1044,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 
 	private void sub_6d11(byte[] paramArrayOfByte, int paramInt1,
 			int paramInt2, Class_f_StringManager paramClass_f_0145) {
-		Class_e_0134 localClass_e_0134 = new Class_e_0134((byte) 0, 0);
+		Class_e_FightAnimation localClass_e_0134 = new Class_e_FightAnimation((byte) 0, 0);
 		this.var_4a32 = paramInt1;
 		this.var_4a3a = paramInt2;
 		paramInt1 = paramArrayOfByte.length;
@@ -1070,7 +1070,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	}
 
 	private void sub_6e49(byte[] paramArrayOfByte) {
-		this.var_4882 = new Class_e_0134((byte) 0, 0);
+		this.var_4882 = new Class_e_FightAnimation((byte) 0, 0);
 		int i;
 		String[] arrayOfString = new String[i = paramArrayOfByte.length];
 		Class_d_ImageWrap[] arrayOfClass_d_0033 = new Class_d_ImageWrap[i];
@@ -1089,23 +1089,23 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 		Class_f_StringManager.mainCanvas.sub_220e(this.var_4882);
 	}
 
-	private Class_e_0134 sub_6f4c(String paramString,
+	private Class_e_FightAnimation sub_6f4c(String paramString,
 			Class_d_ImageWrap paramClass_d_0033) {
 		String[] arrayOfString = new String[10];
 		for (int j = 0; j < 10; j++) {
 			arrayOfString[j] = ("SLOT " + (j + 1) + "/" + 10);
 		}
-		this.var_4b82 = new Class_e_0134((byte) 14, 0);
+		this.var_4b82 = new Class_e_FightAnimation((byte) 14, 0);
 		this.var_4b82.sub_1f72(arrayOfString, this.someCanWidth, -1);
-		this.var_4b8a = new Class_e_0134((byte) 10, 0);
+		this.var_4b8a = new Class_e_FightAnimation((byte) 10, 0);
 		this.var_4b8a.sub_1ca8(null, this.saveSlotsDescriptions[0], this.someCanWidth, -1);
 		if (this.saveSlotBytes[0] != -1) {
 			this.var_4b8a.var_11a2 = var_468a[this.saveSlotBytes[0]];
 		}
-		Class_e_0134 localClass_e_01341 = new Class_e_0134((byte) 15, 15);
+		Class_e_FightAnimation localClass_e_01341 = new Class_e_FightAnimation((byte) 15, 15);
 		int i = (this.someCanHeight - this.var_4b82.var_1042 - this.var_4b8a.var_1042) / 2;
-		Class_e_0134 localClass_e_01342;
-		(localClass_e_01342 = new Class_e_0134((byte) 10, 0)).sub_1ca8(null,
+		Class_e_FightAnimation localClass_e_01342;
+		(localClass_e_01342 = new Class_e_FightAnimation((byte) 10, 0)).sub_1ca8(null,
 				paramString, this.someCanWidth, -1);
 		localClass_e_01342.var_11b2 = paramClass_d_0033;
 		localClass_e_01341.sub_1698(localClass_e_01342, 0, 0, 0);
@@ -1139,23 +1139,23 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 				k++;
 			}
 		}
-		this.var_4c0a = new Class_e_0134((byte) 15, 15);
-		Class_e_0134 localClass_e_0134;
-		(localClass_e_0134 = new Class_e_0134((byte) 10, 0)).sub_1ca8(null,
+		this.var_4c0a = new Class_e_FightAnimation((byte) 15, 15);
+		Class_e_FightAnimation localClass_e_0134;
+		(localClass_e_0134 = new Class_e_FightAnimation((byte) 10, 0)).sub_1ca8(null,
 				Class_f_StringManager.getLangString(48), this.someCanWidth, -1);
 		Object localObject2;
 		if (k == 0) {
-			Class_e_0134 clas;
-			(clas = new Class_e_0134((byte) 10, 0)).sub_1ca8(null,
+			Class_e_FightAnimation clas;
+			(clas = new Class_e_FightAnimation((byte) 10, 0)).sub_1ca8(null,
 					Class_f_StringManager.getLangString(52), this.someCanWidth, this.someCanHeightShift);
-			this.var_4c0a.sub_1698((Class_e_0134) clas, 0,
+			this.var_4c0a.sub_1698((Class_e_FightAnimation) clas, 0,
 					(this.someCanHeight + localClass_e_0134.var_1042) / 2, 6);
 		} else {
 			localObject2 = new String[k];
 			int[] arrayOfInt1 = new int[k];
 			System.arraycopy(localObject1, 0, localObject2, 0, k);
 			System.arraycopy(arrayOfInt2, 0, arrayOfInt1, 0, k);
-			this.var_4c1a = new Class_e_0134((byte) 10, 0);
+			this.var_4c1a = new Class_e_FightAnimation((byte) 10, 0);
 			String stringIt;
 			stringIt = sub_7651(this.downloadAvailableSize);
 			this.var_4c1a.sub_1ca8(
@@ -1165,7 +1165,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 							+ "\n"
 							+ Class_f_StringManager.getStrByIdAndReplaceUWith(53, (String) stringIt),
 					this.someCanWidth, -1);
-			this.var_4c12 = new Class_e_0134((byte) 11, 0);
+			this.var_4c12 = new Class_e_FightAnimation((byte) 11, 0);
 			this.var_4c12.sub_20ad((String[]) localObject2, this.someCanWidthShift,
 					this.someCanHeightShift, this.someCanWidth, this.someCanHeight
 							- localClass_e_0134.var_1042
@@ -1183,11 +1183,11 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 		this.var_4c0a.sub_1350(paramClass_f_0145);
 	}
 
-	private Class_e_0134 sub_7384(Class_f_StringManager paramClass_f_0145) {
-		Class_e_0134 localClass_e_01341;
+	private Class_e_FightAnimation sub_7384(Class_f_StringManager paramClass_f_0145) {
+		Class_e_FightAnimation localClass_e_01341;
 		if (this.settingsStrListMaybe.length == 0) {
-			Class_e_0134 localClass_e_01342;
-			(localClass_e_01342 = (localClass_e_01341 = new Class_e_0134(
+			Class_e_FightAnimation localClass_e_01342;
+			(localClass_e_01342 = (localClass_e_01341 = new Class_e_FightAnimation(
 					(byte) 10, 0)).sub_165b(Class_f_StringManager.getLangString(49))).var_11b2 = this.menuIconsFrames[6];
 			localClass_e_01341.sub_1ca8(null, Class_f_StringManager.getLangString(52),
 					this.canvasWidth, -1);
@@ -1197,7 +1197,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			this.var_4bfa = null;
 			return localClass_e_01341;
 		}
-		this.var_4bfa = new Class_e_0134((byte) 11, 0);
+		this.var_4bfa = new Class_e_FightAnimation((byte) 11, 0);
 		(localClass_e_01341 = this.var_4bfa.sub_165b(Class_f_StringManager.getLangString(49))).var_11b2 = this.menuIconsFrames[6];
 		this.var_4bfa.sub_20ad(this.settingsStrListMaybe, this.canvasWidth / 2,
 				(this.someCanHeight + localClass_e_01341.var_1042) / 2,
@@ -1284,7 +1284,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 		return paramString2;
 	}
 
-	public final void sub_770a(Class_e_0134 paramClass_e_0134, int paramInt,
+	public final void sub_770a(Class_e_FightAnimation paramClass_e_0134, int paramInt,
 			String paramString, byte paramByte) {
 		try {
 			this.var_4f32 = true;
@@ -1313,7 +1313,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 					this.var_4b9a = null;
 					return;
 				}
-				Object localObject1;
+				Object localObject1 = null;
 				Class_c_AConnection localObject3;
 				Object localObject4;
 				Object localObject5;
@@ -1341,7 +1341,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 									((ByteArrayOutputStream) localObject5)
 											.toByteArray());
 							((ByteArrayOutputStream) localObject5).close();
-							Class_e_0134 clas;
+							Class_e_FightAnimation clas;
 							(clas = sub_14359(null, Class_f_StringManager.getStrByIdAndReplaceUWith(45,
 									(String) localObject1), this.someCanHeight, 2000))
 									.sub_1350(this.var_4f4a);
@@ -1353,15 +1353,15 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											.getDirectoryPaths(".aem", true)),
 									this.var_4f6a.sub_877() != null ? var_4572
 											: null);
-							this.var_4f4a = new Class_e_0134((byte) 15, 15);
-							Class_e_0134 lo3;
+							this.var_4f4a = new Class_e_FightAnimation((byte) 15, 15);
+							Class_e_FightAnimation lo3;
 							(lo3 = this.var_4f4a.sub_165b(sub_7696(
 									this.var_4f6a.sub_877(),
 									Class_f_StringManager.getLangString(290)))).var_11b2 = this.menuIconsFrames[6];
-							this.var_4f52 = new Class_e_0134((byte) 0, 0);
+							this.var_4f52 = new Class_e_FightAnimation((byte) 0, 0);
 							this.var_4f52.sub_20ad(this.var_4f72, 0, 0,
 									this.someCanWidth, this.someCanHeight
-											- ((Class_e_0134) lo3).var_1042
+											- ((Class_e_FightAnimation) lo3).var_1042
 											- (this.buttonsSprite.spriteFrameHeight << 1), 3,
 									4);
 							if ((this.var_4f6a.sub_877() != null)
@@ -1372,7 +1372,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 									.sub_1698(
 											this.var_4f52,
 											this.someCanWidthShift,
-											(this.someCanHeight + ((Class_e_0134) lo3).var_1042) / 2,
+											(this.someCanHeight + ((Class_e_FightAnimation) lo3).var_1042) / 2,
 											3);
 							this.var_4f4a.sub_132e((byte) 0, true);
 							this.var_4f4a.var_115a = true;
@@ -1411,15 +1411,15 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											.getDirectoryPaths(".aem", true)),
 									this.var_4f6a.sub_877() != null ? var_457a
 											: null);
-							this.var_4f5a = new Class_e_0134((byte) 15, 15);
-							Class_e_0134 loc5;
+							this.var_4f5a = new Class_e_FightAnimation((byte) 15, 15);
+							Class_e_FightAnimation loc5;
 							(loc5 = this.var_4f5a.sub_165b(sub_7696(
 									this.var_4f6a.sub_877(),
 									Class_f_StringManager.getLangString(299)))).var_11b2 = this.menuIconsFrames[6];
-							this.var_4f62 = new Class_e_0134((byte) 0, 0);
+							this.var_4f62 = new Class_e_FightAnimation((byte) 0, 0);
 							this.var_4f62.sub_20ad(this.var_4f72, 0, 0,
 									this.someCanWidth, this.someCanHeight
-											- ((Class_e_0134) loc5).var_1042
+											- ((Class_e_FightAnimation) loc5).var_1042
 											- (this.buttonsSprite.spriteFrameHeight << 1), 3,
 									4);
 							if ((this.var_4f6a.sub_877() != null)
@@ -1430,12 +1430,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 									.sub_1698(
 											this.var_4f62,
 											this.someCanWidthShift,
-											(this.someCanHeight + ((Class_e_0134) loc5).var_1042) / 2,
+											(this.someCanHeight + ((Class_e_FightAnimation) loc5).var_1042) / 2,
 											3);
 							this.var_4f5a.sub_132e((byte) 0, true);
 							this.var_4f5a.var_115a = true;
 							this.var_4f5a.sub_1350(this.var_4faa);
-							Class_e_0134 localClass_e_01344;
+							Class_e_FightAnimation localClass_e_01344;
 							(localClass_e_01344 = sub_14359(null,
 									Class_f_StringManager.getStrByIdAndReplaceUWith(45, this.var_4b52),
 									this.someCanHeight, 2000))
@@ -1448,12 +1448,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											.getDirectoryPaths(".aem", true)),
 									this.var_4f6a.sub_877() != null ? var_457a
 											: null);
-							this.var_4f5a = new Class_e_0134((byte) 15, 15);
-							Class_e_0134 theflocalObject3;
+							this.var_4f5a = new Class_e_FightAnimation((byte) 15, 15);
+							Class_e_FightAnimation theflocalObject3;
 							(theflocalObject3 = this.var_4f5a
 									.sub_165b(sub_7696(this.var_4f6a.sub_877(),
 											Class_f_StringManager.getLangString(290)))).var_11b2 = this.menuIconsFrames[6];
-							this.var_4f62 = new Class_e_0134((byte) 0, 0);
+							this.var_4f62 = new Class_e_FightAnimation((byte) 0, 0);
 							this.var_4f62
 									.sub_20ad(
 											this.var_4f72,
@@ -1461,7 +1461,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											0,
 											this.someCanWidth,
 											this.someCanHeight
-													- ((Class_e_0134) theflocalObject3).var_1042
+													- ((Class_e_FightAnimation) theflocalObject3).var_1042
 													- (this.buttonsSprite.spriteFrameHeight << 1),
 											3, 4);
 							if ((this.var_4f6a.sub_877() != null)
@@ -1472,7 +1472,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 									.sub_1698(
 											this.var_4f62,
 											this.someCanWidthShift,
-											(this.someCanHeight + ((Class_e_0134) theflocalObject3).var_1042) / 2,
+											(this.someCanHeight + ((Class_e_FightAnimation) theflocalObject3).var_1042) / 2,
 											3);
 							this.var_4f5a.sub_132e((byte) 0, true);
 							this.var_4f5a.var_115a = true;
@@ -1554,7 +1554,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 									return;
 								}
 							} else {
-								int i2;
+								int i2 = 0;
 								int i3;
 								Object localObject6;
 								int i6;
@@ -1563,10 +1563,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										this.var_4a7a = null;
 										return;
 									}
-									this.var_4a82 = new Class_e_0134((byte) 15,
+									this.var_4a82 = new Class_e_FightAnimation((byte) 15,
 											15);
-									Class_e_0134 localClass_e_01341;
-									(localClass_e_01341 = new Class_e_0134(
+									Class_e_FightAnimation localClass_e_01341;
+									(localClass_e_01341 = new Class_e_FightAnimation(
 											(byte) 10, 0)).var_11b2 = this.menuIconsFrames[4];
 									localClass_e_01341.sub_1ca8(null,
 											Class_f_StringManager.getLangString(34),
@@ -1580,17 +1580,17 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												+ (i2 + 1));
 									}
 									i2 = localClass_e_01341.var_1042;
-									Class_e_0134[] olocObj3;
-									olocObj3 = new Class_e_0134[this.var_4baa];
-									this.var_4a9a = new Class_e_0134[this.var_4baa];
-									this.var_4aa2 = new Class_e_0134[this.var_4baa];
+									Class_e_FightAnimation[] olocObj3;
+									olocObj3 = new Class_e_FightAnimation[this.var_4baa];
+									this.var_4a9a = new Class_e_FightAnimation[this.var_4baa];
+									this.var_4aa2 = new Class_e_FightAnimation[this.var_4baa];
 									for (paramInt = 0; paramInt < this.var_4baa; paramInt++) {
-										this.var_4a9a[paramInt] = new Class_e_0134(
+										this.var_4a9a[paramInt] = new Class_e_FightAnimation(
 												(byte)14, 6);
 										this.var_4a9a[paramInt]
 												.sub_1f72(this.var_463a,
 														this.canvasWidthShift, -1);
-										this.var_4aa2[paramInt] = new Class_e_0134(
+										this.var_4aa2[paramInt] = new Class_e_FightAnimation(
 												(byte)14, 5);
 										this.var_4aa2[paramInt].sub_1f72(str22,
 												this.canvasWidthShift, -1);
@@ -1609,7 +1609,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												this.var_4aa2[paramInt], i3,
 												i2, 20);
 										i2 += this.var_4aa2[paramInt].var_1042;
-										olocObj3[paramInt] = new Class_e_0134(
+										olocObj3[paramInt] = new Class_e_FightAnimation(
 												(byte)10, 8);
 										olocObj3[paramInt]
 												.sub_1ca8(
@@ -1624,14 +1624,14 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												olocObj3[paramInt], 0, i2, 36);
 									}
 									this.var_4a82.var_114a = 1;
-									Class_e_0134 localClass_e_01345;
-									(localClass_e_01345 = new Class_e_0134(
+									Class_e_FightAnimation localClass_e_01345;
+									(localClass_e_01345 = new Class_e_FightAnimation(
 											(byte) 10, 8)).sub_1ca8(null,
 											Class_f_StringManager.getLangString(40),
 											this.someCanWidthShift, -1);
 									this.var_4a82.sub_1698(localClass_e_01345,
 											0, i2, 20);
-									this.var_4a8a = new Class_e_0134((byte) 14,
+									this.var_4a8a = new Class_e_FightAnimation((byte) 14,
 											4);
 									String[] ssparamInt;
 									ssparamInt = new String[var_45da.length];
@@ -1644,13 +1644,13 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 									this.var_4a82.sub_1698(this.var_4a8a,
 											this.canvasWidthShift, i2, 20);
 									i2 += localClass_e_01345.var_1042;
-									(localClass_e_01341 = new Class_e_0134(
+									(localClass_e_01341 = new Class_e_FightAnimation(
 											(byte) 10, 8)).sub_1ca8(null,
 											Class_f_StringManager.getLangString(41),
 											this.someCanWidthShift, -1);
 									this.var_4a82.sub_1698(localClass_e_01341,
 											0, i2, 20);
-									this.var_4a92 = new Class_e_0134((byte) 14,
+									this.var_4a92 = new Class_e_FightAnimation((byte) 14,
 											4);
 									String[] slocalObject6 = new String[var_45e2.length];
 									for (i6 = 0; i6 < slocalObject6.length; i6++) {
@@ -1694,7 +1694,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											}
 										}
 										if ((j < 2) || (i6 < 2)) {
-											((Class_e_0134) (localObject6 = sub_14359(null,
+											((Class_e_FightAnimation) (localObject6 = sub_14359(null,
 													Class_f_StringManager.getLangString(39),
 													this.someCanHeight, 2000)))
 													.sub_1350(this.var_4a82);
@@ -1723,7 +1723,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										return;
 									}
 								} else {
-									byte[] localObject9;
+									byte[] localObject9 = null;
 									Object localObject10;
 									int k;
 									if (paramClass_e_0134 == this.var_49da) {
@@ -1759,15 +1759,15 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											((DataInputStream) localObject6)
 													.close();
 											this.var_4b52 = this.var_49d2.var_101a[j];
-											this.var_4a7a = new Class_e_0134(
+											this.var_4a7a = new Class_e_FightAnimation(
 													(byte) 15, 15);
-											Class_e_0134 localClass_e_01342;
-											(localClass_e_01342 = new Class_e_0134(
+											Class_e_FightAnimation localClass_e_01342;
+											(localClass_e_01342 = new Class_e_FightAnimation(
 													(byte) 10, 0)).var_11b2 = this.menuIconsFrames[4];
 											localClass_e_01342.sub_1ca8(null,
 													this.var_4b52,
 													this.someCanWidth, -1);
-											((Class_e_0134) (localObject10 = new Class_e_0134(
+											((Class_e_FightAnimation) (localObject10 = new Class_e_FightAnimation(
 													(byte) 8, 0)))
 													.sub_17fe(
 															this.canvasWidth,
@@ -1777,7 +1777,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 															arrayOfByte, null);
 											this.var_4a7a
 													.sub_1698(
-															(Class_e_0134) localObject10,
+															(Class_e_FightAnimation) localObject10,
 															this.someCanWidthShift,
 															this.someCanHeightShift
 																	+ (localClass_e_01342.var_1042 - this.buttonsSprite.spriteFrameHeight)
@@ -1849,16 +1849,16 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 															this.var_4f6a
 																	.sub_877() != null ? var_457a
 																	: null);
-											this.var_4f5a = new Class_e_0134(
+											this.var_4f5a = new Class_e_FightAnimation(
 													(byte) 15, 15);
-											Class_e_0134 localObject61 = this.var_4f5a
+											Class_e_FightAnimation localObject61 = this.var_4f5a
 													.sub_165b(sub_7696(
 															this.var_4f6a
 																	.sub_877(),
 															Class_f_StringManager
 																	.getLangString(299)));
 											localObject61.var_11b2 = this.menuIconsFrames[6];
-											this.var_4f62 = new Class_e_0134(
+											this.var_4f62 = new Class_e_FightAnimation(
 													(byte) 0, 0);
 											this.var_4f62
 													.sub_20ad(
@@ -1867,7 +1867,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 															0,
 															this.someCanWidth,
 															this.someCanHeight
-																	- ((Class_e_0134) localObject61).var_1042
+																	- ((Class_e_FightAnimation) localObject61).var_1042
 																	- (this.buttonsSprite.spriteFrameHeight << 1),
 															3, 4);
 											if ((this.var_4f6a.sub_877() != null)
@@ -1878,7 +1878,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 													.sub_1698(
 															this.var_4f62,
 															this.someCanWidthShift,
-															(this.someCanHeight + ((Class_e_0134) localObject61).var_1042) / 2,
+															(this.someCanHeight + ((Class_e_FightAnimation) localObject61).var_1042) / 2,
 															3);
 											this.var_4f5a.sub_132e((byte) 0,
 													true);
@@ -1927,7 +1927,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										}
 										return;
 									}
-									Object localObject7;
+									Object localObject7 = null;
 									if (paramClass_e_0134 == this.var_4b7a) {
 										if (paramByte == 0) {
 											k = this.var_4b82.var_105a;
@@ -1997,7 +1997,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 										}
 										return;
 									}
-									Class_e_0134 localClass_e_01343;
+									Class_e_FightAnimation localClass_e_01343;
 									Object localObject8;
 									if (paramClass_e_0134 == this.var_4be2) {
 										if (paramByte == 0) {
@@ -2017,7 +2017,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											}
 											if (paramString
 													.equals(this.var_4bd2[1])) {
-												this.var_4bea = new Class_e_0134(
+												this.var_4bea = new Class_e_FightAnimation(
 														(byte) 11, 0);
 												(localClass_e_01343 = this.var_4bea
 														.sub_165b(paramString)).var_11b2 = this.menuIconsFrames[6];
@@ -2037,9 +2037,9 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											}
 											if (paramString
 													.equals(this.var_4bd2[2])) {
-												this.var_4f9a = new Class_e_0134(
+												this.var_4f9a = new Class_e_FightAnimation(
 														(byte) 15, 15);
-												(localClass_e_01343 = new Class_e_0134(
+												(localClass_e_01343 = new Class_e_FightAnimation(
 														(byte) 10, 0))
 														.sub_1ca8(null,
 																paramString,
@@ -2070,7 +2070,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												System.arraycopy(this.settingsStrListMaybe,
 														0, strArr, 13,
 														this.settingsCountMaybe);
-												this.var_4fa2 = new Class_e_0134(
+												this.var_4fa2 = new Class_e_FightAnimation(
 														(byte) 0, 0);
 												this.var_4fa2
 														.sub_20ad(
@@ -2119,16 +2119,16 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																this.var_4f6a
 																		.sub_877() != null ? var_4572
 																		: null);
-												this.var_4f4a = new Class_e_0134(
+												this.var_4f4a = new Class_e_FightAnimation(
 														(byte) 15, 15);
-												Class_e_0134 clas;
+												Class_e_FightAnimation clas;
 												(clas = this.var_4f4a
 														.sub_165b(sub_7696(
 																this.var_4f6a
 																		.sub_877(),
 																Class_f_StringManager
 																		.getLangString(290)))).var_11b2 = this.menuIconsFrames[6];
-												this.var_4f52 = new Class_e_0134(
+												this.var_4f52 = new Class_e_FightAnimation(
 														(byte) 0, 0);
 												this.var_4f52
 														.sub_20ad(
@@ -2137,7 +2137,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																0,
 																this.someCanWidth,
 																this.someCanHeight
-																		- ((Class_e_0134) clas).var_1042
+																		- ((Class_e_FightAnimation) clas).var_1042
 																		- (this.buttonsSprite.spriteFrameHeight << 1),
 																3, 4);
 												if ((this.var_4f6a.sub_877() != null)
@@ -2148,7 +2148,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 														.sub_1698(
 																this.var_4f52,
 																this.someCanWidthShift,
-																(this.someCanHeight + ((Class_e_0134) clas).var_1042) / 2,
+																(this.someCanHeight + ((Class_e_FightAnimation) clas).var_1042) / 2,
 																3);
 												this.var_4f4a.sub_132e(
 														(byte) 0, true);
@@ -2159,9 +2159,9 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 														.sub_220e(this.var_4f4a);
 											} else if (paramString
 													.equals(this.var_4bda[1])) {
-												this.var_4faa = new Class_e_0134(
+												this.var_4faa = new Class_e_FightAnimation(
 														(byte) 15, 15);
-												(localClass_e_01343 = new Class_e_0134(
+												(localClass_e_01343 = new Class_e_FightAnimation(
 														(byte) 10, 0))
 														.sub_1ca8(
 																null,
@@ -2192,7 +2192,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												System.arraycopy(this.settingsStrListMaybe,
 														0, localObject9, 12,
 														this.settingsCountMaybe);
-												this.var_4fb2 = new Class_e_0134(
+												this.var_4fb2 = new Class_e_FightAnimation(
 														(byte) 0, 0);
 												this.var_4fb2
 														.sub_20ad(
@@ -2342,12 +2342,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 									} else if (paramClass_e_0134 == this.var_4c02) {
 										if (paramByte == 0) {
 											sub_19031(this.var_4c22);
-											Class_e_0134 cl0134 = sub_7384(this.var_4bfa.stringManager);
-											Class_f_StringManager cll = sub_14359(null,
+											Class_e_FightAnimation cl0134 = sub_7384(this.var_4bfa.stringManager);
+											Class_e_FightAnimation cll = sub_14359(null,
 													Class_f_StringManager.getStrByIdAndReplaceUWith(51,
 															this.var_4c2a),
 													this.someCanHeight, -1);
-											cll.sub_1350(cl0134);
+											cll.sub_1350(cl0134); 
 											Class_f_StringManager.mainCanvas
 													.sub_220e((Class_f_StringManager) cll);
 										}
@@ -2387,7 +2387,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												&& (paramClass_e_0134 != this.var_49e2)) {
 											if (paramString.equals(Class_f_StringManager
 													.getLangString(3))) {
-												this.var_49e2 = new Class_e_0134(
+												this.var_49e2 = new Class_e_FightAnimation(
 														(byte) 11, 0);
 												int m = this.someSetting;
 												if (this.someSetting > 7) {
@@ -2400,17 +2400,17 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 													strs[i2] = (i2 + 1 + ". " + Class_f_StringManager
 															.getLangString(i2 + 121));
 												}
-												Class_e_0134 locOb;
+												Class_e_FightAnimation locOb;
 												(locOb = this.var_49e2
 														.sub_165b(paramString)).var_11b2 = this.menuIconsFrames[3];
 												this.var_49e2
 														.sub_20ad(
 																strs,
 																this.canvasWidth / 2,
-																(this.someCanHeight + ((Class_e_0134) locOb).var_1042) / 2,
+																(this.someCanHeight + ((Class_e_FightAnimation) locOb).var_1042) / 2,
 																this.someCanWidth,
 																this.someCanHeight
-																		- ((Class_e_0134) locOb).var_1042,
+																		- ((Class_e_FightAnimation) locOb).var_1042,
 																3, 4);
 												this.var_49e2
 														.sub_1350(paramClass_e_0134);
@@ -2447,19 +2447,19 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												if (paramString
 														.equals(Class_f_StringManager
 																.getLangString(7))) {
-													this.var_4be2 = new Class_e_0134(
+													this.var_4be2 = new Class_e_FightAnimation(
 															(byte) 11, 0);
-													Class_e_0134 locOb2;
+													Class_e_FightAnimation locOb2;
 													(locOb2 = this.var_4be2
 															.sub_165b(paramString)).var_11b2 = this.menuIconsFrames[6];
 													this.var_4be2
 															.sub_20ad(
 																	this.var_4bd2,
 																	this.canvasWidth / 2,
-																	(this.someCanHeight + ((Class_e_0134) locOb2).var_1042) / 2,
+																	(this.someCanHeight + ((Class_e_FightAnimation) locOb2).var_1042) / 2,
 																	this.someCanWidth,
 																	this.someCanHeight
-																			- ((Class_e_0134) locOb2).var_1042,
+																			- ((Class_e_FightAnimation) locOb2).var_1042,
 																	3, 0);
 													this.var_4be2
 															.sub_1350(paramClass_e_0134);
@@ -2470,12 +2470,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												if (paramString
 														.equals(Class_f_StringManager
 																.getLangString(8))) {
-													this.var_4aaa = new Class_e_0134(
+													this.var_4aaa = new Class_e_FightAnimation(
 															(byte) 15, 15);
-													Class_e_0134 locOb2;
-													(locOb2 = new Class_e_0134(
+													Class_e_FightAnimation locOb2;
+													(locOb2 = new Class_e_FightAnimation(
 															(byte) 10, 0)).var_11b2 = this.menuIconsFrames[5];
-													((Class_e_0134) locOb2)
+													((Class_e_FightAnimation) locOb2)
 															.sub_1ca8(
 																	null,
 																	paramString,
@@ -2483,12 +2483,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																	-1);
 													this.var_4aaa
 															.sub_1698(
-																	(Class_e_0134) locOb2,
+																	(Class_e_FightAnimation) locOb2,
 																	0, 0, 20);
-													i6 = ((Class_e_0134) locOb2).var_1042;
-													Class_e_0134[] localObjs;
-													localObjs = new Class_e_0134[4];
-													this.var_4ab2 = new Class_e_0134[4];
+													i6 = ((Class_e_FightAnimation) locOb2).var_1042;
+													Class_e_FightAnimation[] localObjs;
+													localObjs = new Class_e_FightAnimation[4];
+													this.var_4ab2 = new Class_e_FightAnimation[4];
 													for (i1 = 0; i1 < 4; i1++) {
 														int iparamInt = 8;
 														if (i1 != 0) {
@@ -2497,7 +2497,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 														if (i1 != 3) {
 															iparamInt |= 0x2;
 														}
-														localObjs[i1] = new Class_e_0134(
+														localObjs[i1] = new Class_e_FightAnimation(
 																(byte) 10,
 																iparamInt);
 														localObjs[i1]
@@ -2516,7 +2516,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 														if (i1 != 3) {
 															int4 |= 0x2;
 														}
-														this.var_4ab2[i1] = new Class_e_0134(
+														this.var_4ab2[i1] = new Class_e_FightAnimation(
 																(byte) 14, int4);
 														this.var_4ab2[i1]
 																.sub_1f72(
@@ -2542,17 +2542,17 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												if (paramString
 														.equals(Class_f_StringManager
 																.getLangString(9))) {
-													this.var_49aa = new Class_e_0134(
+													this.var_49aa = new Class_e_FightAnimation(
 															(byte) 15, 15);
-													Class_e_0134 lo2;
-													(lo2 = new Class_e_0134(
+													Class_e_FightAnimation lo2;
+													(lo2 = new Class_e_FightAnimation(
 															(byte) 10, 0))
 															.sub_1ca8(
 																	null,
 																	paramString,
 																	this.someCanWidth,
 																	-1);
-													((Class_e_0134) lo2).var_11b2 = this.menuIconsFrames[7];
+													((Class_e_FightAnimation) lo2).var_11b2 = this.menuIconsFrames[7];
 													String[] strParam2 = new String[20];
 													for (i2 = 0; i2 < var_4992.length; i2++) {
 														strParam2[i2] = (Class_f_StringManager
@@ -2561,12 +2561,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																+ i2
 																+ "/" + 19);
 													}
-													this.var_49b2 = new Class_e_0134(
+													this.var_49b2 = new Class_e_FightAnimation(
 															(byte) 14, 2);
 													this.var_49b2.sub_1f72(
 															strParam2,
 															this.someCanWidth, -1);
-													this.var_49ba = new Class_e_0134(
+													this.var_49ba = new Class_e_FightAnimation(
 															(byte) 10, 1);
 													this.var_49ba
 															.sub_1ca8(
@@ -2575,10 +2575,10 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																			.getLangString(var_499a[0]),
 																	this.someCanWidth,
 																	this.someCanHeight
-																			- ((Class_e_0134) lo2).var_1042
+																			- ((Class_e_FightAnimation) lo2).var_1042
 																			- this.var_49b2.var_1042
 																			- (this.buttonsSprite.spriteFrameHeight << 1));
-													i2 = ((Class_e_0134) lo2).var_1042
+													i2 = ((Class_e_FightAnimation) lo2).var_1042
 															+ this.buttonsSprite.spriteFrameHeight;
 													this.var_49aa.sub_1698(
 															this.var_49b2,
@@ -2590,7 +2590,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 															this.someCanWidthShift, i2,
 															17);
 													this.var_49aa.sub_1698(
-															(Class_e_0134) lo2,
+															(Class_e_FightAnimation) lo2,
 															0, 0, 0);
 													this.var_49aa
 															.sub_1350(paramClass_e_0134);
@@ -2602,46 +2602,46 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												if (paramString
 														.equals(Class_f_StringManager
 																.getLangString(10))) {
-													Class_e_0134 lo2;
-													lo2 = new Class_e_0134(
+													Class_e_FightAnimation lo2;
+													lo2 = new Class_e_FightAnimation(
 															(byte) 15, 15);
-													Class_e_0134 lo7;
-													(lo7 = new Class_e_0134(
+													Class_e_FightAnimation lo7;
+													(lo7 = new Class_e_FightAnimation(
 															(byte) 10, 0))
 															.sub_1ca8(
 																	null,
 																	paramString,
 																	this.someCanWidth,
 																	-1);
-													((Class_e_0134) localObject7).var_11b2 = this.menuIconsFrames[8];
-													localObject8 = new Class_e_0134(
+													((Class_e_FightAnimation) lo7).var_11b2 = this.menuIconsFrames[8];
+													localObject8 = new Class_e_FightAnimation(
 															(byte) 10, 0);
 													String lo9;
 													lo9 = Class_f_StringManager
 															.getStrByIdAndReplaceUWith(
 																	16,
 																	this.midletVersionAppProp);
-													((Class_e_0134) localObject8)
+													((Class_e_FightAnimation) localObject8)
 															.sub_1ca8(
 																	null,
 																	(String) lo9,
 																	this.someCanWidth,
 																	this.someCanHeight
-																			- ((Class_e_0134) lo7).var_1042
+																			- ((Class_e_FightAnimation) lo7).var_1042
 																			- (this.buttonsSprite.spriteFrameHeight << 1));
-													((Class_e_0134) lo2)
+													((Class_e_FightAnimation) lo2)
 															.sub_1698(
-																	(Class_e_0134) localObject8,
+																	(Class_e_FightAnimation) localObject8,
 																	0,
-																	(this.someCanHeight + ((Class_e_0134) lo7).var_1042) / 2,
+																	(this.someCanHeight + ((Class_e_FightAnimation) lo7).var_1042) / 2,
 																	6);
-													((Class_e_0134) lo2)
+													((Class_e_FightAnimation) lo2)
 															.sub_1698(
-																	(Class_e_0134) lo7,
+																	(Class_e_FightAnimation) lo7,
 																	0, 0, 0);
-													((Class_e_0134) lo2)
+													((Class_e_FightAnimation) lo2)
 															.sub_1350(paramClass_e_0134);
-													((Class_e_0134) lo2).var_115a = true;
+													((Class_e_FightAnimation) lo2).var_115a = true;
 													Class_f_StringManager.mainCanvas
 															.sub_220e((Class_f_StringManager) lo2);
 													return;
@@ -2714,14 +2714,14 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												if (paramString
 														.equals(Class_f_StringManager
 																.getLangString(63))) {
-													this.var_4b02 = new Class_e_0134(
+													this.var_4b02 = new Class_e_FightAnimation(
 															(byte) 15, 15);
 													this.var_4b02.var_11e2 = this.someCanHeight;
-													this.var_4b0a = new Class_e_0134(
+													this.var_4b0a = new Class_e_FightAnimation(
 															(byte) 2, 2);
-													this.var_4b12 = new Class_e_0134(
+													this.var_4b12 = new Class_e_FightAnimation(
 															(byte) 3, 1);
-													this.var_4b1a = new Class_e_0134(
+													this.var_4b1a = new Class_e_FightAnimation(
 															(byte) 10, 3);
 													this.var_4b1a.var_1152 = true;
 													this.var_4b0a.someUnit0 = this.var_4b12.var_10aa[0];
@@ -2843,39 +2843,39 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												if (paramString
 														.equals(Class_f_StringManager
 																.getLangString(70))) {
-													Class_e_0134 localObject2 = new Class_e_0134(
+													Class_e_FightAnimation localObject2 = new Class_e_FightAnimation(
 															(byte) 15, 15);
-													Class_e_0134 localObject71 = new Class_e_0134(
+													Class_e_FightAnimation localObject71 = new Class_e_FightAnimation(
 															(byte) 10, 0);
 													localObject71.sub_1ca8(
 																	null,
 																	this.var_4b52,
 																	this.someCanWidth,
 																	-1);
-													Class_e_0134 localObject81 = new Class_e_0134(
+													Class_e_FightAnimation localObject81 = new Class_e_FightAnimation(
 															(byte) 8, 0);
 													localObject81.sub_17fe(
 																	this.someCanWidth,
 																	this.someCanHeight
-																			- ((Class_e_0134) localObject71).var_1042
+																			- ((Class_e_FightAnimation) localObject71).var_1042
 																			- this.buttonsSprite.spriteFrameHeight,
 																	this.var_4782,
 																	this.mapUnitsMaybe);
-													((Class_e_0134) localObject2)
+													((Class_e_FightAnimation) localObject2)
 															.sub_1698(
-																	(Class_e_0134) localObject81,
+																	(Class_e_FightAnimation) localObject81,
 																	this.someCanWidthShift,
 																	this.someCanHeightShift
-																			+ (((Class_e_0134) localObject71).var_1042 - this.buttonsSprite.spriteFrameHeight)
+																			+ (((Class_e_FightAnimation) localObject71).var_1042 - this.buttonsSprite.spriteFrameHeight)
 																			/ 2,
 																	3);
-													((Class_e_0134) localObject2)
+													((Class_e_FightAnimation) localObject2)
 															.sub_1698(
-																	(Class_e_0134) localObject71,
+																	(Class_e_FightAnimation) localObject71,
 																	0, 0, 0);
-													((Class_e_0134) localObject2)
+													((Class_e_FightAnimation) localObject2)
 															.sub_1350(paramClass_e_0134);
-													((Class_e_0134) localObject2).var_115a = true;
+													((Class_e_FightAnimation) localObject2).var_115a = true;
 													Class_f_StringManager.mainCanvas
 															.sub_220e((Class_f_StringManager) localObject2);
 													return;
@@ -2896,16 +2896,16 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																.getLangString(293))) {
 													sub_19157(this.var_4b52,
 															sub_bb13());
-													Object localObject91 = sub_14359(
+													Class_e_FightAnimation fAnima = sub_14359(
 															null,
 															Class_f_StringManager
 																	.getStrByIdAndReplaceUWith(
 																			45,
 																			this.var_4b52),
 																			this.someCanHeight, 2000);
-													localObject91.sub_1350(this);
+													fAnima.sub_1350(this);
 													Class_f_StringManager.mainCanvas
-															.sub_220e((Class_f_StringManager) localObject91);
+															.sub_220e((Class_f_StringManager) fAnima);
 													return;
 												}
 												if (paramString
@@ -2950,16 +2950,16 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 													return;
 												}
 											} else {
-												this.var_49da = new Class_e_0134(
+												this.var_49da = new Class_e_FightAnimation(
 														(byte) 15, 15);
-												Class_e_0134 lo2;
-												(lo2 = new Class_e_0134(
+												Class_e_FightAnimation lo2;
+												(lo2 = new Class_e_FightAnimation(
 														(byte) 10, 0))
 														.sub_1ca8(null,
 																paramString,
 																this.someCanWidth,
 																-1);
-												((Class_e_0134) lo2).var_11b2 = this.menuIconsFrames[4];
+												((Class_e_FightAnimation) lo2).var_11b2 = this.menuIconsFrames[4];
 												this.var_45d2 = new boolean[12];
 												for (i6 = this.someSetting; i6 <= 7; i6++) {
 													if (var_45ca[i6] >= 0) {
@@ -2982,7 +2982,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 												System.arraycopy(this.settingsStrListMaybe,
 														0, localObject10, 12,
 														this.settingsCountMaybe);
-												this.var_49d2 = new Class_e_0134(
+												this.var_49d2 = new Class_e_FightAnimation(
 														(byte) 0, 0);
 												this.var_49d2
 														.sub_20ad(
@@ -2991,18 +2991,18 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																0,
 																this.someCanWidth,
 																this.someCanHeight
-																		- ((Class_e_0134) lo2).var_1042
+																		- ((Class_e_FightAnimation) lo2).var_1042
 																		- (this.buttonsSprite.spriteFrameHeight << 1),
 																3, 4);
 												this.var_49da
 														.sub_1698(
 																this.var_49d2,
 																this.someCanWidthShift,
-																(this.someCanHeight + ((Class_e_0134) lo2).var_1042) / 2,
+																(this.someCanHeight + ((Class_e_FightAnimation) lo2).var_1042) / 2,
 																3);
 												this.var_49da
 														.sub_1698(
-																(Class_e_0134) lo2,
+																(Class_e_FightAnimation) lo2,
 																0, 0, 0);
 												this.var_49da.var_115a = true;
 												this.var_49da.sub_132e(
@@ -3582,104 +3582,104 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 
 	public final void sub_c279() {
 		this.var_479a += 50L;
-		Class_g_1956 localObject1;
+		Class_g_Game localObject1;
 		int m;
 		if (this.var_48e2 == 2) {
 			localObject1 = this;
 			if ((this.var_4e82)
-					&& (((Class_g_1956) localObject1).var_479a
-							- ((Class_g_1956) localObject1).var_4e92 >= ((Class_g_1956) localObject1).var_4e8a)) {
-				((Class_g_1956) localObject1).var_4e82 = false;
+					&& (((Class_g_Game) localObject1).var_479a
+							- ((Class_g_Game) localObject1).var_4e92 >= ((Class_g_Game) localObject1).var_4e8a)) {
+				((Class_g_Game) localObject1).var_4e82 = false;
 			}
-			for (m = 0; m < ((Class_g_1956) localObject1).spritesList.size(); m++) {
-				((Class_g_Sprite) ((Class_g_1956) localObject1).spritesList
+			for (m = 0; m < ((Class_g_Game) localObject1).spritesList.size(); m++) {
+				((Class_g_Sprite) ((Class_g_Game) localObject1).spritesList
 						.elementAt(m)).sub_21f3();
 			}
-			for (m = 0; m < ((Class_g_1956) localObject1).spritesList.size(); m++) {
+			for (m = 0; m < ((Class_g_Game) localObject1).spritesList.size(); m++) {
 				Class_g_Sprite localClass_g_25175;
-				if (!(localClass_g_25175 = (Class_g_Sprite) ((Class_g_1956) localObject1).spritesList
+				if (!(localClass_g_25175 = (Class_g_Sprite) ((Class_g_Game) localObject1).spritesList
 						.elementAt(m)).var_c78) {
-					((Class_g_1956) localObject1).removeSomeSprite(localClass_g_25175);
+					((Class_g_Game) localObject1).removeSomeSprite(localClass_g_25175);
 				}
 			}
-			((Class_g_1956) localObject1).var_4e5a.sub_16b8();
-			((Class_g_1956) localObject1).var_4e62.sub_16b8();
-			if (((Class_g_1956) localObject1).var_4ea2) {
-				((Class_g_1956) localObject1).var_491a += 1;
-				if (((Class_g_1956) localObject1).var_491a >= 16) {
-					((Class_g_1956) localObject1).var_4ea2 = false;
-					((Class_g_1956) localObject1).var_4e5a.sub_1688();
+			((Class_g_Game) localObject1).var_4e5a.sub_16b8();
+			((Class_g_Game) localObject1).var_4e62.sub_16b8();
+			if (((Class_g_Game) localObject1).var_4ea2) {
+				((Class_g_Game) localObject1).var_491a += 1;
+				if (((Class_g_Game) localObject1).var_491a >= 16) {
+					((Class_g_Game) localObject1).var_4ea2 = false;
+					((Class_g_Game) localObject1).var_4e5a.sub_1688();
 				}
-				((Class_g_1956) localObject1).var_4eaa = true;
-				((Class_g_1956) localObject1).var_4eb2 = true;
-			} else if (((Class_g_1956) localObject1).var_4e72) {
-				if (((Class_g_1956) localObject1).var_479a
-						- ((Class_g_1956) localObject1).var_4e6a >= 300L) {
-					((Class_g_1956) localObject1).spritesList.removeAllElements();
-					((Class_g_1956) localObject1).var_4e62 = null;
-					((Class_g_1956) localObject1).var_4e5a = null;
-					((Class_g_1956) localObject1).var_488a = new Vector();
-					((Class_g_1956) localObject1).sub_6a9a();
-					((Class_g_1956) localObject1).var_48e2 = 1;
+				((Class_g_Game) localObject1).var_4eaa = true;
+				((Class_g_Game) localObject1).var_4eb2 = true;
+			} else if (((Class_g_Game) localObject1).var_4e72) {
+				if (((Class_g_Game) localObject1).var_479a
+						- ((Class_g_Game) localObject1).var_4e6a >= 300L) {
+					((Class_g_Game) localObject1).spritesList.removeAllElements();
+					((Class_g_Game) localObject1).var_4e62 = null;
+					((Class_g_Game) localObject1).var_4e5a = null;
+					((Class_g_Game) localObject1).var_488a = new Vector();
+					((Class_g_Game) localObject1).sub_6a9a();
+					((Class_g_Game) localObject1).var_48e2 = 1;
 					Class_c_MainCanvas.stopCurrentMusicPlayer();
 					Class_c_MainCanvas
 							.playMusicLooped(
 									var_4692[localObject1.var_4832[localObject1.someUnitTeamId]],
 									0);
 					Class_f_StringManager.mainCanvas.sub_26ad();
-					((Class_g_1956) localObject1).var_4c42 = true;
-					((Class_g_1956) localObject1).var_4c4a = true;
+					((Class_g_Game) localObject1).var_4c42 = true;
+					((Class_g_Game) localObject1).var_4c4a = true;
 					return;
 				}
-			} else if (((Class_g_1956) localObject1).var_4e5a.var_b5f) {
-				if ((((Class_g_1956) localObject1).var_4e9a)
-						&& (((Class_g_1956) localObject1).var_4e62.var_b77 > 0)) {
-					if (!((Class_g_1956) localObject1).var_4e62.var_b57) {
-						((Class_g_1956) localObject1).var_4e62.sub_1688();
+			} else if (((Class_g_Game) localObject1).var_4e5a.var_b5f) {
+				if ((((Class_g_Game) localObject1).var_4e9a)
+						&& (((Class_g_Game) localObject1).var_4e62.var_b77 > 0)) {
+					if (!((Class_g_Game) localObject1).var_4e62.var_b57) {
+						((Class_g_Game) localObject1).var_4e62.sub_1688();
 					}
-					if (!((Class_g_1956) localObject1).var_4e62.var_b5f) {
+					if (!((Class_g_Game) localObject1).var_4e62.var_b5f) {
 					}
 				} else {
-					((Class_g_1956) localObject1).var_4e72 = true;
-					((Class_g_1956) localObject1).var_4e6a = ((Class_g_1956) localObject1).var_479a;
+					((Class_g_Game) localObject1).var_4e72 = true;
+					((Class_g_Game) localObject1).var_4e6a = ((Class_g_Game) localObject1).var_479a;
 				}
 			}
 		} else if (this.var_48e2 == 3) {
 			localObject1 = this;
 			if (this.var_4cc2) {
 				localObject1.var_491a -= 1;
-				if (((Class_g_1956) localObject1).var_491a < 0) {
-					((Class_g_1956) localObject1).var_491a = 0;
-					((Class_g_1956) localObject1).var_48e2 = ((Class_g_1956) localObject1).var_4cca;
-					((Class_g_1956) localObject1).introImage = null;
-					((Class_g_1956) localObject1).introTextWrapped = null;
+				if (((Class_g_Game) localObject1).var_491a < 0) {
+					((Class_g_Game) localObject1).var_491a = 0;
+					((Class_g_Game) localObject1).var_48e2 = ((Class_g_Game) localObject1).var_4cca;
+					((Class_g_Game) localObject1).introImage = null;
+					((Class_g_Game) localObject1).introTextWrapped = null;
 					return;
 				}
 			} else {
-				if (((((Class_g_1956) localObject1).var_4cd2 != 2) || (((Class_g_1956) localObject1).var_491a >= 40))
-						&& ((((Class_g_1956) localObject1).var_4cd2 == 2) || (((Class_g_1956) localObject1).var_491a >= 16))) {
+				if (((((Class_g_Game) localObject1).var_4cd2 != 2) || (((Class_g_Game) localObject1).var_491a >= 40))
+						&& ((((Class_g_Game) localObject1).var_4cd2 == 2) || (((Class_g_Game) localObject1).var_491a >= 16))) {
 					localObject1.var_4c9a -= 1;
-					if (((Class_g_1956) localObject1).var_4c9a < ((Class_g_1956) localObject1).introImageHeight) {
-						((Class_g_1956) localObject1).var_4c9a = (((Class_g_1956) localObject1).introImageHeight
-								+ ((Class_g_1956) localObject1).var_4c92 - (((Class_g_1956) localObject1).introImageHeight - ((Class_g_1956) localObject1).var_4c9a));
+					if (((Class_g_Game) localObject1).var_4c9a < ((Class_g_Game) localObject1).introImageHeight) {
+						((Class_g_Game) localObject1).var_4c9a = (((Class_g_Game) localObject1).introImageHeight
+								+ ((Class_g_Game) localObject1).var_4c92 - (((Class_g_Game) localObject1).introImageHeight - ((Class_g_Game) localObject1).var_4c9a));
 						localObject1.var_4caa += 1;
 					}
 				} else {
 					localObject1.var_491a += 1;
 				}
-				if ((((Class_g_1956) localObject1).var_4caa >= ((Class_g_1956) localObject1).introTextWrapped.length)
+				if ((((Class_g_Game) localObject1).var_4caa >= ((Class_g_Game) localObject1).introTextWrapped.length)
 						|| (Class_f_StringManager.mainCanvas.sub_272b(var_4602))) {
-					((Class_g_1956) localObject1).var_4cc2 = true;
-					if ((((Class_g_1956) localObject1).introImage != null)
-							|| (((Class_g_1956) localObject1).var_4caa < ((Class_g_1956) localObject1).introTextWrapped.length)) {
-						if (((Class_g_1956) localObject1).var_4cda == 2) {
-							((Class_g_1956) localObject1).var_491a = 40;
+					((Class_g_Game) localObject1).var_4cc2 = true;
+					if ((((Class_g_Game) localObject1).introImage != null)
+							|| (((Class_g_Game) localObject1).var_4caa < ((Class_g_Game) localObject1).introTextWrapped.length)) {
+						if (((Class_g_Game) localObject1).var_4cda == 2) {
+							((Class_g_Game) localObject1).var_491a = 40;
 							return;
 						}
-						((Class_g_1956) localObject1).var_491a = 16;
+						((Class_g_Game) localObject1).var_491a = 16;
 						return;
 					}
-					((Class_g_1956) localObject1).var_491a = 0;
+					((Class_g_Game) localObject1).var_491a = 0;
 				}
 			}
 		} else {
@@ -3690,12 +3690,12 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			sub_155a2();
 			if (this.var_49a2 != -1) {
 				if (Class_c_MainCanvas.settings[2] != false) {
-					Class_e_0134 lo1;
+					Class_e_FightAnimation lo1;
 					(lo1 = showUnitDialog(
 							Class_f_StringManager.getLangString(196 + this.var_49a2, true),
 							(byte) -1, (byte) 2)).var_11aa = 7831691;
-					((Class_e_0134) lo1).var_11a2 = 7831691;
-					((Class_e_0134) lo1).var_fea = 16250855;
+					((Class_e_FightAnimation) lo1).var_11a2 = 7831691;
+					((Class_e_FightAnimation) lo1).var_fea = 16250855;
 				}
 				this.var_49a2 = -1;
 			}
@@ -3828,7 +3828,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 											this.someCanHeight, 1500);
 									Class_f_StringManager.mainCanvas
 											.sub_220e((Class_f_StringManager) localObject2);
-									((Class_e_0134) localObject2).var_11a2 = var_468a[this.var_4832[this.someUnitTeamId]];
+									((Class_e_FightAnimation) localObject2).var_11a2 = var_468a[this.var_4832[this.someUnitTeamId]];
 									Class_c_MainCanvas
 											.sub_2bf1(
 													var_4692[this.var_4832[this.someUnitTeamId]],
@@ -3977,7 +3977,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 													this.var_4b32.pixelX,
 													-this.mapTopY, 0, 12, -1,
 													0);
-											Class_e_0134 localClass_e_01342;
+											Class_e_FightAnimation localClass_e_01342;
 											(localClass_e_01342 = sub_14359(
 															null,
 															Class_f_StringManager
@@ -4255,13 +4255,13 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 															this.cursorPosX,
 															this.cursorPosY,
 															(byte) 0)) != null) {
-														Class_e_0134 localObject31  = new Class_e_0134(
+														Class_e_FightAnimation localObject31  = new Class_e_FightAnimation(
 																(byte) 15, 15);
 														localObject31.var_11e2 = this.someCanHeight;
-														Class_e_0134 localClass_e_01343 = new Class_e_0134(
+														Class_e_FightAnimation localClass_e_01343 = new Class_e_FightAnimation(
 																(byte) 5, 2);
-														Class_e_0134 localClass_e_01341;
-														(localClass_e_01341 = new Class_e_0134(
+														Class_e_FightAnimation localClass_e_01341;
+														(localClass_e_01341 = new Class_e_FightAnimation(
 																(byte) 10, 1)).var_1152 = true;
 														String str = Class_f_StringManager
 																.getLangString(184 + localClass_a_0260.unitType);
@@ -4296,18 +4296,18 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																		this.someCanWidth,
 																		this.someCanHeight
 																				- localClass_e_01343.var_1042);
-														((Class_e_0134) localObject31)
+														((Class_e_FightAnimation) localObject31)
 																.sub_1698(
 																		localClass_e_01343,
 																		0, 0, 0);
-														((Class_e_0134) localObject31)
+														((Class_e_FightAnimation) localObject31)
 																.sub_1698(
 																		localClass_e_01341,
 																		0,
 																		localClass_e_01343.var_1042,
 																		0);
-														((Class_e_0134) localObject31).var_115a = true;
-														((Class_e_0134) localObject31)
+														((Class_e_FightAnimation) localObject31).var_115a = true;
+														((Class_e_FightAnimation) localObject31)
 																.sub_1350(this);
 														Class_f_StringManager.mainCanvas
 																.sub_220e((Class_f_StringManager) localObject31);
@@ -4507,7 +4507,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																}
 															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(var_4602)) {
-																this.var_4882 = new Class_e_0134(
+																this.var_4882 = new Class_e_FightAnimation(
 																		(byte) 11,
 																		0);
 																this.var_4882
@@ -4640,7 +4640,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																this.var_4c4a = true;
 															} else if (Class_f_StringManager.mainCanvas
 																	.sub_26d7(var_4602)) {
-																this.var_4882 = new Class_e_0134(
+																this.var_4882 = new Class_e_FightAnimation(
 																		(byte) 11,
 																		0);
 																this.var_4882
@@ -4749,7 +4749,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 																				1);
 															} else {
 																this.someActiveUnit = null;
-																this.var_4882 = new Class_e_0134(
+																this.var_4882 = new Class_e_FightAnimation(
 																		(byte) 11,
 																		0);
 																this.var_4882
@@ -4895,7 +4895,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 						this.tiles0Frames[this.var_4972] = this.var_497a[this.var_496a];
 						this.var_4962 = this.var_479a;
 					}
-					Class_g_1956 localClass_g_1956 = this;
+					Class_g_Game localClass_g_1956 = this;
 					if (this.var_4c6a == null) {
 						localClass_g_1956.sub_f012(
 								localClass_g_1956.cursorSprite.pixelX + 12,
@@ -5397,9 +5397,9 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			}
 			int k1 = this.canvasHeight / 2 + 1;
 			graphics.setColor(13553358); //#CECECE gray
-			Class_e_0134.drawRoundedRect(graphics, 1, k1, this.canvasWidth - 2, i);
+			Class_e_FightAnimation.drawRoundedRect(graphics, 1, k1, this.canvasWidth - 2, i);
 			graphics.setColor(2370117); //#242A45 darkblue
-			Class_e_0134.drawRoundedRect(graphics, 2, k1 + 2, this.loadingProgress
+			Class_e_FightAnimation.drawRoundedRect(graphics, 2, k1 + 2, this.loadingProgress
 					* (this.canvasWidth - 6) / 100, i - 4);
 			return;
 		}
@@ -5407,7 +5407,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 		int i3;
 		if (this.var_48e2 == 2) {
 			Graphics localGraphics = graphics;
-			Class_g_1956 paramGraphics = this;
+			Class_g_Game paramGraphics = this;
 			k = 0;
 			int n = 0;
 			if (paramGraphics.var_4e82) {
@@ -5474,7 +5474,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 				n = paramGraphics.canvasHeight - var_4592;
 				localGraphics.setColor(14672074);
 				localGraphics.fillRect(0, n, paramGraphics.canvasWidth, var_4592);
-				Class_e_0134.sub_5066(localGraphics, 0, n,
+				Class_e_FightAnimation.sub_5066(localGraphics, 0, n,
 						paramGraphics.canvasWidth, var_4592, 0);
 				localGraphics.setClip(0, 0, paramGraphics.canvasWidth,
 						paramGraphics.canvasHeight);
@@ -5668,7 +5668,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 				graphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);
 				y = this.canvasHeight - var_4592;
 				if (this.var_4a52 > 0) {
-					Class_e_0134.sub_5066(graphics, 0, y, this.someCanWidth,
+					Class_e_FightAnimation.sub_5066(graphics, 0, y, this.someCanWidth,
 							var_4592, 14);
 					graphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);
 				}
@@ -5684,20 +5684,20 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 						i5 = 4;
 					}
 					if (this.var_4f92 == 1) {
-						Class_e_0134.sub_5092(graphics, 0, y, x + 1,
+						Class_e_FightAnimation.sub_5092(graphics, 0, y, x + 1,
 								var_4592, 0, 2370117, var_468a[0],
 								this.var_4a52, var_4592);
 						Class_c_MainCanvas.sub_2007(graphics, this.cursorTileId + 1
 								+ "/" + this.tiles0Frames.length, i5 + 1, i2, 1, 6);
 					} else if (this.var_4f92 == 2) {
-						Class_e_0134.sub_5092(graphics, 0, y, x + 1,
+						Class_e_FightAnimation.sub_5092(graphics, 0, y, x + 1,
 								var_4592, 0, 2370117,
 								var_468a[this.var_4832[this.someUnitTeamId]],
 								this.var_4a52, var_4592);
 						Class_c_MainCanvas.sub_2007(graphics, this.someUnitTypeId + 1
 								+ "/" + 12, i5 + 1, i2, 1, 6);
 					} else {
-						Class_e_0134.sub_5092(graphics, 0, y, x + 1,
+						Class_e_FightAnimation.sub_5092(graphics, 0, y, x + 1,
 								var_4592, 0, 2370117,
 								var_468a[this.var_4832[this.someUnitTeamId]],
 								this.var_4a52, var_4592);
@@ -6948,9 +6948,9 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 		this.var_4e32 = true;
 	}
 
-	private Class_e_0134 showUnitDialog(String message, byte paramByte1,
+	private Class_e_FightAnimation showUnitDialog(String message, byte paramByte1,
 			byte paramByte2) {
-		Class_e_0134 cll = new Class_e_0134((byte) 7, 12);
+		Class_e_FightAnimation cll = new Class_e_FightAnimation((byte) 7, 12);
 		int i = Class_c_MainCanvas.var_1767 * 3;
 		cll.sub_19f5(message, this.canvasWidth, i, paramByte1);
 		cll.sub_1930(0, this.canvasHeight - i, 0);
@@ -6958,14 +6958,14 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 		return cll;
 	}
 
-	private Class_e_0134 sub_14359(String paramString1, String paramString2,
+	private Class_e_FightAnimation sub_14359(String paramString1, String paramString2,
 			int paramInt1, int paramInt2) {
 		return sub_1437e(paramString1, paramString2, paramInt1, -1, paramInt2);
 	}
 
-	private Class_e_0134 sub_1437e(String paramString1, String paramString2,
+	private Class_e_FightAnimation sub_1437e(String paramString1, String paramString2,
 			int paramInt1, int paramInt2, int paramInt3) {
-		Class_e_0134 strMan = new Class_e_0134((byte) 10, 12);
+		Class_e_FightAnimation strMan = new Class_e_FightAnimation((byte) 10, 12);
 		strMan.sub_1ca8(paramString1, paramString2, this.canvasWidth, paramInt2);
 		strMan.sub_1930(this.canvasWidthShift, paramInt1 / 2, 3);
 		strMan.stringManager = this;
@@ -7407,7 +7407,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								}
 							}
 							str = str + ")";
-							Class_e_0134 lo2 = sub_1437e(null, str, this.someCanHeight,
+							Class_e_FightAnimation lo2 = sub_1437e(null, str, this.someCanHeight,
 									this.someCanHeightShift, -1);
 							lo2.sub_1350(this);
 							Class_f_StringManager.mainCanvas.sub_220e((Class_f_StringManager) lo2);
@@ -8778,7 +8778,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 								this.var_47f2 = true;
 								break;
 							case 11:
-								Class_e_0134 localClass_e_0134;
+								Class_e_FightAnimation localClass_e_0134;
 								(localClass_e_0134 = sub_14359(null,
 										Class_f_StringManager.getLangString(279),
 										this.someCanHeight, 2000)).sub_1930(
@@ -9044,18 +9044,18 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 		this.var_4e92 = this.var_479a;
 	}
 
-	private Class_e_0134 sub_188fc(Class_f_StringManager strMan) {
-		Class_e_0134 localClass_e_01341;
+	private Class_e_FightAnimation sub_188fc(Class_f_StringManager strMan) {
+		Class_e_FightAnimation localClass_e_01341;
 		if (this.var_4ed2.length > 0) {
-			Class_e_0134 localClass_e_01342;
-			(localClass_e_01342 = (localClass_e_01341 = new Class_e_0134(
+			Class_e_FightAnimation localClass_e_01342;
+			(localClass_e_01342 = (localClass_e_01341 = new Class_e_FightAnimation(
 					(byte) 11, 0)).sub_165b(Class_f_StringManager.getLangString(46))).var_11b2 = this.menuIconsFrames[6];
 			localClass_e_01341.sub_20ad(this.var_4ed2, this.someCanWidth / 2,
 					(this.someCanHeight + localClass_e_01342.var_1042) / 2,
 					this.someCanWidth, this.someCanHeight - localClass_e_01342.var_1042,
 					3, 4);
 		} else {
-			(localClass_e_01341 = new Class_e_0134((byte) 10, 0))
+			(localClass_e_01341 = new Class_e_FightAnimation((byte) 10, 0))
 					.sub_165b(Class_f_StringManager.getLangString(46)).var_11b2 = this.menuIconsFrames[6];
 			localClass_e_01341.sub_1ca8(null, Class_f_StringManager.getLangString(52),
 					this.someCanWidth, -1);
@@ -9095,7 +9095,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 				} else if (this.var_4f42 == 1) {
 					paramArrayOfByte.readInt();
 					this.var_4ee2[this.var_4ec2] = paramArrayOfByte.readUTF();
-					Class_e_0134 localClass_e_0134;
+					Class_e_FightAnimation localClass_e_0134;
 					(localClass_e_0134 = sub_1437e(
 							this.var_4ed2[this.var_4ec2],
 							this.var_4ee2[this.var_4ec2], this.someCanHeight,
@@ -9120,7 +9120,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 					paramArrayOfByte.readFully(arrayOfByte);
 					sub_19157(str, arrayOfByte);
 					sub_70c0(this.var_4c0a.stringManager);
-					Class_e_0134 cll;
+					Class_e_FightAnimation cll;
 					(cll = sub_14359(null, Class_f_StringManager.getStrByIdAndReplaceUWith(45, str),
 							this.someCanHeight, 2000)).sub_1350(this.var_4c0a);
 					Class_f_StringManager.mainCanvas.sub_220e(cll);
@@ -9132,7 +9132,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		Class_e_0134 bbc;
+		Class_e_FightAnimation bbc;
 		(bbc = sub_14359(null, Class_f_StringManager.getLangString(44), this.someCanHeight, -1))
 				.sub_1350(this.var_4f3a);
 		this.var_4f3a = null;
@@ -9161,7 +9161,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 			this.var_4f22.writeUTF("0");
 			this.var_4f22.writeUTF("requestId");
 			this.var_4f22.writeUTF("0");
-			Class_e_0134 cl = sub_14359(null, Class_f_StringManager.getLangString(43), this.someCanHeight, -1);
+			Class_e_FightAnimation cl = sub_14359(null, Class_f_StringManager.getLangString(43), this.someCanHeight, -1);
 			cl.sub_1350(paramClass_f_0145);
 			Class_f_StringManager.mainCanvas.sub_220e(cl);
 
@@ -9276,7 +9276,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 					int i1 = intSomoeDiss;
 					int j = intSomoe;
 					String paramDisplayable = this.var_5002.getString();
-					Class_g_1956 paramCommand = this;
+					Class_g_Game paramCommand = this;
 					try {
 						Class_c_MainCanvas.stopCurrentMusicPlayer();
 						paramCommand.var_488a = new Vector();
@@ -9965,7 +9965,7 @@ public final class Class_g_1956 extends Class_f_StringManager implements Runnabl
 	}
 
 	private void sub_1af6c() {
-		Class_g_1956 localClass_g_1956 = this;
+		Class_g_Game localClass_g_1956 = this;
 		this.var_4fda = null;
 		localClass_g_1956.var_501a = null;
 		(localClass_g_1956 = localClass_g_1956).var_4fba = null;

@@ -87,7 +87,7 @@ public class Class_d_ImageWrap {
 		byte[] bytes = null;
 		if (argInt != 1) {
 			bytes = Class_c_MainCanvas
-					.getResourceString(Class_g_1956.spriteColorsMaybe[argInt] + "_" + imageID + ".png");
+					.getResourceString(Class_g_Game.spriteColorsMaybe[argInt] + "_" + imageID + ".png");
 		}
 		if (bytes == null) {
 			bytes = Class_c_MainCanvas.getResourceString(imageID + ".png");
