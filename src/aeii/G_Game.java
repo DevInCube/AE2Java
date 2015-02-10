@@ -138,7 +138,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	public int[] var_486a;
 	private byte[][] var_4872;
 	private byte[] var_487a;
-	private E_SpritesCompositor var_4882;
+	private E_Menu var_4882;
 	private Vector var_488a;
 	private Vector spritesVector;
 	private A_Unit var_489a;
@@ -177,14 +177,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private static int[] var_499a = { 15, 196, 197, 198, 199, 200, 201, 202,
 			203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214 };
 	private int var_49a2;
-	private E_SpritesCompositor var_49aa;
-	private E_SpritesCompositor var_49b2;
-	private E_SpritesCompositor var_49ba;
-	private E_SpritesCompositor var_49c2;
+	private E_Menu var_49aa;
+	private E_Menu var_49b2;
+	private E_Menu var_49ba;
+	private E_Menu var_49c2;
 	public int var_49ca;
-	private E_SpritesCompositor var_49d2;
-	private E_SpritesCompositor var_49da;
-	private E_SpritesCompositor var_49e2;
+	private E_Menu var_49d2;
+	private E_Menu var_49da;
+	private E_Menu var_49e2;
 	private boolean var_49ea;
 	private int var_49f2;
 	private byte[][] var_49fa;
@@ -203,14 +203,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 	public G_Sprite miniIconsSprite;
 	private G_Sprite[] var_4a6a;
 	public G_Sprite bSmokeSprite;
-	private E_SpritesCompositor var_4a7a;
-	private E_SpritesCompositor var_4a82;
-	private E_SpritesCompositor var_4a8a;
-	private E_SpritesCompositor var_4a92;
-	private E_SpritesCompositor[] var_4a9a;
-	private E_SpritesCompositor[] var_4aa2;
-	private E_SpritesCompositor var_4aaa;
-	private E_SpritesCompositor[] var_4ab2;
+	private E_Menu var_4a7a;
+	private E_Menu var_4a82;
+	private E_Menu var_4a8a;
+	private E_Menu var_4a92;
+	private E_Menu[] var_4a9a;
+	private E_Menu[] var_4aa2;
+	private E_Menu var_4aaa;
+	private E_Menu[] var_4ab2;
 	private G_Sprite alphaMaskSprite;
 	private int var_4ac2;
 	private boolean var_4aca;
@@ -220,10 +220,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private G_Sprite levelUpSprite;
 	private int var_4af2;
 	public G_Sprite[] kingHeadsIcons;
-	private E_SpritesCompositor var_4b02;
-	private E_SpritesCompositor var_4b0a;
-	private E_SpritesCompositor var_4b12;
-	private E_SpritesCompositor var_4b1a;
+	private E_Menu var_4b02;
+	private E_Menu var_4b0a;
+	private E_Menu var_4b12;
+	private E_Menu var_4b1a;
 	public G_Sprite arrowIconsSprite;
 	private G_Sprite var_4b2a;
 	private A_Unit var_4b32;
@@ -234,13 +234,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private String[] saveSlotsDescriptions;
 	private byte[] saveSlotBytes;
 	private int[] saveSlotsMapIds;
-	private E_SpritesCompositor var_4b72;
-	private E_SpritesCompositor var_4b7a;
-	private E_SpritesCompositor var_4b82;
-	private E_SpritesCompositor var_4b8a;
-	private E_SpritesCompositor var_4b92;
-	private E_SpritesCompositor var_4b9a;
-	private E_SpritesCompositor var_4ba2;
+	private E_Menu var_4b72;
+	private E_Menu var_4b7a;
+	private E_Menu var_4b82;
+	private E_Menu var_4b8a;
+	private E_Menu var_4b92;
+	private E_Menu var_4b9a;
+	private E_Menu var_4ba2;
 	private byte var_4baa;
 	private byte[] var_4bb2;
 	private int settingsCountMaybe;
@@ -248,14 +248,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private int[] settingsIntListMaybe;
 	private String[] var_4bd2;
 	private String[] var_4bda;
-	private E_SpritesCompositor var_4be2;
-	private E_SpritesCompositor var_4bea;
-	private E_SpritesCompositor var_4bf2;
-	private E_SpritesCompositor var_4bfa;
-	private E_SpritesCompositor var_4c02;
-	private E_SpritesCompositor var_4c0a;
-	private E_SpritesCompositor var_4c12;
-	private E_SpritesCompositor var_4c1a;
+	private E_Menu var_4be2;
+	private E_Menu var_4bea;
+	private E_Menu var_4bf2;
+	private E_Menu var_4bfa;
+	private E_Menu var_4c02;
+	private E_Menu var_4c0a;
+	private E_Menu var_4c12;
+	private E_Menu var_4c1a;
 	private int var_4c22;
 	private String var_4c2a;
 	private int downloadAvailableSize;
@@ -311,7 +311,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private Vector var_4dc2;
 	private boolean var_4dca;
 	private int var_4dd2;
-	private E_SpritesCompositor var_4dda;
+	private E_Menu var_4dda;
 	private A_Unit var_4de2;
 	private A_Unit var_4dea;
 	private A_Unit var_4df2;
@@ -357,20 +357,20 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private boolean var_4f32;
 	private F_StringManager var_4f3a;
 	private int var_4f42;
-	private E_SpritesCompositor var_4f4a;
-	private E_SpritesCompositor var_4f52;
-	private E_SpritesCompositor var_4f5a;
-	private E_SpritesCompositor var_4f62;
+	private E_Menu var_4f4a;
+	private E_Menu var_4f52;
+	private E_Menu var_4f5a;
+	private E_Menu var_4f62;
 	private B_FilesManager var_4f6a;
 	private String[] var_4f72;
 	private byte cursorTileId;
 	private byte someUnitTypeId;
 	private A_Unit var_4f8a;
 	private byte var_4f92;
-	private E_SpritesCompositor var_4f9a;
-	private E_SpritesCompositor var_4fa2;
-	private E_SpritesCompositor var_4faa;
-	private E_SpritesCompositor var_4fb2;
+	private E_Menu var_4f9a;
+	private E_Menu var_4fa2;
+	private E_Menu var_4faa;
+	private E_Menu var_4fb2;
 	private int[] var_4fba;
 	private int[] var_4fc2;
 	private boolean[] var_4fca;
@@ -515,7 +515,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			setLoadProgress(i + 19);
 		}
 		setLoadProgress(28);
-		E_SpritesCompositor.var_1012 = this;
+		E_Menu.theGame = this;
 		setLoadProgress(29);
 		F_StringManager.sub_e73();
 		setLoadProgress(30);
@@ -1045,7 +1045,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 
 	private void sub_6d11(byte[] paramArrayOfByte, int paramInt1,
 			int paramInt2, F_StringManager paramClass_f_0145) {
-		E_SpritesCompositor localClass_e_0134 = new E_SpritesCompositor((byte) 0, 0);
+		E_Menu localClass_e_0134 = new E_Menu((byte) 0, 0);
 		this.var_4a32 = paramInt1;
 		this.var_4a3a = paramInt2;
 		paramInt1 = paramArrayOfByte.length;
@@ -1071,7 +1071,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	}
 
 	private void sub_6e49(byte[] paramArrayOfByte) {
-		this.var_4882 = new E_SpritesCompositor((byte) 0, 0);
+		this.var_4882 = new E_Menu((byte) 0, 0);
 		int i;
 		String[] arrayOfString = new String[i = paramArrayOfByte.length];
 		D_ImageWrap[] arrayOfClass_d_0033 = new D_ImageWrap[i];
@@ -1090,29 +1090,29 @@ public final class G_Game extends F_StringManager implements Runnable,
 		F_StringManager.mainCanvas.sub_220e(this.var_4882);
 	}
 
-	private E_SpritesCompositor sub_6f4c(String paramString,
+	private E_Menu sub_6f4c(String paramString,
 			D_ImageWrap paramClass_d_0033) {
 		String[] arrayOfString = new String[10];
 		for (int j = 0; j < 10; j++) {
 			arrayOfString[j] = ("SLOT " + (j + 1) + "/" + 10);
 		}
-		this.var_4b82 = new E_SpritesCompositor((byte) 14, 0);
+		this.var_4b82 = new E_Menu((byte) 14, 0);
 		this.var_4b82.sub_1f72(arrayOfString, this.someCanWidth, -1);
-		this.var_4b8a = new E_SpritesCompositor((byte) 10, 0);
+		this.var_4b8a = new E_Menu((byte) 10, 0);
 		this.var_4b8a.sub_1ca8(null, this.saveSlotsDescriptions[0], this.someCanWidth, -1);
 		if (this.saveSlotBytes[0] != -1) {
 			this.var_4b8a.var_11a2 = var_468a[this.saveSlotBytes[0]];
 		}
-		E_SpritesCompositor localClass_e_01341 = new E_SpritesCompositor((byte) 15, 15);
-		int i = (this.someCanHeight - this.var_4b82.var_1042 - this.var_4b8a.var_1042) / 2;
-		E_SpritesCompositor localClass_e_01342;
-		(localClass_e_01342 = new E_SpritesCompositor((byte) 10, 0)).sub_1ca8(null,
+		E_Menu localClass_e_01341 = new E_Menu((byte) 15, 15);
+		int i = (this.someCanHeight - this.var_4b82.mapPrevPixelHeight - this.var_4b8a.mapPrevPixelHeight) / 2;
+		E_Menu localClass_e_01342;
+		(localClass_e_01342 = new E_Menu((byte) 10, 0)).sub_1ca8(null,
 				paramString, this.someCanWidth, -1);
-		localClass_e_01342.var_11b2 = paramClass_d_0033;
+		localClass_e_01342.someImage1 = paramClass_d_0033;
 		localClass_e_01341.sub_1698(localClass_e_01342, 0, 0, 0);
-		i += localClass_e_01342.var_1042 / 2;
+		i += localClass_e_01342.mapPrevPixelHeight / 2;
 		localClass_e_01341.sub_1698(this.var_4b82, 0, i, 0);
-		i += this.var_4b82.var_1042;
+		i += this.var_4b82.mapPrevPixelHeight;
 		localClass_e_01341.sub_1698(this.var_4b8a, 0, i, 20);
 		localClass_e_01341.var_115a = true;
 		localClass_e_01341.sub_132e((byte) 0, true);
@@ -1140,23 +1140,23 @@ public final class G_Game extends F_StringManager implements Runnable,
 				k++;
 			}
 		}
-		this.var_4c0a = new E_SpritesCompositor((byte) 15, 15);
-		E_SpritesCompositor localClass_e_0134;
-		(localClass_e_0134 = new E_SpritesCompositor((byte) 10, 0)).sub_1ca8(null,
+		this.var_4c0a = new E_Menu((byte) 15, 15);
+		E_Menu localClass_e_0134;
+		(localClass_e_0134 = new E_Menu((byte) 10, 0)).sub_1ca8(null,
 				F_StringManager.getLangString(48), this.someCanWidth, -1);
 		Object localObject2;
 		if (k == 0) {
-			E_SpritesCompositor clas;
-			(clas = new E_SpritesCompositor((byte) 10, 0)).sub_1ca8(null,
+			E_Menu clas;
+			(clas = new E_Menu((byte) 10, 0)).sub_1ca8(null,
 					F_StringManager.getLangString(52), this.someCanWidth, this.someCanHeightShift);
-			this.var_4c0a.sub_1698((E_SpritesCompositor) clas, 0,
-					(this.someCanHeight + localClass_e_0134.var_1042) / 2, 6);
+			this.var_4c0a.sub_1698((E_Menu) clas, 0,
+					(this.someCanHeight + localClass_e_0134.mapPrevPixelHeight) / 2, 6);
 		} else {
 			localObject2 = new String[k];
 			int[] arrayOfInt1 = new int[k];
 			System.arraycopy(localObject1, 0, localObject2, 0, k);
 			System.arraycopy(arrayOfInt2, 0, arrayOfInt1, 0, k);
-			this.var_4c1a = new E_SpritesCompositor((byte) 10, 0);
+			this.var_4c1a = new E_Menu((byte) 10, 0);
 			String stringIt;
 			stringIt = sub_7651(this.downloadAvailableSize);
 			this.var_4c1a.sub_1ca8(
@@ -1166,16 +1166,16 @@ public final class G_Game extends F_StringManager implements Runnable,
 							+ "\n"
 							+ F_StringManager.getStrByIdAndReplaceUWith(53, (String) stringIt),
 					this.someCanWidth, -1);
-			this.var_4c12 = new E_SpritesCompositor((byte) 11, 0);
+			this.var_4c12 = new E_Menu((byte) 11, 0);
 			this.var_4c12.sub_20ad((String[]) localObject2, this.someCanWidthShift,
 					this.someCanHeightShift, this.someCanWidth, this.someCanHeight
-							- localClass_e_0134.var_1042
-							- this.var_4c1a.var_1042, 3, 4);
+							- localClass_e_0134.mapPrevPixelHeight
+							- this.var_4c1a.mapPrevPixelHeight, 3, 4);
 			this.var_4c12.var_11c2 = arrayOfInt1;
-			int j = (this.someCanHeight - this.var_4c1a.var_1042
-					- this.var_4c12.var_1042 + localClass_e_0134.var_1042) / 2;
+			int j = (this.someCanHeight - this.var_4c1a.mapPrevPixelHeight
+					- this.var_4c12.mapPrevPixelHeight + localClass_e_0134.mapPrevPixelHeight) / 2;
 			this.var_4c0a.sub_1698(this.var_4c12, 0, j, 20);
-			j += this.var_4c12.var_1042;
+			j += this.var_4c12.mapPrevPixelHeight;
 			this.var_4c0a.sub_1698(this.var_4c1a, 0, j, 20);
 			this.var_4c0a.var_115a = true;
 			this.var_4c0a.sub_132e((byte) 0, true);
@@ -1184,25 +1184,25 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.var_4c0a.sub_1350(paramClass_f_0145);
 	}
 
-	private E_SpritesCompositor sub_7384(F_StringManager paramClass_f_0145) {
-		E_SpritesCompositor localClass_e_01341;
+	private E_Menu sub_7384(F_StringManager paramClass_f_0145) {
+		E_Menu localClass_e_01341;
 		if (this.settingsStrListMaybe.length == 0) {
-			E_SpritesCompositor localClass_e_01342;
-			(localClass_e_01342 = (localClass_e_01341 = new E_SpritesCompositor(
-					(byte) 10, 0)).sub_165b(F_StringManager.getLangString(49))).var_11b2 = this.menuIconsFrames[6];
+			E_Menu localClass_e_01342;
+			(localClass_e_01342 = (localClass_e_01341 = new E_Menu(
+					(byte) 10, 0)).sub_165b(F_StringManager.getLangString(49))).someImage1 = this.menuIconsFrames[6];
 			localClass_e_01341.sub_1ca8(null, F_StringManager.getLangString(52),
 					this.canvasWidth, -1);
 			localClass_e_01341.sub_1930(0,
-					(this.someCanHeight + localClass_e_01342.var_1042) / 2, 6);
+					(this.someCanHeight + localClass_e_01342.mapPrevPixelHeight) / 2, 6);
 			localClass_e_01341.sub_1350(paramClass_f_0145);
 			this.var_4bfa = null;
 			return localClass_e_01341;
 		}
-		this.var_4bfa = new E_SpritesCompositor((byte) 11, 0);
-		(localClass_e_01341 = this.var_4bfa.sub_165b(F_StringManager.getLangString(49))).var_11b2 = this.menuIconsFrames[6];
+		this.var_4bfa = new E_Menu((byte) 11, 0);
+		(localClass_e_01341 = this.var_4bfa.sub_165b(F_StringManager.getLangString(49))).someImage1 = this.menuIconsFrames[6];
 		this.var_4bfa.sub_20ad(this.settingsStrListMaybe, this.canvasWidth / 2,
-				(this.someCanHeight + localClass_e_01341.var_1042) / 2,
-				this.someCanWidth, this.someCanHeight - localClass_e_01341.var_1042, 3,
+				(this.someCanHeight + localClass_e_01341.mapPrevPixelHeight) / 2,
+				this.someCanWidth, this.someCanHeight - localClass_e_01341.mapPrevPixelHeight, 3,
 				4);
 		this.var_4bfa.sub_1350(paramClass_f_0145);
 		return this.var_4bfa;
@@ -1285,7 +1285,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		return paramString2;
 	}
 
-	public final void sub_770a(E_SpritesCompositor paramClass_e_0134, int paramInt,
+	public final void sub_770a(E_Menu paramClass_e_0134, int paramInt,
 			String paramString, byte paramByte) {
 		try {
 			this.var_4f32 = true;
@@ -1342,7 +1342,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									((ByteArrayOutputStream) localObject5)
 											.toByteArray());
 							((ByteArrayOutputStream) localObject5).close();
-							E_SpritesCompositor clas;
+							E_Menu clas;
 							(clas = sub_14359(null, F_StringManager.getStrByIdAndReplaceUWith(45,
 									(String) localObject1), this.someCanHeight, 2000))
 									.sub_1350(this.var_4f4a);
@@ -1354,15 +1354,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 											.getDirectoryPaths(".aem", true)),
 									this.var_4f6a.sub_877() != null ? var_4572
 											: null);
-							this.var_4f4a = new E_SpritesCompositor((byte) 15, 15);
-							E_SpritesCompositor lo3;
+							this.var_4f4a = new E_Menu((byte) 15, 15);
+							E_Menu lo3;
 							(lo3 = this.var_4f4a.sub_165b(sub_7696(
 									this.var_4f6a.sub_877(),
-									F_StringManager.getLangString(290)))).var_11b2 = this.menuIconsFrames[6];
-							this.var_4f52 = new E_SpritesCompositor((byte) 0, 0);
+									F_StringManager.getLangString(290)))).someImage1 = this.menuIconsFrames[6];
+							this.var_4f52 = new E_Menu((byte) 0, 0);
 							this.var_4f52.sub_20ad(this.var_4f72, 0, 0,
 									this.someCanWidth, this.someCanHeight
-											- ((E_SpritesCompositor) lo3).var_1042
+											- ((E_Menu) lo3).mapPrevPixelHeight
 											- (this.buttonsSprite.spriteFrameHeight << 1), 3,
 									4);
 							if ((this.var_4f6a.sub_877() != null)
@@ -1373,7 +1373,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									.sub_1698(
 											this.var_4f52,
 											this.someCanWidthShift,
-											(this.someCanHeight + ((E_SpritesCompositor) lo3).var_1042) / 2,
+											(this.someCanHeight + ((E_Menu) lo3).mapPrevPixelHeight) / 2,
 											3);
 							this.var_4f4a.sub_132e((byte) 0, true);
 							this.var_4f4a.var_115a = true;
@@ -1412,15 +1412,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 											.getDirectoryPaths(".aem", true)),
 									this.var_4f6a.sub_877() != null ? var_457a
 											: null);
-							this.var_4f5a = new E_SpritesCompositor((byte) 15, 15);
-							E_SpritesCompositor loc5;
+							this.var_4f5a = new E_Menu((byte) 15, 15);
+							E_Menu loc5;
 							(loc5 = this.var_4f5a.sub_165b(sub_7696(
 									this.var_4f6a.sub_877(),
-									F_StringManager.getLangString(299)))).var_11b2 = this.menuIconsFrames[6];
-							this.var_4f62 = new E_SpritesCompositor((byte) 0, 0);
+									F_StringManager.getLangString(299)))).someImage1 = this.menuIconsFrames[6];
+							this.var_4f62 = new E_Menu((byte) 0, 0);
 							this.var_4f62.sub_20ad(this.var_4f72, 0, 0,
 									this.someCanWidth, this.someCanHeight
-											- ((E_SpritesCompositor) loc5).var_1042
+											- ((E_Menu) loc5).mapPrevPixelHeight
 											- (this.buttonsSprite.spriteFrameHeight << 1), 3,
 									4);
 							if ((this.var_4f6a.sub_877() != null)
@@ -1431,12 +1431,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 									.sub_1698(
 											this.var_4f62,
 											this.someCanWidthShift,
-											(this.someCanHeight + ((E_SpritesCompositor) loc5).var_1042) / 2,
+											(this.someCanHeight + ((E_Menu) loc5).mapPrevPixelHeight) / 2,
 											3);
 							this.var_4f5a.sub_132e((byte) 0, true);
 							this.var_4f5a.var_115a = true;
 							this.var_4f5a.sub_1350(this.var_4faa);
-							E_SpritesCompositor localClass_e_01344;
+							E_Menu localClass_e_01344;
 							(localClass_e_01344 = sub_14359(null,
 									F_StringManager.getStrByIdAndReplaceUWith(45, this.var_4b52),
 									this.someCanHeight, 2000))
@@ -1449,12 +1449,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 											.getDirectoryPaths(".aem", true)),
 									this.var_4f6a.sub_877() != null ? var_457a
 											: null);
-							this.var_4f5a = new E_SpritesCompositor((byte) 15, 15);
-							E_SpritesCompositor theflocalObject3;
+							this.var_4f5a = new E_Menu((byte) 15, 15);
+							E_Menu theflocalObject3;
 							(theflocalObject3 = this.var_4f5a
 									.sub_165b(sub_7696(this.var_4f6a.sub_877(),
-											F_StringManager.getLangString(290)))).var_11b2 = this.menuIconsFrames[6];
-							this.var_4f62 = new E_SpritesCompositor((byte) 0, 0);
+											F_StringManager.getLangString(290)))).someImage1 = this.menuIconsFrames[6];
+							this.var_4f62 = new E_Menu((byte) 0, 0);
 							this.var_4f62
 									.sub_20ad(
 											this.var_4f72,
@@ -1462,7 +1462,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 											0,
 											this.someCanWidth,
 											this.someCanHeight
-													- ((E_SpritesCompositor) theflocalObject3).var_1042
+													- ((E_Menu) theflocalObject3).mapPrevPixelHeight
 													- (this.buttonsSprite.spriteFrameHeight << 1),
 											3, 4);
 							if ((this.var_4f6a.sub_877() != null)
@@ -1473,7 +1473,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									.sub_1698(
 											this.var_4f62,
 											this.someCanWidthShift,
-											(this.someCanHeight + ((E_SpritesCompositor) theflocalObject3).var_1042) / 2,
+											(this.someCanHeight + ((E_Menu) theflocalObject3).mapPrevPixelHeight) / 2,
 											3);
 							this.var_4f5a.sub_132e((byte) 0, true);
 							this.var_4f5a.var_115a = true;
@@ -1502,11 +1502,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 									.sub_1ca8(
 											null,
 											F_StringManager
-													.getLangString(184 + this.var_4b12.var_10aa[paramInt].unitType),
+													.getLangString(184 + this.var_4b12.someUnits[paramInt].unitType),
 											this.someCanWidth, this.someCanHeight
-													- this.var_4b0a.var_1042
-													- this.var_4b12.var_1042);
-							this.var_4b0a.someUnit0 = this.var_4b12.var_10aa[paramInt];
+													- this.var_4b0a.mapPrevPixelHeight
+													- this.var_4b12.mapPrevPixelHeight);
+							this.var_4b0a.someUnit0 = this.var_4b12.someUnits[paramInt];
 							this.var_4b1a.sub_1272();
 							this.var_4b0a.sub_1272();
 							return;
@@ -1514,7 +1514,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					} else {
 						if (paramClass_e_0134 == this.var_4b02) {
 							if (paramByte == 0) {
-								A_Unit olocalObject3 = this.var_4b12.var_10aa[this.var_4b12.var_105a];
+								A_Unit olocalObject3 = this.var_4b12.someUnits[this.var_4b12.var_105a];
 								if (!sub_12226((A_Unit) olocalObject3,
 										this.cursorPosX, this.cursorPosY)) {
 									return;
@@ -1538,7 +1538,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 										var_499a[paramInt], true);
 								this.var_49ba.sub_1ca8(null,
 										(String) yylocalObject3, this.someCanWidth,
-										this.var_49ba.var_1042);
+										this.var_49ba.mapPrevPixelHeight);
 								this.var_49ba.sub_1272();
 								return;
 							}
@@ -1564,11 +1564,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 										this.var_4a7a = null;
 										return;
 									}
-									this.var_4a82 = new E_SpritesCompositor((byte) 15,
+									this.var_4a82 = new E_Menu((byte) 15,
 											15);
-									E_SpritesCompositor localClass_e_01341;
-									(localClass_e_01341 = new E_SpritesCompositor(
-											(byte) 10, 0)).var_11b2 = this.menuIconsFrames[4];
+									E_Menu localClass_e_01341;
+									(localClass_e_01341 = new E_Menu(
+											(byte) 10, 0)).someImage1 = this.menuIconsFrames[4];
 									localClass_e_01341.sub_1ca8(null,
 											F_StringManager.getLangString(34),
 											this.someCanWidth, -1);
@@ -1580,37 +1580,37 @@ public final class G_Game extends F_StringManager implements Runnable,
 										str22[i2] = F_StringManager.getStrByIdAndReplaceUWith(38, ""
 												+ (i2 + 1));
 									}
-									i2 = localClass_e_01341.var_1042;
-									E_SpritesCompositor[] olocObj3;
-									olocObj3 = new E_SpritesCompositor[this.var_4baa];
-									this.var_4a9a = new E_SpritesCompositor[this.var_4baa];
-									this.var_4aa2 = new E_SpritesCompositor[this.var_4baa];
+									i2 = localClass_e_01341.mapPrevPixelHeight;
+									E_Menu[] olocObj3;
+									olocObj3 = new E_Menu[this.var_4baa];
+									this.var_4a9a = new E_Menu[this.var_4baa];
+									this.var_4aa2 = new E_Menu[this.var_4baa];
 									for (paramInt = 0; paramInt < this.var_4baa; paramInt++) {
-										this.var_4a9a[paramInt] = new E_SpritesCompositor(
+										this.var_4a9a[paramInt] = new E_Menu(
 												(byte)14, 6);
 										this.var_4a9a[paramInt]
 												.sub_1f72(this.var_463a,
 														this.canvasWidthShift, -1);
-										this.var_4aa2[paramInt] = new E_SpritesCompositor(
+										this.var_4aa2[paramInt] = new E_Menu(
 												(byte)14, 5);
 										this.var_4aa2[paramInt].sub_1f72(str22,
 												this.canvasWidthShift, -1);
 										this.var_4aa2[paramInt].var_105a = paramInt;
 										int i5 = Math
-												.max(this.var_4a9a[paramInt].var_103a,
-														this.var_4aa2[paramInt].var_103a);
+												.max(this.var_4a9a[paramInt].mapPrevPixelWidth,
+														this.var_4aa2[paramInt].mapPrevPixelWidth);
 										i3 = this.canvasWidth - i5;
-										this.var_4a9a[paramInt].var_103a = i5;
-										this.var_4aa2[paramInt].var_103a = i5;
+										this.var_4a9a[paramInt].mapPrevPixelWidth = i5;
+										this.var_4aa2[paramInt].mapPrevPixelWidth = i5;
 										this.var_4a82.sub_1698(
 												this.var_4a9a[paramInt], i3,
 												i2, 20);
-										i2 += this.var_4a9a[paramInt].var_1042;
+										i2 += this.var_4a9a[paramInt].mapPrevPixelHeight;
 										this.var_4a82.sub_1698(
 												this.var_4aa2[paramInt], i3,
 												i2, 20);
-										i2 += this.var_4aa2[paramInt].var_1042;
-										olocObj3[paramInt] = new E_SpritesCompositor(
+										i2 += this.var_4aa2[paramInt].mapPrevPixelHeight;
+										olocObj3[paramInt] = new E_Menu(
 												(byte)10, 8);
 										olocObj3[paramInt]
 												.sub_1ca8(
@@ -1618,21 +1618,21 @@ public final class G_Game extends F_StringManager implements Runnable,
 														F_StringManager
 																.getLangString(this.var_4bb2[paramInt] - 1 + 89),
 														i3,
-														this.var_4a9a[paramInt].var_1042
-																+ this.var_4aa2[paramInt].var_1042);
+														this.var_4a9a[paramInt].mapPrevPixelHeight
+																+ this.var_4aa2[paramInt].mapPrevPixelHeight);
 										olocObj3[paramInt].var_11a2 = var_468a[this.var_4bb2[paramInt]];
 										this.var_4a82.sub_1698(
 												olocObj3[paramInt], 0, i2, 36);
 									}
 									this.var_4a82.var_114a = 1;
-									E_SpritesCompositor localClass_e_01345;
-									(localClass_e_01345 = new E_SpritesCompositor(
+									E_Menu localClass_e_01345;
+									(localClass_e_01345 = new E_Menu(
 											(byte) 10, 8)).sub_1ca8(null,
 											F_StringManager.getLangString(40),
 											this.someCanWidthShift, -1);
 									this.var_4a82.sub_1698(localClass_e_01345,
 											0, i2, 20);
-									this.var_4a8a = new E_SpritesCompositor((byte) 14,
+									this.var_4a8a = new E_Menu((byte) 14,
 											4);
 									String[] ssparamInt;
 									ssparamInt = new String[var_45da.length];
@@ -1641,17 +1641,17 @@ public final class G_Game extends F_StringManager implements Runnable,
 									}
 									this.var_4a8a.sub_1f72(ssparamInt,
 											this.someCanWidthShift,
-											localClass_e_01345.var_1042);
+											localClass_e_01345.mapPrevPixelHeight);
 									this.var_4a82.sub_1698(this.var_4a8a,
 											this.canvasWidthShift, i2, 20);
-									i2 += localClass_e_01345.var_1042;
-									(localClass_e_01341 = new E_SpritesCompositor(
+									i2 += localClass_e_01345.mapPrevPixelHeight;
+									(localClass_e_01341 = new E_Menu(
 											(byte) 10, 8)).sub_1ca8(null,
 											F_StringManager.getLangString(41),
 											this.someCanWidthShift, -1);
 									this.var_4a82.sub_1698(localClass_e_01341,
 											0, i2, 20);
-									this.var_4a92 = new E_SpritesCompositor((byte) 14,
+									this.var_4a92 = new E_Menu((byte) 14,
 											4);
 									String[] slocalObject6 = new String[var_45e2.length];
 									for (i6 = 0; i6 < slocalObject6.length; i6++) {
@@ -1660,7 +1660,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									this.var_4a92.sub_1f72(
 											(String[]) slocalObject6,
 											this.someCanWidthShift,
-											localClass_e_01341.var_1042);
+											localClass_e_01341.mapPrevPixelHeight);
 									this.var_4a82.sub_1698(this.var_4a92,
 											this.canvasWidthShift, i2, 20);
 									this.var_4a82.sub_1350(paramClass_e_0134);
@@ -1695,7 +1695,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 											}
 										}
 										if ((j < 2) || (i6 < 2)) {
-											((E_SpritesCompositor) (localObject6 = sub_14359(null,
+											((E_Menu) (localObject6 = sub_14359(null,
 													F_StringManager.getLangString(39),
 													this.someCanHeight, 2000)))
 													.sub_1350(this.var_4a82);
@@ -1743,13 +1743,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 												localObject9[i3] = -1;
 											}
 											this.var_4baa = 0;
-											for (i3 = 0; i3 < i2; i3++) {
+											for (int i31 = 0; i31 < i2; i31++) {
 												for (int i9 = 0; i9 < n; i9++) {
-													arrayOfByte[i3][i9] = ((DataInputStream) localObject6)
+													arrayOfByte[i31][i9] = ((DataInputStream) localObject6)
 															.readByte();
-													if ((this.tilesDefs[arrayOfByte[i3][i9]] == 9)
+													if ((this.tilesDefs[arrayOfByte[i31][i9]] == 9)
 															&& ((i6 = sub_11bd2(
-																	i3, i9,
+																	i31, i9,
 																	arrayOfByte)) != 0)
 															&& (localObject9[i6] == -1)) {
 														this.var_4bb2[this.var_4baa] = ((byte) i6);
@@ -1760,28 +1760,29 @@ public final class G_Game extends F_StringManager implements Runnable,
 											((DataInputStream) localObject6)
 													.close();
 											this.var_4b52 = this.var_49d2.var_101a[j];
-											this.var_4a7a = new E_SpritesCompositor(
+											this.var_4a7a = new E_Menu(
 													(byte) 15, 15);
-											E_SpritesCompositor localClass_e_01342;
-											(localClass_e_01342 = new E_SpritesCompositor(
-													(byte) 10, 0)).var_11b2 = this.menuIconsFrames[4];
+											E_Menu localClass_e_01342;
+											(localClass_e_01342 = new E_Menu(
+													(byte) 10, 0)).someImage1 = this.menuIconsFrames[4];
 											localClass_e_01342.sub_1ca8(null,
 													this.var_4b52,
 													this.someCanWidth, -1);
-											((E_SpritesCompositor) (localObject10 = new E_SpritesCompositor(
-													(byte) 8, 0)))
-													.sub_17fe(
+											localObject10 = new E_Menu(
+													(byte) 8, 0);
+											((E_Menu)localObject10)
+													.setMapPreviewMaybe(
 															this.canvasWidth,
 															this.someCanHeight
-																	- localClass_e_01342.var_1042
+																	- localClass_e_01342.mapPrevPixelHeight
 																	- this.buttonsSprite.spriteFrameHeight,
 															arrayOfByte, null);
 											this.var_4a7a
 													.sub_1698(
-															(E_SpritesCompositor) localObject10,
+															(E_Menu) localObject10,
 															this.someCanWidthShift,
 															this.someCanHeightShift
-																	+ (localClass_e_01342.var_1042 - this.buttonsSprite.spriteFrameHeight)
+																	+ (localClass_e_01342.mapPrevPixelHeight - this.buttonsSprite.spriteFrameHeight)
 																	/ 2, 3);
 											this.var_4a7a
 													.sub_1698(
@@ -1850,16 +1851,16 @@ public final class G_Game extends F_StringManager implements Runnable,
 															this.var_4f6a
 																	.sub_877() != null ? var_457a
 																	: null);
-											this.var_4f5a = new E_SpritesCompositor(
+											this.var_4f5a = new E_Menu(
 													(byte) 15, 15);
-											E_SpritesCompositor localObject61 = this.var_4f5a
+											E_Menu localObject61 = this.var_4f5a
 													.sub_165b(sub_7696(
 															this.var_4f6a
 																	.sub_877(),
 															F_StringManager
 																	.getLangString(299)));
-											localObject61.var_11b2 = this.menuIconsFrames[6];
-											this.var_4f62 = new E_SpritesCompositor(
+											localObject61.someImage1 = this.menuIconsFrames[6];
+											this.var_4f62 = new E_Menu(
 													(byte) 0, 0);
 											this.var_4f62
 													.sub_20ad(
@@ -1868,7 +1869,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 															0,
 															this.someCanWidth,
 															this.someCanHeight
-																	- ((E_SpritesCompositor) localObject61).var_1042
+																	- ((E_Menu) localObject61).mapPrevPixelHeight
 																	- (this.buttonsSprite.spriteFrameHeight << 1),
 															3, 4);
 											if ((this.var_4f6a.sub_877() != null)
@@ -1879,7 +1880,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 													.sub_1698(
 															this.var_4f62,
 															this.someCanWidthShift,
-															(this.someCanHeight + ((E_SpritesCompositor) localObject61).var_1042) / 2,
+															(this.someCanHeight + ((E_Menu) localObject61).mapPrevPixelHeight) / 2,
 															3);
 											this.var_4f5a.sub_132e((byte) 0,
 													true);
@@ -1998,7 +1999,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 										}
 										return;
 									}
-									E_SpritesCompositor localClass_e_01343;
+									E_Menu localClass_e_01343;
 									Object localObject8;
 									if (paramClass_e_0134 == this.var_4be2) {
 										if (paramByte == 0) {
@@ -2018,18 +2019,18 @@ public final class G_Game extends F_StringManager implements Runnable,
 											}
 											if (paramString
 													.equals(this.var_4bd2[1])) {
-												this.var_4bea = new E_SpritesCompositor(
+												this.var_4bea = new E_Menu(
 														(byte) 11, 0);
 												(localClass_e_01343 = this.var_4bea
-														.sub_165b(paramString)).var_11b2 = this.menuIconsFrames[6];
+														.sub_165b(paramString)).someImage1 = this.menuIconsFrames[6];
 												this.var_4bea
 														.sub_20ad(
 																this.var_4bda,
 																this.canvasWidth / 2,
-																(this.someCanHeight + localClass_e_01343.var_1042) / 2,
+																(this.someCanHeight + localClass_e_01343.mapPrevPixelHeight) / 2,
 																this.someCanWidth,
 																this.someCanHeight
-																		- localClass_e_01343.var_1042,
+																		- localClass_e_01343.mapPrevPixelHeight,
 																3, 0);
 												this.var_4bea
 														.sub_1350(paramClass_e_0134);
@@ -2038,15 +2039,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 											}
 											if (paramString
 													.equals(this.var_4bd2[2])) {
-												this.var_4f9a = new E_SpritesCompositor(
+												this.var_4f9a = new E_Menu(
 														(byte) 15, 15);
-												(localClass_e_01343 = new E_SpritesCompositor(
+												(localClass_e_01343 = new E_Menu(
 														(byte) 10, 0))
 														.sub_1ca8(null,
 																paramString,
 																this.someCanWidth,
 																-1);
-												localClass_e_01343.var_11b2 = this.menuIconsFrames[6];
+												localClass_e_01343.someImage1 = this.menuIconsFrames[6];
 												this.var_45d2 = new boolean[12];
 												for (i6 = this.someSetting; i6 <= 7; i6++) {
 													if (var_45ca[i6] >= 0) {
@@ -2071,7 +2072,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												System.arraycopy(this.settingsStrListMaybe,
 														0, strArr, 13,
 														this.settingsCountMaybe);
-												this.var_4fa2 = new E_SpritesCompositor(
+												this.var_4fa2 = new E_Menu(
 														(byte) 0, 0);
 												this.var_4fa2
 														.sub_20ad(
@@ -2080,14 +2081,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 																0,
 																this.someCanWidth,
 																this.someCanHeight
-																		- localClass_e_01343.var_1042
+																		- localClass_e_01343.mapPrevPixelHeight
 																		- (this.buttonsSprite.spriteFrameHeight << 1),
 																3, 4);
 												this.var_4f9a
 														.sub_1698(
 																this.var_4fa2,
 																this.someCanWidthShift,
-																(this.someCanHeight + localClass_e_01343.var_1042) / 2,
+																(this.someCanHeight + localClass_e_01343.mapPrevPixelHeight) / 2,
 																3);
 												this.var_4f9a.sub_1698(
 														localClass_e_01343, 0,
@@ -2120,16 +2121,16 @@ public final class G_Game extends F_StringManager implements Runnable,
 																this.var_4f6a
 																		.sub_877() != null ? var_4572
 																		: null);
-												this.var_4f4a = new E_SpritesCompositor(
+												this.var_4f4a = new E_Menu(
 														(byte) 15, 15);
-												E_SpritesCompositor clas;
+												E_Menu clas;
 												(clas = this.var_4f4a
 														.sub_165b(sub_7696(
 																this.var_4f6a
 																		.sub_877(),
 																F_StringManager
-																		.getLangString(290)))).var_11b2 = this.menuIconsFrames[6];
-												this.var_4f52 = new E_SpritesCompositor(
+																		.getLangString(290)))).someImage1 = this.menuIconsFrames[6];
+												this.var_4f52 = new E_Menu(
 														(byte) 0, 0);
 												this.var_4f52
 														.sub_20ad(
@@ -2138,7 +2139,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																0,
 																this.someCanWidth,
 																this.someCanHeight
-																		- ((E_SpritesCompositor) clas).var_1042
+																		- ((E_Menu) clas).mapPrevPixelHeight
 																		- (this.buttonsSprite.spriteFrameHeight << 1),
 																3, 4);
 												if ((this.var_4f6a.sub_877() != null)
@@ -2149,7 +2150,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 														.sub_1698(
 																this.var_4f52,
 																this.someCanWidthShift,
-																(this.someCanHeight + ((E_SpritesCompositor) clas).var_1042) / 2,
+																(this.someCanHeight + ((E_Menu) clas).mapPrevPixelHeight) / 2,
 																3);
 												this.var_4f4a.sub_132e(
 														(byte) 0, true);
@@ -2160,9 +2161,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 														.sub_220e(this.var_4f4a);
 											} else if (paramString
 													.equals(this.var_4bda[1])) {
-												this.var_4faa = new E_SpritesCompositor(
+												this.var_4faa = new E_Menu(
 														(byte) 15, 15);
-												(localClass_e_01343 = new E_SpritesCompositor(
+												(localClass_e_01343 = new E_Menu(
 														(byte) 10, 0))
 														.sub_1ca8(
 																null,
@@ -2170,7 +2171,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		.getLangString(299),
 																this.someCanWidth,
 																-1);
-												localClass_e_01343.var_11b2 = this.menuIconsFrames[6];
+												localClass_e_01343.someImage1 = this.menuIconsFrames[6];
 												this.var_45d2 = new boolean[12];
 												for (i6 = this.someSetting; i6 <= 7; i6++) {
 													if (var_45ca[i6] >= 0) {
@@ -2193,7 +2194,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												System.arraycopy(this.settingsStrListMaybe,
 														0, localObject9, 12,
 														this.settingsCountMaybe);
-												this.var_4fb2 = new E_SpritesCompositor(
+												this.var_4fb2 = new E_Menu(
 														(byte) 0, 0);
 												this.var_4fb2
 														.sub_20ad(
@@ -2202,14 +2203,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 																0,
 																this.someCanWidth,
 																this.someCanHeight
-																		- localClass_e_01343.var_1042
+																		- localClass_e_01343.mapPrevPixelHeight
 																		- (this.buttonsSprite.spriteFrameHeight << 1),
 																3, 4);
 												this.var_4faa
 														.sub_1698(
 																this.var_4fb2,
 																this.someCanWidthShift,
-																(this.someCanHeight + localClass_e_01343.var_1042) / 2,
+																(this.someCanHeight + localClass_e_01343.mapPrevPixelHeight) / 2,
 																3);
 												this.var_4faa.sub_1698(
 														localClass_e_01343, 0,
@@ -2343,8 +2344,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 									} else if (paramClass_e_0134 == this.var_4c02) {
 										if (paramByte == 0) {
 											sub_19031(this.var_4c22);
-											E_SpritesCompositor cl0134 = sub_7384(this.var_4bfa.stringManager);
-											E_SpritesCompositor cll = sub_14359(null,
+											E_Menu cl0134 = sub_7384(this.var_4bfa.stringManager);
+											E_Menu cll = sub_14359(null,
 													F_StringManager.getStrByIdAndReplaceUWith(51,
 															this.var_4c2a),
 													this.someCanHeight, -1);
@@ -2388,7 +2389,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												&& (paramClass_e_0134 != this.var_49e2)) {
 											if (paramString.equals(F_StringManager
 													.getLangString(3))) {
-												this.var_49e2 = new E_SpritesCompositor(
+												this.var_49e2 = new E_Menu(
 														(byte) 11, 0);
 												int m = this.someSetting;
 												if (this.someSetting > 7) {
@@ -2401,17 +2402,17 @@ public final class G_Game extends F_StringManager implements Runnable,
 													strs[i2] = (i2 + 1 + ". " + F_StringManager
 															.getLangString(i2 + 121));
 												}
-												E_SpritesCompositor locOb;
+												E_Menu locOb;
 												(locOb = this.var_49e2
-														.sub_165b(paramString)).var_11b2 = this.menuIconsFrames[3];
+														.sub_165b(paramString)).someImage1 = this.menuIconsFrames[3];
 												this.var_49e2
 														.sub_20ad(
 																strs,
 																this.canvasWidth / 2,
-																(this.someCanHeight + ((E_SpritesCompositor) locOb).var_1042) / 2,
+																(this.someCanHeight + ((E_Menu) locOb).mapPrevPixelHeight) / 2,
 																this.someCanWidth,
 																this.someCanHeight
-																		- ((E_SpritesCompositor) locOb).var_1042,
+																		- ((E_Menu) locOb).mapPrevPixelHeight,
 																3, 4);
 												this.var_49e2
 														.sub_1350(paramClass_e_0134);
@@ -2448,19 +2449,19 @@ public final class G_Game extends F_StringManager implements Runnable,
 												if (paramString
 														.equals(F_StringManager
 																.getLangString(7))) {
-													this.var_4be2 = new E_SpritesCompositor(
+													this.var_4be2 = new E_Menu(
 															(byte) 11, 0);
-													E_SpritesCompositor locOb2;
+													E_Menu locOb2;
 													(locOb2 = this.var_4be2
-															.sub_165b(paramString)).var_11b2 = this.menuIconsFrames[6];
+															.sub_165b(paramString)).someImage1 = this.menuIconsFrames[6];
 													this.var_4be2
 															.sub_20ad(
 																	this.var_4bd2,
 																	this.canvasWidth / 2,
-																	(this.someCanHeight + ((E_SpritesCompositor) locOb2).var_1042) / 2,
+																	(this.someCanHeight + ((E_Menu) locOb2).mapPrevPixelHeight) / 2,
 																	this.someCanWidth,
 																	this.someCanHeight
-																			- ((E_SpritesCompositor) locOb2).var_1042,
+																			- ((E_Menu) locOb2).mapPrevPixelHeight,
 																	3, 0);
 													this.var_4be2
 															.sub_1350(paramClass_e_0134);
@@ -2471,12 +2472,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 												if (paramString
 														.equals(F_StringManager
 																.getLangString(8))) {
-													this.var_4aaa = new E_SpritesCompositor(
+													this.var_4aaa = new E_Menu(
 															(byte) 15, 15);
-													E_SpritesCompositor locOb2;
-													(locOb2 = new E_SpritesCompositor(
-															(byte) 10, 0)).var_11b2 = this.menuIconsFrames[5];
-													((E_SpritesCompositor) locOb2)
+													E_Menu locOb2;
+													(locOb2 = new E_Menu(
+															(byte) 10, 0)).someImage1 = this.menuIconsFrames[5];
+													((E_Menu) locOb2)
 															.sub_1ca8(
 																	null,
 																	paramString,
@@ -2484,12 +2485,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	-1);
 													this.var_4aaa
 															.sub_1698(
-																	(E_SpritesCompositor) locOb2,
+																	(E_Menu) locOb2,
 																	0, 0, 20);
-													i6 = ((E_SpritesCompositor) locOb2).var_1042;
-													E_SpritesCompositor[] localObjs;
-													localObjs = new E_SpritesCompositor[4];
-													this.var_4ab2 = new E_SpritesCompositor[4];
+													i6 = ((E_Menu) locOb2).mapPrevPixelHeight;
+													E_Menu[] localObjs;
+													localObjs = new E_Menu[4];
+													this.var_4ab2 = new E_Menu[4];
 													for (i1 = 0; i1 < 4; i1++) {
 														int iparamInt = 8;
 														if (i1 != 0) {
@@ -2498,7 +2499,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 														if (i1 != 3) {
 															iparamInt |= 0x2;
 														}
-														localObjs[i1] = new E_SpritesCompositor(
+														localObjs[i1] = new E_Menu(
 																(byte) 10,
 																iparamInt);
 														localObjs[i1]
@@ -2517,13 +2518,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 														if (i1 != 3) {
 															int4 |= 0x2;
 														}
-														this.var_4ab2[i1] = new E_SpritesCompositor(
+														this.var_4ab2[i1] = new E_Menu(
 																(byte) 14, int4);
 														this.var_4ab2[i1]
 																.sub_1f72(
 																		this.var_4642,
 																		this.someCanWidthShift,
-																		localObjs[i1].var_1042);
+																		localObjs[i1].mapPrevPixelHeight);
 														this.var_4ab2[i1].var_105a = (C_MainCanvas.settings[i1] != false ? 0
 																: 1);
 														this.var_4aaa
@@ -2531,7 +2532,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		this.var_4ab2[i1],
 																		this.canvasWidthShift,
 																		i6, 20);
-														i6 += localObjs[i1].var_1042;
+														i6 += localObjs[i1].mapPrevPixelHeight;
 													}
 													this.var_4aaa.var_114a = 2;
 													this.var_4aaa
@@ -2543,17 +2544,17 @@ public final class G_Game extends F_StringManager implements Runnable,
 												if (paramString
 														.equals(F_StringManager
 																.getLangString(9))) {
-													this.var_49aa = new E_SpritesCompositor(
+													this.var_49aa = new E_Menu(
 															(byte) 15, 15);
-													E_SpritesCompositor lo2;
-													(lo2 = new E_SpritesCompositor(
+													E_Menu lo2;
+													(lo2 = new E_Menu(
 															(byte) 10, 0))
 															.sub_1ca8(
 																	null,
 																	paramString,
 																	this.someCanWidth,
 																	-1);
-													((E_SpritesCompositor) lo2).var_11b2 = this.menuIconsFrames[7];
+													((E_Menu) lo2).someImage1 = this.menuIconsFrames[7];
 													String[] strParam2 = new String[20];
 													for (i2 = 0; i2 < var_4992.length; i2++) {
 														strParam2[i2] = (F_StringManager
@@ -2562,12 +2563,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 																+ i2
 																+ "/" + 19);
 													}
-													this.var_49b2 = new E_SpritesCompositor(
+													this.var_49b2 = new E_Menu(
 															(byte) 14, 2);
 													this.var_49b2.sub_1f72(
 															strParam2,
 															this.someCanWidth, -1);
-													this.var_49ba = new E_SpritesCompositor(
+													this.var_49ba = new E_Menu(
 															(byte) 10, 1);
 													this.var_49ba
 															.sub_1ca8(
@@ -2576,22 +2577,22 @@ public final class G_Game extends F_StringManager implements Runnable,
 																			.getLangString(var_499a[0]),
 																	this.someCanWidth,
 																	this.someCanHeight
-																			- ((E_SpritesCompositor) lo2).var_1042
-																			- this.var_49b2.var_1042
+																			- ((E_Menu) lo2).mapPrevPixelHeight
+																			- this.var_49b2.mapPrevPixelHeight
 																			- (this.buttonsSprite.spriteFrameHeight << 1));
-													i2 = ((E_SpritesCompositor) lo2).var_1042
+													i2 = ((E_Menu) lo2).mapPrevPixelHeight
 															+ this.buttonsSprite.spriteFrameHeight;
 													this.var_49aa.sub_1698(
 															this.var_49b2,
 															this.someCanWidthShift, i2,
 															17);
-													i2 += this.var_49b2.var_1042;
+													i2 += this.var_49b2.mapPrevPixelHeight;
 													this.var_49aa.sub_1698(
 															this.var_49ba,
 															this.someCanWidthShift, i2,
 															17);
 													this.var_49aa.sub_1698(
-															(E_SpritesCompositor) lo2,
+															(E_Menu) lo2,
 															0, 0, 0);
 													this.var_49aa
 															.sub_1350(paramClass_e_0134);
@@ -2603,46 +2604,46 @@ public final class G_Game extends F_StringManager implements Runnable,
 												if (paramString
 														.equals(F_StringManager
 																.getLangString(10))) {
-													E_SpritesCompositor lo2;
-													lo2 = new E_SpritesCompositor(
+													E_Menu lo2;
+													lo2 = new E_Menu(
 															(byte) 15, 15);
-													E_SpritesCompositor lo7;
-													(lo7 = new E_SpritesCompositor(
+													E_Menu lo7;
+													(lo7 = new E_Menu(
 															(byte) 10, 0))
 															.sub_1ca8(
 																	null,
 																	paramString,
 																	this.someCanWidth,
 																	-1);
-													((E_SpritesCompositor) lo7).var_11b2 = this.menuIconsFrames[8];
-													localObject8 = new E_SpritesCompositor(
+													((E_Menu) lo7).someImage1 = this.menuIconsFrames[8];
+													localObject8 = new E_Menu(
 															(byte) 10, 0);
 													String lo9;
 													lo9 = F_StringManager
 															.getStrByIdAndReplaceUWith(
 																	16,
 																	this.midletVersionAppProp);
-													((E_SpritesCompositor) localObject8)
+													((E_Menu) localObject8)
 															.sub_1ca8(
 																	null,
 																	(String) lo9,
 																	this.someCanWidth,
 																	this.someCanHeight
-																			- ((E_SpritesCompositor) lo7).var_1042
+																			- ((E_Menu) lo7).mapPrevPixelHeight
 																			- (this.buttonsSprite.spriteFrameHeight << 1));
-													((E_SpritesCompositor) lo2)
+													((E_Menu) lo2)
 															.sub_1698(
-																	(E_SpritesCompositor) localObject8,
+																	(E_Menu) localObject8,
 																	0,
-																	(this.someCanHeight + ((E_SpritesCompositor) lo7).var_1042) / 2,
+																	(this.someCanHeight + ((E_Menu) lo7).mapPrevPixelHeight) / 2,
 																	6);
-													((E_SpritesCompositor) lo2)
+													((E_Menu) lo2)
 															.sub_1698(
-																	(E_SpritesCompositor) lo7,
+																	(E_Menu) lo7,
 																	0, 0, 0);
-													((E_SpritesCompositor) lo2)
+													((E_Menu) lo2)
 															.sub_1350(paramClass_e_0134);
-													((E_SpritesCompositor) lo2).var_115a = true;
+													((E_Menu) lo2).var_115a = true;
 													F_StringManager.mainCanvas
 															.sub_220e((F_StringManager) lo2);
 													return;
@@ -2715,26 +2716,26 @@ public final class G_Game extends F_StringManager implements Runnable,
 												if (paramString
 														.equals(F_StringManager
 																.getLangString(63))) {
-													this.var_4b02 = new E_SpritesCompositor(
+													this.var_4b02 = new E_Menu(
 															(byte) 15, 15);
 													this.var_4b02.var_11e2 = this.someCanHeight;
-													this.var_4b0a = new E_SpritesCompositor(
+													this.var_4b0a = new E_Menu(
 															(byte) 2, 2);
-													this.var_4b12 = new E_SpritesCompositor(
+													this.var_4b12 = new E_Menu(
 															(byte) 3, 1);
-													this.var_4b1a = new E_SpritesCompositor(
+													this.var_4b1a = new E_Menu(
 															(byte) 10, 3);
 													this.var_4b1a.var_1152 = true;
-													this.var_4b0a.someUnit0 = this.var_4b12.var_10aa[0];
+													this.var_4b0a.someUnit0 = this.var_4b12.someUnits[0];
 													this.var_4b1a
 															.sub_1ca8(
 																	null,
 																	F_StringManager
-																			.getLangString(184 + this.var_4b12.var_10aa[0].unitType),
+																			.getLangString(184 + this.var_4b12.someUnits[0].unitType),
 																	this.someCanWidth,
 																	this.someCanHeight
-																			- this.var_4b0a.var_1042
-																			- this.var_4b12.var_1042);
+																			- this.var_4b0a.mapPrevPixelHeight
+																			- this.var_4b12.mapPrevPixelHeight);
 													this.var_4b02.sub_1698(
 															this.var_4b0a, 0,
 															0, 0);
@@ -2742,7 +2743,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 															.sub_1698(
 																	this.var_4b1a,
 																	0,
-																	this.var_4b0a.var_1042,
+																	this.var_4b0a.mapPrevPixelHeight,
 																	0);
 													this.var_4b02.sub_1698(
 															this.var_4b12, 0,
@@ -2844,39 +2845,39 @@ public final class G_Game extends F_StringManager implements Runnable,
 												if (paramString
 														.equals(F_StringManager
 																.getLangString(70))) {
-													E_SpritesCompositor localObject2 = new E_SpritesCompositor(
+													E_Menu localObject2 = new E_Menu(
 															(byte) 15, 15);
-													E_SpritesCompositor localObject71 = new E_SpritesCompositor(
+													E_Menu localObject71 = new E_Menu(
 															(byte) 10, 0);
 													localObject71.sub_1ca8(
 																	null,
 																	this.var_4b52,
 																	this.someCanWidth,
 																	-1);
-													E_SpritesCompositor localObject81 = new E_SpritesCompositor(
+													E_Menu localObject81 = new E_Menu(
 															(byte) 8, 0);
-													localObject81.sub_17fe(
+													localObject81.setMapPreviewMaybe(
 																	this.someCanWidth,
 																	this.someCanHeight
-																			- ((E_SpritesCompositor) localObject71).var_1042
+																			- ((E_Menu) localObject71).mapPrevPixelHeight
 																			- this.buttonsSprite.spriteFrameHeight,
 																	this.var_4782,
 																	this.mapUnitsMaybe);
-													((E_SpritesCompositor) localObject2)
+													((E_Menu) localObject2)
 															.sub_1698(
-																	(E_SpritesCompositor) localObject81,
+																	(E_Menu) localObject81,
 																	this.someCanWidthShift,
 																	this.someCanHeightShift
-																			+ (((E_SpritesCompositor) localObject71).var_1042 - this.buttonsSprite.spriteFrameHeight)
+																			+ (((E_Menu) localObject71).mapPrevPixelHeight - this.buttonsSprite.spriteFrameHeight)
 																			/ 2,
 																	3);
-													((E_SpritesCompositor) localObject2)
+													((E_Menu) localObject2)
 															.sub_1698(
-																	(E_SpritesCompositor) localObject71,
+																	(E_Menu) localObject71,
 																	0, 0, 0);
-													((E_SpritesCompositor) localObject2)
+													((E_Menu) localObject2)
 															.sub_1350(paramClass_e_0134);
-													((E_SpritesCompositor) localObject2).var_115a = true;
+													((E_Menu) localObject2).var_115a = true;
 													F_StringManager.mainCanvas
 															.sub_220e((F_StringManager) localObject2);
 													return;
@@ -2897,7 +2898,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																.getLangString(293))) {
 													sub_19157(this.var_4b52,
 															sub_bb13());
-													E_SpritesCompositor fAnima = sub_14359(
+													E_Menu fAnima = sub_14359(
 															null,
 															F_StringManager
 																	.getStrByIdAndReplaceUWith(
@@ -2951,16 +2952,16 @@ public final class G_Game extends F_StringManager implements Runnable,
 													return;
 												}
 											} else {
-												this.var_49da = new E_SpritesCompositor(
+												this.var_49da = new E_Menu(
 														(byte) 15, 15);
-												E_SpritesCompositor lo2;
-												(lo2 = new E_SpritesCompositor(
+												E_Menu lo2;
+												(lo2 = new E_Menu(
 														(byte) 10, 0))
 														.sub_1ca8(null,
 																paramString,
 																this.someCanWidth,
 																-1);
-												((E_SpritesCompositor) lo2).var_11b2 = this.menuIconsFrames[4];
+												((E_Menu) lo2).someImage1 = this.menuIconsFrames[4];
 												this.var_45d2 = new boolean[12];
 												for (i6 = this.someSetting; i6 <= 7; i6++) {
 													if (var_45ca[i6] >= 0) {
@@ -2983,7 +2984,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												System.arraycopy(this.settingsStrListMaybe,
 														0, localObject10, 12,
 														this.settingsCountMaybe);
-												this.var_49d2 = new E_SpritesCompositor(
+												this.var_49d2 = new E_Menu(
 														(byte) 0, 0);
 												this.var_49d2
 														.sub_20ad(
@@ -2992,18 +2993,18 @@ public final class G_Game extends F_StringManager implements Runnable,
 																0,
 																this.someCanWidth,
 																this.someCanHeight
-																		- ((E_SpritesCompositor) lo2).var_1042
+																		- ((E_Menu) lo2).mapPrevPixelHeight
 																		- (this.buttonsSprite.spriteFrameHeight << 1),
 																3, 4);
 												this.var_49da
 														.sub_1698(
 																this.var_49d2,
 																this.someCanWidthShift,
-																(this.someCanHeight + ((E_SpritesCompositor) lo2).var_1042) / 2,
+																(this.someCanHeight + ((E_Menu) lo2).mapPrevPixelHeight) / 2,
 																3);
 												this.var_49da
 														.sub_1698(
-																(E_SpritesCompositor) lo2,
+																(E_Menu) lo2,
 																0, 0, 0);
 												this.var_49da.var_115a = true;
 												this.var_49da.sub_132e(
@@ -3692,12 +3693,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 			sub_155a2();
 			if (this.var_49a2 != -1) {
 				if (C_MainCanvas.settings[2] != false) {
-					E_SpritesCompositor lo1;
+					E_Menu lo1;
 					(lo1 = showUnitDialog(
 							F_StringManager.getLangString(196 + this.var_49a2, true),
 							(byte) -1, (byte) 2)).var_11aa = 7831691;
-					((E_SpritesCompositor) lo1).var_11a2 = 7831691;
-					((E_SpritesCompositor) lo1).var_fea = 16250855;
+					((E_Menu) lo1).var_11a2 = 7831691;
+					((E_Menu) lo1).someGrayColor = 16250855;
 				}
 				this.var_49a2 = -1;
 			}
@@ -3830,7 +3831,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 											this.someCanHeight, 1500);
 									F_StringManager.mainCanvas
 											.sub_220e((F_StringManager) localObject2);
-									((E_SpritesCompositor) localObject2).var_11a2 = var_468a[this.var_4832[this.someUnitTeamId]];
+									((E_Menu) localObject2).var_11a2 = var_468a[this.var_4832[this.someUnitTeamId]];
 									C_MainCanvas
 											.sub_2bf1(
 													var_4692[this.var_4832[this.someUnitTeamId]],
@@ -3979,7 +3980,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 													this.var_4b32.pixelX,
 													-this.mapTopY, 0, 12, -1,
 													0);
-											E_SpritesCompositor localClass_e_01342;
+											E_Menu localClass_e_01342;
 											(localClass_e_01342 = sub_14359(
 															null,
 															F_StringManager
@@ -4257,13 +4258,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 															this.cursorPosX,
 															this.cursorPosY,
 															(byte) 0)) != null) {
-														E_SpritesCompositor localObject31  = new E_SpritesCompositor(
+														E_Menu localObject31  = new E_Menu(
 																(byte) 15, 15);
 														localObject31.var_11e2 = this.someCanHeight;
-														E_SpritesCompositor localClass_e_01343 = new E_SpritesCompositor(
+														E_Menu localClass_e_01343 = new E_Menu(
 																(byte) 5, 2);
-														E_SpritesCompositor localClass_e_01341;
-														(localClass_e_01341 = new E_SpritesCompositor(
+														E_Menu localClass_e_01341;
+														(localClass_e_01341 = new E_Menu(
 																(byte) 10, 1)).var_1152 = true;
 														String str = F_StringManager
 																.getLangString(184 + localClass_a_0260.unitType);
@@ -4297,19 +4298,19 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		str,
 																		this.someCanWidth,
 																		this.someCanHeight
-																				- localClass_e_01343.var_1042);
-														((E_SpritesCompositor) localObject31)
+																				- localClass_e_01343.mapPrevPixelHeight);
+														((E_Menu) localObject31)
 																.sub_1698(
 																		localClass_e_01343,
 																		0, 0, 0);
-														((E_SpritesCompositor) localObject31)
+														((E_Menu) localObject31)
 																.sub_1698(
 																		localClass_e_01341,
 																		0,
-																		localClass_e_01343.var_1042,
+																		localClass_e_01343.mapPrevPixelHeight,
 																		0);
-														((E_SpritesCompositor) localObject31).var_115a = true;
-														((E_SpritesCompositor) localObject31)
+														((E_Menu) localObject31).var_115a = true;
+														((E_Menu) localObject31)
 																.sub_1350(this);
 														F_StringManager.mainCanvas
 																.sub_220e((F_StringManager) localObject31);
@@ -4509,7 +4510,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																}
 															} else if (F_StringManager.mainCanvas
 																	.sub_26d7(var_4602)) {
-																this.var_4882 = new E_SpritesCompositor(
+																this.var_4882 = new E_Menu(
 																		(byte) 11,
 																		0);
 																this.var_4882
@@ -4553,7 +4554,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		this.cursorPosY,
 																		(byte) 0)) == null) {
 																	A_Unit
-																			.sub_11aa(
+																			.createNewUnit(
 																					this.someUnitTypeId,
 																					this.someUnitTeamId,
 																					this.cursorPosX,
@@ -4578,7 +4579,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		((A_Unit) localObject5)
 																				.killUnitMaybe();
 																		A_Unit
-																				.sub_11aa(
+																				.createNewUnit(
 																						this.someUnitTypeId,
 																						this.someUnitTeamId,
 																						this.cursorPosX,
@@ -4587,7 +4588,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	}
 																} else {
 																	A_Unit
-																			.sub_11aa(
+																			.createNewUnit(
 																					this.someUnitTypeId,
 																					this.someUnitTeamId,
 																					this.cursorPosX,
@@ -4612,7 +4613,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		((A_Unit) localObject5)
 																				.killUnitMaybe();
 																		A_Unit
-																				.sub_11aa(
+																				.createNewUnit(
 																						this.someUnitTypeId,
 																						this.someUnitTeamId,
 																						this.cursorPosX,
@@ -4621,7 +4622,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	}
 																} else {
 																	A_Unit
-																			.sub_11aa(
+																			.createNewUnit(
 																					this.someUnitTypeId,
 																					this.someUnitTeamId,
 																					this.cursorPosX,
@@ -4642,7 +4643,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																this.var_4c4a = true;
 															} else if (F_StringManager.mainCanvas
 																	.sub_26d7(var_4602)) {
-																this.var_4882 = new E_SpritesCompositor(
+																this.var_4882 = new E_Menu(
 																		(byte) 11,
 																		0);
 																this.var_4882
@@ -4751,7 +4752,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																				1);
 															} else {
 																this.someActiveUnit = null;
-																this.var_4882 = new E_SpritesCompositor(
+																this.var_4882 = new E_Menu(
 																		(byte) 11,
 																		0);
 																this.var_4882
@@ -5146,23 +5147,23 @@ public final class G_Game extends F_StringManager implements Runnable,
 				(this.canvasHeight - C_MainCanvas.theFont.getHeight()) / 2, 17);
 	}
 
-	public static final int sub_f52a(int paramInt1, int paramInt2,
-			int paramInt3, int paramInt4) {
-		if (paramInt3 == 0) {
-			return paramInt1;
+	public static final int getLinearGradientStepMb(int color1, int color2,
+			int value, int maxValue) {
+		if (value == 0) {
+			return color1;
 		}
-		if (paramInt3 == paramInt4) {
-			return paramInt2;
+		if (value == maxValue) {
+			return color2;
 		}
-		int i = paramInt1 & 0xFF0000;
-		int j = paramInt1 & 0xFF00;
-		paramInt1 &= 0xFF;
-		i = (((paramInt2 & 0xFF0000) - i) * paramInt3 / paramInt4 & 0xFF0000)
+		int i = color1 & 0xFF0000;
+		int j = color1 & 0xFF00;
+		color1 &= 0xFF;
+		i = (((color2 & 0xFF0000) - i) * value / maxValue & 0xFF0000)
 				+ i;
-		j = (((paramInt2 & 0xFF00) - j) * paramInt3 / paramInt4 & 0xFF00) + j;
-		paramInt1 = ((paramInt2 & 0xFF) - paramInt1) * paramInt3 / paramInt4
-				+ paramInt1;
-		return i | j | paramInt1;
+		j = (((color2 & 0xFF00) - j) * value / maxValue & 0xFF00) + j;
+		color1 = ((color2 & 0xFF) - color1) * value / maxValue
+				+ color1;
+		return i | j | color1;
 	}
 
 	private void initIntro(int introImageId, int paramInt2, int paramInt3) {
@@ -5280,7 +5281,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				m = 14672074;
 			}
 			if (this.var_4cc2) {
-				m = sub_f52a(0, m, i, 16);
+				m = getLinearGradientStepMb(0, m, i, 16);
 			}
 			graphics.setColor(m);
 			C_MainCanvas.showString(graphics, this.introTextWrapped[k],
@@ -5400,9 +5401,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 			}
 			int k1 = this.canvasHeight / 2 + 1;
 			graphics.setColor(13553358); //#CECECE gray
-			E_SpritesCompositor.drawRoundedRect(graphics, 1, k1, this.canvasWidth - 2, i);
+			E_Menu.drawRoundedRect(graphics, 1, k1, this.canvasWidth - 2, i);
 			graphics.setColor(2370117); //#242A45 darkblue
-			E_SpritesCompositor.drawRoundedRect(graphics, 2, k1 + 2, this.loadingProgress
+			E_Menu.drawRoundedRect(graphics, 2, k1 + 2, this.loadingProgress
 					* (this.canvasWidth - 6) / 100, i - 4);
 			return;
 		}
@@ -5477,7 +5478,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				n = paramGraphics.canvasHeight - var_4592;
 				localGraphics.setColor(14672074);
 				localGraphics.fillRect(0, n, paramGraphics.canvasWidth, var_4592);
-				E_SpritesCompositor.sub_5066(localGraphics, 0, n,
+				E_Menu.sub_5066(localGraphics, 0, n,
 						paramGraphics.canvasWidth, var_4592, 0);
 				localGraphics.setClip(0, 0, paramGraphics.canvasWidth,
 						paramGraphics.canvasHeight);
@@ -5671,7 +5672,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				graphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);
 				y = this.canvasHeight - var_4592;
 				if (this.var_4a52 > 0) {
-					E_SpritesCompositor.sub_5066(graphics, 0, y, this.someCanWidth,
+					E_Menu.sub_5066(graphics, 0, y, this.someCanWidth,
 							var_4592, 14);
 					graphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);
 				}
@@ -5687,20 +5688,20 @@ public final class G_Game extends F_StringManager implements Runnable,
 						i5 = 4;
 					}
 					if (this.var_4f92 == 1) {
-						E_SpritesCompositor.sub_5092(graphics, 0, y, x + 1,
+						E_Menu.sub_5092(graphics, 0, y, x + 1,
 								var_4592, 0, 2370117, var_468a[0],
 								this.var_4a52, var_4592);
 						C_MainCanvas.sub_2007(graphics, this.cursorTileId + 1
 								+ "/" + this.tiles0Frames.length, i5 + 1, i2, 1, 6);
 					} else if (this.var_4f92 == 2) {
-						E_SpritesCompositor.sub_5092(graphics, 0, y, x + 1,
+						E_Menu.sub_5092(graphics, 0, y, x + 1,
 								var_4592, 0, 2370117,
 								var_468a[this.var_4832[this.someUnitTeamId]],
 								this.var_4a52, var_4592);
 						C_MainCanvas.sub_2007(graphics, this.someUnitTypeId + 1
 								+ "/" + 12, i5 + 1, i2, 1, 6);
 					} else {
-						E_SpritesCompositor.sub_5092(graphics, 0, y, x + 1,
+						E_Menu.sub_5092(graphics, 0, y, x + 1,
 								var_4592, 0, 2370117,
 								var_468a[this.var_4832[this.someUnitTeamId]],
 								this.var_4a52, var_4592);
@@ -5742,7 +5743,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							.drawOnGraphics(graphics, px, py);
 					if (this.var_4f92 == 2) {
 						if (this.var_4f8a == null) {
-							this.var_4f8a = A_Unit.sub_11aa(
+							this.var_4f8a = A_Unit.createNewUnit(
 									this.someUnitTypeId, this.someUnitTeamId, 0, 0, false);
 						}
 						this.var_4f8a.sub_28d7(graphics, px, py);
@@ -6255,7 +6256,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		}
 		this.var_4d6a = new A_Unit[this.var_49fa.length];
 		this.var_4d72 = new byte[this.var_49fa.length];
-		A_Unit.var_de3 = A_Unit.var_dd3;
+		A_Unit.var_de3 = A_Unit.unitsTypesCountMb;
 		this.var_4d52 = 0;
 		this.var_4d22 = 0;
 	}
@@ -6951,9 +6952,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.var_4e32 = true;
 	}
 
-	private E_SpritesCompositor showUnitDialog(String message, byte paramByte1,
+	private E_Menu showUnitDialog(String message, byte paramByte1,
 			byte paramByte2) {
-		E_SpritesCompositor cll = new E_SpritesCompositor((byte) 7, 12);
+		E_Menu cll = new E_Menu((byte) 7, 12);
 		int i = C_MainCanvas.var_1767 * 3;
 		cll.sub_19f5(message, this.canvasWidth, i, paramByte1);
 		cll.sub_1930(0, this.canvasHeight - i, 0);
@@ -6961,14 +6962,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 		return cll;
 	}
 
-	private E_SpritesCompositor sub_14359(String paramString1, String paramString2,
+	private E_Menu sub_14359(String paramString1, String paramString2,
 			int paramInt1, int paramInt2) {
 		return sub_1437e(paramString1, paramString2, paramInt1, -1, paramInt2);
 	}
 
-	private E_SpritesCompositor sub_1437e(String paramString1, String paramString2,
+	private E_Menu sub_1437e(String paramString1, String paramString2,
 			int paramInt1, int paramInt2, int paramInt3) {
-		E_SpritesCompositor strMan = new E_SpritesCompositor((byte) 10, 12);
+		E_Menu strMan = new E_Menu((byte) 10, 12);
 		strMan.sub_1ca8(paramString1, paramString2, this.canvasWidth, paramInt2);
 		strMan.sub_1930(this.canvasWidthShift, paramInt1 / 2, 3);
 		strMan.stringManager = this;
@@ -7114,10 +7115,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 					(byte) 0, 13, -1);
 			A_Unit localClass_a_02604 = A_Unit.createUnit((byte) 11,
 					(byte) 0, 13, -1);
-			this.maybeTeamKings[0].var_ee3 = localClass_a_02601;
-			localClass_a_02601.var_ee3 = localClass_a_02602;
-			localClass_a_02602.var_ee3 = localClass_a_02603;
-			localClass_a_02603.var_ee3 = localClass_a_02604;
+			this.maybeTeamKings[0].someUnit0 = localClass_a_02601;
+			localClass_a_02601.someUnit0 = localClass_a_02602;
+			localClass_a_02602.someUnit0 = localClass_a_02603;
+			localClass_a_02603.someUnit0 = localClass_a_02604;
 			this.maybeTeamKings[0].sub_20f8(this.var_47da);
 			this.maybeTeamKings[0].sub_1c9f(14, 3, true);
 			sub_efe5(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
@@ -7275,7 +7276,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				if (localObject1[1].equalsIgnoreCase("slow")) {
 					A_Unit.var_de3 = A_Unit.var_ddb;
 				} else if (localObject1[1].equalsIgnoreCase("fast")) {
-					A_Unit.var_de3 = A_Unit.var_dd3;
+					A_Unit.var_de3 = A_Unit.unitsTypesCountMb;
 				} else {
 					A_Unit.var_de3 = (byte) Integer
 							.parseInt(localObject1[1]);
@@ -7410,7 +7411,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								}
 							}
 							str = str + ")";
-							E_SpritesCompositor lo2 = sub_1437e(null, str, this.someCanHeight,
+							E_Menu lo2 = sub_1437e(null, str, this.someCanHeight,
 									this.someCanHeightShift, -1);
 							lo2.sub_1350(this);
 							F_StringManager.mainCanvas.sub_220e((F_StringManager) lo2);
@@ -7716,8 +7717,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 										(byte) 11, (byte) 1, 7, 3);
 								this.var_4df2 = A_Unit.createUnit((byte) 0,
 										(byte) 1, 7, 3);
-								this.var_4de2.var_ee3 = this.var_4dea;
-								this.var_4dea.var_ee3 = this.var_4df2;
+								this.var_4de2.someUnit0 = this.var_4dea;
+								this.var_4dea.someUnit0 = this.var_4df2;
 								this.var_4de2.sub_1c9f(6, -2, false);
 								sub_142e5(30);
 								this.var_4e12 += 1;
@@ -7729,7 +7730,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									this.var_4dfa = A_Unit.createUnit(
 											(byte) 0, (byte) 0, 7, 3);
 									this.var_4dfa.sub_1c9f(6, 2, false);
-									this.var_4dea.var_ee3 = null;
+									this.var_4dea.someUnit0 = null;
 									showUnitDialog(F_StringManager.getLangString(234),
 											(byte) 2, (byte) 4);
 									this.var_4e12 += 1;
@@ -8457,7 +8458,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 3:
 								A_Unit[] localObject11 = getSomeUnitsOfTypeOfTeam(-1, -1, (byte) 0); //super.
 								for (i = 0; i < localObject11.length; i++) {
-									localObject11[i].var_ee3 = null;
+									localObject11[i].someUnit0 = null;
 								}
 								sub_1864a();
 								this.var_4e12 += 1;
@@ -8781,7 +8782,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								this.var_47f2 = true;
 								break;
 							case 11:
-								E_SpritesCompositor localClass_e_0134;
+								E_Menu localClass_e_0134;
 								(localClass_e_0134 = sub_14359(null,
 										F_StringManager.getLangString(279),
 										this.someCanHeight, 2000)).sub_1930(
@@ -9047,19 +9048,19 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.var_4e92 = this.var_479a;
 	}
 
-	private E_SpritesCompositor sub_188fc(F_StringManager strMan) {
-		E_SpritesCompositor localClass_e_01341;
+	private E_Menu sub_188fc(F_StringManager strMan) {
+		E_Menu localClass_e_01341;
 		if (this.var_4ed2.length > 0) {
-			E_SpritesCompositor localClass_e_01342;
-			(localClass_e_01342 = (localClass_e_01341 = new E_SpritesCompositor(
-					(byte) 11, 0)).sub_165b(F_StringManager.getLangString(46))).var_11b2 = this.menuIconsFrames[6];
+			E_Menu localClass_e_01342;
+			(localClass_e_01342 = (localClass_e_01341 = new E_Menu(
+					(byte) 11, 0)).sub_165b(F_StringManager.getLangString(46))).someImage1 = this.menuIconsFrames[6];
 			localClass_e_01341.sub_20ad(this.var_4ed2, this.someCanWidth / 2,
-					(this.someCanHeight + localClass_e_01342.var_1042) / 2,
-					this.someCanWidth, this.someCanHeight - localClass_e_01342.var_1042,
+					(this.someCanHeight + localClass_e_01342.mapPrevPixelHeight) / 2,
+					this.someCanWidth, this.someCanHeight - localClass_e_01342.mapPrevPixelHeight,
 					3, 4);
 		} else {
-			(localClass_e_01341 = new E_SpritesCompositor((byte) 10, 0))
-					.sub_165b(F_StringManager.getLangString(46)).var_11b2 = this.menuIconsFrames[6];
+			(localClass_e_01341 = new E_Menu((byte) 10, 0))
+					.sub_165b(F_StringManager.getLangString(46)).someImage1 = this.menuIconsFrames[6];
 			localClass_e_01341.sub_1ca8(null, F_StringManager.getLangString(52),
 					this.someCanWidth, -1);
 		}
@@ -9098,7 +9099,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				} else if (this.var_4f42 == 1) {
 					paramArrayOfByte.readInt();
 					this.var_4ee2[this.var_4ec2] = paramArrayOfByte.readUTF();
-					E_SpritesCompositor localClass_e_0134;
+					E_Menu localClass_e_0134;
 					(localClass_e_0134 = sub_1437e(
 							this.var_4ed2[this.var_4ec2],
 							this.var_4ee2[this.var_4ec2], this.someCanHeight,
@@ -9123,7 +9124,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					paramArrayOfByte.readFully(arrayOfByte);
 					sub_19157(str, arrayOfByte);
 					sub_70c0(this.var_4c0a.stringManager);
-					E_SpritesCompositor cll;
+					E_Menu cll;
 					(cll = sub_14359(null, F_StringManager.getStrByIdAndReplaceUWith(45, str),
 							this.someCanHeight, 2000)).sub_1350(this.var_4c0a);
 					F_StringManager.mainCanvas.sub_220e(cll);
@@ -9135,7 +9136,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		E_SpritesCompositor bbc;
+		E_Menu bbc;
 		(bbc = sub_14359(null, F_StringManager.getLangString(44), this.someCanHeight, -1))
 				.sub_1350(this.var_4f3a);
 		this.var_4f3a = null;
@@ -9164,7 +9165,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4f22.writeUTF("0");
 			this.var_4f22.writeUTF("requestId");
 			this.var_4f22.writeUTF("0");
-			E_SpritesCompositor cl = sub_14359(null, F_StringManager.getLangString(43), this.someCanHeight, -1);
+			E_Menu cl = sub_14359(null, F_StringManager.getLangString(43), this.someCanHeight, -1);
 			cl.sub_1350(paramClass_f_0145);
 			F_StringManager.mainCanvas.sub_220e(cl);
 

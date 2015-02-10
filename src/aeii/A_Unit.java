@@ -8,10 +8,10 @@ import javax.microedition.lcdui.Graphics;
 
 public final class A_Unit extends G_Sprite {
 
-	public static byte var_dd3 = 12;
+	public static byte unitsTypesCountMb = 12;
 	public static byte var_ddb;
 	public static byte var_de3 = A_Unit.var_ddb = 6;
-	private static G_Game var_deb;
+	private static G_Game game;
 	public String unitName;
 	public short level;
 	public int maybeExperience;
@@ -42,7 +42,7 @@ public final class A_Unit extends G_Sprite {
 	public byte var_ecb;
 	public byte var_ed3;
 	private int var_edb;
-	public A_Unit var_ee3;
+	public A_Unit someUnit0;
 	public byte var_eeb = 0;
 	public int unitId;
 	public int cost;
@@ -64,7 +64,7 @@ public final class A_Unit extends G_Sprite {
 			int inX,
 			int inY,
 			boolean addToMap) {
-		super(var_deb.getTeamUnitSprite(inTeamId, inUnitType));
+		super(game.getTeamUnitSprite(inTeamId, inUnitType));
 		this.unitType = inUnitType;
 		this.var_e83 = 0;
 		this.posX = ((short) inX);
@@ -72,7 +72,7 @@ public final class A_Unit extends G_Sprite {
 		setPixelPosition(inX * 24, inY * 24); //24 - tile size? 
 		setUnitLevel((byte) 0);
 		if (addToMap) {
-			var_deb.mapUnitsMaybe.addElement(this);
+			game.mapUnitsMaybe.addElement(this);
 		}
 	}
 
@@ -96,7 +96,7 @@ public final class A_Unit extends G_Sprite {
 
 	public final void sub_108f(int paramInt) {
 		this.var_eab = true;
-		this.var_ec3 = var_deb.var_479a;
+		this.var_ec3 = game.var_479a;
 		this.var_ebb = paramInt;
 	}
 
@@ -106,44 +106,44 @@ public final class A_Unit extends G_Sprite {
 
 	public static final A_Unit createUnitWithBool(byte inUnitType, byte inTeamId, int inX, int inY, boolean addToMap) {
 		/* if king & ?? */
-		if ((inUnitType == 9) && (var_deb.teamsUnitsCount[inTeamId] >= var_deb.teamsUnits[inTeamId].length)) {
+		if ((inUnitType == 9) && (game.teamsUnitsCount[inTeamId] >= game.teamsUnits[inTeamId].length)) {
 			return null;
 		}
-		A_Unit unit = new A_Unit(inUnitType, var_deb.var_4832[inTeamId], inX, inY, addToMap);
+		A_Unit unit = new A_Unit(inUnitType, game.var_4832[inTeamId], inX, inY, addToMap);
 		unit.unitType = inUnitType;
 		unit.teamId = inTeamId;
 		unit.health = 100;
 		unit.chars = unitsChars[inUnitType];
 		unit.cost = unitsCost[inUnitType];
 		if (inUnitType == 9) { // king
-			unit.setKingName(var_deb.var_4832[inTeamId] - 1);
-			unit.unitId = var_deb.teamsUnitsCount[inTeamId];
-			var_deb.teamsUnits[inTeamId][unit.unitId] = unit;
-			var_deb.teamsUnitsCount[inTeamId] += 1;
+			unit.setKingName(game.var_4832[inTeamId] - 1);
+			unit.unitId = game.teamsUnitsCount[inTeamId];
+			game.teamsUnits[inTeamId][unit.unitId] = unit;
+			game.teamsUnitsCount[inTeamId] += 1;
 		}
 		return unit;
 	}
 
-	public static final A_Unit sub_11aa(byte inType, byte inTeam, int paramInt1, int paramInt2, boolean paramBoolean) {
-		A_Unit unit = new A_Unit(inType, var_deb.var_4832[inTeam], paramInt1, paramInt2, paramBoolean);
+	public static final A_Unit createNewUnit(byte inType, byte inTeam, int pX, int pY, boolean addToMap) {
+		A_Unit unit = new A_Unit(inType, game.var_4832[inTeam], pX, pY, addToMap);
 		unit.unitType = inType;
 		unit.teamId = inTeam;
 		unit.health = 100;
 		unit.chars = unitsChars[inType];
 		unit.cost = unitsCost[inType];
 		if (inType == 9) { // king
-			unit.setKingName(var_deb.var_4832[inTeam] - 1);
+			unit.setKingName(game.var_4832[inTeam] - 1);
 		}
 		return unit;
 	}
 
 	public final void killUnitMaybe() {
-		var_deb.mapUnitsMaybe.removeElement(this);
+		game.mapUnitsMaybe.removeElement(this);
 	}
 
-	public final void setKingName(int paramInt) {
-		this.var_eeb = ((byte) paramInt);
-		this.unitName = F_StringManager.getLangString(paramInt + 93);
+	public final void setKingName(int index) {
+		this.var_eeb = ((byte) index);
+		this.unitName = F_StringManager.getLangString(index + 93);
 	}
 
 	public final int getSomeAttackValueMaybe1(A_Unit unit) {
@@ -162,11 +162,11 @@ public final class A_Unit extends G_Sprite {
 				someAttackValue += 15;
 			}
 		}
-		if ((hasProperty((short) 2)) && (var_deb
+		if ((hasProperty((short) 2)) && (game
 				.getMapTileType(paramInt1, paramInt2) == 5)) {
 			someAttackValue += 10;
 		}
-		if (var_deb.var_4782[paramInt1][paramInt2] == 34) {
+		if (game.var_4782[paramInt1][paramInt2] == 34) {
 			someAttackValue += 25;
 		}
 		return someAttackValue;
@@ -177,12 +177,12 @@ public final class A_Unit extends G_Sprite {
 	}
 
 	private int getSomeUnitResistance2(int x, int y) {
-		int tileType = var_deb.getMapTileType(x, y);
+		int tileType = game.getMapTileType(x, y);
 		int resist = this.var_ea3 + G_Game.tilesExtraDefence[tileType];
 		if ((hasProperty((short) 2)) && (tileType == 5)) {
 			resist += 15;
 		}
-		if (var_deb.var_4782[x][y] == 34) {
+		if (game.var_4782[x][y] == 34) {
 			resist += 15;
 		}
 		return resist;
@@ -231,7 +231,7 @@ public final class A_Unit extends G_Sprite {
 		this.var_e8b = ((byte) (this.var_e8b | paramByte));
 		sub_160c();
 		if (paramByte == 1) {
-			this.var_ed3 = var_deb.someUnitTeamId;
+			this.var_ed3 = game.someUnitTeamId;
 		}
 	}
 
@@ -285,12 +285,12 @@ public final class A_Unit extends G_Sprite {
 			minY = 0;
 		}
 		int maxX = inX + attackRangeMax;
-		if (maxX >= var_deb.mapWidthMaybe) {
-			maxX = var_deb.mapWidthMaybe - 1;
+		if (maxX >= game.mapWidthMaybe) {
+			maxX = game.mapWidthMaybe - 1;
 		}
 		int maxY = inY + attackRangeMax;
-		if (maxY >= var_deb.mapHeightMaybe) {
-			maxY = var_deb.mapHeightMaybe - 1;
+		if (maxY >= game.mapHeightMaybe) {
+			maxY = game.mapHeightMaybe - 1;
 		}
 		for (int x = minX; x <= maxX; x++) {
 			for (int y = minY; y <= maxY; y++) {
@@ -308,8 +308,8 @@ public final class A_Unit extends G_Sprite {
 			return;
 		}
 		sub_20f8(attackMask);
-		for (int i = 0; i < var_deb.mapWidthMaybe; i++) {
-			for (int j = 0; j < var_deb.mapHeightMaybe; j++) {
+		for (int i = 0; i < game.mapWidthMaybe; i++) {
+			for (int j = 0; j < game.mapHeightMaybe; j++) {
 				if ((attackMask[i][j] > 0) && (attackMask[i][j] != 127)) {
 					setAttackMaskForPosition(attackMask, i, j);
 				}
@@ -334,12 +334,12 @@ public final class A_Unit extends G_Sprite {
 			minY = 0;
 		}
 		int maxX = inX + inAttRangeMax;
-		if ((maxX) >= var_deb.mapWidthMaybe) {
-			maxX = var_deb.mapWidthMaybe - 1;
+		if ((maxX) >= game.mapWidthMaybe) {
+			maxX = game.mapWidthMaybe - 1;
 		}
 		int maxY = inY + inAttRangeMax;
-		if ((maxY) >= var_deb.mapHeightMaybe) {
-			maxY = var_deb.mapHeightMaybe - 1;
+		if ((maxY) >= game.mapHeightMaybe) {
+			maxY = game.mapHeightMaybe - 1;
 		}
 		for (int x = minX; x <= maxX; x++) {
 			for (int y = minY; y <= maxY; y++) {
@@ -347,27 +347,27 @@ public final class A_Unit extends G_Sprite {
 				if ((distance >= inAttRangeMin) && (distance <= inAttRangeMax)) {
 					A_Unit unit;
 					if (paramByte == 0) {
-						unit = var_deb.getUnitAtPos(x, y, (byte) 0);
+						unit = game.getUnitAtPos(x, y, (byte) 0);
 						if (unit != null) {
-							if (var_deb.var_483a[unit.teamId] != var_deb.var_483a[this.teamId]) {
+							if (game.var_483a[unit.teamId] != game.var_483a[this.teamId]) {
 								units.addElement(unit);
 							}
-						} else if ((this.unitType == 7) && (var_deb
+						} else if ((this.unitType == 7) && (game
 								.getMapTileType(x, y) == 8) && (G_Game
-								.sub_11b75(var_deb.var_4782[x][y])) && (!var_deb
-								.sub_11c55(x, y, var_deb.var_483a[this.teamId]))) {
+								.sub_11b75(game.var_4782[x][y])) && (!game
+								.sub_11c55(x, y, game.var_483a[this.teamId]))) {
 							A_Unit fakeHouseUnit = createUnitWithBool((byte) 0, (byte) 0, x, y, false);
 							fakeHouseUnit.unitType = -1;
 							fakeHouseUnit.var_e83 = 4;
 							units.addElement(fakeHouseUnit);
 						}
 					} else if (paramByte == 1) {
-						unit = var_deb.getUnitAtPos(x, y, (byte) 1);
+						unit = game.getUnitAtPos(x, y, (byte) 1);
 						if (unit != null) {
 							units.addElement(unit);
 						}
-					} else if ((paramByte == 2) && ((unit = var_deb
-							.getUnitAtPos(x, y, (byte) 0)) != null) && (var_deb.var_483a[unit.teamId] == var_deb.var_483a[this.teamId])) {
+					} else if ((paramByte == 2) && ((unit = game
+							.getUnitAtPos(x, y, (byte) 0)) != null) && (game.var_483a[unit.teamId] == game.var_483a[this.teamId])) {
 						units.addElement(unit);
 					}
 				}
@@ -386,13 +386,13 @@ public final class A_Unit extends G_Sprite {
 		if (paramBoolean1) {
 			this.var_e13 = sub_1ef5(this.posX, this.posY, paramInt1, paramInt2);
 		} else {
-			if ((paramBoolean2) && (var_deb
+			if ((paramBoolean2) && (game
 					.getUnitAtPos(paramInt1, paramInt2, (byte) 0) != null)) {
 				paramBoolean2 = false;
 				int it;
 				for (it = paramInt1 - 1; it <= paramInt1 + 1; it++) {
 					for (int jt = paramInt2 - 1; jt <= paramInt2 + 1; jt++) {
-						if (((it == paramInt1) && (jt == paramInt2)) || (((it == paramInt1) || (jt == paramInt2)) && (var_deb
+						if (((it == paramInt1) && (jt == paramInt2)) || (((it == paramInt1) || (jt == paramInt2)) && (game
 								.getUnitAtPos(it, jt, (byte) 0) == null))) {
 							paramInt1 = it;
 							paramInt2 = jt;
@@ -446,16 +446,16 @@ public final class A_Unit extends G_Sprite {
 			int k = 0;
 			int m = 0;
 			if (paramInt4 > 0) {
-				i = var_deb.var_47da[paramInt3][(paramInt4 - 1)];
+				i = game.var_47da[paramInt3][(paramInt4 - 1)];
 			}
-			if (paramInt4 < var_deb.mapHeightMaybe - 1) {
-				j = var_deb.var_47da[paramInt3][(paramInt4 + 1)];
+			if (paramInt4 < game.mapHeightMaybe - 1) {
+				j = game.var_47da[paramInt3][(paramInt4 + 1)];
 			}
 			if (paramInt3 > 0) {
-				k = var_deb.var_47da[(paramInt3 - 1)][paramInt4];
+				k = game.var_47da[(paramInt3 - 1)][paramInt4];
 			}
-			if (paramInt3 < var_deb.mapWidthMaybe - 1) {
-				m = var_deb.var_47da[(paramInt3 + 1)][paramInt4];
+			if (paramInt3 < game.mapWidthMaybe - 1) {
+				m = game.var_47da[(paramInt3 + 1)][paramInt4];
 			}
 			int n;
 			if ((n = Math.max(Math.max(i, j), Math.max(k, m))) == i) {
@@ -479,7 +479,7 @@ public final class A_Unit extends G_Sprite {
 	public static final boolean sub_212e(byte[][] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte paramByte1, byte paramByte2, boolean paramBoolean) {
 		if (paramInt3 > paramArrayOfByte[paramInt1][paramInt2]) {
 			paramArrayOfByte[paramInt1][paramInt2] = ((byte) paramInt3);
-			if ((paramBoolean) && (var_deb
+			if ((paramBoolean) && (game
 					.getUnitAtPos(paramInt1, paramInt2, (byte) 0) == null)) {
 				return true;
 			}
@@ -499,13 +499,13 @@ public final class A_Unit extends G_Sprite {
 	}
 
 	private static int sub_22a9(int paramInt1, int paramInt2, byte paramByte1, byte paramByte2) {
-		if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 < var_deb.mapWidthMaybe) && (paramInt2 < var_deb.mapHeightMaybe)) {
+		if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 < game.mapWidthMaybe) && (paramInt2 < game.mapHeightMaybe)) {
 			A_Unit localClass_a_0260;
-			if (((localClass_a_0260 = var_deb
-					.getUnitAtPos(paramInt1, paramInt2, (byte) 0)) != null) && (var_deb.var_483a[localClass_a_0260.teamId] != var_deb.var_483a[paramByte2])) {
+			if (((localClass_a_0260 = game
+					.getUnitAtPos(paramInt1, paramInt2, (byte) 0)) != null) && (game.var_483a[localClass_a_0260.teamId] != game.var_483a[paramByte2])) {
 				return 1000;
 			}
-			paramInt1 = var_deb.getMapTileType(paramInt1, paramInt2);
+			paramInt1 = game.getMapTileType(paramInt1, paramInt2);
 			if (paramByte1 == 11) {
 				if (paramInt1 == 4) {
 					return 1000;
@@ -525,7 +525,7 @@ public final class A_Unit extends G_Sprite {
 
 	public final void sub_238a() {
 		if (this.var_eab) {
-			if (var_deb.var_479a - this.var_ec3 >= this.var_ebb) {
+			if (game.var_479a - this.var_ec3 >= this.var_ebb) {
 				this.var_eab = false;
 			} else {
 				this.var_eb3 = (!this.var_eb3);
@@ -539,17 +539,17 @@ public final class A_Unit extends G_Sprite {
 				this.var_e13 = null;
 				this.var_e1b = 0;
 			} else {
-				if ((this.var_ee3 != null) && (this.pixelX % 24 == 0) && (this.pixelY % 24 == 0)) {
-					this.var_ee3.sub_1c9f(this.posX, this.posY, false);
+				if ((this.someUnit0 != null) && (this.pixelX % 24 == 0) && (this.pixelY % 24 == 0)) {
+					this.someUnit0.sub_1c9f(this.posX, this.posY, false);
 				}
 				short[] arrayOfShort;
 				int i = (arrayOfShort = (short[]) this.var_e13
 						.elementAt(this.var_e1b))[0] * 24;
 				int j = arrayOfShort[1] * 24;
 				G_Sprite localClass_g_2517 = null;
-				if ((this.var_ee3 == null) && (++this.var_edb >= 24 / var_de3 / 2)) {
-					localClass_g_2517 = var_deb
-							.showSpriteOnMap(var_deb.bSmokeSprite, this.pixelX, this.pixelY, 0, 0, 1, C_MainCanvas
+				if ((this.someUnit0 == null) && (++this.var_edb >= 24 / var_de3 / 2)) {
+					localClass_g_2517 = game
+							.showSpriteOnMap(game.bSmokeSprite, this.pixelX, this.pixelY, 0, 0, 1, C_MainCanvas
 									.getRandomWithin(1, 4) * 50);
 					this.var_edb = 0;
 				}
@@ -588,9 +588,9 @@ public final class A_Unit extends G_Sprite {
 			getSomeExperienceKoef();
 			return;
 		}
-		if ((this.var_e83 == 0) && (var_deb.var_479a - this.var_e23 >= 200L)) {
+		if ((this.var_e83 == 0) && (game.var_479a - this.var_e23 >= 200L)) {
 			getSomeExperienceKoef();
-			this.var_e23 = var_deb.var_479a;
+			this.var_e23 = game.var_479a;
 		}
 	}
 
@@ -604,7 +604,7 @@ public final class A_Unit extends G_Sprite {
 
 	public final void sub_26fe() {
 		this.var_e83 = 2;
-		A_Unit unit = var_deb.getUnitAtPos(this.posX, this.posY, (byte) 1);
+		A_Unit unit = game.getUnitAtPos(this.posX, this.posY, (byte) 1);
 		if (unit != null) {
 			unit.killUnitMaybe();
 		}
@@ -612,21 +612,21 @@ public final class A_Unit extends G_Sprite {
 			A_Unit[] unitsInAttRange = getUnitsInAttackRange(this.posX, this.posY, 1, 2, (byte) 2);
 			for (int i = 0; i < unitsInAttRange.length; i++) {
 				unitsInAttRange[i].sub_1595((byte) 2);
-				var_deb.showSpriteOnMap(var_deb.sparkSprite, unitsInAttRange[i].pixelX, unitsInAttRange[i].pixelY, 0, 0, 1, 50);
+				game.showSpriteOnMap(game.sparkSprite, unitsInAttRange[i].pixelX, unitsInAttRange[i].pixelY, 0, 0, 1, 50);
 			}
 		}
-		var_deb.var_4e0a = this;
+		game.var_4e0a = this;
 	}
 
 	public static final A_Unit[] sub_27b7(byte paramByte) {
-		A_Unit[] units = new A_Unit[var_deb.teamsUnitsCount[paramByte]];
+		A_Unit[] units = new A_Unit[game.teamsUnitsCount[paramByte]];
 		int i = 0;
 		for (int it = 0; it < units.length; it++) {
-			if ((var_deb.teamsUnits[var_deb.someUnitTeamId][it] != null) && (var_deb.teamsUnits[var_deb.someUnitTeamId][it].var_e83 == 3)) {
-				units[(i++)] = var_deb.teamsUnits[var_deb.someUnitTeamId][it];
+			if ((game.teamsUnits[game.someUnitTeamId][it] != null) && (game.teamsUnits[game.someUnitTeamId][it].var_e83 == 3)) {
+				units[(i++)] = game.teamsUnits[game.someUnitTeamId][it];
 			}
 		}
-		A_Unit[] units2 = new A_Unit[var_deb.var_49ca + 1 + i];
+		A_Unit[] units2 = new A_Unit[game.var_49ca + 1 + i];
 		for (byte k = 0; k < units2.length; k = (byte) (k + 1)) {
 			if (k < i) {
 				units2[k] = units[k];
@@ -657,18 +657,18 @@ public final class A_Unit extends G_Sprite {
 			} else if ((!paramBoolean) && (this.var_e83 != 2)) {
 				super.sub_1d20(gr, inX, inY);
 			} else {
-				var_deb.unitTeamSprites[0][this.unitType]
+				game.unitTeamSprites[0][this.unitType]
 						.sub_1d20(gr, this.pixelX + inX, this.pixelY + inY);
 			}
 			if (this.unitType == 9) { // King
 				x = this.pixelX + inX;
 				y = this.pixelY + inY;
 				if ((paramBoolean) || (this.var_e83 == 2)) {
-					var_deb.kingHeadsIcons[1]
+					game.kingHeadsIcons[1]
 							.drawFrame(gr, (this.var_eeb << 1) + this.currentFrameIndex, x, y, 0);
 					return;
 				}
-				var_deb.kingHeadsIcons[0]
+				game.kingHeadsIcons[0]
 						.drawFrame(gr, (this.var_eeb << 1) + this.currentFrameIndex, x, y, 0);
 			}
 		}
@@ -684,7 +684,7 @@ public final class A_Unit extends G_Sprite {
 	}
 
 	public static final void initializeUnitsData(G_Game ins) {
-		var_deb = ins;
+		game = ins;
 		try {
 			for (int unitInd = 0; unitInd < unitNames.length; unitInd++) {
 				InputStream unitStream = C_MainCanvas
