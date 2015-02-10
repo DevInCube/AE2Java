@@ -88,8 +88,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private int var_46da;
 	private int mapLeftX;
 	private int mapTopY;
-	public int mapWidthMaybe;
-	public int mapHeightMaybe;
+	public int mapWidth;
+	public int mapHeight;
 	private D_ImageWrap tombStoneImage;
 	private D_ImageWrap[] tiles0Frames;
 	private G_Sprite cursorSprite;
@@ -106,7 +106,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	public G_Sprite portraitsSprite;
 	public int cursorPosX;
 	public int cursorPosY;
-	public byte[][] var_4782;
+	public byte[][] mapTilesIds;
 	private byte var_478a;
 	private byte var_4792;
 	public long var_479a;
@@ -317,7 +317,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private A_Unit var_4df2;
 	private A_Unit var_4dfa;
 	private A_Unit var_4e02;
-	public A_Unit var_4e0a;
+	public A_Unit someUnitHere;
 	private int var_4e12;
 	private String[][][] someScriptStrings;
 	private long var_4e22; // long k
@@ -491,7 +491,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.var_4d22 = 0;
 		this.var_4dca = false;
 		this.var_4e02 = null;
-		this.var_4e0a = null;
+		this.someUnitHere = null;
 		this.var_4e32 = false;
 		this.var_4e3a = false;
 		this.var_4e42 = -1;
@@ -841,7 +841,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			}
 			this.var_45f2 = dis.readShort();
 			for (int i = 0; i < this.var_49fa.length; i++) {
-				this.var_4782[this.var_49fa[i][0]][this.var_49fa[i][1]] = dis
+				this.mapTilesIds[this.var_49fa[i][0]][this.var_49fa[i][1]] = dis
 						.readByte();
 			}
 			this.teamsUnits = new A_Unit[this.teamsCountMaybe][4];
@@ -863,7 +863,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				byte b6 = dis.readByte();
 				A_Unit unit = A_Unit.createUnit(unitType, teamId, posX, posY);
 				unit.var_e83 = k;
-				unit.maybeExperience = unitExp;
+				unit.experience = unitExp;
 				unit.setUnitLevel(unitLvl);
 				unit.var_e8b = b3;
 				unit.sub_160c();
@@ -1037,7 +1037,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.var_478a = 1;
 		this.var_495a = true;
 		sub_bcb2(this.var_47da, 0);
-		paramClass_a_0260.sub_20f8(this.var_47da);
+		paramClass_a_0260.fillWhereUnitCanMove(this.var_47da);
 		this.var_47e2 = true;
 		this.var_47ea = false;
 		this.cursorSprite.setFrameSequence(var_4662[2]);
@@ -1292,7 +1292,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			if ((paramClass_e_0134 == this.var_4882) && (paramByte == 1)) {
 				if (this.var_478a == 3) {
 					this.someActiveUnit.sub_1686(this.var_47ca, this.var_47d2);
-					this.someActiveUnit.sub_20f8(this.var_47da);
+					this.someActiveUnit.fillWhereUnitCanMove(this.var_47da);
 					sub_6c83(this.someActiveUnit);
 					this.var_495a = true;
 					return;
@@ -2861,7 +2861,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	this.someCanHeight
 																			- ((E_Menu) localObject71).mapPrevPixelHeight
 																			- this.buttonsSprite.spriteFrameHeight,
-																	this.var_4782,
+																	this.mapTilesIds,
 																	this.mapUnitsMaybe);
 													((E_Menu) localObject2)
 															.sub_1698(
@@ -3098,7 +3098,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4e12 = 0;
 			sub_ac6f();
 			this.maybeTeamKings = null;
-			this.var_4782 = null;
+			this.mapTilesIds = null;
 			this.var_47da = null;
 			this.teamsCountMaybe = 0;
 			for (int i = 0; i < 5; i++) {
@@ -3115,21 +3115,21 @@ public final class G_Game extends F_StringManager implements Runnable,
 				this.var_4b52 = sub_75cb(paramInt);
 				localObject = sub_74ac(paramInt);
 			}
-			this.mapWidthMaybe = ((DataInputStream) localObject).readInt();
-			this.mapHeightMaybe = ((DataInputStream) localObject).readInt();
-			this.var_4782 = new byte[this.mapWidthMaybe][this.mapHeightMaybe];
-			this.var_47da = new byte[this.mapWidthMaybe][this.mapHeightMaybe];
-			this.var_4d92 = new byte[this.mapWidthMaybe][this.mapHeightMaybe];
+			this.mapWidth = ((DataInputStream) localObject).readInt();
+			this.mapHeight = ((DataInputStream) localObject).readInt();
+			this.mapTilesIds = new byte[this.mapWidth][this.mapHeight];
+			this.var_47da = new byte[this.mapWidth][this.mapHeight];
+			this.var_4d92 = new byte[this.mapWidth][this.mapHeight];
 			this.var_4d9a = 0;
 			int j = 0;
 			Vector localVector1 = new Vector();
 			Vector localVector2 = new Vector();
-			for (int n = 0; n < this.mapWidthMaybe; n = (short) (n + 1)) {
-				for (int i1 = 0; i1 < this.mapHeightMaybe; i1 = (short) (i1 + 1)) {
-					this.var_4782[n][i1] = ((DataInputStream) localObject)
+			for (int n = 0; n < this.mapWidth; n = (short) (n + 1)) {
+				for (int i1 = 0; i1 < this.mapHeight; i1 = (short) (i1 + 1)) {
+					this.mapTilesIds[n][i1] = ((DataInputStream) localObject)
 							.readByte();
 					this.var_47da[n][i1] = 0;
-					if (sub_11b28(this.var_4782[n][i1])) {
+					if (sub_11b28(this.mapTilesIds[n][i1])) {
 						int k = sub_11bae(n, i1);
 						byte[] arrayOfByte2;
 						(arrayOfByte2 = new byte[3])[0] = ((byte) n);
@@ -3157,8 +3157,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 			localVector1.copyInto(this.var_49fa);
 			this.var_4a02 = new byte[this.var_4d9a][];
 			localVector2.copyInto(this.var_4a02);
-			this.var_46d2 = (this.mapWidthMaybe * 24);
-			this.var_46da = (this.mapHeightMaybe * 24);
+			this.var_46d2 = (this.mapWidth * 24);
+			this.var_46da = (this.mapHeight * 24);
 			if (this.var_45fa == 1) {
 				for (int n = 0; n < this.teamsCountMaybe; n = (short) (n + 1)) {
 					this.var_486a[n] = this.var_45ea;
@@ -3221,7 +3221,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4dea = null;
 			this.var_4df2 = null;
 			this.var_4dfa = null;
-			this.var_4e0a = null;
+			this.someUnitHere = null;
 			for (short n = 0; n < this.maybeTeamKings.length; n = (short) (n + 1)) {
 				if (this.maybeTeamKings[n] == null) {
 					this.var_4872[n][0] = 0;
@@ -3282,10 +3282,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 
 	private void sub_b5bf(int[] paramArrayOfInt) {
 		C_MainCanvas.sub_1abc(paramArrayOfInt, true);
-		for (int i = 0; i < this.mapWidthMaybe; i++) {
-			for (int j = 0; j < this.mapHeightMaybe; j++) {
+		for (int i = 0; i < this.mapWidth; i++) {
+			for (int j = 0; j < this.mapHeight; j++) {
 				if (this.var_47da[i][j] > 0) {
-					this.var_4782[i][j] = ((byte) C_MainCanvas
+					this.mapTilesIds[i][j] = ((byte) C_MainCanvas
 							.getRandomArrayItemOrWhat(paramArrayOfInt));
 				}
 			}
@@ -3296,17 +3296,17 @@ public final class G_Game extends F_StringManager implements Runnable,
 
 	private void sub_b66c(int paramInt1, int paramInt2, int paramInt3,
 			int paramInt4, int[] paramArrayOfInt) {
-		paramInt2 = this.mapWidthMaybe + paramInt1 + paramInt2;
-		paramInt4 = this.mapHeightMaybe + paramInt3 + paramInt4;
+		paramInt2 = this.mapWidth + paramInt1 + paramInt2;
+		paramInt4 = this.mapHeight + paramInt3 + paramInt4;
 		byte[][] arrayOfByte = new byte[paramInt2][paramInt4];
 		C_MainCanvas.sub_1abc(paramArrayOfInt, true);
 		for (int k = 0; k < paramInt2; k++) {
 			for (int m = 0; m < paramInt4; m++) {
 				int i = k - paramInt1;
 				int j = m - paramInt3;
-				if ((i >= 0) && (j >= 0) && (i < this.mapWidthMaybe)
-						&& (j < this.mapHeightMaybe)) {
-					arrayOfByte[k][m] = this.var_4782[i][j];
+				if ((i >= 0) && (j >= 0) && (i < this.mapWidth)
+						&& (j < this.mapHeight)) {
+					arrayOfByte[k][m] = this.mapTilesIds[i][j];
 				} else {
 					arrayOfByte[k][m] = ((byte) C_MainCanvas
 							.getRandomArrayItemOrWhat(paramArrayOfInt));
@@ -3320,14 +3320,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 					.sub_1686(localClass_a_0260.posX + paramInt1,
 							localClass_a_0260.posY + paramInt3);
 		}
-		this.var_4782 = arrayOfByte;
-		this.mapWidthMaybe = paramInt2;
-		this.mapHeightMaybe = paramInt4;
-		this.var_47da = new byte[this.mapWidthMaybe][this.mapHeightMaybe];
-		this.var_4d92 = new byte[this.mapWidthMaybe][this.mapHeightMaybe];
+		this.mapTilesIds = arrayOfByte;
+		this.mapWidth = paramInt2;
+		this.mapHeight = paramInt4;
+		this.var_47da = new byte[this.mapWidth][this.mapHeight];
+		this.var_4d92 = new byte[this.mapWidth][this.mapHeight];
 		sub_b87b();
-		this.var_46d2 = (this.mapWidthMaybe * 24);
-		this.var_46da = (this.mapHeightMaybe * 24);
+		this.var_46d2 = (this.mapWidth * 24);
+		this.var_46da = (this.mapHeight * 24);
 		this.mapLeftX = 0;
 		this.mapTopY = 0;
 		this.cursorPosX = 0;
@@ -3345,9 +3345,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 			int i = 0;
 			Vector localVector1 = new Vector();
 			Vector localVector2 = new Vector();
-			for (int k = 0; k < this.mapWidthMaybe; k = (short) (k + 1)) {
-				for (int m = 0; m < this.mapHeightMaybe; m = (short) (m + 1)) {
-					if (sub_11b28(this.var_4782[k][m])) {
+			for (int k = 0; k < this.mapWidth; k = (short) (k + 1)) {
+				for (int m = 0; m < this.mapHeight; m = (short) (m + 1)) {
+					if (sub_11b28(this.mapTilesIds[k][m])) {
 						int j = sub_11bae(k, m);
 						byte[] arrayOfByte2;
 						(arrayOfByte2 = new byte[3])[0] = ((byte) k);
@@ -3397,11 +3397,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 			ByteArrayOutputStream localObject = new ByteArrayOutputStream();
 			DataOutputStream localDataOutputStream;
 			(localDataOutputStream = new DataOutputStream(
-					(OutputStream) localObject)).writeInt(this.mapWidthMaybe);
-			localDataOutputStream.writeInt(this.mapHeightMaybe);
-			for (int i = 0; i < this.mapWidthMaybe; i++) {
-				for (int j = 0; j < this.mapHeightMaybe; j++) {
-					localDataOutputStream.writeByte(this.var_4782[i][j]);
+					(OutputStream) localObject)).writeInt(this.mapWidth);
+			localDataOutputStream.writeInt(this.mapHeight);
+			for (int i = 0; i < this.mapWidth; i++) {
+				for (int j = 0; j < this.mapHeight; j++) {
+					localDataOutputStream.writeByte(this.mapTilesIds[i][j]);
 				}
 			}
 			localDataOutputStream.writeInt(0);
@@ -3438,8 +3438,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 	}
 
 	private void sub_bcb2(byte[][] paramArrayOfByte, int paramInt) {
-		for (int i = 0; i < this.mapWidthMaybe; i++) {
-			for (int j = 0; j < this.mapHeightMaybe; j++) {
+		for (int i = 0; i < this.mapWidth; i++) {
+			for (int j = 0; j < this.mapHeight; j++) {
 				paramArrayOfByte[i][j] = ((byte) paramInt);
 			}
 		}
@@ -4196,7 +4196,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																.sub_26d7(8))
 																|| (F_StringManager.mainCanvas
 																		.isGameActionRunning(8))) {
-															if (this.cursorPosX < this.mapWidthMaybe - 1) {
+															if (this.cursorPosX < this.mapWidth - 1) {
 																this.cursorPosX += 1;
 															}
 															this.var_495a = true;
@@ -4217,7 +4217,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																.sub_26d7(2))
 																|| (F_StringManager.mainCanvas
 																		.isGameActionRunning(2))) {
-															if (this.cursorPosY < this.mapHeightMaybe - 1) {
+															if (this.cursorPosY < this.mapHeight - 1) {
 																this.cursorPosY += 1;
 															}
 															this.var_495a = true;
@@ -4331,7 +4331,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 															this.var_47ca = this.someActiveUnit.posX;
 															this.var_47d2 = this.someActiveUnit.posY;
 															this.someActiveUnit
-																	.sub_1c9f(
+																	.fillAttOrMovePositions(
 																			this.cursorPosX,
 																			this.cursorPosY,
 																			true);
@@ -4379,8 +4379,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		this.var_47da[this.cursorPosX][this.cursorPosY] = 0;
 																	}
 																	this.var_47e2 = false;
-																	for (i10 = 0; i10 < this.mapWidthMaybe; i10++) {
-																		for (i12 = 0; i12 < this.mapHeightMaybe; i12++) {
+																	for (i10 = 0; i10 < this.mapWidth; i10++) {
+																		for (i12 = 0; i12 < this.mapHeight; i12++) {
 																			if (this.var_47da[i10][i12] > 0) {
 																				this.var_47e2 = true;
 																				break;
@@ -4391,32 +4391,32 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		}
 																	}
 																} else {
-																	this.var_4782[this.cursorPosX][this.cursorPosY] = this.cursorTileId;
+																	this.mapTilesIds[this.cursorPosX][this.cursorPosY] = this.cursorTileId;
 																	sub_b87b();
 																}
 															} else if (F_StringManager.mainCanvas
 																	.sub_26d7(512)) {
-																if (this.cursorTileId == this.var_4782[this.cursorPosX][this.cursorPosY]) {
+																if (this.cursorTileId == this.mapTilesIds[this.cursorPosX][this.cursorPosY]) {
 																	if ((this.cursorTileId = (byte) (this.cursorTileId + 1)) >= this.tiles0Frames.length) {
 																		this.cursorTileId = 0;
 																	}
-																	this.var_4782[this.cursorPosX][this.cursorPosY] = this.cursorTileId;
+																	this.mapTilesIds[this.cursorPosX][this.cursorPosY] = this.cursorTileId;
 																	sub_b87b();
 																} else {
-																	this.cursorTileId = this.var_4782[this.cursorPosX][this.cursorPosY];
+																	this.cursorTileId = this.mapTilesIds[this.cursorPosX][this.cursorPosY];
 																}
 																this.var_4c42 = true;
 																this.var_4c4a = true;
 															} else if (F_StringManager.mainCanvas
 																	.sub_26d7(256)) {
-																if (this.cursorTileId == this.var_4782[this.cursorPosX][this.cursorPosY]) {
+																if (this.cursorTileId == this.mapTilesIds[this.cursorPosX][this.cursorPosY]) {
 																	if ((this.cursorTileId = (byte) (this.cursorTileId - 1)) < 0) {
 																		this.cursorTileId = ((byte) (this.tiles0Frames.length - 1));
 																	}
-																	this.var_4782[this.cursorPosX][this.cursorPosY] = this.cursorTileId;
+																	this.mapTilesIds[this.cursorPosX][this.cursorPosY] = this.cursorTileId;
 																	sub_b87b();
 																} else {
-																	this.cursorTileId = this.var_4782[this.cursorPosX][this.cursorPosY];
+																	this.cursorTileId = this.mapTilesIds[this.cursorPosX][this.cursorPosY];
 																}
 																this.var_4c42 = true;
 																this.var_4c4a = true;
@@ -4425,7 +4425,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																if (this.var_47e2) {
 																	sub_b5bf(this.var_4fba);
 																} else {
-																	this.cursorTileId = this.var_4782[this.cursorPosX][this.cursorPosY];
+																	this.cursorTileId = this.mapTilesIds[this.cursorPosX][this.cursorPosY];
 																	sub_1aaa3();
 																	for (i10 = 0; i10 < this.var_4fba.length; i10++) {
 																		this.var_4fba[i10] = 0;
@@ -4444,12 +4444,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	if (this.var_47da[this.cursorPosX][this.cursorPosY] == 0) {
 																		this.var_47da[this.cursorPosX][this.cursorPosY] = 1;
 																	} else {
-																		i10 = this.mapWidthMaybe;
-																		i12 = this.mapHeightMaybe;
+																		i10 = this.mapWidth;
+																		i12 = this.mapHeight;
 																		int j = -1;
 																		int i13 = -1;
-																		for (int i14 = 0; i14 < this.mapWidthMaybe; i14++) {
-																			for (i4 = 0; i4 < this.mapHeightMaybe; i4++) {
+																		for (int i14 = 0; i14 < this.mapWidth; i14++) {
+																			for (i4 = 0; i4 < this.mapHeight; i4++) {
 																				if (this.var_47da[i14][i4] > 0) {
 																					if (i14 < i10) {
 																						i10 = i14;
@@ -4478,8 +4478,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		if (i8 != 0) {
 																			if ((i10 == 0)
 																					&& (i12 == 0)
-																					&& (j == this.mapWidthMaybe - 1)
-																					&& (i13 == this.mapHeightMaybe - 1)) {
+																					&& (j == this.mapWidth - 1)
+																					&& (i13 == this.mapHeight - 1)) {
 																				sub_bcb2(
 																						this.var_47da,
 																						0);
@@ -5084,11 +5084,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 		}
 		int k = (this.someCanWidth - this.mapLeftX - 1) / 24;
 		int m = (this.someCanHeight - this.mapTopY - 1) / 24;
-		if (k >= this.mapWidthMaybe) {
-			k = this.mapWidthMaybe - 1;
+		if (k >= this.mapWidth) {
+			k = this.mapWidth - 1;
 		}
-		if (m >= this.mapHeightMaybe) {
-			m = this.mapHeightMaybe - 1;
+		if (m >= this.mapHeight) {
+			m = this.mapHeight - 1;
 		}
 		int n;
 		if (this.mapLeftX < 0) {
@@ -5109,7 +5109,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		for (int it1 = j; it1 <= m; it1++) {
 			int i3 = n;
 			for (int it2 = i; it2 <= k; it2++) {
-				int i5 = this.var_4782[it2][it1];
+				int i5 = this.mapTilesIds[it2][it1];
 				if ((!this.var_47e2) || (this.var_47da[it2][it1] == 0)
 						|| (this.var_4c8a > 0)) {
 					this.tiles0Frames[i5].drawOnGraphics(graphics, i3, i1);
@@ -5126,8 +5126,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 								this.someCanHeight);
 					}
 				}
-				if (((i5 = it1 + 1) < this.mapHeightMaybe)
-						&& (this.tilesDefs[this.var_4782[it2][i5]] == 9)) {
+				if (((i5 = it1 + 1) < this.mapHeight)
+						&& (this.tilesDefs[this.mapTilesIds[it2][i5]] == 9)) {
 					this.tiles0Frames[28].drawOnGraphics(graphics, i3, i1);
 				}
 				i3 += 24;
@@ -5737,7 +5737,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					int px = x + m;
 					int py = y + m;
 					if ((this.var_4f92 == 0) || (this.var_4f92 == 2)) {
-						this.cursorTileId = this.var_4782[this.cursorPosX][this.cursorPosY];
+						this.cursorTileId = this.mapTilesIds[this.cursorPosX][this.cursorPosY];
 					}
 					this.tiles0Frames[this.cursorTileId]
 							.drawOnGraphics(graphics, px, py);
@@ -5866,12 +5866,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 						localObject = "0-0";
 					} else {
 						int bonusAttack = localClass_a_0260
-								.getSomeAttackValueMaybe1((A_Unit) localObject);
+								.getExtraUnitAttack((A_Unit) localObject);
 						localObject = localClass_a_0260.attackMin + bonusAttack + "-"
 								+ (localClass_a_0260.attackMax + bonusAttack);
 					}
 				} else if (m == 1) {
-					int unitResist = localClass_a_0260.getSomeUnitResistance((A_Unit) localObject);
+					int unitResist = localClass_a_0260.getExtraDefence((A_Unit) localObject);
 					localObject = "" + (localClass_a_0260.defence + unitResist);
 				} else {
 					localObject = "" + localClass_a_0260.level;
@@ -5957,7 +5957,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	}
 
 	public final byte getMapTileType(int paramInt1, int paramInt2) {
-		return this.tilesDefs[this.var_4782[paramInt1][paramInt2]];
+		return this.tilesDefs[this.mapTilesIds[paramInt1][paramInt2]];
 	}
 
 	private void sub_11699() {
@@ -6002,8 +6002,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 				}
 			}
 			this.var_4d12 = 0;
-			for (int i = 0; i < this.var_4782.length; i++) {
-				for (int j = 0; j < this.var_4782[i].length; j++) {
+			for (int i = 0; i < this.mapTilesIds.length; i++) {
+				for (int j = 0; j < this.mapTilesIds[i].length; j++) {
 					if (sub_11cae(i, j, this.someUnitTeamId)) {
 						if (getMapTileType(i, j) == 8) {
 							this.var_4d12 += 30;
@@ -6039,14 +6039,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 		return (unit.hasProperty((short) 8)) //occupy village
 				&& (getMapTileType(unit.posX,
 						unit.posY) == 8) // village
-				&& (!sub_11b75(this.var_4782[unit.posX][unit.posY]));
+				&& (!sub_11b75(this.mapTilesIds[unit.posX][unit.posY]));
 	}
 
 	private boolean canOccupyVillageOrTownMaybe(A_Unit unit) {
 		if ((unit.hasProperty((short) 8)) //occupy village
 				&& (getMapTileType(unit.posX,
 						unit.posY) == 8) // village
-				&& (sub_11b75(this.var_4782[unit.posX][unit.posY]))
+				&& (sub_11b75(this.mapTilesIds[unit.posX][unit.posY]))
 				&& (!sub_11c55(unit.posX,
 						unit.posY,
 						this.var_483a[unit.teamId]))) {
@@ -6061,13 +6061,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 	}
 
 	private void sub_11aac(byte paramByte, int inX, int inY) {
-		this.var_4782[inX][inY] = paramByte;
+		this.mapTilesIds[inX][inY] = paramByte;
 	}
 
 	private void sub_11ad0(int inX, int inY, int paramInt3) {
-		if (sub_11b75(this.var_4782[inX][inY])) {
+		if (sub_11b75(this.mapTilesIds[inX][inY])) {
 			sub_11aac(
-					(byte) (37 + (paramInt3 << 1) + (this.var_4782[inX][inY] - 37) % 2),
+					(byte) (37 + (paramInt3 << 1) + (this.mapTilesIds[inX][inY] - 37) % 2),
 					inX, inY);
 		}
 	}
@@ -6081,7 +6081,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	}
 
 	private int sub_11bae(int paramInt1, int paramInt2) {
-		return sub_11bd2(paramInt1, paramInt2, this.var_4782);
+		return sub_11bd2(paramInt1, paramInt2, this.mapTilesIds);
 	}
 
 	private static int sub_11bd2(int inX, int inY,
@@ -6212,7 +6212,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				&& (A_Unit.unitsCost[paramByte] <= this.var_486a[this.someUnitTeamId])
 				&& (A_Unit.unitsCost[paramByte] > 0)) {
 			sub_bcb2(this.var_47da, 0);
-			return A_Unit.sub_212e(this.var_47da, paramInt1, paramInt2,
+			return A_Unit.canMoveSomeWhereMB(this.var_47da, paramInt1, paramInt2,
 					A_Unit.unitsMoveRange[paramByte], -1, paramByte,
 					this.someUnitTeamId, true);
 		}
@@ -6226,7 +6226,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				&& ((paramClass_a_0260.unitType <= this.var_49ca) || (paramClass_a_0260.unitType == 9))
 				&& (paramClass_a_0260.cost <= this.var_486a[this.someUnitTeamId])) {
 			sub_bcb2(this.var_47da, 0);
-			return A_Unit.sub_212e(this.var_47da, paramInt1, paramInt2,
+			return A_Unit.canMoveSomeWhereMB(this.var_47da, paramInt1, paramInt2,
 					A_Unit.unitsMoveRange[paramClass_a_0260.unitType], -1,
 					paramClass_a_0260.unitType, this.someUnitTeamId, true);
 		}
@@ -6388,7 +6388,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				} else if ((this.var_4d52 == 3)
 						&& (this.var_479a - this.var_4d5a >= 200L)) {
 					this.var_4802 = null;
-					this.someActiveUnit.sub_1c9f(this.var_4d2a, this.var_4d32, true);
+					this.someActiveUnit.fillAttOrMovePositions(this.var_4d2a, this.var_4d32, true);
 					this.var_4d22 = 2;
 					this.var_4d52 = 0;
 					this.var_478a = 2;
@@ -6533,7 +6533,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.someActiveUnit = paramClass_a_0260;
 		this.var_47f2 = true;
 		sub_bcb2(this.var_47da, 0);
-		this.someActiveUnit.sub_20f8(this.var_47da);
+		this.someActiveUnit.fillWhereUnitCanMove(this.var_47da);
 		this.var_47e2 = false;
 		this.var_4d62 = getSomeUnitsOfTypeOfTeam(0, -1, this.someUnitTeamId);
 		int i = 0;
@@ -6701,7 +6701,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4da2 = this.var_49fa[m][0];
 			this.var_4daa = this.var_49fa[m][1];
 			sub_bcb2(this.var_4d92, 0);
-			A_Unit.sub_212e(this.var_4d92, this.var_4da2, this.var_4daa,
+			A_Unit.canMoveSomeWhereMB(this.var_4d92, this.var_4da2, this.var_4daa,
 					10, -1, paramClass_a_0260.unitType, this.someUnitTeamId, false);
 		} else if ((this.maybeTeamKings[this.someUnitTeamId] != null)
 				&& (i1 != -1)
@@ -6712,7 +6712,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4da2 = this.var_49fa[i1][0];
 			this.var_4daa = this.var_49fa[i1][1];
 			sub_bcb2(this.var_4d92, 0);
-			A_Unit.sub_212e(this.var_4d92, this.var_4da2, this.var_4daa,
+			A_Unit.canMoveSomeWhereMB(this.var_4d92, this.var_4da2, this.var_4daa,
 					10, -1, paramClass_a_0260.unitType, this.someUnitTeamId, false);
 		} else {
 			int i2 = -1;
@@ -6743,7 +6743,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				this.var_4da2 = this.var_4d7a[i2][0];
 				this.var_4daa = this.var_4d7a[i2][1];
 				sub_bcb2(this.var_4d92, 0);
-				A_Unit.sub_212e(this.var_4d92, this.var_4da2,
+				A_Unit.canMoveSomeWhereMB(this.var_4d92, this.var_4da2,
 						this.var_4daa, 10, -1, paramClass_a_0260.unitType,
 						this.someUnitTeamId, false);
 			}
@@ -6849,7 +6849,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 						&& (getMapTileType(paramInt1, paramInt2) == 9)) {
 					i += 300;
 				} else if ((paramClass_a_02601.hasProperty((short) 8))
-						&& ((getMapTileType(paramInt1, paramInt2) == 8) || (this.var_4782[paramInt1][paramInt2] == 27))) {
+						&& ((getMapTileType(paramInt1, paramInt2) == 8) || (this.mapTilesIds[paramInt1][paramInt2] == 27))) {
 					i += 200;
 				}
 			}
@@ -7013,9 +7013,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.maybeTeamKings[0].setKingName(2);
 			sub_efe5(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			moveCursorToPos(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
-			getUnitAtPos(7, 12, (byte) 0).sub_1c9f(7, 10, false);
-			getUnitAtPos(8, 11, (byte) 0).sub_1c9f(8, 9, false);
-			getUnitAtPos(9, 12, (byte) 0).sub_1c9f(9, 10, false);
+			getUnitAtPos(7, 12, (byte) 0).fillAttOrMovePositions(7, 10, false);
+			getUnitAtPos(8, 11, (byte) 0).fillAttOrMovePositions(8, 9, false);
+			getUnitAtPos(9, 12, (byte) 0).fillAttOrMovePositions(9, 10, false);
 			sub_186a6(7, 3);
 			F_StringManager.mainCanvas.sub_220e(this.var_4dda);
 			return;
@@ -7031,10 +7031,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4de2 = getUnitAtPos(8, 17, (byte) 0);
 			this.var_4dea = getUnitAtPos(8, 18, (byte) 0);
 			this.var_4df2 = getUnitAtPos(8, 19, (byte) 0);
-			this.var_4de2.sub_1c9f(8, 15, false);
-			this.var_4dea.sub_1c9f(8, 15, false);
-			this.var_4df2.sub_1c9f(8, 15, false);
-			this.maybeTeamKings[0].sub_1c9f(8, 14, false);
+			this.var_4de2.fillAttOrMovePositions(8, 15, false);
+			this.var_4dea.fillAttOrMovePositions(8, 15, false);
+			this.var_4df2.fillAttOrMovePositions(8, 15, false);
+			this.maybeTeamKings[0].fillAttOrMovePositions(8, 14, false);
 			this.var_47f2 = false;
 			F_StringManager.mainCanvas.sub_220e(this.var_4dda);
 			this.var_4e12 = 0;
@@ -7048,10 +7048,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4de2 = A_Unit.createUnit((byte) 0, (byte) 0, -1, 5);
 			this.var_4dea = A_Unit.createUnit((byte) 2, (byte) 0, -2, 5);
 			this.var_4df2 = A_Unit.createUnit((byte) 3, (byte) 0, -3, 5);
-			this.var_4de2.sub_1c9f(3, 4, false);
-			this.var_4dea.sub_1c9f(4, 4, false);
-			this.var_4df2.sub_1c9f(2, 4, false);
-			this.maybeTeamKings[0].sub_1c9f(3, 3, false);
+			this.var_4de2.fillAttOrMovePositions(3, 4, false);
+			this.var_4dea.fillAttOrMovePositions(4, 4, false);
+			this.var_4df2.fillAttOrMovePositions(2, 4, false);
+			this.maybeTeamKings[0].fillAttOrMovePositions(3, 3, false);
 			sub_efe5(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			moveCursorToPos(3, 3);
 			this.var_4c6a = this.maybeTeamKings[0];
@@ -7071,17 +7071,17 @@ public final class G_Game extends F_StringManager implements Runnable,
 			moveCursorToPos(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			A_Unit.var_de3 = 4;
 			(localClass_a_02601 = getUnitAtPos(11, 2, (byte) 0)).sub_1686(11, -3);
-			localClass_a_02601.sub_1c9f(11, 2, false);
+			localClass_a_02601.fillAttOrMovePositions(11, 2, false);
 			(localClass_a_02601 = getUnitAtPos(10, 1, (byte) 0)).sub_1686(10, -5);
-			localClass_a_02601.sub_1c9f(10, 1, false);
+			localClass_a_02601.fillAttOrMovePositions(10, 1, false);
 			(localClass_a_02601 = getUnitAtPos(11, 1, (byte) 0)).sub_1686(11, -5);
-			localClass_a_02601.sub_1c9f(11, 1, false);
+			localClass_a_02601.fillAttOrMovePositions(11, 1, false);
 			(localClass_a_02601 = getUnitAtPos(12, 1, (byte) 0)).sub_1686(12, -5);
-			localClass_a_02601.sub_1c9f(12, 1, false);
+			localClass_a_02601.fillAttOrMovePositions(12, 1, false);
 			(localClass_a_02601 = getUnitAtPos(11, 0, (byte) 0)).sub_1686(11, -7);
-			localClass_a_02601.sub_1c9f(11, 0, false);
+			localClass_a_02601.fillAttOrMovePositions(11, 0, false);
 			(localClass_a_02601 = getUnitAtPos(12, 0, (byte) 0)).sub_1686(12, -7);
-			localClass_a_02601.sub_1c9f(12, 0, false);
+			localClass_a_02601.fillAttOrMovePositions(12, 0, false);
 			F_StringManager.mainCanvas.sub_220e(this.var_4dda);
 			this.var_47f2 = false;
 			this.var_4e12 = 0;
@@ -7119,8 +7119,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 			localClass_a_02601.someUnit0 = localClass_a_02602;
 			localClass_a_02602.someUnit0 = localClass_a_02603;
 			localClass_a_02603.someUnit0 = localClass_a_02604;
-			this.maybeTeamKings[0].sub_20f8(this.var_47da);
-			this.maybeTeamKings[0].sub_1c9f(14, 3, true);
+			this.maybeTeamKings[0].fillWhereUnitCanMove(this.var_47da);
+			this.maybeTeamKings[0].fillAttOrMovePositions(14, 3, true);
 			sub_efe5(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			moveCursorToPos(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			this.var_4c6a = this.maybeTeamKings[0];
@@ -7225,7 +7225,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				} else if (localObject1[1].equalsIgnoreCase("StatusBarOffset")) {
 					k = this.var_4a52;
 				} else if (localObject1[1].equalsIgnoreCase("UnitFinishedMove")) {
-					k = this.var_4e0a != null ? 1 : 0;
+					k = this.someUnitHere != null ? 1 : 0;
 				} else if (localObject1[1].equalsIgnoreCase("CountUnits")) {
 					k = countSomeTeamUnitsOfType(Integer.parseInt(localObject1[2]),
 							Integer.parseInt(localObject1[3]),
@@ -7305,7 +7305,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				} else if (localObject1[0].equalsIgnoreCase("GetUnitPlotRoute")) {
 					getUnitAtPos(Integer.parseInt(localObject1[1]),
 							Integer.parseInt(localObject1[2]),
-							(byte) Integer.parseInt(localObject1[3])).sub_1c9f(
+							(byte) Integer.parseInt(localObject1[3])).fillAttOrMovePositions(
 							Integer.parseInt(localObject1[4]),
 							Integer.parseInt(localObject1[5]),
 							"true".equalsIgnoreCase(localObject1[6]));
@@ -7315,7 +7315,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							(byte) Integer.parseInt(localObject1[1]),
 							(byte) Integer.parseInt(localObject1[2]),
 							Integer.parseInt(localObject1[3]),
-							Integer.parseInt(localObject1[4])).sub_1cc2(
+							Integer.parseInt(localObject1[4])).fillAttackAorMovePositions(
 							Integer.parseInt(localObject1[5]),
 							Integer.parseInt(localObject1[6]),
 							"true".equalsIgnoreCase(localObject1[7]),
@@ -7470,9 +7470,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 								break;
 							case 2:
 								this.var_4ada = true;
-								getUnitAtPos(0, 8, (byte) 0).sub_1c9f(3, 8, false);
-								getUnitAtPos(1, 9, (byte) 0).sub_1c9f(4, 9, false);
-								getUnitAtPos(0, 10, (byte) 0).sub_1c9f(3, 10,
+								getUnitAtPos(0, 8, (byte) 0).fillAttOrMovePositions(3, 8, false);
+								getUnitAtPos(1, 9, (byte) 0).fillAttOrMovePositions(4, 9, false);
+								getUnitAtPos(0, 10, (byte) 0).fillAttOrMovePositions(3, 10,
 										false);
 								sub_186a6(5, 9);
 								break;
@@ -7562,14 +7562,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 								break;
 							case 16:
 								if ((this.someUnitTeamId == 0)
-										&& (this.var_4e0a != null)) {
+										&& (this.someUnitHere != null)) {
 									this.var_49a2 = 2;
 									this.var_4e12 += 1;
 								}
 								break;
 							case 17:
 								if ((this.someUnitTeamId == 0)
-										&& (this.var_4e0a != null)) {
+										&& (this.someUnitHere != null)) {
 									this.var_49a2 = 3;
 									this.var_4e12 += 1;
 								}
@@ -7611,7 +7611,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								break;
 							case 24:
 								A_Unit.createUnit((byte) 1, (byte) 1, 1, 1)
-										.sub_1cc2(1, 2, false, true);
+										.fillAttackAorMovePositions(1, 2, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
@@ -7620,7 +7620,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								break;
 							case 26:
 								A_Unit.createUnit((byte) 0, (byte) 1, 10,
-										10).sub_1cc2(10, 9, false, true);
+										10).fillAttackAorMovePositions(10, 9, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
@@ -7719,7 +7719,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 										(byte) 1, 7, 3);
 								this.var_4de2.someUnit0 = this.var_4dea;
 								this.var_4dea.someUnit0 = this.var_4df2;
-								this.var_4de2.sub_1c9f(6, -2, false);
+								this.var_4de2.fillAttOrMovePositions(6, -2, false);
 								sub_142e5(30);
 								this.var_4e12 += 1;
 								break;
@@ -7729,7 +7729,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									A_Unit.var_de3 = 4;
 									this.var_4dfa = A_Unit.createUnit(
 											(byte) 0, (byte) 0, 7, 3);
-									this.var_4dfa.sub_1c9f(6, 2, false);
+									this.var_4dfa.fillAttOrMovePositions(6, 2, false);
 									this.var_4dea.someUnit0 = null;
 									showUnitDialog(F_StringManager.getLangString(234),
 											(byte) 2, (byte) 4);
@@ -7855,13 +7855,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 							switch (this.var_4e12) {
 							case 0:
 								if (this.var_4de2.var_e83 != 1) {
-									this.var_4de2.sub_1c9f(7, 14, false);
+									this.var_4de2.fillAttOrMovePositions(7, 14, false);
 									this.var_4e12 += 1;
 								}
 								break;
 							case 1:
 								if (this.var_4dea.var_e83 != 1) {
-									this.var_4dea.sub_1c9f(7, 15, false);
+									this.var_4dea.fillAttOrMovePositions(7, 15, false);
 									sub_142e5(20);
 									this.var_4e12 += 1;
 								}
@@ -7920,30 +7920,30 @@ public final class G_Game extends F_StringManager implements Runnable,
 								sub_186a6(0, 8);
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, -1, 8)
-										.sub_1c9f(0, 8, false);
+										.fillAttOrMovePositions(0, 8, false);
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, -2, 7)
-										.sub_1c9f(1, 7, false);
+										.fillAttOrMovePositions(1, 7, false);
 								sub_142e5(20);
 								break;
 							case 10:
 								sub_186a6(8, 6);
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 12, 6)
-										.sub_1c9f(8, 6, false);
+										.fillAttOrMovePositions(8, 6, false);
 								sub_142e5(20);
 								break;
 							case 11:
 								sub_186a6(2, 1);
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 1, -2)
-										.sub_1c9f(1, 2, false);
+										.fillAttOrMovePositions(1, 2, false);
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 3, -2)
-										.sub_1c9f(3, 2, false);
+										.fillAttOrMovePositions(3, 2, false);
 								A_Unit
 										.createUnit((byte) 4, (byte) 1, 2, -1)
-										.sub_1c9f(2, 1, false);
+										.fillAttOrMovePositions(2, 1, false);
 								sub_142e5(20);
 								break;
 							case 12:
@@ -8106,7 +8106,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								A_Unit.var_de3 = 2;
 								this.var_4c72 = 4;
 								this.var_4de2 = getUnitAtPos(10, 10, (byte) 0);
-								this.var_4de2.sub_1c9f(6, 10, false);
+								this.var_4de2.fillAttOrMovePositions(6, 10, false);
 								moveCursorToPos(6, 10);
 								sub_186a6(6, 10);
 								break;
@@ -8233,20 +8233,20 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 6:
 								A_Unit
 										.createUnit((byte) 10, (byte) 1, 4, 4)
-										.sub_1cc2(4, 1, false, true);
+										.fillAttackAorMovePositions(4, 1, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 7:
 								A_Unit.createUnit((byte) 1, (byte) 1, 4, 4)
-										.sub_1cc2(5, 2, false, true);
+										.fillAttackAorMovePositions(5, 2, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 8:
 								A_Unit
 										.createUnit((byte) 10, (byte) 1, 4, 4)
-										.sub_1cc2(4, 3, false, true);
+										.fillAttackAorMovePositions(4, 3, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
@@ -8275,21 +8275,21 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 12:
 								A_Unit
 										.createUnit((byte) 1, (byte) 1, 6, 10)
-										.sub_1cc2(5, 10, false, true);
+										.fillAttackAorMovePositions(5, 10, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 13:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 6, 10)
-										.sub_1cc2(7, 8, false, true);
+										.fillAttackAorMovePositions(7, 8, false, true);
 								sub_142e5(15);
 								this.var_4e12 += 1;
 								break;
 							case 14:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 6, 10)
-										.sub_1cc2(7, 9, false, true);
+										.fillAttackAorMovePositions(7, 9, false, true);
 								this.var_4a4a = true;
 								this.var_47f2 = true;
 								this.var_4e12 += 1;
@@ -8309,21 +8309,21 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 16:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 12, 5)
-										.sub_1cc2(12, 7, false, true);
+										.fillAttackAorMovePositions(12, 7, false, true);
 								sub_142e5(15);
 								this.var_4e12 += 1;
 								break;
 							case 17:
 								A_Unit
 										.createUnit((byte) 6, (byte) 1, 12, 5)
-										.sub_1cc2(12, 6, false, true);
+										.fillAttackAorMovePositions(12, 6, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 18:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 12, 5)
-										.sub_1cc2(12, 5, false, true);
+										.fillAttackAorMovePositions(12, 5, false, true);
 								this.var_4a4a = true;
 								this.var_47f2 = true;
 								this.var_4e12 += 1;
@@ -8343,28 +8343,28 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 20:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 18, 8)
-										.sub_1cc2(16, 10, false, true);
+										.fillAttackAorMovePositions(16, 10, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 21:
 								A_Unit
 										.createUnit((byte) 6, (byte) 1, 18, 8)
-										.sub_1cc2(17, 10, false, true);
+										.fillAttackAorMovePositions(17, 10, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 22:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 18, 8)
-										.sub_1cc2(18, 10, false, true);
+										.fillAttackAorMovePositions(18, 10, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 23:
 								A_Unit
 										.createUnit((byte) 1, (byte) 1, 18, 8)
-										.sub_1cc2(18, 9, false, true);
+										.fillAttackAorMovePositions(18, 9, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
@@ -8474,8 +8474,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 5:
 								A_Unit localObject111 = A_Unit.createUnit((byte) 5,
 										(byte) 1, 11, 8);
-								localObject111.sub_20f8(this.var_47da);
-								localObject111.sub_1c9f(14, 7,
+								localObject111.fillWhereUnitCanMove(this.var_47da);
+								localObject111.fillAttOrMovePositions(14, 7,
 										true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8483,8 +8483,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 6:
 								A_Unit localObject21= A_Unit.createUnit((byte) 0,
 										(byte) 1, 11, 8);
-								localObject21.sub_20f8(this.var_47da);
-								localObject21.sub_1c9f(13, 7,
+								localObject21.fillWhereUnitCanMove(this.var_47da);
+								localObject21.fillAttOrMovePositions(13, 7,
 										true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8492,8 +8492,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 7:
 								A_Unit localObject31 = A_Unit.createUnit((byte) 3,
 										(byte) 1, 11, 8);
-								localObject31.sub_20f8(this.var_47da);
-								((A_Unit) localObject31).sub_1c9f(12, 7,
+								localObject31.fillWhereUnitCanMove(this.var_47da);
+								((A_Unit) localObject31).fillAttOrMovePositions(12, 7,
 										true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8501,7 +8501,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 8:
 								A_Unit
 										.createUnit((byte) 1, (byte) 1, 11, 8)
-										.sub_1c9f(13, 8, false);
+										.fillAttOrMovePositions(13, 8, false);
 								sub_142e5(20);
 								this.var_4e12 += 1;
 								break;
@@ -8534,14 +8534,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 11:
 								this.var_4de2 = getSomeUnitsOfTypeOfTeam(11, -1, (byte)0)[0]; //super.
 								this.var_4dea = A_Unit.createUnit((byte) 8,
-										(byte) 1, this.mapWidthMaybe,
+										(byte) 1, this.mapWidth,
 										this.var_4de2.posY);
-								sub_186a6(this.mapWidthMaybe - 1,
+								sub_186a6(this.mapWidth - 1,
 										this.var_4de2.posY);
 								this.var_47f2 = false;
 								break;
 							case 12:
-								this.var_4dea.sub_1c9f(this.var_4de2.posX,
+								this.var_4dea.fillAttOrMovePositions(this.var_4de2.posX,
 										this.var_4de2.posY, false);
 								sub_142e5(5);
 								this.var_4e12 += 1;
@@ -8556,14 +8556,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 								if (this.var_4dea.var_e83 != 1) {
 									showUnitDialog(F_StringManager.getLangString(266),
 											(byte) 0, (byte) 4);
-									this.var_4dea.sub_1c9f(-1,
+									this.var_4dea.fillAttOrMovePositions(-1,
 											this.var_4dea.posY, false);
 									sub_142e5(3);
 									this.var_4e12 += 1;
 								}
 								break;
 							case 15:
-								this.var_4de2.sub_1c9f(-1,
+								this.var_4de2.fillAttOrMovePositions(-1,
 										this.var_4dea.posY, false);
 								this.var_4e12 += 1;
 								break;
@@ -8585,26 +8585,26 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 18:
 								this.maybeTeamKings[1] = A_Unit.createUnit((byte)9, (byte)1,
 										-2, 8);
-								this.maybeTeamKings[1].sub_1c9f(0, 8, false);
+								this.maybeTeamKings[1].fillAttOrMovePositions(0, 8, false);
 								A_Unit
 										.createUnit((byte) 0, (byte) 1, -1, 8)
-										.sub_1c9f(3, 8, false);
+										.fillAttOrMovePositions(3, 8, false);
 								A_Unit.createUnit((byte) 0, (byte) 1, -1,
-										10).sub_1c9f(1, 10, false);
+										10).fillAttOrMovePositions(1, 10, false);
 								A_Unit
 										.createUnit((byte) 8, (byte) 1, -3, 7)
-										.sub_1c9f(4, 8, false);
+										.fillAttOrMovePositions(4, 8, false);
 								A_Unit.createUnit((byte) 8, (byte) 1, -3,
-										11).sub_1c9f(2, 10, false);
+										11).fillAttOrMovePositions(2, 10, false);
 								A_Unit
 										.createUnit((byte) 4, (byte) 1, -2, 9)
-										.sub_1c9f(2, 9, false);
+										.fillAttOrMovePositions(2, 9, false);
 								A_Unit
 										.createUnit((byte) 6, (byte) 1, -4, 9)
-										.sub_1c9f(4, 9, false);
+										.fillAttOrMovePositions(4, 9, false);
 								A_Unit
 										.createUnit((byte) 6, (byte) 1, -6, 9)
-										.sub_1c9f(5, 10, false);
+										.fillAttOrMovePositions(5, 10, false);
 								sub_142e5(50);
 								this.var_4e12 += 1;
 								break;
@@ -8618,25 +8618,25 @@ public final class G_Game extends F_StringManager implements Runnable,
 								break;
 							case 21:
 								A_Unit.createUnit((byte) 0, (byte) 1, 13,
-										14).sub_1c9f(12, 14, false);
+										14).fillAttOrMovePositions(12, 14, false);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 22:
 								A_Unit.createUnit((byte) 6, (byte) 1, 13,
-										14).sub_1c9f(14, 14, false);
+										14).fillAttOrMovePositions(14, 14, false);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 23:
 								A_Unit.createUnit((byte) 2, (byte) 1, 13,
-										14).sub_1c9f(13, 12, false);
+										14).fillAttOrMovePositions(13, 12, false);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 24:
 								A_Unit.createUnit((byte) 3, (byte) 1, 13,
-										14).sub_1c9f(13, 15, false);
+										14).fillAttOrMovePositions(13, 15, false);
 								sub_142e5(15);
 								this.var_4e12 += 1;
 								break;
@@ -8660,15 +8660,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 								(localClass_a_0260 = A_Unit.createUnit(
 										(byte) 9, (byte) 0, 13, 18))
 										.setKingName(2);
-								localClass_a_0260.sub_1c9f(13, 16, false);
+								localClass_a_0260.fillAttOrMovePositions(13, 16, false);
 								A_Unit.createUnit((byte) 6, (byte) 0, 12,
-										18).sub_1c9f(12, 16, false);
+										18).fillAttOrMovePositions(12, 16, false);
 								A_Unit.createUnit((byte) 8, (byte) 0, 14,
-										19).sub_1c9f(14, 16, false);
+										19).fillAttOrMovePositions(14, 16, false);
 								A_Unit.createUnit((byte) 4, (byte) 0, 13,
-										19).sub_1c9f(13, 17, false);
+										19).fillAttOrMovePositions(13, 17, false);
 								A_Unit.createUnit((byte) 1, (byte) 0, 12,
-										19).sub_1c9f(12, 17, false);
+										19).fillAttOrMovePositions(12, 17, false);
 								sub_142e5(20);
 								this.var_4e12 += 1;
 								break;
@@ -8747,7 +8747,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								break;
 							case 6:
 								this.var_4de2 = getUnitAtPos(5, 2, (byte) 0);
-								this.var_4de2.sub_1c9f(7, 2, false);
+								this.var_4de2.fillAttOrMovePositions(7, 2, false);
 								this.var_4e12 += 1;
 								break;
 							case 7:
@@ -8755,7 +8755,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									this.var_4de2.killUnitMaybe();
 									this.var_4de2 = null;
 									this.var_4dea = getUnitAtPos(7, 3, (byte) 0);
-									this.var_4dea.sub_1c9f(7, 2, false);
+									this.var_4dea.fillAttOrMovePositions(7, 2, false);
 									this.var_4e12 += 1;
 								}
 								break;
@@ -8764,7 +8764,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									this.var_4dea.killUnitMaybe();
 									this.var_4dea = null;
 									this.var_4df2 = getUnitAtPos(9, 2, (byte) 0);
-									this.var_4df2.sub_1c9f(7, 2, false);
+									this.var_4df2.fillAttOrMovePositions(7, 2, false);
 									this.var_4e12 += 1;
 								}
 								break;
@@ -8772,7 +8772,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								if (this.var_4df2.var_e83 != 1) {
 									this.var_4df2.killUnitMaybe();
 									this.var_4df2 = null;
-									this.maybeTeamKings[1].sub_1c9f(7, 2, false);
+									this.maybeTeamKings[1].fillAttOrMovePositions(7, 2, false);
 									sub_142e5(20);
 									this.var_4e12 += 1;
 								}
@@ -8958,7 +8958,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							}
 						}
 					}
-					this.var_4e0a = null;
+					this.someUnitHere = null;
 				}
 			}
 		}
@@ -9300,7 +9300,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 						paramCommand.var_4e12 = 0;
 						paramCommand.sub_ac6f();
 						paramCommand.maybeTeamKings = null;
-						paramCommand.var_4782 = null;
+						paramCommand.mapTilesIds = null;
 						paramCommand.var_47da = null;
 						paramCommand.teamsCountMaybe = 0;
 						for (int i3 = 0; i3 < 5; i3++) {
@@ -9309,23 +9309,23 @@ public final class G_Game extends F_StringManager implements Runnable,
 						paramCommand.var_495a = true;
 						C_MainCanvas.initResPak();
 						paramCommand.var_4b52 = paramDisplayable;
-						paramCommand.mapWidthMaybe = j;
-						paramCommand.mapHeightMaybe = i1;
-						paramCommand.var_4782 = new byte[paramCommand.mapWidthMaybe][paramCommand.mapHeightMaybe];
-						paramCommand.var_47da = new byte[paramCommand.mapWidthMaybe][paramCommand.mapHeightMaybe];
-						paramCommand.var_4d92 = new byte[paramCommand.mapWidthMaybe][paramCommand.mapHeightMaybe];
+						paramCommand.mapWidth = j;
+						paramCommand.mapHeight = i1;
+						paramCommand.mapTilesIds = new byte[paramCommand.mapWidth][paramCommand.mapHeight];
+						paramCommand.var_47da = new byte[paramCommand.mapWidth][paramCommand.mapHeight];
+						paramCommand.var_4d92 = new byte[paramCommand.mapWidth][paramCommand.mapHeight];
 						paramCommand.var_4d9a = 0;
 						int i3 = 0;
 
 						Vector vecParamDisplayable = new Vector();
 						Vector localVector = new Vector();
 						C_MainCanvas.sub_1abc(arrayOfInt, true);
-						for (int i4 = 0; i4 < paramCommand.mapWidthMaybe; i4 = (short) (i4 + 1)) {
-							for (int i5 = 0; i5 < paramCommand.mapHeightMaybe; i5 = (short) (i5 + 1)) {
-								paramCommand.var_4782[i4][i5] = ((byte) C_MainCanvas
+						for (int i4 = 0; i4 < paramCommand.mapWidth; i4 = (short) (i4 + 1)) {
+							for (int i5 = 0; i5 < paramCommand.mapHeight; i5 = (short) (i5 + 1)) {
+								paramCommand.mapTilesIds[i4][i5] = ((byte) C_MainCanvas
 										.getRandomArrayItemOrWhat(arrayOfInt));
 								paramCommand.var_47da[i4][i5] = 0;
-								if (sub_11b28(paramCommand.var_4782[i4][i5])) {
+								if (sub_11b28(paramCommand.mapTilesIds[i4][i5])) {
 									int i2 = paramCommand.sub_11bae(i4, i5);
 									byte[] arrayOfByte;
 									(arrayOfByte = new byte[3])[0] = ((byte) i4);
@@ -9355,15 +9355,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 						vecParamDisplayable.copyInto(paramCommand.var_49fa);
 						paramCommand.var_4a02 = new byte[paramCommand.var_4d9a][];
 						localVector.copyInto(paramCommand.var_4a02);
-						paramCommand.var_46d2 = (paramCommand.mapWidthMaybe * 24);
-						paramCommand.var_46da = (paramCommand.mapHeightMaybe * 24);
+						paramCommand.var_46d2 = (paramCommand.mapWidth * 24);
+						paramCommand.var_46da = (paramCommand.mapHeight * 24);
 						paramCommand.var_4e3a = false;
 						paramCommand.var_4e02 = null;
 						paramCommand.var_4de2 = null;
 						paramCommand.var_4dea = null;
 						paramCommand.var_4df2 = null;
 						paramCommand.var_4dfa = null;
-						paramCommand.var_4e0a = null;
+						paramCommand.someUnitHere = null;
 						if (paramCommand.var_45fa == 1) {
 							paramCommand.var_4e12 = 100;
 							paramCommand.var_4a4a = true;
@@ -9535,8 +9535,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 					if (inparamCommand == this.var_506a) {
 						int[] intArrparamCommand = new int[] {
 								100 - this.var_5062.getValue(), 100 };
-						for (int itparamDisplayable = 0; itparamDisplayable < this.mapWidthMaybe; itparamDisplayable++) {
-							for (k = 0; k < this.mapHeightMaybe; k++) {
+						for (int itparamDisplayable = 0; itparamDisplayable < this.mapWidth; itparamDisplayable++) {
+							for (k = 0; k < this.mapHeight; k++) {
 								if (this.var_47da[itparamDisplayable][k] > 0) {
 									this.var_47da[itparamDisplayable][k] = ((byte) C_MainCanvas
 											.getRandomArrayItemOrWhat(intArrparamCommand));
@@ -9613,8 +9613,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 							} else if (theppc[0].equals("occupy")) {
 								if (theppc[1].equals("house")) {
 									if (theppc[2].equals("civilian")) {
-										for (int paramDisplayable = 0; paramDisplayable < this.mapWidthMaybe; paramDisplayable++) {
-											for (k = 0; k < this.mapHeightMaybe; k++) {
+										for (int paramDisplayable = 0; paramDisplayable < this.mapWidth; paramDisplayable++) {
+											for (k = 0; k < this.mapHeight; k++) {
 												if ((getMapTileType(
 														paramDisplayable, k) == 8)
 														&& (sub_11bae(
@@ -9630,8 +9630,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 										//break label3051;
 									}
 									if (theppc[2].equals("all")) {
-										for (int paramDisplayable = 0; paramDisplayable < this.mapWidthMaybe; paramDisplayable++) {
-											for (k = 0; k < this.mapHeightMaybe; k++) {
+										for (int paramDisplayable = 0; paramDisplayable < this.mapWidth; paramDisplayable++) {
+											for (k = 0; k < this.mapHeight; k++) {
 												if (getMapTileType(paramDisplayable,
 														k) == 8) {
 													sub_11ad0(
@@ -9645,8 +9645,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 									}
 								} else if (theppc[1].equals("castle")) {
 									if (theppc[2].equals("civilian")) {
-										for (int paramDisplayable = 0; paramDisplayable < this.mapWidthMaybe; paramDisplayable++) {
-											for (k = 0; k < this.mapHeightMaybe; k++) {
+										for (int paramDisplayable = 0; paramDisplayable < this.mapWidth; paramDisplayable++) {
+											for (k = 0; k < this.mapHeight; k++) {
 												if ((getMapTileType(
 														paramDisplayable, k) == 9)
 														&& (sub_11bae(
@@ -9662,8 +9662,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 										//break label3051;
 									}
 									if (theppc[2].equals("all")) {
-										for (int paramDisplayable = 0; paramDisplayable < this.mapWidthMaybe; paramDisplayable++) {
-											for (k = 0; k < this.mapHeightMaybe; k++) {
+										for (int paramDisplayable = 0; paramDisplayable < this.mapWidth; paramDisplayable++) {
+											for (k = 0; k < this.mapHeight; k++) {
 												if (getMapTileType(paramDisplayable,
 														k) == 9) {
 													sub_11ad0(

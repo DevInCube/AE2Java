@@ -1161,7 +1161,7 @@ public final class E_Menu extends F_StringManager {
 						drawRoundedRect(paramGraphics, sumBool, bool3, bool13, bool5);
 						paramGraphics.setColor(2370117);
 						int bool6;
-						if ((bool6 = bool13 * this.someUnit0.maybeExperience
+						if ((bool6 = bool13 * this.someUnit0.experience
 								/ this.someUnit0.getLevelExperience()) <= 0) {
 							bool6 = 1;
 						}
@@ -1199,13 +1199,13 @@ public final class E_Menu extends F_StringManager {
 								bool12 = 0;
 								if (i4 == 0) {
 									if (this.var_108a == 5) {
-										i3 = this.someUnit0.getSomeAttackValueMaybe1(null);
+										i3 = this.someUnit0.getExtraUnitAttack(null);
 									}
 									str2 = this.someUnit0.attackMin + i3 + "-"
 											+ (this.someUnit0.attackMax + i3);
 								} else if (i4 == 1) {
 									if (this.var_108a == 5) {
-										i3 = this.someUnit0.getSomeUnitResistance(null);
+										i3 = this.someUnit0.getExtraDefence(null);
 									}
 									str2 = "" + (this.someUnit0.defence + i3);
 								} else if (i4 == 2) {

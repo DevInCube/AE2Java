@@ -1,9 +1,11 @@
 package aeii;
 
 import a.a.a.G_Sprite;
+
 import java.io.DataInputStream;
 import java.io.InputStream;
 import java.util.Vector;
+
 import javax.microedition.lcdui.Graphics;
 
 public final class A_Unit extends G_Sprite {
@@ -14,9 +16,9 @@ public final class A_Unit extends G_Sprite {
 	private static G_Game game;
 	public String unitName;
 	public short level;
-	public int maybeExperience;
+	public int experience;
 	public byte[][] chars;
-	private Vector var_e13;
+	private Vector<short[]> somePositionsList;
 	private short var_e1b;
 	private long var_e23;
 	public byte unitType;
@@ -33,7 +35,7 @@ public final class A_Unit extends G_Sprite {
 	public byte var_e83;
 	public byte var_e8b;
 	private short var_e93;
-	private short var_e9b;
+	private short attackValueSome;
 	private short var_ea3;
 	private boolean var_eab;
 	private boolean var_eb3 = true;
@@ -146,61 +148,59 @@ public final class A_Unit extends G_Sprite {
 		this.unitName = F_StringManager.getLangString(index + 93);
 	}
 
-	public final int getSomeAttackValueMaybe1(A_Unit unit) {
-		return getSomeAttackValueMaybe2(unit, this.posX, this.posY);
+	public final int getExtraUnitAttack(A_Unit unit) {
+		return getExtraAttackOnPos(unit, this.posX, this.posY);
 	}
 
-	private int getSomeAttackValueMaybe2(A_Unit unit, int paramInt1, int paramInt2) {
-		int someAttackValue = this.var_e9b;
+	private int getExtraAttackOnPos(A_Unit unit, int pX, int pY) {
+		int someAttackValue = this.attackValueSome;
 		if (unit != null) {
-			if ((hasProperty((short) 64)) && (unit.hasProperty((short) 1))) {
+			if ((hasProperty((short) 64)) && (unit.hasProperty((short) 1))) { // archer and dragon
 				someAttackValue += 15;
 			}
-			if ((this.unitType == 4) && (unit.unitType == 10)) { // this Wisp
-																	// unit =
-																	// skeleton
+			if ((this.unitType == 4) && (unit.unitType == 10)) { // Wisp and skeleton
 				someAttackValue += 15;
 			}
 		}
 		if ((hasProperty((short) 2)) && (game
-				.getMapTileType(paramInt1, paramInt2) == 5)) {
+				.getMapTileType(pX, pY) == 5)) { //lizard & 5 - water type
 			someAttackValue += 10;
 		}
-		if (game.var_4782[paramInt1][paramInt2] == 34) {
+		if (game.mapTilesIds[pX][pY] == 34) { //ancient ruins head
 			someAttackValue += 25;
 		}
 		return someAttackValue;
 	}
 
-	public final int getSomeUnitResistance(A_Unit unit) {
-		return getSomeUnitResistance2(this.posX, this.posY);
+	public final int getExtraDefence(A_Unit unit) {
+		return getExtraDefenceOnPos(this.posX, this.posY);
 	}
 
-	private int getSomeUnitResistance2(int x, int y) {
+	private int getExtraDefenceOnPos(int x, int y) {
 		int tileType = game.getMapTileType(x, y);
 		int resist = this.var_ea3 + G_Game.tilesExtraDefence[tileType];
-		if ((hasProperty((short) 2)) && (tileType == 5)) {
+		if ((hasProperty((short) 2)) && (tileType == 5)) {  //lizard & 5 - water type
 			resist += 15;
 		}
-		if (game.var_4782[x][y] == 34) {
+		if (game.mapTilesIds[x][y] == 34) {  //ancient ruins head
 			resist += 15;
 		}
 		return resist;
 	}
 
-	public final int getDamageWhenAttack(A_Unit ins) {
+	public final int getDamageWhenAttack(A_Unit otherUnit) {
 		int randomAttack = C_MainCanvas
 				.getRandomWithin(this.attackMin, this.attackMax);
-		int attackVal = randomAttack + getSomeAttackValueMaybe1(ins);
-		int defence = ins.defence + ins.getSomeUnitResistance(this);
+		int attackVal = randomAttack + getExtraUnitAttack(otherUnit);
+		int defence = otherUnit.defence + otherUnit.getExtraDefence(this);
 		int damageDone = (attackVal - defence) * this.health / 100;
 		if (damageDone < 0) {
 			damageDone = 0;
-		} else if (damageDone > ins.health) {
-			damageDone = ins.health;
+		} else if (damageDone > otherUnit.health) {
+			damageDone = otherUnit.health;
 		}
-		ins.health -= damageDone;
-		this.maybeExperience += ins.getSomeExperienceKoef() * damageDone;
+		otherUnit.health -= damageDone;
+		this.experience += otherUnit.getSomeExperienceKoef() * damageDone;
 		return damageDone;
 	}
 
@@ -214,8 +214,8 @@ public final class A_Unit extends G_Sprite {
 
 	public final boolean unitGotNewLevel() {
 		int levelExp = getLevelExperience();
-		if (this.maybeExperience >= levelExp) {
-			this.maybeExperience -= levelExp;
+		if (this.experience >= levelExp) {
+			this.experience -= levelExp;
 			setUnitLevel((byte) (this.level + 1));
 			return true;
 		}
@@ -242,14 +242,14 @@ public final class A_Unit extends G_Sprite {
 
 	public final void sub_160c() {
 		this.var_e93 = 0;
-		this.var_e9b = 0;
+		this.attackValueSome = 0;
 		this.var_ea3 = 0;
 		if ((this.var_e8b & 0x1) != 0) {
-			this.var_e9b = ((short) (this.var_e9b - 10));
+			this.attackValueSome = ((short) (this.attackValueSome - 10));
 			this.var_ea3 = ((short) (this.var_ea3 - 10));
 		}
 		if ((this.var_e8b & 0x2) != 0) {
-			this.var_e9b = ((short) (this.var_e9b + 10));
+			this.attackValueSome = ((short) (this.attackValueSome + 10));
 		}
 	}
 
@@ -270,7 +270,7 @@ public final class A_Unit extends G_Sprite {
 	}
 
 	public final int sub_1713(int paramInt1, int paramInt2, A_Unit unit) {
-		return (this.attackMin + this.attackMax + this.defence + getSomeAttackValueMaybe2(unit, paramInt1, paramInt2) + getSomeUnitResistance2(paramInt1, paramInt2)) * this.health / 100;
+		return (this.attackMin + this.attackMax + this.defence + getExtraAttackOnPos(unit, paramInt1, paramInt2) + getExtraDefenceOnPos(paramInt1, paramInt2)) * this.health / 100;
 	}
 
 	public final void setAttackMaskForPosition(byte[][] inAttackMask, int inX, int inY) {
@@ -285,12 +285,12 @@ public final class A_Unit extends G_Sprite {
 			minY = 0;
 		}
 		int maxX = inX + attackRangeMax;
-		if (maxX >= game.mapWidthMaybe) {
-			maxX = game.mapWidthMaybe - 1;
+		if (maxX >= game.mapWidth) {
+			maxX = game.mapWidth - 1;
 		}
 		int maxY = inY + attackRangeMax;
-		if (maxY >= game.mapHeightMaybe) {
-			maxY = game.mapHeightMaybe - 1;
+		if (maxY >= game.mapHeight) {
+			maxY = game.mapHeight - 1;
 		}
 		for (int x = minX; x <= maxX; x++) {
 			for (int y = minY; y <= maxY; y++) {
@@ -303,13 +303,13 @@ public final class A_Unit extends G_Sprite {
 	}
 
 	public final void sub_18dd(byte[][] attackMask) {
-		if (hasProperty((short) 512)) {
+		if (hasProperty((short) 512)) { //destroy village
 			setAttackMaskForPosition(attackMask, this.posX, this.posY);
 			return;
 		}
-		sub_20f8(attackMask);
-		for (int i = 0; i < game.mapWidthMaybe; i++) {
-			for (int j = 0; j < game.mapHeightMaybe; j++) {
+		fillWhereUnitCanMove(attackMask);
+		for (int i = 0; i < game.mapWidth; i++) {
+			for (int j = 0; j < game.mapHeight; j++) {
 				if ((attackMask[i][j] > 0) && (attackMask[i][j] != 127)) {
 					setAttackMaskForPosition(attackMask, i, j);
 				}
@@ -324,7 +324,7 @@ public final class A_Unit extends G_Sprite {
 	}
 
 	public final A_Unit[] getUnitsInAttackRange(int inX, int inY, int inAttRangeMin, int inAttRangeMax, byte paramByte) {
-		Vector units = new Vector();
+		Vector<A_Unit> units = new Vector<A_Unit>();
 		int minX = inX - inAttRangeMax;
 		if ((minX) < 0) {
 			minX = 0;
@@ -334,12 +334,12 @@ public final class A_Unit extends G_Sprite {
 			minY = 0;
 		}
 		int maxX = inX + inAttRangeMax;
-		if ((maxX) >= game.mapWidthMaybe) {
-			maxX = game.mapWidthMaybe - 1;
+		if ((maxX) >= game.mapWidth) {
+			maxX = game.mapWidth - 1;
 		}
 		int maxY = inY + inAttRangeMax;
-		if ((maxY) >= game.mapHeightMaybe) {
-			maxY = game.mapHeightMaybe - 1;
+		if ((maxY) >= game.mapHeight) {
+			maxY = game.mapHeight - 1;
 		}
 		for (int x = minX; x <= maxX; x++) {
 			for (int y = minY; y <= maxY; y++) {
@@ -354,7 +354,7 @@ public final class A_Unit extends G_Sprite {
 							}
 						} else if ((this.unitType == 7) && (game
 								.getMapTileType(x, y) == 8) && (G_Game
-								.sub_11b75(game.var_4782[x][y])) && (!game
+								.sub_11b75(game.mapTilesIds[x][y])) && (!game
 								.sub_11c55(x, y, game.var_483a[this.teamId]))) {
 							A_Unit fakeHouseUnit = createUnitWithBool((byte) 0, (byte) 0, x, y, false);
 							fakeHouseUnit.unitType = -1;
@@ -378,24 +378,23 @@ public final class A_Unit extends G_Sprite {
 		return units2;
 	}
 
-	public final void sub_1c9f(int paramInt1, int paramInt2, boolean paramBoolean) {
-		sub_1cc2(paramInt1, paramInt2, paramBoolean, false);
+	public final void fillAttOrMovePositions(int inX, int inY, boolean paramBoolean) {
+		fillAttackAorMovePositions(inX, inY, paramBoolean, false);
 	}
 
-	public final void sub_1cc2(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2) {
+	public final void fillAttackAorMovePositions(int inX, int inY, boolean paramBoolean1, boolean paramBoolean2) {
 		if (paramBoolean1) {
-			this.var_e13 = sub_1ef5(this.posX, this.posY, paramInt1, paramInt2);
+			this.somePositionsList = sub_1ef5(this.posX, this.posY, inX, inY);
 		} else {
 			if ((paramBoolean2) && (game
-					.getUnitAtPos(paramInt1, paramInt2, (byte) 0) != null)) {
+					.getUnitAtPos(inX, inY, (byte) 0) != null)) {
 				paramBoolean2 = false;
-				int it;
-				for (it = paramInt1 - 1; it <= paramInt1 + 1; it++) {
-					for (int jt = paramInt2 - 1; jt <= paramInt2 + 1; jt++) {
-						if (((it == paramInt1) && (jt == paramInt2)) || (((it == paramInt1) || (jt == paramInt2)) && (game
+				for (int it = inX - 1; it <= inX + 1; it++) {
+					for (int jt = inY - 1; jt <= inY + 1; jt++) {
+						if (((it == inX) && (jt == inY)) || (((it == inX) || (jt == inY)) && (game
 								.getUnitAtPos(it, jt, (byte) 0) == null))) {
-							paramInt1 = it;
-							paramInt2 = jt;
+							inX = it;
+							inY = jt;
 							paramBoolean2 = true;
 							break;
 						}
@@ -405,41 +404,42 @@ public final class A_Unit extends G_Sprite {
 					}
 				}
 			}
-			this.var_e13 = new Vector();
-			short[] shorts;
-			shorts = new short[] { this.posX, this.posY };
-			this.var_e13.addElement(shorts);
-			short i = this.posX;
-			int iInt;
-			if ((iInt = Math.abs(paramInt1 - this.posX)) > 0) {
-				int j = (paramInt1 - this.posX) / iInt;
-				for (int p2 = 0; p2 < iInt; p2++) {
-					short i2 = (short) (i + j);
-					short[] arrayOfShort1 = { i2, this.posY };
-					this.var_e13.addElement(arrayOfShort1);
+			this.somePositionsList = new Vector<short[]>();
+			short[] position = new short[] { this.posX, this.posY };
+			this.somePositionsList.addElement(position);
+			short x = this.posX;
+			int dist = Math.abs(inX - this.posX);
+			if (dist > 0) {
+				int directionX = (inX - this.posX) / dist;
+				for (int p2 = 0; p2 < dist; p2++) {
+					short xx = (short) (x + directionX);
+					short[] pos = { xx, this.posY };
+					this.somePositionsList.addElement(pos);
 				}
 			}
-			int j = this.posY;
-			if ((iInt = Math.abs(paramInt2 - this.posY)) > 0) {
-				int int2 = (paramInt2 - this.posY) / iInt;
-				for (int bool1 = 0; bool1 < iInt; bool1++) {
-					short j2 = (short) (j + int2);
-					short[] arrayOfShort2 = { i, j2 };
-					this.var_e13.addElement(arrayOfShort2);
+			int y = this.posY;
+			dist = Math.abs(inY - this.posY);
+			if (dist > 0) {
+				int directionY = (inY - this.posY) / dist;
+				for (int bool1 = 0; bool1 < dist; bool1++) {
+					short yy = (short) (y + directionY);
+					short[] pos = { x, yy };
+					this.somePositionsList.addElement(pos);
 				}
 			}
 		}
-		this.var_e4b = paramInt1;
-		this.var_e53 = paramInt2;
+		this.var_e4b = inX;
+		this.var_e53 = inY;
 		this.var_e1b = 1;
 		this.var_e83 = 1;
 	}
 
-	public final Vector sub_1ef5(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
-		Vector localVector = null;
-		short[] arrayOfShort = { (short) paramInt3, (short) paramInt4 };
-		if ((paramInt1 == paramInt3) && (paramInt2 == paramInt4)) {
-			(localVector = new Vector()).addElement(arrayOfShort);
+	public final Vector<short[]> sub_1ef5(int inX, int inY, int paramInt3, int paramInt4) {
+		Vector<short[]> localVector = null;
+		short[] position = { (short) paramInt3, (short) paramInt4 };
+		if ((inX == paramInt3) && (inY == paramInt4)) {
+			localVector = new Vector<short[]>();
+			localVector.addElement(position);
 		} else {
 			int i = 0;
 			int j = 0;
@@ -448,79 +448,79 @@ public final class A_Unit extends G_Sprite {
 			if (paramInt4 > 0) {
 				i = game.var_47da[paramInt3][(paramInt4 - 1)];
 			}
-			if (paramInt4 < game.mapHeightMaybe - 1) {
+			if (paramInt4 < game.mapHeight - 1) {
 				j = game.var_47da[paramInt3][(paramInt4 + 1)];
 			}
 			if (paramInt3 > 0) {
 				k = game.var_47da[(paramInt3 - 1)][paramInt4];
 			}
-			if (paramInt3 < game.mapWidthMaybe - 1) {
+			if (paramInt3 < game.mapWidth - 1) {
 				m = game.var_47da[(paramInt3 + 1)][paramInt4];
 			}
 			int n;
 			if ((n = Math.max(Math.max(i, j), Math.max(k, m))) == i) {
-				localVector = sub_1ef5(paramInt1, paramInt2, paramInt3, paramInt4 - 1);
+				localVector = sub_1ef5(inX, inY, paramInt3, paramInt4 - 1);
 			} else if (n == j) {
-				localVector = sub_1ef5(paramInt1, paramInt2, paramInt3, paramInt4 + 1);
+				localVector = sub_1ef5(inX, inY, paramInt3, paramInt4 + 1);
 			} else if (n == k) {
-				localVector = sub_1ef5(paramInt1, paramInt2, paramInt3 - 1, paramInt4);
+				localVector = sub_1ef5(inX, inY, paramInt3 - 1, paramInt4);
 			} else if (n == m) {
-				localVector = sub_1ef5(paramInt1, paramInt2, paramInt3 + 1, paramInt4);
+				localVector = sub_1ef5(inX, inY, paramInt3 + 1, paramInt4);
 			}
-			localVector.addElement(arrayOfShort);
+			localVector.addElement(position);
 		}
 		return localVector;
 	}
 
-	public final void sub_20f8(byte[][] paramArrayOfByte) {
-		sub_212e(paramArrayOfByte, this.posX, this.posY, this.moveRange, -1, this.unitType, this.teamId, false);
+	public final void fillWhereUnitCanMove(byte[][] bytes) {
+		canMoveSomeWhereMB(bytes, this.posX, this.posY, this.moveRange, -1, this.unitType, this.teamId, false);
 	}
 
-	public static final boolean sub_212e(byte[][] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte paramByte1, byte paramByte2, boolean paramBoolean) {
-		if (paramInt3 > paramArrayOfByte[paramInt1][paramInt2]) {
-			paramArrayOfByte[paramInt1][paramInt2] = ((byte) paramInt3);
+	public static final boolean canMoveSomeWhereMB(byte[][] bytes, int inX, int inY, int moveRange, int cameFromDir, byte unitType, byte unitTeamId, boolean paramBoolean) {
+		if (moveRange > bytes[inX][inY]) {
+			bytes[inX][inY] = ((byte) moveRange);
 			if ((paramBoolean) && (game
-					.getUnitAtPos(paramInt1, paramInt2, (byte) 0) == null)) {
+					.getUnitAtPos(inX, inY, (byte) 0) == null)) {
 				return true;
 			}
-			int i;
-			if ((paramInt4 != 1) && ((i = paramInt3 - sub_22a9(paramInt1, paramInt2 - 1, paramByte1, paramByte2)) >= 0) && (sub_212e(paramArrayOfByte, paramInt1, paramInt2 - 1, i, 2, paramByte1, paramByte2, paramBoolean)) && (paramBoolean)) {
+			int newMoveRange;
+			if ((cameFromDir != 1) && ((newMoveRange = moveRange - getPosMoveCost(inX, inY - 1, unitType, unitTeamId)) >= 0) && (canMoveSomeWhereMB(bytes, inX, inY - 1, newMoveRange, 2, unitType, unitTeamId, paramBoolean)) && (paramBoolean)) {
 				return true;
 			}
-			if ((paramInt4 != 2) && ((i = paramInt3 - sub_22a9(paramInt1, paramInt2 + 1, paramByte1, paramByte2)) >= 0) && (sub_212e(paramArrayOfByte, paramInt1, paramInt2 + 1, i, 1, paramByte1, paramByte2, paramBoolean)) && (paramBoolean)) {
+			if ((cameFromDir != 2) && ((newMoveRange = moveRange - getPosMoveCost(inX, inY + 1, unitType, unitTeamId)) >= 0) && (canMoveSomeWhereMB(bytes, inX, inY + 1, newMoveRange, 1, unitType, unitTeamId, paramBoolean)) && (paramBoolean)) {
 				return true;
 			}
-			if ((paramInt4 != 4) && ((i = paramInt3 - sub_22a9(paramInt1 - 1, paramInt2, paramByte1, paramByte2)) >= 0) && (sub_212e(paramArrayOfByte, paramInt1 - 1, paramInt2, i, 8, paramByte1, paramByte2, paramBoolean)) && (paramBoolean)) {
+			if ((cameFromDir != 4) && ((newMoveRange = moveRange - getPosMoveCost(inX - 1, inY, unitType, unitTeamId)) >= 0) && (canMoveSomeWhereMB(bytes, inX - 1, inY, newMoveRange, 8, unitType, unitTeamId, paramBoolean)) && (paramBoolean)) {
 				return true;
 			}
-			return (paramInt4 != 8) && ((i = paramInt3 - sub_22a9(paramInt1 + 1, paramInt2, paramByte1, paramByte2)) >= 0) && (sub_212e(paramArrayOfByte, paramInt1 + 1, paramInt2, i, 4, paramByte1, paramByte2, paramBoolean)) && (paramBoolean);
+			return (cameFromDir != 8) && ((newMoveRange = moveRange - getPosMoveCost(inX + 1, inY, unitType, unitTeamId)) >= 0) && (canMoveSomeWhereMB(bytes, inX + 1, inY, newMoveRange, 4, unitType, unitTeamId, paramBoolean)) && (paramBoolean);
 		}
 		return false;
 	}
 
-	private static int sub_22a9(int paramInt1, int paramInt2, byte paramByte1, byte paramByte2) {
-		if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 < game.mapWidthMaybe) && (paramInt2 < game.mapHeightMaybe)) {
-			A_Unit localClass_a_0260;
-			if (((localClass_a_0260 = game
-					.getUnitAtPos(paramInt1, paramInt2, (byte) 0)) != null) && (game.var_483a[localClass_a_0260.teamId] != game.var_483a[paramByte2])) {
-				return 1000;
+	private static int getPosMoveCost(int inX, int inY, byte unitType, byte unitTeamId) {
+		if ((inX >= 0) && (inY >= 0) && (inX < game.mapWidth) && (inY < game.mapHeight)) {
+			A_Unit unitAtPos = game.getUnitAtPos(inX, inY, (byte) 0);
+			boolean areEnemies = (game.var_483a[unitAtPos.teamId] != game.var_483a[unitTeamId]);
+			if ((unitAtPos != null) && areEnemies) {
+				return 1000; //cant move through enemies
 			}
-			paramInt1 = game.getMapTileType(paramInt1, paramInt2);
-			if (paramByte1 == 11) {
-				if (paramInt1 == 4) {
-					return 1000;
+			int mapTileType = game.getMapTileType(inX, inY);
+			if (unitType == 11) { // crystal
+				if (mapTileType == 4) { // mountain
+					return 1000; //crystal cant cross mountain
 				}
 			} else {
-				if (unitTypeHasProperty(paramByte1, (short) 1)) {
-					return 1;
+				if (unitTypeHasProperty(unitType, (short) 1)) { // flying
+					return 1; 
 				}
-				if ((unitTypeHasProperty(paramByte1, (short) 2)) && (paramInt1 == 5)) {
+				if ((unitTypeHasProperty(unitType, (short) 2)) && (mapTileType == 5)) { // lizard and water
 					return 1;
 				}
 			}
-			return G_Game.tilesTypes[paramInt1];
+			return G_Game.tilesTypes[mapTileType];
 		}
-		return 10000;
+		return 10000; // cant move outside map
 	}
 
 	public final void sub_238a() {
@@ -532,50 +532,50 @@ public final class A_Unit extends G_Sprite {
 			}
 		}
 		if (this.var_e83 == 1) {
-			if (this.var_e1b >= this.var_e13.size()) {
+			if (this.var_e1b >= this.somePositionsList.size()) {
 				this.var_e83 = 0;
 				this.posX = ((short) (this.pixelX / 24));
 				this.posY = ((short) (this.pixelY / 24));
-				this.var_e13 = null;
+				this.somePositionsList = null;
 				this.var_e1b = 0;
 			} else {
 				if ((this.someUnit0 != null) && (this.pixelX % 24 == 0) && (this.pixelY % 24 == 0)) {
-					this.someUnit0.sub_1c9f(this.posX, this.posY, false);
+					this.someUnit0.fillAttOrMovePositions(this.posX, this.posY, false);
 				}
-				short[] arrayOfShort;
-				int i = (arrayOfShort = (short[]) this.var_e13
-						.elementAt(this.var_e1b))[0] * 24;
+				short[] arrayOfShort = this.somePositionsList
+						.elementAt(this.var_e1b);
+				int i = arrayOfShort[0] * 24;
 				int j = arrayOfShort[1] * 24;
-				G_Sprite localClass_g_2517 = null;
+				G_Sprite bSmokeSprite = null;
 				if ((this.someUnit0 == null) && (++this.var_edb >= 24 / var_de3 / 2)) {
-					localClass_g_2517 = game
+					bSmokeSprite = game
 							.showSpriteOnMap(game.bSmokeSprite, this.pixelX, this.pixelY, 0, 0, 1, C_MainCanvas
 									.getRandomWithin(1, 4) * 50);
 					this.var_edb = 0;
 				}
 				if (i < this.pixelX) {
 					this.pixelX -= var_de3;
-					if (localClass_g_2517 != null) {
-						localClass_g_2517
-								.setPixelPosition(this.pixelX + this.spriteFrameWidth, this.pixelY + this.spriteFrameHeight - localClass_g_2517.spriteFrameHeight);
+					if (bSmokeSprite != null) {
+						bSmokeSprite
+								.setPixelPosition(this.pixelX + this.spriteFrameWidth, this.pixelY + this.spriteFrameHeight - bSmokeSprite.spriteFrameHeight);
 					}
 				} else if (i > this.pixelX) {
 					this.pixelX += var_de3;
-					if (localClass_g_2517 != null) {
-						localClass_g_2517
-								.setPixelPosition(this.pixelX - localClass_g_2517.spriteFrameWidth, this.pixelY + this.spriteFrameHeight - localClass_g_2517.spriteFrameHeight);
+					if (bSmokeSprite != null) {
+						bSmokeSprite
+								.setPixelPosition(this.pixelX - bSmokeSprite.spriteFrameWidth, this.pixelY + this.spriteFrameHeight - bSmokeSprite.spriteFrameHeight);
 					}
 				} else if (j < this.pixelY) {
 					this.pixelY -= var_de3;
-					if (localClass_g_2517 != null) {
-						localClass_g_2517
-								.setPixelPosition(this.pixelX + (this.spriteFrameWidth - localClass_g_2517.spriteFrameWidth) / 2, this.pixelY + this.spriteFrameHeight);
+					if (bSmokeSprite != null) {
+						bSmokeSprite
+								.setPixelPosition(this.pixelX + (this.spriteFrameWidth - bSmokeSprite.spriteFrameWidth) / 2, this.pixelY + this.spriteFrameHeight);
 					}
 				} else if (j > this.pixelY) {
 					this.pixelY += var_de3;
-					if (localClass_g_2517 != null) {
-						localClass_g_2517
-								.setPixelPosition(this.pixelX + (this.spriteFrameWidth - localClass_g_2517.spriteFrameWidth) / 2, this.pixelY - localClass_g_2517.spriteFrameHeight);
+					if (bSmokeSprite != null) {
+						bSmokeSprite
+								.setPixelPosition(this.pixelX + (this.spriteFrameWidth - bSmokeSprite.spriteFrameWidth) / 2, this.pixelY - bSmokeSprite.spriteFrameHeight);
 					}
 				}
 				if ((this.pixelX == i) && (this.pixelY == j)) {
@@ -615,7 +615,7 @@ public final class A_Unit extends G_Sprite {
 				game.showSpriteOnMap(game.sparkSprite, unitsInAttRange[i].pixelX, unitsInAttRange[i].pixelY, 0, 0, 1, 50);
 			}
 		}
-		game.var_4e0a = this;
+		game.someUnitHere = this;
 	}
 
 	public static final A_Unit[] sub_27b7(byte paramByte) {
