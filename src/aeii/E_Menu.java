@@ -28,7 +28,7 @@ public final class E_Menu extends F_StringManager {
 	private int var_1072;
 	private int var_107a;
 	private int var_1082;
-	public byte var_108a;
+	public byte typeMB;
 	private int var_1092;
 	private boolean var_109a = false;
 	private boolean var_10a2 = false;
@@ -41,7 +41,7 @@ public final class E_Menu extends F_StringManager {
 	private int var_10da;
 	private int var_10e2;
 	private String[] var_10ea;
-	public int var_10f2 = -1;
+	public int showTime = -1;
 	private boolean var_10fa = true;
 	private int var_1102;
 	public A_Unit someUnit0;
@@ -85,50 +85,17 @@ public final class E_Menu extends F_StringManager {
 	private int someHeightMb;
 	private int var_1242;
 	private byte var_124a;
-	private G_Sprite someSprite0;
-
-	public final void sub_1272() {
-		this.var_1232 = 0;
-		if (this.threeSmallSparksSprites != null) {
-			setSmallSparksRandomPosition();
-		}
-		this.var_1132 = 4;
-		this.var_109a = true;
-		this.var_10a2 = true;
-		if (theGame != null) {
-			theGame.someUnknownMethod();
-		}
-		if (this.eMenu != null) {
-			this.eMenu.var_109a = true;
-		}
-		if (this.var_108a == 15) {
-			for (int i = 0; i < this.var_1142.size(); i++) {
-				E_Menu localClass_e_0134;
-				(localClass_e_0134 = (E_Menu) this.var_1142.elementAt(i))
-						.sub_1272();
-				localClass_e_0134.var_10a2 = false;
-			}
-		}
-	}
-
-	public final void sub_132e(byte paramByte, boolean paramBoolean) {
-		this.var_fe2[paramByte] = paramBoolean;
-	}
-
-	public final void sub_1350(F_StringManager paramClass_f_0145) {
-		this.stringManager = paramClass_f_0145;
-		this.var_fe2[1] = (boolean) (paramClass_f_0145 != null ? true : false);
-	}
-
-	public E_Menu(byte paramByte, int paramInt) {
-		this.var_108a = paramByte;
+	private G_Sprite bigCircleSprite;
+	
+	public E_Menu(byte typeMB, int paramInt) {
+		this.typeMB = typeMB;
 		this.var_1092 = paramInt;
-		if (paramByte == 15) {
+		if (typeMB == 15) {
 			this.var_11e2 = (theGame.someCanHeight - theGame.buttonsSprite.spriteFrameHeight);
 			this.var_10fa = true;
-		} else if ((paramByte != 0) && (paramByte != 11)) {
-			if (paramByte == 3) {
-				this.someSprite0 = theGame.bigCircleSprite;
+		} else if ((typeMB != 0) && (typeMB != 11)) {
+			if (typeMB == 3) {
+				this.bigCircleSprite = theGame.bigCircleSprite;
 				initSmallSparks();
 				this.var_10fa = false;
 				this.var_1152 = true;
@@ -154,8 +121,8 @@ public final class E_Menu extends F_StringManager {
 				this.var_104a = (pInt / this.var_10d2);
 				this.var_1122 = ((pInt - this.var_104a * this.var_10d2) / 2);
 				this.var_1002 = 2;
-			} else if ((paramByte != 2) && (paramByte != 5)) {
-				if ((paramByte != 7) && (paramByte == 8)) {
+			} else if ((typeMB != 2) && (typeMB != 5)) {
+				if ((typeMB != 7) && (typeMB == 8)) {
 					this.var_100a = 8;
 					this.var_fe2[0] = true;
 				}
@@ -163,7 +130,7 @@ public final class E_Menu extends F_StringManager {
 				this.var_10fa = false;
 				this.mapPrevPixelHeight = (5 + var_ff2 + 24 + var_ffa
 						+ (theGame.smallCircleSprite.spriteFrameHeight << 1) + var_ff2 + var_ff2 + 1);
-				if (paramByte == 5) {
+				if (typeMB == 5) {
 					this.mapPrevPixelHeight += var_ffa + C_MainCanvas.fontBaselinePos;
 					this.someUnit0 = theGame.getUnitAtPos(theGame.cursorPosX,
 							theGame.cursorPosY, (byte) 0);
@@ -178,6 +145,38 @@ public final class E_Menu extends F_StringManager {
 			this.var_fe2[1] = true;
 		}
 		this.var_109a = true;
+	}
+
+	public final void sub_1272() {
+		this.var_1232 = 0;
+		if (this.threeSmallSparksSprites != null) {
+			setSmallSparksRandomPosition();
+		}
+		this.var_1132 = 4;
+		this.var_109a = true;
+		this.var_10a2 = true;
+		if (theGame != null) {
+			theGame.someUnknownMethod();
+		}
+		if (this.eMenu != null) {
+			this.eMenu.var_109a = true;
+		}
+		if (this.typeMB == 15) {
+			for (int i = 0; i < this.var_1142.size(); i++) {
+				E_Menu mMenu = (E_Menu) this.var_1142.elementAt(i);
+				mMenu.sub_1272();
+				mMenu.var_10a2 = false;
+			}
+		}
+	}
+
+	public final void sub_132e(byte paramByte, boolean paramBoolean) {
+		this.var_fe2[paramByte] = paramBoolean;
+	}
+
+	public final void sub_1350(F_StringManager paramClass_f_0145) {
+		this.stringManager = paramClass_f_0145;
+		this.var_fe2[1] = (boolean) (paramClass_f_0145 != null ? true : false);
 	}
 
 	public final E_Menu sub_165b(String paramString) {
@@ -247,7 +246,7 @@ public final class E_Menu extends F_StringManager {
 		} else {
 			this.maxSmallTilesInViewPortHeight = this.mapHeight;
 		}
-		this.var_108a = 8;
+		this.typeMB = 8;
 	}
 
 	public final void sub_1930(int paramInt1, int paramInt2, int paramInt3) {
@@ -281,7 +280,7 @@ public final class E_Menu extends F_StringManager {
 				C_MainCanvas.theFont);
 		sub_1a89(null, this.var_101a, paramInt1, paramInt2);
 		this.var_113a = false;
-		this.var_108a = 7;
+		this.typeMB = 7;
 	}
 
 	private void sub_1a89(String paramString, String[] paramArrayOfString,
@@ -338,7 +337,7 @@ public final class E_Menu extends F_StringManager {
 		} else {
 			this.var_1122 = ((someInteger - this.var_10d2 * this.var_104a) / 2);
 		}
-		this.var_108a = 10;
+		this.typeMB = 10;
 		this.var_1002 = 2;
 	}
 
@@ -374,8 +373,8 @@ public final class E_Menu extends F_StringManager {
 		for (int i = 0; i < this.threeSmallSparksSprites.length; i++) {
 			this.threeSmallSparksSprites[i].var_c18 = true;
 			this.threeSmallSparksSprites[i].setPixelPosition(
-					C_MainCanvas.getRandomMax(this.someSprite0.spriteFrameWidth),
-					C_MainCanvas.getRandomMax(this.someSprite0.spriteFrameHeight));
+					C_MainCanvas.getRandomMax(this.bigCircleSprite.spriteFrameWidth),
+					C_MainCanvas.getRandomMax(this.bigCircleSprite.spriteFrameHeight));
 			this.threeSmallSparksSprites[i].setCurrentFrameIndex(C_MainCanvas.getRandomMax(this.threeSmallSparksSprites[i]
 					.getImagesCount()));
 		}
@@ -406,7 +405,7 @@ public final class E_Menu extends F_StringManager {
 		}
 		this.mapPrevPixelHeight = this.someHeightMb;
 		sub_1930(paramInt1, paramInt2, paramInt3);
-		this.var_108a = 13;
+		this.typeMB = 13;
 		this.var_1002 = 2;
 	}
 
@@ -441,7 +440,7 @@ public final class E_Menu extends F_StringManager {
 				this.mapPrevPixelHeight += 5;
 			}
 		}
-		this.var_108a = 14;
+		this.typeMB = 14;
 		this.var_1002 = 2;
 	}
 
@@ -476,7 +475,7 @@ public final class E_Menu extends F_StringManager {
 		if ((this.mapPrevPixelWidth < this.canvasWidth) && (this.var_113a)) {
 			this.mapPrevPixelWidth += theGame.arrowSprite.spriteFrameWidth;
 		}
-		this.var_108a = 11;
+		this.typeMB = 11;
 		sub_1930(paramInt1, paramInt2, paramInt5);
 	}
 
@@ -487,10 +486,10 @@ public final class E_Menu extends F_StringManager {
 		this.var_101a = inStrings;
 		this.someImages = inIMage;
 		this.var_1062 = this.var_101a.length;
-		this.someSprite0 = theGame.bigCircleSprite;
+		this.bigCircleSprite = theGame.bigCircleSprite;
 		this.var_10b2 = (C_MainCanvas.var_1767 - C_MainCanvas.fontBaselinePos);
 		this.var_1092 = 15;
-		this.someHeightMb = this.someSprite0.spriteFrameWidth;
+		this.someHeightMb = this.bigCircleSprite.spriteFrameWidth;
 		this.var_1242 = (this.someHeightMb >> 1);
 		initSmallSparks();
 		this.var_11f2 = new short[this.var_1062];
@@ -503,19 +502,19 @@ public final class E_Menu extends F_StringManager {
 		if (this.var_1062 == 1) {
 			this.var_1202 = 0;
 		} else if (paramInt3 <= 0) {
-			this.var_1202 = ((this.someSprite0.spriteFrameWidth << 10) / (2 * F_StringManager
+			this.var_1202 = ((this.bigCircleSprite.spriteFrameWidth << 10) / (2 * F_StringManager
 					.sub_f0f(45)));
-			this.var_120a = (this.var_1202 + this.someSprite0.spriteFrameWidth / 2);
+			this.var_120a = (this.var_1202 + this.bigCircleSprite.spriteFrameWidth / 2);
 			paramInt3 = (this.var_120a << 1) + C_MainCanvas.var_1767 + 2;
 		} else {
-			int someInt = (this.someSprite0.spriteFrameWidth << 10)
+			int someInt = (this.bigCircleSprite.spriteFrameWidth << 10)
 					/ F_StringManager.sub_f0f(this.var_1222 / 2)
-					+ this.someSprite0.spriteFrameHeight / 2;
+					+ this.bigCircleSprite.spriteFrameHeight / 2;
 			this.var_120a = ((paramInt3 - C_MainCanvas.var_1767) / 2 - 2);
 			if (this.var_120a > someInt) {
 				this.var_120a = someInt;
 			}
-			this.var_1202 = (this.var_120a - this.someSprite0.spriteFrameHeight / 2);
+			this.var_1202 = (this.var_120a - this.bigCircleSprite.spriteFrameHeight / 2);
 		}
 		this.var_11fa = 0;
 		this.mapPrevPixelWidth = (this.var_120a << 1);
@@ -547,8 +546,8 @@ public final class E_Menu extends F_StringManager {
 
 	private void sub_24ea(boolean paramBoolean) {
 		if (this.var_1002 != 3) {
-			if ((this.var_108a == 10) && (this.var_10f2 > 0)
-					&& (this.var_10f2 <= 250)) {
+			if ((this.typeMB == 10) && (this.showTime > 0)
+					&& (this.showTime <= 250)) {
 				this.var_1132 += 1;
 				this.var_109a = true;
 			} else if (this.var_1132 > 0) {
@@ -565,7 +564,7 @@ public final class E_Menu extends F_StringManager {
 					F_StringManager.mainCanvas.releaseGameAction(G_Game.var_4602);
 					F_StringManager.mainCanvas.releaseGameAction(16);
 				}
-				if ((this.var_108a == 0) || (this.var_108a == 3)) {
+				if ((this.typeMB == 0) || (this.typeMB == 3)) {
 					for (int i = 0; i < this.threeSmallSparksSprites.length; i++) {
 						if (this.threeSmallSparksSprites[i].currentFrameIndex == this.threeSmallSparksSprites[i]
 								.getImagesCount() - 1) {
@@ -573,10 +572,10 @@ public final class E_Menu extends F_StringManager {
 								this.threeSmallSparksSprites[i]
 										.setPixelPosition(
 												C_MainCanvas
-														.getRandomMax(this.someSprite0.spriteFrameWidth
+														.getRandomMax(this.bigCircleSprite.spriteFrameWidth
 																- this.threeSmallSparksSprites[i].spriteFrameWidth),
 												C_MainCanvas
-														.getRandomMax(this.someSprite0.spriteFrameHeight
+														.getRandomMax(this.bigCircleSprite.spriteFrameHeight
 																- this.threeSmallSparksSprites[i].spriteFrameHeight));
 							} else {
 								this.threeSmallSparksSprites[i].var_c18 = false;
@@ -637,7 +636,7 @@ public final class E_Menu extends F_StringManager {
 				localClass_e_01343.sub_24ea(k == this.var_114a ? true
 						: this.var_115a ? true : false);
 				this.var_109a = true;
-				if (this.var_108a == 0) {
+				if (this.typeMB == 0) {
 					if (this.var_1002 == 2) {
 						this.var_109a = true;
 						if (F_StringManager.mainCanvas.sub_26d7(4)) {
@@ -690,8 +689,8 @@ public final class E_Menu extends F_StringManager {
 									this.var_101a[this.var_105a], (byte) 0);
 						}
 					}
-				} else if ((this.var_108a != 13) && (this.var_108a != 14)) {
-					if (this.var_108a == 3) {
+				} else if ((this.typeMB != 13) && (this.typeMB != 14)) {
+					if (this.typeMB == 3) {
 						if (this.var_10e2 != 0) {
 							if (Math.abs(this.var_10e2) < 2) {
 								this.var_10e2 = 0;
@@ -737,9 +736,9 @@ public final class E_Menu extends F_StringManager {
 							setSmallSparksRandomPosition();
 							this.var_109a = true;
 						}
-					} else if ((this.var_108a != 10) && (this.var_108a != 7)
-							&& (this.var_108a != 11)) {
-						if (this.var_108a == 8) {
+					} else if ((this.typeMB != 10) && (this.typeMB != 7)
+							&& (this.typeMB != 11)) {
+						if (this.typeMB == 8) {
 							if (F_StringManager.mainCanvas.sub_26d7(1)) {
 								if (this.var_116a > 0) {
 									this.var_116a -= 1;
@@ -762,9 +761,9 @@ public final class E_Menu extends F_StringManager {
 							}
 						}
 					} else {
-						if (this.var_10f2 != -1) {
-							if (this.var_10f2 > 0) {
-								this.var_10f2 -= 50;
+						if (this.showTime != -1) {
+							if (this.showTime > 0) {
+								this.showTime -= 50;
 							} else {
 								F_StringManager.mainCanvas.sub_220e(this.stringManager);
 							}
@@ -783,20 +782,20 @@ public final class E_Menu extends F_StringManager {
 							this.var_109a = true;
 						}
 						if (this.var_10e2 == 0) {
-							if (((this.var_108a == 11) || (this.var_108a == 10))
+							if (((this.typeMB == 11) || (this.typeMB == 10))
 									&& (paramBoolean)) {
 								theGame.sub_770a(this, this.var_105a,
 										this.var_101a[this.var_105a], (byte) 0);
 								return;
 							}
-							if ((this.var_108a != 7)
+							if ((this.typeMB != 7)
 									&& (F_StringManager.mainCanvas.sub_26d7(1))) {
-								if (this.var_108a == 11) {
+								if (this.typeMB == 11) {
 									this.var_105a -= 1;
 									if (this.var_105a < 0) {
 										this.var_105a = (this.var_1062 - 1);
 										this.var_10ca = (this.var_1062 - this.var_10d2);
-										if (this.var_108a == 3) {
+										if (this.typeMB == 3) {
 											this.var_10ca = this.var_105a;
 										}
 									} else if (this.var_105a < this.var_10ca) {
@@ -814,9 +813,9 @@ public final class E_Menu extends F_StringManager {
 								F_StringManager.mainCanvas.sub_26ad();
 							}
 							if ((F_StringManager.mainCanvas.sub_26d7(2))
-									|| ((this.var_108a == 7) && (F_StringManager.mainCanvas
+									|| ((this.typeMB == 7) && (F_StringManager.mainCanvas
 											.sub_26d7(2048)))) {
-								if (this.var_108a == 11) {
+								if (this.typeMB == 11) {
 									this.var_105a += 1;
 									if (this.var_105a >= this.var_1062) {
 										this.var_105a = 0;
@@ -833,7 +832,7 @@ public final class E_Menu extends F_StringManager {
 									this.var_10e2 = this.var_104a;
 									this.var_10ca += 1;
 									this.var_109a = true;
-								} else if (this.var_108a == 7) {
+								} else if (this.typeMB == 7) {
 									theGame.sub_770a(this, 0, null, (byte) 0);
 									return;
 								}
@@ -846,7 +845,7 @@ public final class E_Menu extends F_StringManager {
 					if (this.var_105a < 0) {
 						this.var_105a = (this.var_1062 - 1);
 					}
-					if (this.var_108a == 14) {
+					if (this.typeMB == 14) {
 						theGame.sub_770a(this, this.var_105a, null, (byte) 2);
 					}
 					this.var_109a = true;
@@ -855,7 +854,7 @@ public final class E_Menu extends F_StringManager {
 					if (this.var_105a >= this.var_1062) {
 						this.var_105a = 0;
 					}
-					if (this.var_108a == 14) {
+					if (this.typeMB == 14) {
 						theGame.sub_770a(this, this.var_105a, null, (byte) 2);
 					}
 					this.var_109a = true;
@@ -893,7 +892,7 @@ public final class E_Menu extends F_StringManager {
 			}
 			switch (this.var_1002) {
 			case 0:
-				if (this.var_108a == 0) {
+				if (this.typeMB == 0) {
 					if (this.var_11fa < this.var_1202) {
 						int someInt;
 						if (this.var_124a == 2) {
@@ -932,7 +931,7 @@ public final class E_Menu extends F_StringManager {
 							F_StringManager.mainCanvas.sub_26ad();
 						}
 					}
-				} else if (this.var_108a == 13) {
+				} else if (this.typeMB == 13) {
 					this.var_107a += (this.var_102a - this.var_107a) / 2;
 					this.var_1102 += 1;
 					if (this.var_1102 == 2) {
@@ -978,7 +977,7 @@ public final class E_Menu extends F_StringManager {
 		if ((this.var_1002 != 3) && (this.var_109a)) {
 			this.var_109a = false;
 			if (((F_StringManager.mainCanvas.var_17b7 == this) && (this.var_10a2))
-					|| (this.var_108a == 0)) {
+					|| (this.typeMB == 0)) {
 				theGame.startLoading(paramGraphics);
 			}
 			this.var_10a2 = false;
@@ -988,7 +987,7 @@ public final class E_Menu extends F_StringManager {
 			}
 			paramInt1 = this.var_107a;
 			paramInt2 = this.var_1082 + paramInt2;
-			if ((this.var_108a != 0) && (this.var_108a != 13)) {
+			if ((this.typeMB != 0) && (this.typeMB != 13)) {
 				sub_5092(paramGraphics, paramInt1, paramInt2, this.mapPrevPixelWidth,
 						this.mapPrevPixelHeight, this.var_1092, this.var_11aa,
 						this.var_11a2, this.var_1132, 5);
@@ -1026,7 +1025,7 @@ public final class E_Menu extends F_StringManager {
 			int bool4;
 			int bool3;
 			int bool5 = 0; //@todo bool5 = 0 ? i wrote this
-			if (this.var_108a == 0) {
+			if (this.typeMB == 0) {
 				paramGraphics.setColor(16777215);
 				k = this.var_122a + this.var_1232;
 				for (bool4 = this.var_11f2.length - 1; bool4>0; bool4--) {
@@ -1040,7 +1039,7 @@ public final class E_Menu extends F_StringManager {
 							+ 2
 							- (F_StringManager.sub_f35(bool3) * this.var_11fa >> 10);
 					if ((this.var_1002 == 2) && (bool4 == this.var_105a)) {
-						this.someSprite0.drawFrame(paramGraphics, 1, iInt,
+						this.bigCircleSprite.drawFrame(paramGraphics, 1, iInt,
 								bool3, 3);
 						if (this.var_1232 == 0) {
 							bool5 = 0;
@@ -1052,7 +1051,7 @@ public final class E_Menu extends F_StringManager {
 											- this.var_1242, 20);
 							bool5++;
 							//continue; @todo i commented
-							this.someSprite0.drawFrame(paramGraphics, 0,
+							this.bigCircleSprite.drawFrame(paramGraphics, 0,
 									iInt, bool3, 3);
 						}
 					}
@@ -1082,7 +1081,7 @@ public final class E_Menu extends F_StringManager {
 			int bool11 = 0;
 			int i  = 0;
 			int n  = 0;
-			switch (this.var_108a) {
+			switch (this.typeMB) {
 				case 0:
 					if (this.var_1002 == 2) {
 						paramGraphics.setColor(1645370);
@@ -1128,7 +1127,7 @@ public final class E_Menu extends F_StringManager {
 							someYVal + this.someUnit0.spriteFrameWidth + someYVal, k
 									- C_MainCanvas.fontBaselinePos / 2, 20);
 					String str2;
-					if (this.var_108a == 2) {
+					if (this.typeMB == 2) {
 						str2 = "" + this.someUnit0.cost;
 						theGame.hudIcons2Sprite.drawFrame(paramGraphics, 1, someXVal - someYVal
 								- C_MainCanvas.spriteTextWidth((byte) 1, str2), k, 10);
@@ -1144,7 +1143,7 @@ public final class E_Menu extends F_StringManager {
 							bool3);
 					bool3 += 1 + var_ff2;
 					int i2;
-					if (this.var_108a == 5) {
+					if (this.typeMB == 5) {
 						bool5 = C_MainCanvas.fontBaselinePos;
 						k = bool3 + bool5 / 1;
 						C_MainCanvas.showString(paramGraphics,
@@ -1198,13 +1197,13 @@ public final class E_Menu extends F_StringManager {
 								}
 								bool12 = 0;
 								if (i4 == 0) {
-									if (this.var_108a == 5) {
+									if (this.typeMB == 5) {
 										i3 = this.someUnit0.getExtraUnitAttack(null);
 									}
 									str2 = this.someUnit0.attackMin + i3 + "-"
 											+ (this.someUnit0.attackMax + i3);
 								} else if (i4 == 1) {
-									if (this.var_108a == 5) {
+									if (this.typeMB == 5) {
 										i3 = this.someUnit0.getExtraDefence(null);
 									}
 									str2 = "" + (this.someUnit0.defence + i3);
@@ -1274,8 +1273,8 @@ public final class E_Menu extends F_StringManager {
 										theYPos,
 										localClass_a_0260.cost > theGame.var_486a[theGame.someUnitTeamId]);
 						if (bool5 == this.var_105a) {
-							k = m - this.someSprite0.spriteFrameWidth / 2;
-							int bool11int = bool3 - this.someSprite0.spriteFrameWidth / 2;
+							k = m - this.bigCircleSprite.spriteFrameWidth / 2;
+							int bool11int = bool3 - this.bigCircleSprite.spriteFrameWidth / 2;
 							for (int bool10int = 0; bool10int < this.threeSmallSparksSprites.length; bool10int++) {
 								this.threeSmallSparksSprites[bool10int].drawCurrentFrame(paramGraphics, k,
 										bool11int, 20);
@@ -1335,7 +1334,7 @@ public final class E_Menu extends F_StringManager {
 						} else if (bool3 + this.var_104a > j - this.var_1122) {
 							bool5 = bool3 + this.var_104a - j + this.var_1122;
 						}
-						if ((this.var_108a == 11) && (bool9 == this.var_105a)) {
+						if ((this.typeMB == 11) && (bool9 == this.var_105a)) {
 							paramGraphics.setColor(5594742);
 							drawRoundedRect(paramGraphics, 0, bool3, k, this.var_104a);
 							bool7 = G_Game.getLinearGradientStepMb(this.var_11aa, 16777215,
@@ -1392,7 +1391,7 @@ public final class E_Menu extends F_StringManager {
 							}
 						}
 					}
-					if (this.var_108a != 7) {
+					if (this.typeMB != 7) {
 						break;
 					}
 					paramGraphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);
@@ -1416,7 +1415,7 @@ public final class E_Menu extends F_StringManager {
 						intparamBoolean = 1;
 						for (k = this.var_1162; k < i3; k++) {
 							bool8 = theGame.tilesDefs[this.theMapData[k][m]];
-							if (G_Game.sub_11b75(this.theMapData[k][m])) {
+							if (G_Game.tileCanBeOccupied(this.theMapData[k][m])) {
 								bool5 = (this.theMapData[k][m] - 37) / 2;
 								bool8 = bool5 * 1 + 8 + bool8 - 8;
 							}

@@ -741,7 +741,7 @@ public final class H_FightAnimation {
 								fightAnim.game
 										.addSomeSprite(someSprite);
 							} else {
-								if (fightAnim.someUnit1Type == 7) {
+								if (fightAnim.someUnit1Type == 7) { //catapult
 									fightAnim.someUnitsSprites[fightAnim.var_ca7].var_c90 = 5;
 									for (i1 = 0; i1 < 3; i1++) {
 										(aSprite = G_Sprite
@@ -895,13 +895,13 @@ public final class H_FightAnimation {
 						}
 					}
 					if (m != 0) {
-						if (fightAnim.someUnit1.unitType == 9) {
+						if (fightAnim.someUnit1.unitType == 9) { // king
 							fightAnim.var_ba7 = 6;
 						} else {
 							fightAnim.var_ba7 = 4;
 						}
 						fightAnim.var_c77 = 400;
-						if (fightAnim.someUnit1.unitType == 8) {
+						if (fightAnim.someUnit1.unitType == 8) { // wyvern
 							fightAnim.var_c77 = 0;
 						}
 						fightAnim.someFATime = fightAnim.game.someGameTime;

@@ -354,7 +354,7 @@ public final class A_Unit extends G_Sprite {
 							}
 						} else if ((this.unitType == 7) && (game
 								.getMapTileType(x, y) == 8) && (G_Game
-								.sub_11b75(game.mapTilesIds[x][y])) && (!game
+								.tileCanBeOccupied(game.mapTilesIds[x][y])) && (!game
 								.sub_11c55(x, y, game.var_483a[this.teamId]))) {
 							A_Unit fakeHouseUnit = createUnitWithBool((byte) 0, (byte) 0, x, y, false);
 							fakeHouseUnit.unitType = -1;
