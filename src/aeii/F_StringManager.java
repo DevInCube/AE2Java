@@ -203,18 +203,18 @@ public class F_StringManager {
 			j -= n;
 			k += j / i;
 		}
-		var_773['Â'] = 0; // var_773['Â´'] = 0;
+		var_773['Â'] = 0; // var_773['Â´'] = 0; @todo what is int for 'Â´' char
 		var_773[270] = -1024;
 	}
 
-	public static final short sub_f0f(int paramInt) {
-		paramInt %= 360;
-		return var_773[paramInt];
+	public static final short sub_f0f(int deg) {
+		deg = deg % 360;
+		return var_773[deg];
 	}
 
-	public static final short sub_f35(int paramInt) {
-		paramInt = (paramInt + var_78b) % 360;
-		return var_773[paramInt];
+	public static final short sub_f35(int deg) {
+		short val = (short) ((deg + var_78b) % 360);
+		return var_773[val];
 	}
 }
 

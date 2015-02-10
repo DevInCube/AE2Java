@@ -1131,7 +1131,7 @@ public final class E_Menu extends F_StringManager {
 					if (this.var_108a == 2) {
 						str2 = "" + this.someUnit0.cost;
 						theGame.hudIcons2Sprite.drawFrame(paramGraphics, 1, someXVal - someYVal
-								- C_MainCanvas.sub_1e71((byte) 1, str2), k, 10);
+								- C_MainCanvas.spriteTextWidth((byte) 1, str2), k, 10);
 					} else {
 						str2 = "" + this.someUnit0.health;
 					}
@@ -1154,7 +1154,7 @@ public final class E_Menu extends F_StringManager {
 						int sumBool;
 						sumBool = someYVal + bool4 + someYVal;
 						String str1 = "" + this.someUnit0.level;
-						i2 = C_MainCanvas.sub_1e71((byte) 0, str1);
+						i2 = C_MainCanvas.spriteTextWidth((byte) 0, str1);
 						int bool13 = someXVal - sumBool - someYVal
 								- theGame.hudIconsSprite.spriteFrameWidth - i2 - someYVal;
 						paramGraphics.setColor(this.someGrayColor);

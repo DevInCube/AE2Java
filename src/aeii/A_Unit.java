@@ -56,7 +56,7 @@ public final class A_Unit extends G_Sprite {
 	private static byte[] unitsDefence = new byte[12];
 	private static byte[] unitsAttackRangeMax = new byte[12];
 	private static byte[] unitsAttackRangeMin = new byte[12];
-	public static byte[][][] unitsChars = new byte[12][][];
+	public static byte[][][] unitsFACharacterPositions = new byte[12][][];
 	public static short[] unitsCost = new short[12];
 	private static short[] unitsHasProperty = new short[12];
 
@@ -98,7 +98,7 @@ public final class A_Unit extends G_Sprite {
 
 	public final void sub_108f(int paramInt) {
 		this.var_eab = true;
-		this.var_ec3 = game.var_479a;
+		this.var_ec3 = game.someGameTime;
 		this.var_ebb = paramInt;
 	}
 
@@ -115,7 +115,7 @@ public final class A_Unit extends G_Sprite {
 		unit.unitType = inUnitType;
 		unit.teamId = inTeamId;
 		unit.health = 100;
-		unit.chars = unitsChars[inUnitType];
+		unit.chars = unitsFACharacterPositions[inUnitType];
 		unit.cost = unitsCost[inUnitType];
 		if (inUnitType == 9) { // king
 			unit.setKingName(game.var_4832[inTeamId] - 1);
@@ -131,7 +131,7 @@ public final class A_Unit extends G_Sprite {
 		unit.unitType = inType;
 		unit.teamId = inTeam;
 		unit.health = 100;
-		unit.chars = unitsChars[inType];
+		unit.chars = unitsFACharacterPositions[inType];
 		unit.cost = unitsCost[inType];
 		if (inType == 9) { // king
 			unit.setKingName(game.var_4832[inTeam] - 1);
@@ -525,7 +525,7 @@ public final class A_Unit extends G_Sprite {
 
 	public final void sub_238a() {
 		if (this.var_eab) {
-			if (game.var_479a - this.var_ec3 >= this.var_ebb) {
+			if (game.someGameTime - this.var_ec3 >= this.var_ebb) {
 				this.var_eab = false;
 			} else {
 				this.var_eb3 = (!this.var_eb3);
@@ -588,9 +588,9 @@ public final class A_Unit extends G_Sprite {
 			getSomeExperienceKoef();
 			return;
 		}
-		if ((this.var_e83 == 0) && (game.var_479a - this.var_e23 >= 200L)) {
+		if ((this.var_e83 == 0) && (game.someGameTime - this.var_e23 >= 200L)) {
 			getSomeExperienceKoef();
-			this.var_e23 = game.var_479a;
+			this.var_e23 = game.someGameTime;
 		}
 	}
 
@@ -618,27 +618,29 @@ public final class A_Unit extends G_Sprite {
 		game.someUnitHere = this;
 	}
 
-	public static final A_Unit[] sub_27b7(byte paramByte) {
-		A_Unit[] units = new A_Unit[game.teamsUnitsCount[paramByte]];
-		int i = 0;
+	public static final A_Unit[] sub_27b7(byte teamID) {
+		int unitsCount = game.teamsUnitsCount[teamID];
+		A_Unit[] units = new A_Unit[unitsCount];
+		int countSomeUnits = 0;
 		for (int it = 0; it < units.length; it++) {
 			if ((game.teamsUnits[game.someUnitTeamId][it] != null) && (game.teamsUnits[game.someUnitTeamId][it].var_e83 == 3)) {
-				units[(i++)] = game.teamsUnits[game.someUnitTeamId][it];
+				units[(countSomeUnits++)] = game.teamsUnits[game.someUnitTeamId][it];
 			}
 		}
-		A_Unit[] units2 = new A_Unit[game.var_49ca + 1 + i];
-		for (byte k = 0; k < units2.length; k = (byte) (k + 1)) {
-			if (k < i) {
+		A_Unit[] units2 = new A_Unit[countSomeUnits + game.var_49ca + 1];
+		for (int k = 0; k < units2.length; k++) {
+			if (k < countSomeUnits) {
 				units2[k] = units[k];
 			} else {
-				units2[k] = createUnitWithBool((byte) (k - i), paramByte, 0, 0, false);
+				byte unitType = (byte) (k - countSomeUnits);
+				units2[k] = createUnitWithBool(unitType, teamID, 0, 0, false);
 			}
 		}
 		return units2;
 	}
 
-	public final void sub_28d7(Graphics paramGraphics, int paramInt1, int paramInt2) {
-		sub_28fa(paramGraphics, paramInt1, paramInt2, false);
+	public final void sub_28d7(Graphics graphics, int inX, int inY) {
+		sub_28fa(graphics, inX, inY, false);
 	}
 
 	public final void sub_28fa(Graphics gr, int inX, int inY, boolean paramBoolean) {
@@ -683,8 +685,8 @@ public final class A_Unit extends G_Sprite {
 		}
 	}
 
-	public static final void initializeUnitsData(G_Game ins) {
-		game = ins;
+	public static final void initializeUnitsData(G_Game inGame) {
+		game = inGame;
 		try {
 			for (int unitInd = 0; unitInd < unitNames.length; unitInd++) {
 				InputStream unitStream = C_MainCanvas
@@ -722,7 +724,7 @@ public final class A_Unit extends G_Sprite {
 						} else if (arrayOfString[0]
 								.equalsIgnoreCase("CharCount")) {
 							int charCount = Integer.parseInt(arrayOfString[1]);
-							unitsChars[unitInd] = new byte[charCount][2];
+							unitsFACharacterPositions[unitInd] = new byte[charCount][2];
 						} else if (arrayOfString[0].equalsIgnoreCase("CharPos")) {
 							int charPosIndex = Integer
 									.parseInt(arrayOfString[1]);
@@ -730,8 +732,8 @@ public final class A_Unit extends G_Sprite {
 									.parseInt(arrayOfString[2]));
 							byte charPosY = ((byte) Integer
 									.parseInt(arrayOfString[3]));
-							unitsChars[unitInd][charPosIndex][0] = charPosX;
-							unitsChars[unitInd][charPosIndex][1] = charPosY;
+							unitsFACharacterPositions[unitInd][charPosIndex][0] = charPosX;
+							unitsFACharacterPositions[unitInd][charPosIndex][1] = charPosY;
 						} else if (arrayOfString[0]
 								.equalsIgnoreCase("HasProperty")) {
 							int val = Integer.parseInt(arrayOfString[1]);
@@ -756,10 +758,10 @@ public final class A_Unit extends G_Sprite {
 					unitsAttackRangeMin[i] = unitBinStream.readByte();
 					unitsCost[i] = unitBinStream.readShort();
 					int j = unitBinStream.readByte();
-					unitsChars[i] = new byte[j][2];
+					unitsFACharacterPositions[i] = new byte[j][2];
 					for (int it = 0; it < j; it++) {
-						unitsChars[i][it][0] = unitBinStream.readByte();
-						unitsChars[i][it][1] = unitBinStream.readByte();
+						unitsFACharacterPositions[i][it][0] = unitBinStream.readByte();
+						unitsFACharacterPositions[i][it][1] = unitBinStream.readByte();
 					}
 					int propLength = ((DataInputStream) unitBinStream)
 							.readByte();

@@ -250,11 +250,11 @@ public final class C_MainCanvas extends Canvas implements Runnable,
 		return size;
 	}
 
-	public static final int sub_1e71(byte spriteIndex, String paramString) {
+	public static final int spriteTextWidth(byte spriteIndex, String paramString) {
 		return sprites[spriteIndex].spriteFrameWidth * paramString.length();
 	}
 
-	public static final int sub_1e99(byte spriteIndex) {
+	public static final int spriteTextHeight(byte spriteIndex) {
 		return sprites[spriteIndex].spriteFrameHeight;
 	}
 
@@ -293,38 +293,38 @@ public final class C_MainCanvas extends Canvas implements Runnable,
 		}
 	}
 
-	public static final void sub_2007(Graphics paramGraphics, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+	public static final void sub_2007(Graphics gr, String msg, int inX, int inY, int spriteIndex, int paramInt4) {		
 		if ((paramInt4 & 0x8) != 0) {
-			paramInt1 -= sub_1e71((byte) paramInt3, paramString);
+			inX -= spriteTextWidth((byte) spriteIndex, msg);
 		} else if ((paramInt4 & 0x1) != 0) {
-			paramInt1 -= sub_1e71((byte) paramInt3, paramString) / 2;
+			inX -= spriteTextWidth((byte) spriteIndex, msg) / 2;
 		}
 		if ((paramInt4 & 0x20) != 0) {
-			paramInt2 -= sub_1e99((byte) paramInt3);
+			inY -= spriteTextHeight((byte) spriteIndex);
 		} else if ((paramInt4 & 0x2) != 0) {
-			paramInt2 -= sub_1e99((byte) paramInt3) / 2;
+			inY -= spriteTextHeight((byte) spriteIndex) / 2;
 		}
-		drawAString(paramGraphics, paramString, paramInt1, paramInt2, paramInt3);
+		drawAString(gr, msg, inX, inY, spriteIndex);
 	}
 
-	public static final void drawAString(Graphics paramGraphics, String str, int paramInt1, int paramInt2, int paramInt3) {
+	public static final void drawAString(Graphics gr, String str, int inX, int inY, int textSpriteIndex) {
 		int charPos = 0;
 		int strLength = str.length();
 		while (charPos < strLength) {
 			int aChar = str.charAt(charPos);
-			if ((aChar >= var_1777[paramInt3]) && (aChar <= var_177f[paramInt3])) {
-				int m = var_1787[paramInt3][(aChar - var_1777[paramInt3])];
+			if ((aChar >= var_1777[textSpriteIndex]) && (aChar <= var_177f[textSpriteIndex])) {
+				int m = var_1787[textSpriteIndex][(aChar - var_1777[textSpriteIndex])];
 				if (m  != -1) {
-					sprites[paramInt3].setCurrentFrameIndex(m);
-					sprites[paramInt3]
-							.sub_1d20(paramGraphics, paramInt1, paramInt2);
-					paramInt1 += sprites[paramInt3].spriteFrameWidth;
+					sprites[textSpriteIndex].setCurrentFrameIndex(m);
+					sprites[textSpriteIndex]
+							.sub_1d20(gr, inX, inY);
+					inX += sprites[textSpriteIndex].spriteFrameWidth;
 				} else {
 					byte[] localObject = { (byte) aChar };
 					String localString = new String(localObject);
-					paramGraphics
-							.drawString((String) localString, paramInt1, paramInt2, 20);
-					paramInt1 += paramGraphics.getFont()
+					gr
+							.drawString((String) localString, inX, inY, 20);
+					inX += gr.getFont()
 							.stringWidth((String) localString);
 				}
 			}

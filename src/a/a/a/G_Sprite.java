@@ -26,8 +26,8 @@ public class G_Sprite {
 	public int var_c48;
 	public int var_c50;
 	public int frameDelay;
-	public int var_c60;
-	public int var_c68;
+	public int someXVal;
+	public int someYVal;
 	public int var_c70;
 	public boolean var_c78;
 	public boolean var_c80;
@@ -341,7 +341,7 @@ public class G_Sprite {
 				} else {
 					graphics.setColor(16777215); // #FFFFFF
 				}
-				if (this.var_c60 > 0) {
+				if (this.someXVal > 0) {
 					x = this.pixelX + 15;
 					graphics.fillArc(this.pixelX, this.pixelY - 15, 30, 30, 0, 360);
 					graphics.fillRect(x, this.pixelY - 15, C_MainCanvas.canvasWidth - x, 30);
@@ -353,7 +353,7 @@ public class G_Sprite {
 			}
 			if (this.var_c40 == 3) {
 				graphics.setColor(0);
-				if (this.var_c60 > 0) {
+				if (this.someXVal > 0) {
 					graphics.drawLine(this.pixelX, this.pixelY, this.pixelX + 4, this.pixelY - 2);
 					return;
 				}
@@ -400,18 +400,18 @@ public class G_Sprite {
 
 	public static G_Sprite createSomeSprite(String paramString, int paramInt1, int paramInt2, byte paramByte) {
 		//@todo first arg was missing, params are unused =(
-		int someWidth = C_MainCanvas.sub_1e71(paramByte, paramString); 
-		int someHeight = C_MainCanvas.sub_1e99((byte) 1); // why 1?
+		int someWidth = C_MainCanvas.spriteTextWidth(paramByte, paramString); 
+		int someHeight = C_MainCanvas.spriteTextHeight((byte) 1); // why 1?
 		G_Sprite sprite = new G_Sprite(someWidth, someHeight);
 		sprite.var_cb8 = 1;
 		sprite.var_cb0 = paramString;
-		sprite.var_c60 = 0;
+		sprite.someXVal = 0;
 		sprite.var_c70 = -4;
 		sprite.var_c40 = 5;
 		return sprite;
 	}
 
-	public static G_Sprite sub_2054(G_Sprite inSprite, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int inFrameDelay, byte paramByte) {
+	public static G_Sprite getSpriteWithParams(G_Sprite inSprite, int inX, int inY, int paramInt3, int paramInt4, int inFrameDelay, byte paramByte) {
 		if (inSprite != null) {
 			inSprite = new G_Sprite(inSprite);
 		} else {
@@ -445,8 +445,8 @@ public class G_Sprite {
 		inSprite.var_c40 = paramByte;
 		inSprite.var_c48 = paramInt4;
 		inSprite.frameDelay = inFrameDelay;
-		inSprite.var_c60 = paramInt1;
-		inSprite.var_c68 = paramInt2;
+		inSprite.someXVal = inX;
+		inSprite.someYVal = inY;
 		inSprite.var_c70 = paramInt3;
 		inSprite.var_c80 = true;
 		return inSprite;
@@ -464,11 +464,11 @@ public class G_Sprite {
 				sub_23d5();
 				return;
 			case 3:
-				setPixelPosition(this.pixelX + this.var_c60, this.pixelY + this.var_c68);
+				setPixelPosition(this.pixelX + this.someXVal, this.pixelY + this.someYVal);
 				return;
 			case 5:
 				if (this.var_c48 == -1) {
-					setPixelPosition(this.pixelX + this.var_c60, this.pixelY);
+					setPixelPosition(this.pixelX + this.someXVal, this.pixelY);
 					this.var_c38 += this.var_c70;
 					if (this.var_c38 < 0) {
 						this.var_c70 += 1;
@@ -493,7 +493,7 @@ public class G_Sprite {
 				}
 				break;
 			default:
-				setPixelPosition(this.pixelX + this.var_c60, this.pixelY + this.var_c68);
+				setPixelPosition(this.pixelX + this.someXVal, this.pixelY + this.someYVal);
 				this.var_c38 += this.var_c70;
 				if ((this.var_c48 != 0) && (this.var_c50 >= this.frameDelay)) {
 					nextFrame();
