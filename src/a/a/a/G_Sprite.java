@@ -1,7 +1,7 @@
 package a.a.a;
 
-import aeii.Class_c_MainCanvas;
-import aeii.Class_d_ImageWrap;
+import aeii.C_MainCanvas;
+import aeii.D_ImageWrap;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,9 +10,9 @@ import javax.microedition.io.Connection;
 import javax.microedition.io.Connector;
 import javax.microedition.lcdui.Graphics;
 
-public class Class_g_Sprite {
+public class G_Sprite {
 
-	public Class_d_ImageWrap[] frameImages;
+	public D_ImageWrap[] frameImages;
 	private byte[] currentFrameSequence;
 	public int currentFrameIndex;
 	public int pixelX; // m
@@ -38,15 +38,15 @@ public class Class_g_Sprite {
 	public int var_ca8;
 	public String var_cb0;
 	public int var_cb8;
-	public Class_g_Sprite var_cc0;
-	public Class_g_Sprite var_cc8;
+	public G_Sprite var_cc0;
+	public G_Sprite var_cc8;
 	public int[][] var_cd0;
 	public short[][] var_cd8;
 	public int someColorInt;
 	public byte[] var_ce8;
 	public boolean[] var_cf0;
 
-	public Class_g_Sprite() {
+	public G_Sprite() {
 		this.currentFrameIndex = 0;
 		this.pixelX = 0;
 		this.pixelY = 0;
@@ -59,18 +59,18 @@ public class Class_g_Sprite {
 		this.someColorInt = 16769024;  // #FFE000 - yellow
 	}
 
-	public Class_g_Sprite(String spriteId) {
+	public G_Sprite(String spriteId) {
 		this();
 		initializeFromFile(spriteId, 1);
 	}
 	
-	public Class_g_Sprite(int frameWidth, int frameHeight) {
+	public G_Sprite(int frameWidth, int frameHeight) {
 		this();
 		this.spriteFrameWidth = frameWidth;
 		this.spriteFrameHeight = frameHeight;
 	}
 	
-	public Class_g_Sprite(Class_g_Sprite sprite) {
+	public G_Sprite(G_Sprite sprite) {
 		this();
 		this.frameImages = sprite.frameImages;
 		this.currentFrameSequence = sprite.currentFrameSequence;
@@ -85,7 +85,7 @@ public class Class_g_Sprite {
 		this.frameSequenceArr2 = sprite.frameSequenceArr2;
 	}
 
-	public Class_g_Sprite(Class_d_ImageWrap[] inImages) {
+	public G_Sprite(D_ImageWrap[] inImages) {
 		this();
 		this.frameImages = inImages;
 		this.currentFrameSequence = new byte[this.frameImages.length];
@@ -98,7 +98,7 @@ public class Class_g_Sprite {
 		this.spriteFrameHeight = this.frameImages[0].imageHeight;
 	}
 
-	public Class_g_Sprite(String paramString, byte paramByte) {
+	public G_Sprite(String paramString, byte paramByte) {
 		this();
 		initializeFromFile(paramString, paramByte);
 	}
@@ -109,10 +109,10 @@ public class Class_g_Sprite {
 			int[][] translateArr = null;
 			int framesCount = 0;
 			int alignVal = 0;
-			InputStream spriteStream = Class_c_MainCanvas
+			InputStream spriteStream = C_MainCanvas
 					.getResourceStream(spriteID + ".sprite");
 			if (spriteStream != null) {
-				String spriteString = Class_c_MainCanvas
+				String spriteString = C_MainCanvas
 						.streamToString(spriteStream);
 				while (spriteString != null) {
 					int endLineIndex = spriteString.indexOf(';');
@@ -120,7 +120,7 @@ public class Class_g_Sprite {
 						spriteString = spriteString.substring(0, endLineIndex);
 					}
 					if ((spriteString = spriteString.trim()).length() != 0) {
-						String[] tokens = Class_c_MainCanvas
+						String[] tokens = C_MainCanvas
 								.splitStringByChar(spriteString, ' ');
 						if (tokens[0].equalsIgnoreCase("FrameCount")) {
 							framesCount = (byte) Integer.parseInt(tokens[1]);
@@ -170,7 +170,7 @@ public class Class_g_Sprite {
 					}
 				}
 			} else {
-				framesCount = (byte) (spriteStream = Class_c_MainCanvas
+				framesCount = (byte) (spriteStream = C_MainCanvas
 						.getResourceStream(spriteID + ".sprbin")).read();
 				frameDefArr = new int[framesCount][2];
 				translateArr = new int[framesCount][2];
@@ -204,16 +204,16 @@ public class Class_g_Sprite {
 				}
 			}
 			spriteStream.close();
-			this.frameImages = new Class_d_ImageWrap[framesCount]; 
-			Class_d_ImageWrap[] images = new Class_d_ImageWrap[framesCount];
+			this.frameImages = new D_ImageWrap[framesCount]; 
+			D_ImageWrap[] images = new D_ImageWrap[framesCount];
 			try {
-				Class_d_ImageWrap image = new Class_d_ImageWrap(spriteID, inArgInt);
+				D_ImageWrap image = new D_ImageWrap(spriteID, inArgInt);
 				int widthKoef = image.imageWidth / this.spriteFrameWidth;
 				int heightKoef = image.imageHeight / this.spriteFrameHeight;
 				int i3 = 0;
 				for (int it = 0; it < heightKoef; it++) {
 					for (int it2 = 0; it2 < widthKoef; it2++) {
-						images[i3] = new Class_d_ImageWrap(image, it2, it, this.spriteFrameWidth, this.spriteFrameHeight);
+						images[i3] = new D_ImageWrap(image, it2, it, this.spriteFrameWidth, this.spriteFrameHeight);
 						i3++;
 					}
 				}
@@ -227,10 +227,10 @@ public class Class_g_Sprite {
 						}
 						buf.append(frameIndex);
 						if (inArgInt == 1) {
-							images[frameIndex] = new Class_d_ImageWrap(buf
+							images[frameIndex] = new D_ImageWrap(buf
 									.toString());
 						} else {
-							images[frameIndex] = new Class_d_ImageWrap(buf
+							images[frameIndex] = new D_ImageWrap(buf
 									.toString(), inArgInt);
 						}
 					}
@@ -239,7 +239,7 @@ public class Class_g_Sprite {
 				}
 			}
 			for (int n = 0; n < framesCount; n++) {
-				this.frameImages[n] = new Class_d_ImageWrap(images[frameDefArr[n][0]], frameDefArr[n][1]);
+				this.frameImages[n] = new D_ImageWrap(images[frameDefArr[n][0]], frameDefArr[n][1]);
 			}
 			if (alignVal > 0) {
 				for (int it = 0; it < framesCount; it++) {
@@ -344,7 +344,7 @@ public class Class_g_Sprite {
 				if (this.var_c60 > 0) {
 					x = this.pixelX + 15;
 					graphics.fillArc(this.pixelX, this.pixelY - 15, 30, 30, 0, 360);
-					graphics.fillRect(x, this.pixelY - 15, Class_c_MainCanvas.canvasWidth - x, 30);
+					graphics.fillRect(x, this.pixelY - 15, C_MainCanvas.canvasWidth - x, 30);
 					return;
 				}
 				graphics.fillArc(this.pixelX - 30, this.pixelY - 15, 30, 30, 0, 360);
@@ -364,18 +364,18 @@ public class Class_g_Sprite {
 				y = this.pixelX + inX;
 				x = this.pixelY + inY;
 				if (this.var_cb0 != null) {
-					Class_c_MainCanvas
+					C_MainCanvas
 							.sub_2007(graphics, this.var_cb0, y, x, this.var_cb8, 33);
 					return;
 				}
 				if (this.var_c90 > 0) {
-					y += Class_c_MainCanvas.getRandomWithin(-4, 5);
-					x += Class_c_MainCanvas.getRandomWithin(-1, 2);
+					y += C_MainCanvas.getRandomWithin(-4, 5);
+					x += C_MainCanvas.getRandomWithin(-1, 2);
 				}
 				int k = this.currentFrameSequence[this.currentFrameIndex];
 				this.frameImages[k].drawOnGraphics(graphics, y, x);
 				if (this.var_cc0 != null) {
-					Class_g_Sprite cl;
+					G_Sprite cl;
 					int val = k % (getImagesCount() / 2);
 					if (val == 2) {
 						cl = this.var_cc8;
@@ -398,11 +398,11 @@ public class Class_g_Sprite {
 		}
 	}
 
-	public static Class_g_Sprite createSomeSprite(String paramString, int paramInt1, int paramInt2, byte paramByte) {
+	public static G_Sprite createSomeSprite(String paramString, int paramInt1, int paramInt2, byte paramByte) {
 		//@todo first arg was missing, params are unused =(
-		int someWidth = Class_c_MainCanvas.sub_1e71(paramByte, paramString); 
-		int someHeight = Class_c_MainCanvas.sub_1e99((byte) 1); // why 1?
-		Class_g_Sprite sprite = new Class_g_Sprite(someWidth, someHeight);
+		int someWidth = C_MainCanvas.sub_1e71(paramByte, paramString); 
+		int someHeight = C_MainCanvas.sub_1e99((byte) 1); // why 1?
+		G_Sprite sprite = new G_Sprite(someWidth, someHeight);
 		sprite.var_cb8 = 1;
 		sprite.var_cb0 = paramString;
 		sprite.var_c60 = 0;
@@ -411,11 +411,11 @@ public class Class_g_Sprite {
 		return sprite;
 	}
 
-	public static Class_g_Sprite sub_2054(Class_g_Sprite inSprite, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int inFrameDelay, byte paramByte) {
+	public static G_Sprite sub_2054(G_Sprite inSprite, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int inFrameDelay, byte paramByte) {
 		if (inSprite != null) {
-			inSprite = new Class_g_Sprite(inSprite);
+			inSprite = new G_Sprite(inSprite);
 		} else {
-			inSprite = new Class_g_Sprite(0, 0);
+			inSprite = new G_Sprite(0, 0);
 			if ((paramByte == 2) || (paramByte == 4)) {
 				if (paramByte == 4) {
 					inSprite.someColorInt = 15658751; // #EEEEFF - lightgrayblue
@@ -427,18 +427,18 @@ public class Class_g_Sprite {
 				for (int i = 0; i < 5; i++) {
 					inSprite.var_cf0[i] = true;
 					if (paramByte == 4) {
-						inSprite.var_cd8[i][0] = ((short) (Class_c_MainCanvas.random
+						inSprite.var_cd8[i][0] = ((short) (C_MainCanvas.random
 								.nextInt() % 4 << 10));
-						inSprite.var_cd8[i][1] = ((short) (Class_c_MainCanvas.random
+						inSprite.var_cd8[i][1] = ((short) (C_MainCanvas.random
 								.nextInt() % 4 << 10));
 					} else {
 						inSprite.var_cd8[i][0] = ((short) (Math
-								.abs(Class_c_MainCanvas.random.nextInt()) % 8192 + -4096));
+								.abs(C_MainCanvas.random.nextInt()) % 8192 + -4096));
 						inSprite.var_cd8[i][1] = ((short) (Math
-								.abs(Class_c_MainCanvas.random.nextInt()) % 4096 + -2048));
+								.abs(C_MainCanvas.random.nextInt()) % 4096 + -2048));
 					}
 					inSprite.var_ce8[i] = ((byte) (Math
-							.abs(Class_c_MainCanvas.random.nextInt()) % 2 + 1));
+							.abs(C_MainCanvas.random.nextInt()) % 2 + 1));
 				}
 			}
 		}
@@ -570,7 +570,7 @@ public class Class_g_Sprite {
 		return null;
 	}
 
-	private static Class_c_AConnection getFileConnectionImpl(Connection conn) {
+	private static C_AConnection getFileConnectionImpl(Connection conn) {
 		// i added switch expr	
 		/*
 		switch (Class_a_StaticFileConnection.getAvailableFileConnectionCode()) { 

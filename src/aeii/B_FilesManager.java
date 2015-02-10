@@ -1,25 +1,25 @@
 package aeii;
 
-import a.a.Class_b_EnumerationExt;
-import a.a.a.Class_a_StaticFileConnection;
-import a.a.a.Class_c_AConnection;
-import a.a.a.Class_g_Sprite;
+import a.a.B_EnumerationExt;
+import a.a.a.A_StaticFileConnection;
+import a.a.a.C_AConnection;
+import a.a.a.G_Sprite;
 
 import java.util.Enumeration;
 import java.util.Vector;
 
 import javax.microedition.io.Connection;
 
-public final class Class_b_FilesManager {
+public final class B_FilesManager {
 
 	private String path = null;
 
 	public final Enumeration getDirectoryPaths(String dirName, boolean unused) {
 		try {
 			if (this.path == null) {
-				return Class_a_StaticFileConnection.getListRoots();
+				return A_StaticFileConnection.getListRoots();
 			}
-			Class_c_AConnection conn = (Class_c_AConnection) Class_g_Sprite
+			C_AConnection conn = (C_AConnection) G_Sprite
 					.createFileConnectionWithInt("file:///" + this.path, 1);
 			Enumeration files = conn.getList();
 			conn.close();
@@ -61,9 +61,9 @@ public final class Class_b_FilesManager {
 		}
 	}
 
-	public final Class_c_AConnection createSomeFileConnection(String folder) {
+	public final C_AConnection createSomeFileConnection(String folder) {
 		try {
-			return (Class_c_AConnection) Class_g_Sprite
+			return (C_AConnection) G_Sprite
 					.createFileConnection("file:///" + this.path + folder);
 		} catch (Exception localException) {
 			//
@@ -95,7 +95,7 @@ public final class Class_b_FilesManager {
 		if (files.size() > 0) {
 			sub_98f(files, 0, files.size() - 1);
 		}
-		Class_b_EnumerationExt enumClass = new Class_b_EnumerationExt();
+		B_EnumerationExt enumClass = new B_EnumerationExt();
 		enumClass.addEnumeration(directories.elements());
 		enumClass.addEnumeration(files.elements());
 		return enumClass;

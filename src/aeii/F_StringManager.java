@@ -7,9 +7,9 @@ import java.util.Vector;
 import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Graphics;
 
-public class Class_f_StringManager {
+public class F_StringManager {
 
-	public static Class_c_MainCanvas mainCanvas;
+	public static C_MainCanvas mainCanvas;
 	public int canvasWidth = mainCanvas.getWidth();
 	public int canvasHeight = mainCanvas.getHeight();
 	public int canvasWidthShift = this.canvasWidth >> 1;
@@ -191,8 +191,8 @@ public class Class_f_StringManager {
 	}
 
 	public static final void sub_e73() {
-		Class_f_StringManager.var_783 = var_77b >> 1;
-		var_78b = Class_f_StringManager.var_783 >> 1;
+		F_StringManager.var_783 = var_77b >> 1;
+		var_78b = F_StringManager.var_783 >> 1;
 		var_773 = new short[var_77b];
 		int i = var_77b * 10000 / 2 / 31415;
 		int j = i * 1024;

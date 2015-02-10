@@ -9,15 +9,15 @@ import java.util.Vector;
  * @author DevInCube
  *
  */
-public final class Class_b_EnumerationExt implements Enumeration {
+public final class B_EnumerationExt implements Enumeration {
 	
 	private Enumeration enumeration;
 	private Vector vector = new Vector();
 	private int iterator;
 	private int count;
 
-	public Class_b_EnumerationExt() {
-		Class_a_Enumeration self = new Class_a_Enumeration(this);
+	public B_EnumerationExt() {
+		A_Enumeration self = new A_Enumeration(this);
 		this.vector.addElement(self);
 		this.enumeration = self;
 		this.count = 0;

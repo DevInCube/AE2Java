@@ -1,17 +1,17 @@
 package aeii;
 
-import a.a.a.Class_g_Sprite;
+import a.a.a.G_Sprite;
 import java.io.DataInputStream;
 import java.io.InputStream;
 import java.util.Vector;
 import javax.microedition.lcdui.Graphics;
 
-public final class Class_a_Unit extends Class_g_Sprite {
+public final class A_Unit extends G_Sprite {
 
 	public static byte var_dd3 = 12;
 	public static byte var_ddb;
-	public static byte var_de3 = Class_a_Unit.var_ddb = 6;
-	private static Class_g_Game var_deb;
+	public static byte var_de3 = A_Unit.var_ddb = 6;
+	private static G_Game var_deb;
 	public String unitName;
 	public short level;
 	public int maybeExperience;
@@ -42,7 +42,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 	public byte var_ecb;
 	public byte var_ed3;
 	private int var_edb;
-	public Class_a_Unit var_ee3;
+	public A_Unit var_ee3;
 	public byte var_eeb = 0;
 	public int unitId;
 	public int cost;
@@ -58,7 +58,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 	public static short[] unitsCost = new short[12];
 	private static short[] unitsHasProperty = new short[12];
 
-	private Class_a_Unit(
+	private A_Unit(
 			byte inUnitType,
 			byte inTeamId,
 			int inX,
@@ -89,7 +89,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 			if (theInt > 3) {
 				theInt = 3;
 			}
-			this.unitName = Class_f_StringManager
+			this.unitName = F_StringManager
 					.getLangString(139 + (this.unitType << 2) + theInt);
 		}
 	}
@@ -100,16 +100,16 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		this.var_ebb = paramInt;
 	}
 
-	public static final Class_a_Unit createUnit(byte inType, byte inTeam, int inX, int inY) {
+	public static final A_Unit createUnit(byte inType, byte inTeam, int inX, int inY) {
 		return createUnitWithBool(inType, inTeam, inX, inY, true);
 	}
 
-	public static final Class_a_Unit createUnitWithBool(byte inUnitType, byte inTeamId, int inX, int inY, boolean addToMap) {
+	public static final A_Unit createUnitWithBool(byte inUnitType, byte inTeamId, int inX, int inY, boolean addToMap) {
 		/* if king & ?? */
 		if ((inUnitType == 9) && (var_deb.teamsUnitsCount[inTeamId] >= var_deb.teamsUnits[inTeamId].length)) {
 			return null;
 		}
-		Class_a_Unit unit = new Class_a_Unit(inUnitType, var_deb.var_4832[inTeamId], inX, inY, addToMap);
+		A_Unit unit = new A_Unit(inUnitType, var_deb.var_4832[inTeamId], inX, inY, addToMap);
 		unit.unitType = inUnitType;
 		unit.teamId = inTeamId;
 		unit.health = 100;
@@ -124,8 +124,8 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		return unit;
 	}
 
-	public static final Class_a_Unit sub_11aa(byte inType, byte inTeam, int paramInt1, int paramInt2, boolean paramBoolean) {
-		Class_a_Unit unit = new Class_a_Unit(inType, var_deb.var_4832[inTeam], paramInt1, paramInt2, paramBoolean);
+	public static final A_Unit sub_11aa(byte inType, byte inTeam, int paramInt1, int paramInt2, boolean paramBoolean) {
+		A_Unit unit = new A_Unit(inType, var_deb.var_4832[inTeam], paramInt1, paramInt2, paramBoolean);
 		unit.unitType = inType;
 		unit.teamId = inTeam;
 		unit.health = 100;
@@ -143,14 +143,14 @@ public final class Class_a_Unit extends Class_g_Sprite {
 
 	public final void setKingName(int paramInt) {
 		this.var_eeb = ((byte) paramInt);
-		this.unitName = Class_f_StringManager.getLangString(paramInt + 93);
+		this.unitName = F_StringManager.getLangString(paramInt + 93);
 	}
 
-	public final int getSomeAttackValueMaybe1(Class_a_Unit unit) {
+	public final int getSomeAttackValueMaybe1(A_Unit unit) {
 		return getSomeAttackValueMaybe2(unit, this.posX, this.posY);
 	}
 
-	private int getSomeAttackValueMaybe2(Class_a_Unit unit, int paramInt1, int paramInt2) {
+	private int getSomeAttackValueMaybe2(A_Unit unit, int paramInt1, int paramInt2) {
 		int someAttackValue = this.var_e9b;
 		if (unit != null) {
 			if ((hasProperty((short) 64)) && (unit.hasProperty((short) 1))) {
@@ -172,13 +172,13 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		return someAttackValue;
 	}
 
-	public final int getSomeUnitResistance(Class_a_Unit unit) {
+	public final int getSomeUnitResistance(A_Unit unit) {
 		return getSomeUnitResistance2(this.posX, this.posY);
 	}
 
 	private int getSomeUnitResistance2(int x, int y) {
 		int tileType = var_deb.getMapTileType(x, y);
-		int resist = this.var_ea3 + Class_g_Game.tilesExtraDefence[tileType];
+		int resist = this.var_ea3 + G_Game.tilesExtraDefence[tileType];
 		if ((hasProperty((short) 2)) && (tileType == 5)) {
 			resist += 15;
 		}
@@ -188,8 +188,8 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		return resist;
 	}
 
-	public final int getDamageWhenAttack(Class_a_Unit ins) {
-		int randomAttack = Class_c_MainCanvas
+	public final int getDamageWhenAttack(A_Unit ins) {
+		int randomAttack = C_MainCanvas
 				.getRandomWithin(this.attackMin, this.attackMax);
 		int attackVal = randomAttack + getSomeAttackValueMaybe1(ins);
 		int defence = ins.defence + ins.getSomeUnitResistance(this);
@@ -260,7 +260,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		this.pixelY = ((short) (paramInt2 * 24));
 	}
 
-	public final int sub_16bf() {
+	public final int getSomeHealthManipulationVal() {
 		int i = 100 / this.chars.length;
 		int j = this.health / i;
 		if ((this.health != 100) && (this.health % i > 0)) {
@@ -269,7 +269,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		return j;
 	}
 
-	public final int sub_1713(int paramInt1, int paramInt2, Class_a_Unit unit) {
+	public final int sub_1713(int paramInt1, int paramInt2, A_Unit unit) {
 		return (this.attackMin + this.attackMax + this.defence + getSomeAttackValueMaybe2(unit, paramInt1, paramInt2) + getSomeUnitResistance2(paramInt1, paramInt2)) * this.health / 100;
 	}
 
@@ -317,13 +317,13 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		}
 	}
 
-	public final Class_a_Unit[] getUnitsInAttackRange1(int inX, int inY, byte paramByte) {
+	public final A_Unit[] getUnitsInAttackRange1(int inX, int inY, byte paramByte) {
 		byte attRangeMin = unitsAttackRangeMin[this.unitType];
 		byte attRangeMax = unitsAttackRangeMax[this.unitType];
 		return getUnitsInAttackRange(inX, inY, attRangeMin, attRangeMax, paramByte);
 	}
 
-	public final Class_a_Unit[] getUnitsInAttackRange(int inX, int inY, int inAttRangeMin, int inAttRangeMax, byte paramByte) {
+	public final A_Unit[] getUnitsInAttackRange(int inX, int inY, int inAttRangeMin, int inAttRangeMax, byte paramByte) {
 		Vector units = new Vector();
 		int minX = inX - inAttRangeMax;
 		if ((minX) < 0) {
@@ -345,7 +345,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 			for (int y = minY; y <= maxY; y++) {
 				int distance = Math.abs(x - inX) + Math.abs(y - inY);
 				if ((distance >= inAttRangeMin) && (distance <= inAttRangeMax)) {
-					Class_a_Unit unit;
+					A_Unit unit;
 					if (paramByte == 0) {
 						unit = var_deb.getUnitAtPos(x, y, (byte) 0);
 						if (unit != null) {
@@ -353,10 +353,10 @@ public final class Class_a_Unit extends Class_g_Sprite {
 								units.addElement(unit);
 							}
 						} else if ((this.unitType == 7) && (var_deb
-								.getMapTileType(x, y) == 8) && (Class_g_Game
+								.getMapTileType(x, y) == 8) && (G_Game
 								.sub_11b75(var_deb.var_4782[x][y])) && (!var_deb
 								.sub_11c55(x, y, var_deb.var_483a[this.teamId]))) {
-							Class_a_Unit fakeHouseUnit = createUnitWithBool((byte) 0, (byte) 0, x, y, false);
+							A_Unit fakeHouseUnit = createUnitWithBool((byte) 0, (byte) 0, x, y, false);
 							fakeHouseUnit.unitType = -1;
 							fakeHouseUnit.var_e83 = 4;
 							units.addElement(fakeHouseUnit);
@@ -373,7 +373,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 				}
 			}
 		}
-		Class_a_Unit[] units2 = new Class_a_Unit[units.size()];
+		A_Unit[] units2 = new A_Unit[units.size()];
 		units.copyInto(units2);
 		return units2;
 	}
@@ -500,7 +500,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 
 	private static int sub_22a9(int paramInt1, int paramInt2, byte paramByte1, byte paramByte2) {
 		if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt1 < var_deb.mapWidthMaybe) && (paramInt2 < var_deb.mapHeightMaybe)) {
-			Class_a_Unit localClass_a_0260;
+			A_Unit localClass_a_0260;
 			if (((localClass_a_0260 = var_deb
 					.getUnitAtPos(paramInt1, paramInt2, (byte) 0)) != null) && (var_deb.var_483a[localClass_a_0260.teamId] != var_deb.var_483a[paramByte2])) {
 				return 1000;
@@ -518,7 +518,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 					return 1;
 				}
 			}
-			return Class_g_Game.tilesTypes[paramInt1];
+			return G_Game.tilesTypes[paramInt1];
 		}
 		return 10000;
 	}
@@ -546,10 +546,10 @@ public final class Class_a_Unit extends Class_g_Sprite {
 				int i = (arrayOfShort = (short[]) this.var_e13
 						.elementAt(this.var_e1b))[0] * 24;
 				int j = arrayOfShort[1] * 24;
-				Class_g_Sprite localClass_g_2517 = null;
+				G_Sprite localClass_g_2517 = null;
 				if ((this.var_ee3 == null) && (++this.var_edb >= 24 / var_de3 / 2)) {
 					localClass_g_2517 = var_deb
-							.showSpriteOnMap(var_deb.bSmokeSprite, this.pixelX, this.pixelY, 0, 0, 1, Class_c_MainCanvas
+							.showSpriteOnMap(var_deb.bSmokeSprite, this.pixelX, this.pixelY, 0, 0, 1, C_MainCanvas
 									.getRandomWithin(1, 4) * 50);
 					this.var_edb = 0;
 				}
@@ -604,12 +604,12 @@ public final class Class_a_Unit extends Class_g_Sprite {
 
 	public final void sub_26fe() {
 		this.var_e83 = 2;
-		Class_a_Unit unit = var_deb.getUnitAtPos(this.posX, this.posY, (byte) 1);
+		A_Unit unit = var_deb.getUnitAtPos(this.posX, this.posY, (byte) 1);
 		if (unit != null) {
 			unit.killUnitMaybe();
 		}
 		if (hasProperty((short) 256)) { // 1 << 8 - Wisp
-			Class_a_Unit[] unitsInAttRange = getUnitsInAttackRange(this.posX, this.posY, 1, 2, (byte) 2);
+			A_Unit[] unitsInAttRange = getUnitsInAttackRange(this.posX, this.posY, 1, 2, (byte) 2);
 			for (int i = 0; i < unitsInAttRange.length; i++) {
 				unitsInAttRange[i].sub_1595((byte) 2);
 				var_deb.showSpriteOnMap(var_deb.sparkSprite, unitsInAttRange[i].pixelX, unitsInAttRange[i].pixelY, 0, 0, 1, 50);
@@ -618,15 +618,15 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		var_deb.var_4e0a = this;
 	}
 
-	public static final Class_a_Unit[] sub_27b7(byte paramByte) {
-		Class_a_Unit[] units = new Class_a_Unit[var_deb.teamsUnitsCount[paramByte]];
+	public static final A_Unit[] sub_27b7(byte paramByte) {
+		A_Unit[] units = new A_Unit[var_deb.teamsUnitsCount[paramByte]];
 		int i = 0;
 		for (int it = 0; it < units.length; it++) {
 			if ((var_deb.teamsUnits[var_deb.someUnitTeamId][it] != null) && (var_deb.teamsUnits[var_deb.someUnitTeamId][it].var_e83 == 3)) {
 				units[(i++)] = var_deb.teamsUnits[var_deb.someUnitTeamId][it];
 			}
 		}
-		Class_a_Unit[] units2 = new Class_a_Unit[var_deb.var_49ca + 1 + i];
+		A_Unit[] units2 = new A_Unit[var_deb.var_49ca + 1 + i];
 		for (byte k = 0; k < units2.length; k = (byte) (k + 1)) {
 			if (k < i) {
 				units2[k] = units[k];
@@ -651,7 +651,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 				} else {
 					x = 2;
 				}
-				Class_c_MainCanvas.getRandomNumber(); //@todo
+				C_MainCanvas.getRandomNumber(); //@todo
 				y = 0;
 				super.sub_1d20(gr, inX + x, inY + y);
 			} else if ((!paramBoolean) && (this.var_e83 != 2)) {
@@ -679,17 +679,17 @@ public final class Class_a_Unit extends Class_g_Sprite {
 		inY = this.pixelY + inY;
 		if ((this.var_e83 != 3) && (this.health < 100)) {
 			String healthStr = "" + this.health;
-			Class_c_MainCanvas.drawAString(gr, healthStr, inX, inY + this.spriteFrameHeight - 7, 0);
+			C_MainCanvas.drawAString(gr, healthStr, inX, inY + this.spriteFrameHeight - 7, 0);
 		}
 	}
 
-	public static final void initializeUnitsData(Class_g_Game ins) {
+	public static final void initializeUnitsData(G_Game ins) {
 		var_deb = ins;
 		try {
 			for (int unitInd = 0; unitInd < unitNames.length; unitInd++) {
-				InputStream unitStream = Class_c_MainCanvas
+				InputStream unitStream = C_MainCanvas
 						.getResourceStream(unitNames[unitInd] + ".unit");
-				String unitString = Class_c_MainCanvas
+				String unitString = C_MainCanvas
 						.streamToString((InputStream) unitStream);
 				while (unitString != null) {
 					int eolnIndex = unitString.indexOf(';');
@@ -697,7 +697,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 						unitString = unitString.substring(0, eolnIndex);
 					}
 					if ((unitString = unitString.trim()).length() != 0) {
-						String[] arrayOfString = Class_c_MainCanvas
+						String[] arrayOfString = C_MainCanvas
 								.splitStringByChar(unitString, ' ');
 						if (arrayOfString[0].equalsIgnoreCase("MoveRange")) {
 							unitsMoveRange[unitInd] = ((byte) Integer
@@ -743,7 +743,7 @@ public final class Class_a_Unit extends Class_g_Sprite {
 			return;
 		} catch (Exception exx) {
 			try {
-				InputStream stream = Class_c_MainCanvas
+				InputStream stream = C_MainCanvas
 						.getResourceStream("units.bin");
 				DataInputStream unitBinStream = new DataInputStream(stream);
 				int unitsCount = 12; // @todo move to class member

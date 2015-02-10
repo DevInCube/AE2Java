@@ -7,7 +7,7 @@ import java.util.Enumeration;
  * @author DevInCube
  *
  */
-public final class Class_a_StaticFileConnection {
+public final class A_StaticFileConnection {
 
 	private static int fileConCode = -1;
 

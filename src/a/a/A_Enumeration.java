@@ -8,9 +8,9 @@ import java.util.NoSuchElementException;
  * @author DevInCube
  *
  */
-final class Class_a_Enumeration implements Enumeration {
+final class A_Enumeration implements Enumeration {
 	
-	Class_a_Enumeration(Class_b_EnumerationExt clas) {
+	A_Enumeration(B_EnumerationExt clas) {
 		//
 	}
 

@@ -3,7 +3,7 @@ package aeii;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
-public class Class_d_ImageWrap {
+public class D_ImageWrap {
 
 	public Image anImage;
 	private boolean var_699;
@@ -15,12 +15,12 @@ public class Class_d_ImageWrap {
 	private int var_6c9;
 	public int var_6d1;
 
-	public Class_d_ImageWrap() {
+	public D_ImageWrap() {
 		//
 	}
 
-	public Class_d_ImageWrap(
-			Class_d_ImageWrap other,
+	public D_ImageWrap(
+			D_ImageWrap other,
 			int paramInt1,
 			int paramInt2,
 			int inWidth,
@@ -35,7 +35,7 @@ public class Class_d_ImageWrap {
 		this.var_699 = true;
 	}
 
-	public Class_d_ImageWrap(Class_d_ImageWrap other, int paramInt) {
+	public D_ImageWrap(D_ImageWrap other, int paramInt) {
 		this.var_699 = false;
 		this.var_6d1 = 0;
 		this.anImage = other.anImage;
@@ -67,30 +67,30 @@ public class Class_d_ImageWrap {
 		}
 	}
 
-	public Class_d_ImageWrap(String imageId, int width, int paramInt2) {
+	public D_ImageWrap(String imageId, int width, int paramInt2) {
 		this.var_699 = false;
 		this.var_6d1 = 0;
-		byte[] bytes = Class_c_MainCanvas.getResourceString(imageId + ".png");
+		byte[] bytes = C_MainCanvas.getResourceString(imageId + ".png");
 		this.anImage = resizeImageMaybe(Image.createImage(bytes, 0, bytes.length), width, -1, true);
 		this.imageWidth = ((short) this.anImage.getWidth());
 		this.imageHeight = ((short) this.anImage.getHeight());
 		this.var_699 = false;
 	}
 
-	public Class_d_ImageWrap(String id) {
+	public D_ImageWrap(String id) {
 		this(id, -1, -1);
 	}
 
-	public Class_d_ImageWrap(String imageID, int argInt) {
+	public D_ImageWrap(String imageID, int argInt) {
 		this.var_699 = false;
 		this.var_6d1 = 0;
 		byte[] bytes = null;
 		if (argInt != 1) {
-			bytes = Class_c_MainCanvas
-					.getResourceString(Class_g_Game.spriteColorsMaybe[argInt] + "_" + imageID + ".png");
+			bytes = C_MainCanvas
+					.getResourceString(G_Game.spriteColorsMaybe[argInt] + "_" + imageID + ".png");
 		}
 		if (bytes == null) {
-			bytes = Class_c_MainCanvas.getResourceString(imageID + ".png");
+			bytes = C_MainCanvas.getResourceString(imageID + ".png");
 		}
 		this.anImage = Image.createImage(bytes, 0, bytes.length);
 		this.imageWidth = ((short) this.anImage.getWidth());

@@ -1,6 +1,6 @@
 package aeii;
 
-import a.a.a.Class_g_Sprite;
+import a.a.a.G_Sprite;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -21,16 +21,16 @@ import javax.microedition.media.Player;
 import javax.microedition.midlet.MIDlet;
 import javax.microedition.rms.RecordStore;
 
-public final class Class_c_MainCanvas extends Canvas implements Runnable,
+public final class C_MainCanvas extends Canvas implements Runnable,
 		CommandListener {
 
 	public static boolean propDeveloperModeOn;
 	public static boolean propDisableIntroOn;
 	public static final Font someFont = Font.getFont(0, 1, 8);
 	public static Font theFont;
-	public static int fontBaselinePos = (Class_c_MainCanvas.theFont = Font
+	public static int fontBaselinePos = (C_MainCanvas.theFont = Font
 			.getFont(0, 1, 8)).getBaselinePosition();
-	public static final int var_1767 = Class_c_MainCanvas.fontBaselinePos + 6;
+	public static final int var_1767 = C_MainCanvas.fontBaselinePos + 6;
 	public static final int someFontHeight;
 	private static short[] var_1777;
 	private static short[] var_177f;
@@ -40,14 +40,14 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 	private boolean var_179f = true;
 	private int frameDelay;
 	private String fpsValue = "";
-	public Class_f_StringManager var_17b7;
+	public F_StringManager var_17b7;
 	public static int canvasWidth;
 	public static int canvasHeight;
 	private int var_17cf = 0;
 	private int var_17d7;
 	private int gameActionCodeRunning = 0;
 	private long gameActionStartTime;
-	public static Class_g_Sprite[] sprites;
+	public static G_Sprite[] sprites;
 	public static Random random = new Random();
 	public static boolean[] settings = { true, true, true, true };
 	public static String[] var_1807;
@@ -66,7 +66,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 	private static byte[][] var_186f;
 	private static String[] resPakStrings;
 
-	public Class_c_MainCanvas(MIDlet paramMIDlet) {
+	public C_MainCanvas(MIDlet paramMIDlet) {
 		try {
 			propDeveloperModeOn = "true".equalsIgnoreCase(Main.mainMIDlet
 					.getAppProperty("Developer-Mode"));
@@ -87,11 +87,11 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 		}
 		try {
 			setFullScreenMode(true);
-			Class_f_StringManager.mainCanvas = this;
-			Class_f_StringManager.loadLangDataFromFile("/lang.dat");
+			F_StringManager.mainCanvas = this;
+			F_StringManager.loadLangDataFromFile("/lang.dat");
 			canvasWidth = getWidth();
 			canvasHeight = getHeight();
-			Class_c_MainCanvas.midletDisplay = Display.getDisplay(paramMIDlet);
+			C_MainCanvas.midletDisplay = Display.getDisplay(paramMIDlet);
 			midletDisplay.setCurrent(this);
 			new Thread(this).start();
 			return;
@@ -341,7 +341,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 		midletDisplay.setCurrent(paramDisplayable);
 	}
 
-	public final void sub_220e(Class_f_StringManager paramClass_f_0145) {
+	public final void sub_220e(F_StringManager paramClass_f_0145) {
 		sub_26ad();
 		paramClass_f_0145.someUnknownMethod();
 		this.var_17b7 = paramClass_f_0145;
@@ -359,13 +359,13 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 			paramGraphics.setFont(theFont);
 			paramGraphics.setColor(0);
 			paramGraphics
-					.drawString(Class_f_StringManager.getLangString(58), canvasWidth / 2, canvasHeight / 2 - 1, 33);
+					.drawString(F_StringManager.getLangString(58), canvasWidth / 2, canvasHeight / 2 - 1, 33);
 		} else {
 			this.var_17b7.startLoading(paramGraphics);
 		}
 		if (propDeveloperModeOn) {
 			paramGraphics.setFont(theFont);
-			Class_g_Game
+			G_Game
 					.sub_fdce(paramGraphics, this.fpsValue, 2, 2, 20, -1, 0);
 		}
 	}
@@ -525,8 +525,8 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 	}
 
 	public static final void sub_28be() {
-		sprites[0] = new Class_g_Sprite("chars");
-		sprites[1] = new Class_g_Sprite("lchars");
+		sprites[0] = new G_Sprite("chars");
+		sprites[1] = new G_Sprite("lchars");
 	}
 
 	public final void setFPSOverride(int fps) {
@@ -539,10 +539,10 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 	public final void run() {
 		try {
 			repaintAll();
-			var_1807 = new String[] { Class_f_StringManager.getLangString(26), Class_f_StringManager
-					.getLangString(28), Class_f_StringManager.getLangString(25), Class_f_StringManager
+			var_1807 = new String[] { F_StringManager.getLangString(26), F_StringManager
+					.getLangString(28), F_StringManager.getLangString(25), F_StringManager
 					.getLangString(24) };
-			Class_g_Game localClass_g_1956 = new Class_g_Game();
+			G_Game localClass_g_1956 = new G_Game();
 			repaintAll();
 			this.var_17b7 = localClass_g_1956;
 			this.var_179f = false;
@@ -657,7 +657,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 					var_181f = playerIndex;
 					var_1827 = playLoopCount;
 				} else {
-					Class_c_MainCanvas.currentMusicPlayer = musicPlayers[playerIndex];
+					C_MainCanvas.currentMusicPlayer = musicPlayers[playerIndex];
 					currentMusicPlayer.setLoopCount(playLoopCount);
 					currentMusicPlayer.start();
 					currentMusicPlayerIndex = playerIndex;
@@ -764,7 +764,7 @@ public final class Class_c_MainCanvas extends Canvas implements Runnable,
 		var_1777 = new short[] { 45, 43 };
 		var_177f = new short[] { 57, 57 };
 		var_1787 = new byte[][] { { 10, 11, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, { 12, -1, 11, -1, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
-		sprites = new Class_g_Sprite[2];
+		sprites = new G_Sprite[2];
 	}
 }
 

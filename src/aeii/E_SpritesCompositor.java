@@ -1,28 +1,28 @@
 package aeii;
 
-import a.a.a.Class_g_Sprite;
+import a.a.a.G_Sprite;
 import java.util.Vector;
 import javax.microedition.lcdui.Font;
 import javax.microedition.lcdui.Graphics;
 
-public final class Class_e_FightAnimation extends Class_f_StringManager {
+public final class E_SpritesCompositor extends F_StringManager {
 
 	private boolean[] var_fe2 = { false, false };
 	public int var_fea = 13553358;
 	private static int var_ff2;
-	private static int var_ffa = ((Class_e_FightAnimation.var_ff2 = Class_c_MainCanvas.canvasHeight <= 143 ? 1
+	private static int var_ffa = ((E_SpritesCompositor.var_ff2 = C_MainCanvas.canvasHeight <= 143 ? 1
 			: 2) << 1) + 1;
 	private byte var_1002 = 2;
 	private short var_100a = 3;
-	public static Class_g_Game var_1012;
+	public static G_Game var_1012;
 	public String[] var_101a;
-	private Class_d_ImageWrap[] var_1022;
+	private D_ImageWrap[] var_1022;
 	private int var_102a;
 	private int var_1032;
 	public int var_103a;
 	public int var_1042;
 	private int var_104a;
-	private Font var_1052 = Class_c_MainCanvas.theFont;
+	private Font var_1052 = C_MainCanvas.theFont;
 	public int var_105a;
 	private int var_1062;
 	private int var_106a;
@@ -33,7 +33,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 	private int var_1092;
 	private boolean var_109a = false;
 	private boolean var_10a2 = false;
-	public Class_a_Unit[] var_10aa;
+	public A_Unit[] var_10aa;
 	private int var_10b2;
 	private int var_10ba;
 	private byte var_10c2 = -1;
@@ -45,11 +45,11 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 	public int var_10f2 = -1;
 	private boolean var_10fa = true;
 	private int var_1102;
-	public Class_a_Unit someUnit0;
+	public A_Unit someUnit0;
 	private boolean var_1112 = true;
-	public Class_f_StringManager stringManager;
+	public F_StringManager stringManager;
 	private int var_1122;
-	private Class_g_Sprite[] someThreeRandomSprites;
+	private G_Sprite[] someThreeRandomSprites;
 	private int var_1132;
 	private boolean var_113a = false;
 	private Vector var_1142;
@@ -66,8 +66,8 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 	private int var_119a;
 	public int var_11a2 = 2370117;
 	public int var_11aa = 2370117;
-	public Class_d_ImageWrap var_11b2;
-	private Class_e_FightAnimation var_11ba;
+	public D_ImageWrap var_11b2;
+	private E_SpritesCompositor var_11ba;
 	public int[] var_11c2;
 	private int var_11ca;
 	private int var_11d2;
@@ -86,7 +86,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 	private int var_123a;
 	private int var_1242;
 	private byte var_124a;
-	private Class_g_Sprite var_1252;
+	private G_Sprite var_1252;
 
 	public final void sub_1272() {
 		this.var_1232 = 0;
@@ -104,8 +104,8 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		}
 		if (this.var_108a == 15) {
 			for (int i = 0; i < this.var_1142.size(); i++) {
-				Class_e_FightAnimation localClass_e_0134;
-				(localClass_e_0134 = (Class_e_FightAnimation) this.var_1142.elementAt(i))
+				E_SpritesCompositor localClass_e_0134;
+				(localClass_e_0134 = (E_SpritesCompositor) this.var_1142.elementAt(i))
 						.sub_1272();
 				localClass_e_0134.var_10a2 = false;
 			}
@@ -116,12 +116,12 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		this.var_fe2[paramByte] = paramBoolean;
 	}
 
-	public final void sub_1350(Class_f_StringManager paramClass_f_0145) {
+	public final void sub_1350(F_StringManager paramClass_f_0145) {
 		this.stringManager = paramClass_f_0145;
 		this.var_fe2[1] = (boolean) (paramClass_f_0145 != null ? true : false);
 	}
 
-	public Class_e_FightAnimation(byte paramByte, int paramInt) {
+	public E_SpritesCompositor(byte paramByte, int paramInt) {
 		this.var_108a = paramByte;
 		this.var_1092 = paramInt;
 		if (paramByte == 15) {
@@ -133,13 +133,13 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 				sub_1d69();
 				this.var_10fa = false;
 				this.var_1152 = true;
-				this.var_10b2 = (Class_c_MainCanvas.var_1767 - Class_c_MainCanvas.fontBaselinePos);
+				this.var_10b2 = (C_MainCanvas.var_1767 - C_MainCanvas.fontBaselinePos);
 				this.var_103a = var_1012.someCanWidth;
 				this.var_1042 = (var_1012.bigCircleSprite.spriteFrameHeight + var_ffa);
 				if ((paramInt & 0x2) == 0) {
 					this.var_1042 += 5;
 				}
-				this.var_10aa = Class_a_Unit.sub_27b7(var_1012.someUnitTeamId);
+				this.var_10aa = A_Unit.sub_27b7(var_1012.someUnitTeamId);
 				this.var_1062 = this.var_10aa.length;
 				int pInt = (int) (this.var_103a - (var_1012.sideArrowSprite.spriteFrameWidth << 1));
 				if ((paramInt & 0x4) == 0) {
@@ -165,7 +165,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 				this.var_1042 = (5 + var_ff2 + 24 + var_ffa
 						+ (var_1012.smallCircleSprite.spriteFrameHeight << 1) + var_ff2 + var_ff2 + 1);
 				if (paramByte == 5) {
-					this.var_1042 += var_ffa + Class_c_MainCanvas.fontBaselinePos;
+					this.var_1042 += var_ffa + C_MainCanvas.fontBaselinePos;
 					this.someUnit0 = var_1012.getUnitAtPos(var_1012.cursorPosX,
 							var_1012.cursorPosY, (byte) 0);
 					this.var_105a = this.someUnit0.unitType;
@@ -181,13 +181,13 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		this.var_109a = true;
 	}
 
-	public final Class_e_FightAnimation sub_165b(String paramString) {
-		this.var_11ba = new Class_e_FightAnimation((byte) 10, 0);
+	public final E_SpritesCompositor sub_165b(String paramString) {
+		this.var_11ba = new E_SpritesCompositor((byte) 10, 0);
 		this.var_11ba.sub_1ca8(null, paramString, var_1012.someCanWidth, -1);
 		return this.var_11ba;
 	}
 
-	public final void sub_1698(Class_e_FightAnimation paramClass_e_0134, int paramInt1,
+	public final void sub_1698(E_SpritesCompositor paramClass_e_0134, int paramInt1,
 			int paramInt2, int paramInt3) {
 		if (this.var_1142 == null) {
 			this.var_1142 = new Vector();
@@ -219,11 +219,11 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		}
 		boolean paramInt3bool = false;
 		paramInt2 = 0;
-		Class_e_FightAnimation cl;
+		E_SpritesCompositor cl;
 		(cl = paramClass_e_0134).var_fe2[paramInt2] = paramInt3bool;
 		paramInt3bool = false;
 		paramInt2 = 1;
-		Class_e_FightAnimation cl2;
+		E_SpritesCompositor cl2;
 		(cl2 = paramClass_e_0134).var_fe2[paramInt2] = paramInt3bool;
 		this.var_1142.addElement(paramClass_e_0134);
 	}
@@ -286,8 +286,8 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		}
 		int intVal;
 		intVal = paramInt1 - this.var_10da - 16;
-		this.var_101a = Class_f_StringManager.wrapStringText(paramString, intVal,
-				Class_c_MainCanvas.theFont);
+		this.var_101a = F_StringManager.wrapStringText(paramString, intVal,
+				C_MainCanvas.theFont);
 		sub_1a89(null, this.var_101a, paramInt1, paramInt2);
 		this.var_113a = false;
 		this.var_108a = 7;
@@ -305,12 +305,12 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		this.var_113a = false;
 		paramInt1 = paramInt1 - this.var_10da - 16;
 		if (paramString != null) {
-			this.var_10ea = Class_f_StringManager.wrapStringText(paramString, paramInt1,
-					Class_c_MainCanvas.theFont);
+			this.var_10ea = F_StringManager.wrapStringText(paramString, paramInt1,
+					C_MainCanvas.theFont);
 		}
 		this.var_101a = paramArrayOfString;
-		this.var_104a = Class_c_MainCanvas.var_1767;
-		this.var_10b2 = (Class_c_MainCanvas.var_1767 - Class_c_MainCanvas.fontBaselinePos);
+		this.var_104a = C_MainCanvas.var_1767;
+		this.var_10b2 = (C_MainCanvas.var_1767 - C_MainCanvas.fontBaselinePos);
 		this.var_10ba = (this.var_10b2 / 2);
 		int someInteger;
 		if (paramInt2 <= 0) {
@@ -360,21 +360,21 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		if ((this.var_1092 & 0x8) == 0) {
 			i -= 8;
 		}
-		this.var_101a = Class_f_StringManager.wrapStringText(paramString2, i,
-				Class_c_MainCanvas.theFont);
+		this.var_101a = F_StringManager.wrapStringText(paramString2, i,
+				C_MainCanvas.theFont);
 		sub_1a89(paramString1, this.var_101a, paramInt1, paramInt2);
 		if (this.var_113a) {
 			i -= var_1012.arrowSprite.spriteFrameWidth;
-			this.var_101a = Class_f_StringManager.wrapStringText(paramString2, i,
-					Class_c_MainCanvas.theFont);
+			this.var_101a = F_StringManager.wrapStringText(paramString2, i,
+					C_MainCanvas.theFont);
 			sub_1a89(paramString1, this.var_101a, paramInt1, paramInt2);
 		}
 	}
 
 	private final void sub_1d69() {
-		this.someThreeRandomSprites = new Class_g_Sprite[3];
+		this.someThreeRandomSprites = new G_Sprite[3];
 		for (int i = 0; i < this.someThreeRandomSprites.length; i++) {
-			this.someThreeRandomSprites[i] = new Class_g_Sprite(var_1012.smallSparkSprite);
+			this.someThreeRandomSprites[i] = new G_Sprite(var_1012.smallSparkSprite);
 		}
 		setRandomSpritesPositions();
 	}
@@ -383,15 +383,15 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		for (int i = 0; i < this.someThreeRandomSprites.length; i++) {
 			this.someThreeRandomSprites[i].var_c18 = true;
 			this.someThreeRandomSprites[i].setPixelPosition(
-					Class_c_MainCanvas.getRandomMax(this.var_1252.spriteFrameWidth),
-					Class_c_MainCanvas.getRandomMax(this.var_1252.spriteFrameHeight));
-			this.someThreeRandomSprites[i].setCurrentFrameIndex(Class_c_MainCanvas.getRandomMax(this.someThreeRandomSprites[i]
+					C_MainCanvas.getRandomMax(this.var_1252.spriteFrameWidth),
+					C_MainCanvas.getRandomMax(this.var_1252.spriteFrameHeight));
+			this.someThreeRandomSprites[i].setCurrentFrameIndex(C_MainCanvas.getRandomMax(this.someThreeRandomSprites[i]
 					.getImagesCount()));
 		}
 	}
 
 	public final void sub_1e54(String[] paramArrayOfString,
-			Class_d_ImageWrap[] paramArrayOfClass_d_0033, int paramInt1,
+			D_ImageWrap[] paramArrayOfClass_d_0033, int paramInt1,
 			int paramInt2, int paramInt3) {
 		this.var_1092 = 15;
 		this.var_101a = paramArrayOfString;
@@ -400,11 +400,11 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		this.var_103a = 0;
 		for (int it = 0; it < this.var_1062; it++) {
 			int width;
-			if ((width = Class_c_MainCanvas.theFont.stringWidth(this.var_101a[it])) > this.var_103a) {
+			if ((width = C_MainCanvas.theFont.stringWidth(this.var_101a[it])) > this.var_103a) {
 				this.var_103a = width;
 			}
 		}
-		this.var_10b2 = (Class_c_MainCanvas.var_1767 - Class_c_MainCanvas.fontBaselinePos);
+		this.var_10b2 = (C_MainCanvas.var_1767 - C_MainCanvas.fontBaselinePos);
 		this.var_10ba = (this.var_10b2 / 2);
 		this.var_123a = var_1012.smallCircleSprite.spriteFrameWidth;
 		this.var_104a = (this.var_123a + this.var_10b2);
@@ -429,7 +429,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		int someInt = 0;
 		for (paramInt2 = 0; paramInt2 < this.var_101a.length; paramInt2++) {
 			int strWidth;
-			if ((strWidth = Class_c_MainCanvas.theFont
+			if ((strWidth = C_MainCanvas.theFont
 					.stringWidth(this.var_101a[paramInt2])) > someInt) {
 				someInt = strWidth;
 			}
@@ -439,7 +439,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 			this.var_103a = paramInt1;
 		}
 		if (this.var_1042 < 0) {
-			this.var_1042 = Class_c_MainCanvas.var_1767;
+			this.var_1042 = C_MainCanvas.var_1767;
 			if (var_1012.sideArrowSprite.spriteFrameHeight > this.var_1042) {
 				this.var_1042 = var_1012.sideArrowSprite.spriteFrameHeight;
 			}
@@ -459,12 +459,12 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 			int paramInt6) {
 		this.var_101a = paramArrayOfString;
 		this.var_1062 = this.var_101a.length;
-		this.var_10b2 = (Class_c_MainCanvas.var_1767 - Class_c_MainCanvas.fontBaselinePos);
-		this.var_104a = Class_c_MainCanvas.var_1767;
+		this.var_10b2 = (C_MainCanvas.var_1767 - C_MainCanvas.fontBaselinePos);
+		this.var_104a = C_MainCanvas.var_1767;
 		int someInt = 0;
 		for (int i = 0; i < this.var_101a.length; i++) {
 			int width;
-			if ((width = Class_c_MainCanvas.theFont.stringWidth(this.var_101a[i])) > someInt) {
+			if ((width = C_MainCanvas.theFont.stringWidth(this.var_101a[i])) > someInt) {
 				someInt = width;
 			}
 		}
@@ -490,14 +490,14 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 	}
 
 	public final void sub_224f(String[] paramArrayOfString,
-			Class_d_ImageWrap[] paramArrayOfClass_d_0033, int paramInt1,
+			D_ImageWrap[] paramArrayOfClass_d_0033, int paramInt1,
 			int paramInt2, int paramInt3, int paramInt4, byte paramByte) {
 		this.var_124a = 1;
 		this.var_101a = paramArrayOfString;
 		this.var_1022 = paramArrayOfClass_d_0033;
 		this.var_1062 = this.var_101a.length;
 		this.var_1252 = var_1012.bigCircleSprite;
-		this.var_10b2 = (Class_c_MainCanvas.var_1767 - Class_c_MainCanvas.fontBaselinePos);
+		this.var_10b2 = (C_MainCanvas.var_1767 - C_MainCanvas.fontBaselinePos);
 		this.var_1092 = 15;
 		this.var_123a = this.var_1252.spriteFrameWidth;
 		this.var_1242 = (this.var_123a >> 1);
@@ -512,16 +512,16 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 		if (this.var_1062 == 1) {
 			this.var_1202 = 0;
 		} else if (paramInt3 <= 0) {
-			this.var_1202 = ((this.var_1252.spriteFrameWidth << 10) / (2 * Class_f_StringManager
+			this.var_1202 = ((this.var_1252.spriteFrameWidth << 10) / (2 * F_StringManager
 					.sub_f0f(45)));
 			this.var_120a = (this.var_1202 + this.var_1252.spriteFrameWidth / 2);
-			paramInt3 = (this.var_120a << 1) + Class_c_MainCanvas.var_1767 + 2;
+			paramInt3 = (this.var_120a << 1) + C_MainCanvas.var_1767 + 2;
 		} else {
 			int someInt;
 			someInt = (this.var_1252.spriteFrameWidth << 10)
-					/ Class_f_StringManager.sub_f0f(this.var_1222 / 2)
+					/ F_StringManager.sub_f0f(this.var_1222 / 2)
 					+ this.var_1252.spriteFrameHeight / 2;
-			this.var_120a = ((paramInt3 - Class_c_MainCanvas.var_1767) / 2 - 2);
+			this.var_120a = ((paramInt3 - C_MainCanvas.var_1767) / 2 - 2);
 			if (this.var_120a > someInt) {
 				this.var_120a = someInt;
 			}
@@ -547,7 +547,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 				}
 				i = 0;
 			}
-		} while (!((Class_e_FightAnimation) this.var_1142.elementAt(i)).var_1152);
+		} while (!((E_SpritesCompositor) this.var_1142.elementAt(i)).var_1152);
 		return i;
 	}
 
@@ -568,12 +568,12 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 			if ((paramBoolean) && (this.var_1002 == 2)) {
 				paramBoolean = false;
 				if ((this.var_fe2[0] != false)
-						&& ((Class_f_StringManager.mainCanvas
-								.sub_26d7(Class_g_Game.var_4602)) || (Class_f_StringManager.mainCanvas
+						&& ((F_StringManager.mainCanvas
+								.sub_26d7(G_Game.var_4602)) || (F_StringManager.mainCanvas
 								.sub_26d7(16)))) {
 					paramBoolean = true;
-					Class_f_StringManager.mainCanvas.releaseGameAction(Class_g_Game.var_4602);
-					Class_f_StringManager.mainCanvas.releaseGameAction(16);
+					F_StringManager.mainCanvas.releaseGameAction(G_Game.var_4602);
+					F_StringManager.mainCanvas.releaseGameAction(16);
 				}
 				if ((this.var_108a == 0) || (this.var_108a == 3)) {
 					for (int i = 0; i < this.someThreeRandomSprites.length; i++) {
@@ -582,10 +582,10 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 							if (this.var_1232 == 0) {
 								this.someThreeRandomSprites[i]
 										.setPixelPosition(
-												Class_c_MainCanvas
+												C_MainCanvas
 														.getRandomMax(this.var_1252.spriteFrameWidth
 																- this.someThreeRandomSprites[i].spriteFrameWidth),
-												Class_c_MainCanvas
+												C_MainCanvas
 														.getRandomMax(this.var_1252.spriteFrameHeight
 																- this.someThreeRandomSprites[i].spriteFrameHeight));
 							} else {
@@ -598,11 +598,11 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 				}
 				if ((!this.var_115a) && (this.var_114a >= 0)) {
 					int m;
-					if (Class_f_StringManager.mainCanvas.sub_26d7(1)) {
-						((Class_e_FightAnimation) this.var_1142.elementAt(this.var_114a)).var_109a = true;
+					if (F_StringManager.mainCanvas.sub_26d7(1)) {
+						((E_SpritesCompositor) this.var_1142.elementAt(this.var_114a)).var_109a = true;
 						this.var_114a = sub_242b(-1);
-						Class_e_FightAnimation localClass_e_01341;
-						(localClass_e_01341 = (Class_e_FightAnimation) this.var_1142
+						E_SpritesCompositor localClass_e_01341;
+						(localClass_e_01341 = (E_SpritesCompositor) this.var_1142
 								.elementAt(this.var_114a)).var_109a = true;
 						m = localClass_e_01341.var_1032;
 						for (int j = 0; j < 5; j++) {
@@ -617,11 +617,11 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 							m -= this.var_11da[j];
 						}
 					}
-					if (Class_f_StringManager.mainCanvas.sub_26d7(2)) {
-						((Class_e_FightAnimation) this.var_1142.elementAt(this.var_114a)).var_109a = true;
+					if (F_StringManager.mainCanvas.sub_26d7(2)) {
+						((E_SpritesCompositor) this.var_1142.elementAt(this.var_114a)).var_109a = true;
 						this.var_114a = sub_242b(1);
-						Class_e_FightAnimation localClass_e_01342;
-						(localClass_e_01342 = (Class_e_FightAnimation) this.var_1142
+						E_SpritesCompositor localClass_e_01342;
+						(localClass_e_01342 = (E_SpritesCompositor) this.var_1142
 								.elementAt(this.var_114a)).var_109a = true;
 						m = localClass_e_01342.var_1032;
 						for (int k = 0; k < 5; k++) {
@@ -642,7 +642,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 					return;
 				}
 				int k = 0;
-				Class_e_FightAnimation localClass_e_01343 = (Class_e_FightAnimation) this.var_1142
+				E_SpritesCompositor localClass_e_01343 = (E_SpritesCompositor) this.var_1142
 						.elementAt(k);
 				localClass_e_01343.sub_24ea(k == this.var_114a ? true
 						: this.var_115a ? true : false);
@@ -650,14 +650,14 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 				if (this.var_108a == 0) {
 					if (this.var_1002 == 2) {
 						this.var_109a = true;
-						if (Class_f_StringManager.mainCanvas.sub_26d7(4)) {
+						if (F_StringManager.mainCanvas.sub_26d7(4)) {
 							this.var_1232 -= this.var_1222;
 							this.var_122a += this.var_1222;
 							this.var_105a -= 1;
 							if (this.var_105a < 0) {
 								this.var_105a = (this.var_1062 - 1);
 							}
-						} else if (Class_f_StringManager.mainCanvas.sub_26d7(8)) {
+						} else if (F_StringManager.mainCanvas.sub_26d7(8)) {
 							this.var_1232 += this.var_1222;
 							this.var_122a -= this.var_1222;
 							if (this.var_122a < 0) {
@@ -677,14 +677,14 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 							if (this.var_1232 == 0) {
 								setRandomSpritesPositions();
 							}
-						} else if (Class_f_StringManager.mainCanvas.isGameActionRunning(4)) {
+						} else if (F_StringManager.mainCanvas.isGameActionRunning(4)) {
 							this.var_1232 -= this.var_1222;
 							this.var_122a += this.var_1222;
 							this.var_105a -= 1;
 							if (this.var_105a < 0) {
 								this.var_105a = (this.var_1062 - 1);
 							}
-						} else if (Class_f_StringManager.mainCanvas.isGameActionRunning(8)) {
+						} else if (F_StringManager.mainCanvas.isGameActionRunning(8)) {
 							this.var_1232 += this.var_1222;
 							this.var_122a -= this.var_1222;
 							if (this.var_122a < 0) {
@@ -715,7 +715,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 									this.var_101a[this.var_105a], (byte) 0);
 							return;
 						}
-						if (Class_f_StringManager.mainCanvas.sub_26d7(4)) {
+						if (F_StringManager.mainCanvas.sub_26d7(4)) {
 							if (this.var_105a < this.var_10ca) {
 								this.var_105a += this.var_1062;
 							}
@@ -732,7 +732,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 									(byte) 2);
 							setRandomSpritesPositions();
 							this.var_109a = true;
-						} else if (Class_f_StringManager.mainCanvas.sub_26d7(8)) {
+						} else if (F_StringManager.mainCanvas.sub_26d7(8)) {
 							if (this.var_105a < this.var_10ca) {
 								this.var_105a += this.var_1062;
 							}
@@ -750,22 +750,22 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 					} else if ((this.var_108a != 10) && (this.var_108a != 7)
 							&& (this.var_108a != 11)) {
 						if (this.var_108a == 8) {
-							if (Class_f_StringManager.mainCanvas.sub_26d7(1)) {
+							if (F_StringManager.mainCanvas.sub_26d7(1)) {
 								if (this.var_116a > 0) {
 									this.var_116a -= 1;
 									this.var_109a = true;
 								}
-							} else if ((Class_f_StringManager.mainCanvas.sub_26d7(2))
+							} else if ((F_StringManager.mainCanvas.sub_26d7(2))
 									&& (this.var_116a + this.var_117a < this.var_119a)) {
 								this.var_116a += 1;
 								this.var_109a = true;
 							}
-							if (Class_f_StringManager.mainCanvas.sub_26d7(4)) {
+							if (F_StringManager.mainCanvas.sub_26d7(4)) {
 								if (this.var_1162 > 0) {
 									this.var_1162 -= 1;
 									this.var_109a = true;
 								}
-							} else if ((Class_f_StringManager.mainCanvas.sub_26d7(8))
+							} else if ((F_StringManager.mainCanvas.sub_26d7(8))
 									&& (this.var_1162 + this.var_1172 < this.var_1192)) {
 								this.var_1162 += 1;
 								this.var_109a = true;
@@ -776,7 +776,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 							if (this.var_10f2 > 0) {
 								this.var_10f2 -= 50;
 							} else {
-								Class_f_StringManager.mainCanvas.sub_220e(this.stringManager);
+								F_StringManager.mainCanvas.sub_220e(this.stringManager);
 							}
 						}
 						if (this.var_10e2 > 0) {
@@ -800,7 +800,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 								return;
 							}
 							if ((this.var_108a != 7)
-									&& (Class_f_StringManager.mainCanvas.sub_26d7(1))) {
+									&& (F_StringManager.mainCanvas.sub_26d7(1))) {
 								if (this.var_108a == 11) {
 									this.var_105a -= 1;
 									if (this.var_105a < 0) {
@@ -821,10 +821,10 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 									this.var_10ca -= 1;
 									this.var_109a = true;
 								}
-								Class_f_StringManager.mainCanvas.sub_26ad();
+								F_StringManager.mainCanvas.sub_26ad();
 							}
-							if ((Class_f_StringManager.mainCanvas.sub_26d7(2))
-									|| ((this.var_108a == 7) && (Class_f_StringManager.mainCanvas
+							if ((F_StringManager.mainCanvas.sub_26d7(2))
+									|| ((this.var_108a == 7) && (F_StringManager.mainCanvas
 											.sub_26d7(2048)))) {
 								if (this.var_108a == 11) {
 									this.var_105a += 1;
@@ -847,11 +847,11 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 									var_1012.sub_770a(this, 0, null, (byte) 0);
 									return;
 								}
-								Class_f_StringManager.mainCanvas.sub_26ad();
+								F_StringManager.mainCanvas.sub_26ad();
 							}
 						}
 					}
-				} else if (Class_f_StringManager.mainCanvas.sub_26d7(4)) {
+				} else if (F_StringManager.mainCanvas.sub_26d7(4)) {
 					this.var_105a -= 1;
 					if (this.var_105a < 0) {
 						this.var_105a = (this.var_1062 - 1);
@@ -860,7 +860,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 						var_1012.sub_770a(this, this.var_105a, null, (byte) 2);
 					}
 					this.var_109a = true;
-				} else if (Class_f_StringManager.mainCanvas.sub_26d7(8)) {
+				} else if (F_StringManager.mainCanvas.sub_26d7(8)) {
 					this.var_105a += 1;
 					if (this.var_105a >= this.var_1062) {
 						this.var_105a = 0;
@@ -876,12 +876,12 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 				}
 				if ((this.var_1002 == 2)
 						&& (this.var_fe2[1] != false)
-						&& (Class_f_StringManager.mainCanvas
-								.sub_26d7(Class_g_Game.var_460a))) {
-					Class_f_StringManager.mainCanvas.releaseGameAction(Class_g_Game.var_460a);
-					Class_f_StringManager.mainCanvas.sub_26ad();
+						&& (F_StringManager.mainCanvas
+								.sub_26d7(G_Game.var_460a))) {
+					F_StringManager.mainCanvas.releaseGameAction(G_Game.var_460a);
+					F_StringManager.mainCanvas.sub_26ad();
 					if (this.stringManager != null) {
-						Class_f_StringManager.mainCanvas.sub_220e(this.stringManager);
+						F_StringManager.mainCanvas.sub_220e(this.stringManager);
 					}
 					if (this.var_101a != null) {
 						var_1012.sub_770a(this, this.var_105a,
@@ -931,7 +931,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 							this.var_11f2[it] = ((short) ((this.var_11f2[it] + this.var_1212) % 360));
 						}
 					}
-					if ((Class_f_StringManager.mainCanvas.sub_2677())
+					if ((F_StringManager.mainCanvas.sub_2677())
 							|| ((this.var_11fa >= this.var_1202) && (this.var_11f2[0] == 0))) {
 						this.var_11fa = this.var_1202;
 						for (int it = 0; it < this.var_11f2.length; it++) {
@@ -939,7 +939,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 						}
 						this.var_1002 = 2;
 						if (this.var_1112) {
-							Class_f_StringManager.mainCanvas.sub_26ad();
+							F_StringManager.mainCanvas.sub_26ad();
 						}
 					}
 				} else if (this.var_108a == 13) {
@@ -987,7 +987,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 			boolean paramBoolean) {
 		if ((this.var_1002 != 3) && (this.var_109a)) {
 			this.var_109a = false;
-			if (((Class_f_StringManager.mainCanvas.var_17b7 == this) && (this.var_10a2))
+			if (((F_StringManager.mainCanvas.var_17b7 == this) && (this.var_10a2))
 					|| (this.var_108a == 0)) {
 				var_1012.startLoading(paramGraphics);
 			}
@@ -1044,11 +1044,11 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 						bool3 += 360;
 					}
 					int iInt = this.var_120a
-							+ (Class_f_StringManager.sub_f0f(bool3) * this.var_11fa >> 10);
-					bool3 = Class_c_MainCanvas.var_1767
+							+ (F_StringManager.sub_f0f(bool3) * this.var_11fa >> 10);
+					bool3 = C_MainCanvas.var_1767
 							+ this.var_120a
 							+ 2
-							- (Class_f_StringManager.sub_f35(bool3) * this.var_11fa >> 10);
+							- (F_StringManager.sub_f35(bool3) * this.var_11fa >> 10);
 					if ((this.var_1002 == 2) && (bool4 == this.var_105a)) {
 						this.var_1252.drawFrame(paramGraphics, 1, iInt,
 								bool3, 3);
@@ -1077,7 +1077,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 					for (bool4 = 0; bool4 < this.someThreeRandomSprites.length; bool4++) {
 						this.someThreeRandomSprites[bool4].drawCurrentFrame(paramGraphics,
 								(this.var_103a - this.var_123a) / 2,
-								Class_c_MainCanvas.var_1767, 3);
+								C_MainCanvas.var_1767, 3);
 					}
 				}
 			}
@@ -1099,21 +1099,21 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 						if (this.var_124a == 2) {
 							someYVal = this.var_103a;
 							if (this.var_101a[this.var_105a] != null) {
-								bool12 = Class_c_MainCanvas.theFont
+								bool12 = C_MainCanvas.theFont
 										.stringWidth(this.var_101a[this.var_105a]) + 2;
 								if (someYVal < bool12) {
 									someYVal = bool12;
 								}
 							}
 							drawRoundedRect(paramGraphics, (this.var_103a - someYVal) / 2, 1,
-									someYVal, Class_c_MainCanvas.var_1767);
+									someYVal, C_MainCanvas.var_1767);
 						} else {
 							drawRoundedRect(paramGraphics, 2 - this.var_102a, 1,
-									this.canvasWidth - 4, Class_c_MainCanvas.var_1767);
+									this.canvasWidth - 4, C_MainCanvas.var_1767);
 						}
 						if (this.var_101a[this.var_105a] != null) {
 							paramGraphics.setColor(16777215);
-							Class_c_MainCanvas.showString(paramGraphics,
+							C_MainCanvas.showString(paramGraphics,
 									this.var_101a[this.var_105a], this.var_120a,
 									(this.var_10b2 >> 1) + 1, 17);
 						}
@@ -1132,22 +1132,22 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 					this.someUnit0.sub_28d7(paramGraphics, -this.someUnit0.pixelX + someYVal,
 							-this.someUnit0.pixelY + someYVal);  // m n p o
 					k = someYVal + this.someUnit0.spriteFrameHeight / 2;
-					paramGraphics.setFont(Class_c_MainCanvas.theFont);
+					paramGraphics.setFont(C_MainCanvas.theFont);
 					paramGraphics.setColor(this.var_fea);
-					Class_c_MainCanvas.showString(paramGraphics, this.someUnit0.unitName,
+					C_MainCanvas.showString(paramGraphics, this.someUnit0.unitName,
 							someYVal + this.someUnit0.spriteFrameWidth + someYVal, k
-									- Class_c_MainCanvas.fontBaselinePos / 2, 20);
+									- C_MainCanvas.fontBaselinePos / 2, 20);
 					String str2;
 					if (this.var_108a == 2) {
 						str2 = "" + this.someUnit0.cost;
 						var_1012.hudIcons2Sprite.drawFrame(paramGraphics, 1, someXVal - someYVal
-								- Class_c_MainCanvas.sub_1e71((byte) 1, str2), k, 10);
+								- C_MainCanvas.sub_1e71((byte) 1, str2), k, 10);
 					} else {
 						str2 = "" + this.someUnit0.health;
 					}
-					Class_c_MainCanvas.sub_2007(paramGraphics, str2, someXVal - someYVal, k, 1,
+					C_MainCanvas.sub_2007(paramGraphics, str2, someXVal - someYVal, k, 1,
 							10);
-					this.var_10b2 = (Class_c_MainCanvas.var_1767 - Class_c_MainCanvas.fontBaselinePos);
+					this.var_10b2 = (C_MainCanvas.var_1767 - C_MainCanvas.fontBaselinePos);
 					bool3 = someYVal + this.someUnit0.spriteFrameHeight + var_ff2;
 					paramGraphics.setColor(this.var_fea);
 					paramGraphics.drawLine(someYVal, bool3, someXVal - someYVal - someYVal,
@@ -1155,16 +1155,16 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 					bool3 += 1 + var_ff2;
 					int i2;
 					if (this.var_108a == 5) {
-						bool5 = Class_c_MainCanvas.fontBaselinePos;
+						bool5 = C_MainCanvas.fontBaselinePos;
 						k = bool3 + bool5 / 1;
-						Class_c_MainCanvas.showString(paramGraphics,
-								Class_f_StringManager.getLangString(97), someYVal, bool3, 20);
-						bool4 = Class_c_MainCanvas.theFont.stringWidth(Class_f_StringManager
+						C_MainCanvas.showString(paramGraphics,
+								F_StringManager.getLangString(97), someYVal, bool3, 20);
+						bool4 = C_MainCanvas.theFont.stringWidth(F_StringManager
 								.getLangString(97));
 						int sumBool;
 						sumBool = someYVal + bool4 + someYVal;
 						String str1 = "" + this.someUnit0.level;
-						i2 = Class_c_MainCanvas.sub_1e71((byte) 0, str1);
+						i2 = C_MainCanvas.sub_1e71((byte) 0, str1);
 						int bool13 = someXVal - sumBool - someYVal
 								- var_1012.hudIconsSprite.spriteFrameWidth - i2 - someYVal;
 						paramGraphics.setColor(this.var_fea);
@@ -1180,7 +1180,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 						sumBool = someXVal - someYVal - i2;
 						var_1012.hudIconsSprite.drawFrame(paramGraphics, 2, sumBool,
 								k, 10);
-						Class_c_MainCanvas.sub_2007(paramGraphics, str1, sumBool, k,
+						C_MainCanvas.sub_2007(paramGraphics, str1, sumBool, k,
 								0, 6);
 						bool3 += bool5 + var_ff2;
 						paramGraphics.setColor(this.var_fea);
@@ -1223,7 +1223,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 											i2, bool3 + bool6, 3);
 									str2 = "" + this.someUnit0.moveRange;
 								}
-								Class_c_MainCanvas.sub_2007(paramGraphics, str2,
+								C_MainCanvas.sub_2007(paramGraphics, str2,
 										sumBool + bool13 + 1, bool3 + bool6,
 										0, 6);
 								if (i3 > 0) {
@@ -1273,7 +1273,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 							var_1012.bigCircleSprite.drawFrame(paramGraphics, 0, m, bool3,
 									3);
 						}
-						Class_a_Unit localClass_a_0260 = this.var_10aa[bool5];
+						A_Unit localClass_a_0260 = this.var_10aa[bool5];
 						int theXpos = m - localClass_a_0260.pixelX - localClass_a_0260.spriteFrameWidth / 2; //m
 						int theYPos = bool3 - localClass_a_0260.pixelY - localClass_a_0260.spriteFrameHeight //n p
 								/ 2;
@@ -1299,7 +1299,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 				case 7:
 				case 10:
 				case 11:
-					paramGraphics.setFont(Class_c_MainCanvas.theFont);
+					paramGraphics.setFont(C_MainCanvas.theFont);
 					if (this.var_10c2 != -1) {
 						var_1012.portraitsSprite.drawFrame(paramGraphics, this.var_10c2,
 								-8, j, 36);
@@ -1309,10 +1309,10 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 					bool5 = 0;
 					bool3 = 0;
 					if (this.var_10ea != null) {
-						paramGraphics.setColor(Class_g_Game.sub_f52a(16777215,
+						paramGraphics.setColor(G_Game.sub_f52a(16777215,
 								this.var_11aa, this.var_1132, 5));
 						for (i4 = 0; i4 < this.var_10ea.length; i4++) {
-							Class_c_MainCanvas.showString(paramGraphics, this.var_10ea[i4],
+							C_MainCanvas.showString(paramGraphics, this.var_10ea[i4],
 									this.var_10da + i / 2, bool3 + this.var_10ba,
 									17);
 							bool3 += this.var_104a;
@@ -1348,22 +1348,22 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 						if ((this.var_108a == 11) && (bool9 == this.var_105a)) {
 							paramGraphics.setColor(5594742);
 							drawRoundedRect(paramGraphics, 0, bool3, k, this.var_104a);
-							bool7 = Class_g_Game.sub_f52a(this.var_11aa, 16777215,
+							bool7 = G_Game.sub_f52a(this.var_11aa, 16777215,
 									this.var_104a - bool5, this.var_104a);
 						} else {
-							bool7 = Class_g_Game.sub_f52a(this.var_11aa,
+							bool7 = G_Game.sub_f52a(this.var_11aa,
 									this.var_fea, this.var_104a - bool5,
 									this.var_104a);
 						}
-						bool7 = Class_g_Game.sub_f52a(bool7, this.var_11aa,
+						bool7 = G_Game.sub_f52a(bool7, this.var_11aa,
 								this.var_1132, 5);
 						paramGraphics.setColor(bool7);
 						if (this.var_11ea >= 0) {
-							Class_c_MainCanvas.showString(paramGraphics,
+							C_MainCanvas.showString(paramGraphics,
 									this.var_101a[bool9], this.var_11ea, bool3
 											+ this.var_10ba, 20);
 						} else {
-							Class_c_MainCanvas.showString(paramGraphics,
+							C_MainCanvas.showString(paramGraphics,
 									this.var_101a[bool9], m, bool3 + this.var_10ba,
 									17);
 						}
@@ -1414,7 +1414,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 							i1, 40);
 					break;
 				case 8:
-					Class_g_Game.drawRectBar(paramGraphics, 0, 0, this.var_103a,
+					G_Game.drawRectBar(paramGraphics, 0, 0, this.var_103a,
 							this.var_1042);
 					bool11 = var_1012.smallTilesFrames[0].imageWidth;
 					bool10 = var_1012.smallTilesFrames[0].imageHeight;
@@ -1426,7 +1426,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 						intparamBoolean = 1;
 						for (k = this.var_1162; k < i3; k++) {
 							bool8 = var_1012.tilesDefs[this.var_1182[k][m]];
-							if (Class_g_Game.sub_11b75(this.var_1182[k][m])) {
+							if (G_Game.sub_11b75(this.var_1182[k][m])) {
 								bool5 = (this.var_1182[k][m] - 37) / 2;
 								bool8 = bool5 * 1 + 8 + bool8 - 8;
 							}
@@ -1442,8 +1442,8 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 						bool8 = 0;
 						bool5 = var_1012.mapUnitsMaybe.size();
 						while (bool8 < bool5) {
-							Class_a_Unit paramBooleanCl;
-							if (((paramBooleanCl = (Class_a_Unit) var_1012.mapUnitsMaybe
+							A_Unit paramBooleanCl;
+							if (((paramBooleanCl = (A_Unit) var_1012.mapUnitsMaybe
 									.elementAt(bool8)).posX >= this.var_1162)
 									&& (paramBooleanCl.posX < i3)
 									&& (paramBooleanCl.posY >= this.var_116a)
@@ -1477,14 +1477,14 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 					var_1012.sideArrowSprite.drawFrame(paramGraphics, 1, i, j / 2, 10);
 					break;
 				case 13:
-					m = Class_c_MainCanvas.var_1767;
+					m = C_MainCanvas.var_1767;
 					k = (this.var_1042 - m) / 2;
-					paramGraphics.setColor(Class_g_Game.sub_f52a(1645370, 16777215,
+					paramGraphics.setColor(G_Game.sub_f52a(1645370, 16777215,
 							this.var_1132, 5));
 					drawRoundedRect(paramGraphics, 0, k, this.var_103a, m);
-					paramGraphics.setFont(Class_c_MainCanvas.theFont);
+					paramGraphics.setFont(C_MainCanvas.theFont);
 					paramGraphics.setColor(16777215);
-					Class_c_MainCanvas
+					C_MainCanvas
 							.showString(paramGraphics, this.var_101a[this.var_105a],
 									16, k + this.var_10ba, 20);
 					n = this.var_103a - this.var_104a;
@@ -1501,13 +1501,13 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 				n -= this.var_104a;
 				bool5--;
 				//continue;@todo
-				paramGraphics.setFont(Class_c_MainCanvas.theFont);
-				paramGraphics.setColor(Class_g_Game.sub_f52a(16777215, 1645370,
+				paramGraphics.setFont(C_MainCanvas.theFont);
+				paramGraphics.setColor(G_Game.sub_f52a(16777215, 1645370,
 						this.var_1132, 5));
 				k = j / 2;
-				Class_c_MainCanvas.showString(paramGraphics,
+				C_MainCanvas.showString(paramGraphics,
 						this.var_101a[this.var_105a], i / 2,
-						(j - Class_c_MainCanvas.fontBaselinePos) / 2, 17);
+						(j - C_MainCanvas.fontBaselinePos) / 2, 17);
 				var_1012.sideArrowSprite.drawFrame(paramGraphics, 0, 0, k, 6);
 				var_1012.sideArrowSprite.drawFrame(paramGraphics, 1, i, k, 10);
 				//break;@todo
@@ -1522,8 +1522,8 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 					bool3 = -m + var_1012.buttonsSprite.spriteFrameHeight;
 				}
 				for (j = 0; j < this.var_1142.size(); j++) {
-					Class_e_FightAnimation intparamBoolean;
-					if (((intparamBoolean = (Class_e_FightAnimation) this.var_1142
+					E_SpritesCompositor intparamBoolean;
+					if (((intparamBoolean = (E_SpritesCompositor) this.var_1142
 							.elementAt(j)).var_1032 >= m)
 							&& (intparamBoolean.var_1032 < bool5)) {
 						intparamBoolean.sub_349e(paramGraphics, 0, bool3,
@@ -1554,13 +1554,13 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 			}
 			paramGraphics.translate(-paramInt1, -paramInt2);
 			paramGraphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);
-			if ((Class_f_StringManager.mainCanvas.var_17b7 == this) && (this.var_1002 == 2)) {
+			if ((F_StringManager.mainCanvas.var_17b7 == this) && (this.var_1002 == 2)) {
 				if (this.var_fe2[0] != false) {
-					var_1012.drawButtonIcon(paramGraphics, Class_g_Game.var_4602, 0,
+					var_1012.drawButtonIcon(paramGraphics, G_Game.var_4602, 0,
 							var_1012.someCanHeight);
 				}
 				if (this.var_fe2[1] != false) {
-					var_1012.drawButtonIcon(paramGraphics, Class_g_Game.var_460a, 1,
+					var_1012.drawButtonIcon(paramGraphics, G_Game.var_460a, 1,
 							var_1012.someCanHeight);
 				}
 			}
@@ -1576,7 +1576,7 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 	public static final void sub_5092(Graphics paramGraphics, int paramInt1,
 			int paramInt2, int paramInt3, int paramInt4, int paramInt5,
 			int paramInt6, int paramInt7, int paramInt8, int paramInt9) {
-		Class_g_Sprite localClass_g_2517 = var_1012.menuSprite;
+		G_Sprite localClass_g_2517 = var_1012.menuSprite;
 		paramGraphics.setClip(paramInt1, paramInt2, paramInt3, paramInt4);
 		paramGraphics.setColor(paramInt6);
 		paramGraphics.fillRect(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -1588,8 +1588,8 @@ public final class Class_e_FightAnimation extends Class_f_StringManager {
 			i = paramInt4 / 4;
 			j = paramInt2 + 5;
 			for (k = 0; k < i; k++) {
-				m = Class_g_Game.sub_f52a(paramInt7, paramInt6, k, i);
-				paramGraphics.setColor(Class_g_Game.sub_f52a(m, paramInt6,
+				m = G_Game.sub_f52a(paramInt7, paramInt6, k, i);
+				paramGraphics.setColor(G_Game.sub_f52a(m, paramInt6,
 						paramInt8, paramInt9));
 				paramGraphics.fillRect(paramInt1, j, paramInt3, 1);
 				j++;

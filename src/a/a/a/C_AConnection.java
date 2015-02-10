@@ -5,7 +5,7 @@ import java.io.OutputStream;
 import java.util.Enumeration;
 import javax.microedition.io.StreamConnection;
 
-public abstract interface Class_c_AConnection extends StreamConnection {
+public abstract interface C_AConnection extends StreamConnection {
 	
 	public abstract InputStream openInputStream();
 

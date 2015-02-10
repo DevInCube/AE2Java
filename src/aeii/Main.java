@@ -5,12 +5,12 @@ import javax.microedition.midlet.MIDlet;
 public class Main extends MIDlet {
 	
 	public static Main mainMIDlet;
-	private static Class_c_MainCanvas mainCanvas;
+	private static C_MainCanvas mainCanvas;
 
 	public final void startApp() {
 		if (mainMIDlet == null) {
 			mainMIDlet = this;
-			mainCanvas = new Class_c_MainCanvas(this);
+			mainCanvas = new C_MainCanvas(this);
 		}
 	}
 
