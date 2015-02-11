@@ -858,7 +858,7 @@ public final class H_FightAnimation {
 								fightAnim.someUnitsSprites[i1].var_c48 = 1;
 								fightAnim.someUnitsSprites[i1].var_ca8 = 1;
 								if (fightAnim.someUnit1Type == 8) {
-									fightAnim.var_c97[i1].var_c78 = false;
+									fightAnim.var_c97[i1].isVisibleMb = false;
 								}
 								m = 0;
 							} else if (fightAnim.someUnitsSprites[i1].var_ca8 == 1) {
@@ -871,7 +871,7 @@ public final class H_FightAnimation {
 						}
 						if ((fightAnim.someUnit1Type == 8)
 								&& (fightAnim.var_c97[i1] != null)
-								&& (fightAnim.var_c97[i1].var_c78)) {
+								&& (fightAnim.var_c97[i1].isVisibleMb)) {
 							G_Sprite localClass_g_25175;
 							(localClass_g_25175 = G_Sprite.getSpriteWithParams(
 									fightAnim.game.bSmokeSprite,

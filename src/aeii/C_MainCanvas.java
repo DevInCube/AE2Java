@@ -27,9 +27,8 @@ public final class C_MainCanvas extends Canvas implements Runnable,
 	public static boolean propDeveloperModeOn;
 	public static boolean propDisableIntroOn;
 	public static final Font someFont = Font.getFont(0, 1, 8);
-	public static Font theFont;
-	public static int fontBaselinePos = (C_MainCanvas.theFont = Font
-			.getFont(0, 1, 8)).getBaselinePosition();
+	public static Font theFont = Font.getFont(0, 1, 8);
+	public static int fontBaselinePos = C_MainCanvas.theFont.getBaselinePosition();
 	public static final int var_1767 = C_MainCanvas.fontBaselinePos + 6;
 	public static final int someFontHeight;
 	private static short[] var_1777;
@@ -759,12 +758,15 @@ public final class C_MainCanvas extends Canvas implements Runnable,
 	}
 
 	static {
+		someFontHeight = someFont.getHeight();
+		/*//@todo
 		someFont.getBaselinePosition();
 		someFontHeight = someFont.getHeight();
 		var_1777 = new short[] { 45, 43 };
 		var_177f = new short[] { 57, 57 };
 		var_1787 = new byte[][] { { 10, 11, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, { 12, -1, 11, -1, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 } };
 		sprites = new G_Sprite[2];
+		*/
 	}
 }
 

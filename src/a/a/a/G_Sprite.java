@@ -29,7 +29,7 @@ public class G_Sprite {
 	public int someXVal;
 	public int someYVal;
 	public int var_c70;
-	public boolean var_c78;
+	public boolean isVisibleMb;
 	public boolean var_c80;
 	public boolean var_c88;
 	public int var_c90;
@@ -53,7 +53,7 @@ public class G_Sprite {
 		this.var_c18 = true;
 		this.var_c40 = 0;
 		this.var_c48 = -1;
-		this.var_c78 = true;
+		this.isVisibleMb = true;
 		this.var_c90 = -1;
 		this.var_c98 = -1;
 		this.someColorInt = 16769024;  // #FFE000 - yellow
@@ -453,7 +453,7 @@ public class G_Sprite {
 	}
 
 	public void sub_21f3() {
-		if (this.var_c78) {
+		if (this.isVisibleMb) {
 			this.var_c50 += 50;
 			if (this.var_c90 >= 0) {
 				this.var_c90 -= 1;
@@ -481,14 +481,14 @@ public class G_Sprite {
 						this.var_c50 = 0;
 					}
 				} else if (this.var_c50 >= 400) {
-					this.var_c78 = false;
+					this.isVisibleMb = false;
 					return;
 				}
 				break;
 			case 6:
 				this.currentFrameIndex = ((this.currentFrameIndex + 1) % 2);
 				if (this.var_c50 >= this.frameDelay) {
-					this.var_c78 = false;
+					this.isVisibleMb = false;
 					return;
 				}
 				break;
@@ -502,7 +502,7 @@ public class G_Sprite {
 						if (this.var_c48 <= 0) {
 							setCurrentFrameIndex(getFramesCount() - 1);
 							if (this.var_c80) {
-								this.var_c78 = false;
+								this.isVisibleMb = false;
 							}
 						}
 					}
@@ -540,7 +540,7 @@ public class G_Sprite {
 			}
 		}
 		if (this.var_c50 >= this.frameDelay) {
-			this.var_c78 = false;
+			this.isVisibleMb = false;
 		}
 	}
 
