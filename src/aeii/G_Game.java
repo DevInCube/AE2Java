@@ -809,7 +809,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		}
 	}
 
-	@Override
+	//@Override
 	public final void someUnknownMethod() {
 		this.var_4c42 = true;
 		this.var_4c4a = true;
@@ -3584,7 +3584,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		}
 	}
 
-	@Override
+	//@Override
 	public final void paintScene() {
 		this.someGameTime += 50L;
 		G_Game localObject1;
@@ -5387,7 +5387,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		gr.drawString(inStr, inX, inY, paramInt3);
 	}
 
-	@Override
+	//@Override
 	public final void startLoading(Graphics graphics) {
 		if (this.gameStateMb == 4) { //loading screen
 			graphics.setColor(16777215); // white
@@ -5431,7 +5431,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					self.faViewPortHeight);
 			self.fAnim1.drawSomeArcOverUnits(locGraph);
 			self.fAnim2.drawSomeArcOverUnits(locGraph);
-			Vector<G_Sprite> spritesList = new Vector<G_Sprite>(self.spritesList.size());
+			Vector spritesList = new Vector(self.spritesList.size());
 			G_Sprite lcSprite;
 			for (int n1 = 0; n1 < self.spritesList.size(); n1++) {
 				lcSprite = (G_Sprite)self.spritesList.elementAt(n1);
@@ -7183,7 +7183,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 						localVector2 = (Vector) vecOfVecs.elementAt(value);
 					}
 				} else {
-					localVector2.addElement(i);  //@todo unused localVector2
+					//localVector2.addElement(i);  //@todo unused localVector2
 				}
 			}
 		}
@@ -7243,14 +7243,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 				}
 				/* WTF */
 				boolean boolExpr = false;
-				switch(localObject3){
+				/*switch(localObject3){ //@todo
 					case("<="): boolExpr = k <= m; break;
 					case("<"): boolExpr = k < m; break;
 					case(">="): boolExpr = k >= m; break;
 					case(">"): boolExpr = k > m; break;
 					case("!="): boolExpr = k != m; break;
 					case("=="): boolExpr = k == m; break;
-				}
+				}*/
 				if(boolExpr == false)
 				{
 					i = j;

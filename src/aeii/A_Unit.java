@@ -18,7 +18,7 @@ public final class A_Unit extends G_Sprite {
 	public short level;
 	public int experience;
 	public byte[][] chars;
-	private Vector<short[]> somePositionsList;
+	private Vector somePositionsList;
 	private short var_e1b;
 	private long var_e23;
 	public byte unitType;
@@ -324,7 +324,7 @@ public final class A_Unit extends G_Sprite {
 	}
 
 	public final A_Unit[] getUnitsInAttackRange(int inX, int inY, int inAttRangeMin, int inAttRangeMax, byte paramByte) {
-		Vector<A_Unit> units = new Vector<A_Unit>();
+		Vector units = new Vector();
 		int minX = inX - inAttRangeMax;
 		if ((minX) < 0) {
 			minX = 0;
@@ -404,7 +404,7 @@ public final class A_Unit extends G_Sprite {
 					}
 				}
 			}
-			this.somePositionsList = new Vector<short[]>();
+			this.somePositionsList = new Vector();
 			short[] position = new short[] { this.posX, this.posY };
 			this.somePositionsList.addElement(position);
 			short x = this.posX;
@@ -434,11 +434,11 @@ public final class A_Unit extends G_Sprite {
 		this.var_e83 = 1;
 	}
 
-	public final Vector<short[]> sub_1ef5(int inX, int inY, int paramInt3, int paramInt4) {
-		Vector<short[]> localVector = null;
+	public final Vector sub_1ef5(int inX, int inY, int paramInt3, int paramInt4) {
+		Vector localVector = null;
 		short[] position = { (short) paramInt3, (short) paramInt4 };
 		if ((inX == paramInt3) && (inY == paramInt4)) {
-			localVector = new Vector<short[]>();
+			localVector = new Vector();
 			localVector.addElement(position);
 		} else {
 			int i = 0;
@@ -542,7 +542,7 @@ public final class A_Unit extends G_Sprite {
 				if ((this.someUnit0 != null) && (this.pixelX % 24 == 0) && (this.pixelY % 24 == 0)) {
 					this.someUnit0.fillAttOrMovePositions(this.posX, this.posY, false);
 				}
-				short[] arrayOfShort = this.somePositionsList
+				short[] arrayOfShort = (short[])this.somePositionsList
 						.elementAt(this.var_e1b);
 				int i = arrayOfShort[0] * 24;
 				int j = arrayOfShort[1] * 24;

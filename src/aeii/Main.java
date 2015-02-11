@@ -5,6 +5,7 @@ import javax.microedition.midlet.MIDlet;
 public class Main extends MIDlet {
 	
 	public static Main mainMIDlet;
+	
 	private static C_MainCanvas mainCanvas;
 
 	public final void startApp() {
