@@ -273,14 +273,14 @@ public final class C_MainCanvas extends Canvas implements Runnable,
 		setFullScreenMode(true);
 		this.var_1817 = false;
 		var_182f = false;
-		sub_26ad();
+		clearActionCodesMb();
 		if (this.var_17b7 != null) {
 			this.var_17b7.someUnknownMethod();
 		}
 	}
 
 	public final void hideNotify() {
-		sub_26ad();
+		clearActionCodesMb();
 		if (this.var_17b7 != null) {
 			var_182f = true;
 			if ((currentMusicPlayer != null) && (currentMusicPlayer.getState() == 400) && (var_183f[currentMusicPlayerIndex] == 1)) {
@@ -340,10 +340,10 @@ public final class C_MainCanvas extends Canvas implements Runnable,
 		midletDisplay.setCurrent(paramDisplayable);
 	}
 
-	public final void sub_220e(F_StringManager paramClass_f_0145) {
-		sub_26ad();
-		paramClass_f_0145.someUnknownMethod();
-		this.var_17b7 = paramClass_f_0145;
+	public final void showMessageBox(F_StringManager man) {
+		clearActionCodesMb();
+		man.someUnknownMethod();
+		this.var_17b7 = man;
 	}
 
 	public final void repaintAll() {
@@ -466,7 +466,7 @@ public final class C_MainCanvas extends Canvas implements Runnable,
 		return this.var_17cf != 0;
 	}
 
-	public final void sub_26ad() {
+	public final void clearActionCodesMb() {
 		this.gameActionCodeRunning = 0;
 		this.var_17cf = 0;
 		this.var_17d7 = 0;
@@ -623,7 +623,7 @@ public final class C_MainCanvas extends Canvas implements Runnable,
 		}
 	}
 
-	public static final void sub_2bf1(int paramInt1, int paramInt2) {
+	public static final void playMusic2(int paramInt1, int paramInt2) {
 		playMusicLooped(paramInt1, paramInt2);
 	}
 

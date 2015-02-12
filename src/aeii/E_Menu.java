@@ -16,8 +16,8 @@ public final class E_Menu extends F_StringManager {
 	public static G_Game theGame;
 	public String[] menuActionsListString;
 	private D_ImageWrap[] someImages;
-	private int var_102a;
-	private int var_1032;
+	private int menuLeftX;
+	private int menuTopY;
 	public int mapPrevPixelWidth;
 	public int mapPrevPixelHeight;
 	private int listItemHeightMb;
@@ -26,8 +26,8 @@ public final class E_Menu extends F_StringManager {
 	private int var_1062;
 	private int var_106a;
 	private int var_1072;
-	private int var_107a;
-	private int var_1082;
+	private int menuLeftX1mb;
+	private int menuLeftY1Mb;
 	public byte typeMB;
 	private int var_1092;
 	private boolean var_109a = false;
@@ -51,7 +51,7 @@ public final class E_Menu extends F_StringManager {
 	private G_Sprite[] threeSmallSparksSprites;
 	private int var_1132;
 	private boolean var_113a = false;
-	private Vector var_1142;
+	private Vector childrenMenu;
 	public int var_114a = -1;
 	public boolean var_1152;
 	public boolean var_115a;
@@ -65,7 +65,7 @@ public final class E_Menu extends F_StringManager {
 	private int mapHeight;
 	public int var_11a2 = 2370117;
 	public int var_11aa = 2370117;
-	public D_ImageWrap someImage1;
+	public D_ImageWrap menuImage;
 	private E_Menu eMenu;
 	public int[] var_11c2;
 	private int var_11ca;
@@ -162,8 +162,8 @@ public final class E_Menu extends F_StringManager {
 			this.eMenu.var_109a = true;
 		}
 		if (this.typeMB == 15) {
-			for (int i = 0; i < this.var_1142.size(); i++) {
-				E_Menu mMenu = (E_Menu) this.var_1142.elementAt(i);
+			for (int i = 0; i < this.childrenMenu.size(); i++) {
+				E_Menu mMenu = (E_Menu) this.childrenMenu.elementAt(i);
 				mMenu.sub_1272();
 				mMenu.var_10a2 = false;
 			}
@@ -181,14 +181,14 @@ public final class E_Menu extends F_StringManager {
 
 	public final E_Menu sub_165b(String paramString) {
 		this.eMenu = new E_Menu((byte) 10, 0);
-		this.eMenu.sub_1ca8(null, paramString, theGame.someCanWidth, -1);
+		this.eMenu.initMessageBox(null, paramString, theGame.someCanWidth, -1);
 		return this.eMenu;
 	}
 
-	public final void sub_1698(E_Menu spriteComp, int paramInt1,
-			int paramInt2, int paramInt3) {
-		if (this.var_1142 == null) {
-			this.var_1142 = new Vector();
+	public final void addChildMenu(E_Menu childMenu, int inX,
+			int inY, int paramInt3) {
+		if (this.childrenMenu == null) {
+			this.childrenMenu = new Vector();
 		}
 		if (this.var_11da == null) {
 			this.var_11da = new int[5];
@@ -199,25 +199,25 @@ public final class E_Menu extends F_StringManager {
 				}
 			}
 		}
-		spriteComp.sub_1930(paramInt1, paramInt2, paramInt3);
-		int i = spriteComp.var_1032;
+		childMenu.setLocation(inX, inY, paramInt3);
+		int menuTopY = childMenu.menuTopY;
 		for (int it = 0; it < 5; it++) {
-			if (i < this.var_11da[it]) {
-				if (i + spriteComp.mapPrevPixelHeight <= this.var_11da[it]) {
+			if (menuTopY < this.var_11da[it]) {
+				if (menuTopY + childMenu.mapPrevPixelHeight <= this.var_11da[it]) {
 					break;
 				}
-				this.var_11da[it] = i;
+				this.var_11da[it] = menuTopY;
 				if (it + 1 <= this.var_11d2) {
 					break;
 				}
 				this.var_11d2 = (it + 1);
 				break;
 			}
-			i -= this.var_11da[paramInt1];
+			menuTopY -= this.var_11da[inX];
 		}
-		spriteComp.var_fe2[0] = false;
-		spriteComp.var_fe2[1] = false;
-		this.var_1142.addElement(spriteComp);
+		childMenu.var_fe2[0] = false;
+		childMenu.var_fe2[1] = false;
+		this.childrenMenu.addElement(childMenu);
 	}
 
 	public final void setMapPreviewMaybe(int viewportWidthMb, int viewportHeight,
@@ -249,21 +249,21 @@ public final class E_Menu extends F_StringManager {
 		this.typeMB = 8;
 	}
 
-	public final void sub_1930(int paramInt1, int paramInt2, int paramInt3) {
-		this.var_102a = paramInt1;
-		this.var_1032 = paramInt2;
+	public final void setLocation(int locX, int locY, int paramInt3) {
+		this.menuLeftX = locX;
+		this.menuTopY = locY;
 		if ((paramInt3 & 0x1) != 0) {
-			this.var_102a -= (this.mapPrevPixelWidth >> 1);
+			this.menuLeftX -= (this.mapPrevPixelWidth >> 1);
 		} else if ((paramInt3 & 0x8) != 0) {
-			this.var_102a -= this.mapPrevPixelWidth;
+			this.menuLeftX -= this.mapPrevPixelWidth;
 		}
 		if ((paramInt3 & 0x2) != 0) {
-			this.var_1032 -= (this.mapPrevPixelHeight >> 1);
+			this.menuTopY -= (this.mapPrevPixelHeight >> 1);
 		} else if ((paramInt3 & 0x20) != 0) {
-			this.var_1032 -= this.mapPrevPixelHeight;
+			this.menuTopY -= this.mapPrevPixelHeight;
 		}
-		this.var_107a = this.var_102a;
-		this.var_1082 = this.var_1032;
+		this.menuLeftX1mb = this.menuLeftX;
+		this.menuLeftY1Mb = this.menuTopY;
 	}
 
 	public final void sub_19f5(String paramString, int paramInt1,
@@ -341,23 +341,23 @@ public final class E_Menu extends F_StringManager {
 		this.var_1002 = 2;
 	}
 
-	public final void sub_1ca8(String paramString1, String paramString2,
-			int paramInt1, int paramInt2) {
-		int i = paramInt1 - this.var_10da;
+	public final void initMessageBox(String header, String message,
+			int sWidth, int paramInt2) {
+		int sWid = sWidth - this.var_10da;
 		if ((this.var_1092 & 0x4) == 0) {
-			i -= 8;
+			sWid -= 8;
 		}
 		if ((this.var_1092 & 0x8) == 0) {
-			i -= 8;
+			sWid -= 8;
 		}
-		this.menuActionsListString = F_StringManager.wrapStringText(paramString2, i,
+		this.menuActionsListString = F_StringManager.wrapStringText(message, sWid,
 				C_MainCanvas.theFont);
-		sub_1a89(paramString1, this.menuActionsListString, paramInt1, paramInt2);
+		sub_1a89(header, this.menuActionsListString, sWidth, paramInt2);
 		if (this.var_113a) {
-			i -= theGame.arrowSprite.spriteFrameWidth;
-			this.menuActionsListString = F_StringManager.wrapStringText(paramString2, i,
+			sWid -= theGame.arrowSprite.spriteFrameWidth;
+			this.menuActionsListString = F_StringManager.wrapStringText(message, sWid,
 					C_MainCanvas.theFont);
-			sub_1a89(paramString1, this.menuActionsListString, paramInt1, paramInt2);
+			sub_1a89(header, this.menuActionsListString, sWidth, paramInt2);
 		}
 	}
 
@@ -404,29 +404,28 @@ public final class E_Menu extends F_StringManager {
 			this.mapPrevPixelWidth = this.canvasWidth;
 		}
 		this.mapPrevPixelHeight = this.someHeightMb;
-		sub_1930(paramInt1, paramInt2, paramInt3);
+		setLocation(paramInt1, paramInt2, paramInt3);
 		this.typeMB = 13;
 		this.var_1002 = 2;
 	}
 
-	public final void sub_1f72(String[] paramArrayOfString, int paramInt1,
+	public final void initSlotsMenues(String[] headers, int inWidth,
 			int paramInt2) {
-		this.menuActionsListString = paramArrayOfString;
+		this.menuActionsListString = headers;
 		this.var_1062 = this.menuActionsListString.length;
 		this.var_1152 = true;
 		this.var_10fa = false;
 		this.mapPrevPixelHeight = paramInt2;
-		int someInt = 0;
-		for (paramInt2 = 0; paramInt2 < this.menuActionsListString.length; paramInt2++) {
-			int strWidth;
-			if ((strWidth = C_MainCanvas.theFont
-					.stringWidth(this.menuActionsListString[paramInt2])) > someInt) {
-				someInt = strWidth;
+		int maxStringWidth = 0;
+		for (int it = 0; it < this.menuActionsListString.length; it++) {
+			int strWidth = C_MainCanvas.theFont.stringWidth(this.menuActionsListString[it]);
+			if (strWidth > maxStringWidth) {
+				maxStringWidth = strWidth;
 			}
 		}
-		this.mapPrevPixelWidth = (someInt + 16 + (theGame.sideArrowSprite.spriteFrameWidth << 1));
-		if (this.mapPrevPixelWidth < paramInt1) {
-			this.mapPrevPixelWidth = paramInt1;
+		this.mapPrevPixelWidth = (maxStringWidth + 16 + (theGame.sideArrowSprite.spriteFrameWidth << 1));
+		if (this.mapPrevPixelWidth < inWidth) {
+			this.mapPrevPixelWidth = inWidth;
 		}
 		if (this.mapPrevPixelHeight < 0) {
 			this.mapPrevPixelHeight = C_MainCanvas.var_1767;
@@ -440,7 +439,7 @@ public final class E_Menu extends F_StringManager {
 				this.mapPrevPixelHeight += 5;
 			}
 		}
-		this.typeMB = 14;
+		this.typeMB = 14; //slot menu
 		this.var_1002 = 2;
 	}
 
@@ -477,7 +476,7 @@ public final class E_Menu extends F_StringManager {
 			this.mapPrevPixelWidth += theGame.arrowSprite.spriteFrameWidth;
 		}
 		this.typeMB = 11;
-		sub_1930(centerX, centerY, paramInt5);
+		setLocation(centerX, centerY, paramInt5);
 	}
 
 	public final void sub_224f(String[] inStrings,
@@ -521,23 +520,23 @@ public final class E_Menu extends F_StringManager {
 		this.mapPrevPixelWidth = (this.var_120a << 1);
 		this.mapPrevPixelHeight = paramInt3;
 		this.var_1002 = 0;
-		sub_1930(paramInt1, paramInt2, 3);
+		setLocation(paramInt1, paramInt2, 3);
 	}
 
 	private int sub_242b(int paramInt) {
 		int i = this.var_114a;
 		int j = this.var_114a;
-		int k = this.var_1142.size();
+		int k = this.childrenMenu.size();
 		do {
 			if ((i += paramInt) < 0) {
 				i = k - 1;
-			} else if (i >= this.var_1142.size()) {
+			} else if (i >= this.childrenMenu.size()) {
 				if (j < 0) {
 					return -1;
 				}
 				i = 0;
 			}
-		} while (!((E_Menu) this.var_1142.elementAt(i)).var_1152);
+		} while (!((E_Menu) this.childrenMenu.elementAt(i)).var_1152);
 		return i;
 	}
 
@@ -589,12 +588,12 @@ public final class E_Menu extends F_StringManager {
 				if ((!this.var_115a) && (this.var_114a >= 0)) {
 					int m;
 					if (F_StringManager.mainCanvas.sub_26d7(1)) {
-						((E_Menu) this.var_1142.elementAt(this.var_114a)).var_109a = true;
+						((E_Menu) this.childrenMenu.elementAt(this.var_114a)).var_109a = true;
 						this.var_114a = sub_242b(-1);
-						E_Menu eClass = (E_Menu) this.var_1142
+						E_Menu eClass = (E_Menu) this.childrenMenu
 								.elementAt(this.var_114a);
 						eClass.var_109a = true;
-						m = eClass.var_1032;
+						m = eClass.menuTopY;
 						for (int j = 0; j < 5; j++) {
 							if (m < this.var_11da[j]) {
 								if (this.var_11ca == j) {
@@ -608,12 +607,12 @@ public final class E_Menu extends F_StringManager {
 						}
 					}
 					if (F_StringManager.mainCanvas.sub_26d7(2)) {
-						((E_Menu) this.var_1142.elementAt(this.var_114a)).var_109a = true;
+						((E_Menu) this.childrenMenu.elementAt(this.var_114a)).var_109a = true;
 						this.var_114a = sub_242b(1);
-						E_Menu eClass = (E_Menu) this.var_1142
+						E_Menu eClass = (E_Menu) this.childrenMenu
 								.elementAt(this.var_114a);
 						eClass .var_109a = true;
-						m = eClass.var_1032;
+						m = eClass.menuTopY;
 						for (int k = 0; k < 5; k++) {
 							if (m < this.var_11da[k]) {
 								if (this.var_11ca == k) {
@@ -632,7 +631,7 @@ public final class E_Menu extends F_StringManager {
 					return;
 				}
 				int k = 0;
-				E_Menu localClass_e_01343 = (E_Menu) this.var_1142
+				E_Menu localClass_e_01343 = (E_Menu) this.childrenMenu
 						.elementAt(k);
 				localClass_e_01343.sub_24ea(k == this.var_114a ? true
 						: this.var_115a ? true : false);
@@ -766,7 +765,7 @@ public final class E_Menu extends F_StringManager {
 							if (this.showTime > 0) {
 								this.showTime -= 50;
 							} else {
-								F_StringManager.mainCanvas.sub_220e(this.stringManager);
+								F_StringManager.mainCanvas.showMessageBox(this.stringManager);
 							}
 						}
 						if (this.var_10e2 > 0) {
@@ -811,7 +810,7 @@ public final class E_Menu extends F_StringManager {
 									this.var_10ca -= 1;
 									this.var_109a = true;
 								}
-								F_StringManager.mainCanvas.sub_26ad();
+								F_StringManager.mainCanvas.clearActionCodesMb();
 							}
 							if ((F_StringManager.mainCanvas.sub_26d7(2))
 									|| ((this.typeMB == 7) && (F_StringManager.mainCanvas
@@ -837,7 +836,7 @@ public final class E_Menu extends F_StringManager {
 									theGame.sub_770a(this, 0, null, (byte) 0);
 									return;
 								}
-								F_StringManager.mainCanvas.sub_26ad();
+								F_StringManager.mainCanvas.clearActionCodesMb();
 							}
 						}
 					}
@@ -869,9 +868,9 @@ public final class E_Menu extends F_StringManager {
 						&& (F_StringManager.mainCanvas
 								.sub_26d7(G_Game.var_460a))) {
 					F_StringManager.mainCanvas.releaseGameAction(G_Game.var_460a);
-					F_StringManager.mainCanvas.sub_26ad();
+					F_StringManager.mainCanvas.clearActionCodesMb();
 					if (this.stringManager != null) {
-						F_StringManager.mainCanvas.sub_220e(this.stringManager);
+						F_StringManager.mainCanvas.showMessageBox(this.stringManager);
 					}
 					if (this.menuActionsListString != null) {
 						theGame.sub_770a(this, this.var_105a,
@@ -929,23 +928,23 @@ public final class E_Menu extends F_StringManager {
 						}
 						this.var_1002 = 2;
 						if (this.var_1112) {
-							F_StringManager.mainCanvas.sub_26ad();
+							F_StringManager.mainCanvas.clearActionCodesMb();
 						}
 					}
 				} else if (this.typeMB == 13) {
-					this.var_107a += (this.var_102a - this.var_107a) / 2;
+					this.menuLeftX1mb += (this.menuLeftX - this.menuLeftX1mb) / 2;
 					this.var_1102 += 1;
 					if (this.var_1102 == 2) {
 						this.var_1002 = 2;
-						this.var_107a = this.var_102a;
+						this.menuLeftX1mb = this.menuLeftX;
 					}
 				} else {
 					int theInt;
-					if ((theInt = (this.var_102a - this.var_107a) / 4) <= 0) {
+					if ((theInt = (this.menuLeftX - this.menuLeftX1mb) / 4) <= 0) {
 						paramBoolean = true;
 					}
-					this.var_107a += theInt;
-					if (this.var_107a == this.var_102a) {
+					this.menuLeftX1mb += theInt;
+					if (this.menuLeftX1mb == this.menuLeftX) {
 						this.var_1002 = 2;
 					}
 				}
@@ -986,8 +985,8 @@ public final class E_Menu extends F_StringManager {
 			if (this.eMenu != null) {
 				this.eMenu.sub_347b(paramGraphics);
 			}
-			paramInt1 = this.var_107a;
-			paramInt2 = this.var_1082 + paramInt2;
+			paramInt1 = this.menuLeftX1mb;
+			paramInt2 = this.menuLeftY1Mb + paramInt2;
 			if ((this.typeMB != 0) && (this.typeMB != 13)) {
 				sub_5092(paramGraphics, paramInt1, paramInt2, this.mapPrevPixelWidth,
 						this.mapPrevPixelHeight, this.var_1092, this.var_11aa,
@@ -1012,11 +1011,11 @@ public final class E_Menu extends F_StringManager {
 			}
 			paramGraphics.translate(paramInt1, paramInt2);
 			paramGraphics.setFont(this.mainFont);
-			if ((this.someImage1 != null)
+			if ((this.menuImage != null)
 					&& ((this.menuActionsListString == null) || (this.mainFont
 							.stringWidth(this.menuActionsListString[0]) < someXVal
-							- (this.someImage1.imageWidth << 1)))) {
-				this.someImage1.drawOnGraphics(paramGraphics, 0, someYVal / 1, 6);
+							- (this.menuImage.imageWidth << 1)))) {
+				this.menuImage.drawOnGraphics(paramGraphics, 0, someYVal / 1, 6);
 			}
 			if (paramBoolean) {
 				paramGraphics.setColor(5594742);
@@ -1098,7 +1097,7 @@ public final class E_Menu extends F_StringManager {
 							drawRoundedRect(paramGraphics, (this.mapPrevPixelWidth - someYVal) / 2, 1,
 									someYVal, C_MainCanvas.var_1767);
 						} else {
-							drawRoundedRect(paramGraphics, 2 - this.var_102a, 1,
+							drawRoundedRect(paramGraphics, 2 - this.menuLeftX, 1,
 									this.canvasWidth - 4, C_MainCanvas.var_1767);
 						}
 						if (this.menuActionsListString[this.var_105a] != null) {
@@ -1511,11 +1510,11 @@ public final class E_Menu extends F_StringManager {
 				if (this.var_11ca > 0) {
 					bool3 = -m + theGame.buttonsSprite.spriteFrameHeight;
 				}
-				for (j = 0; j < this.var_1142.size(); j++) {
+				for (j = 0; j < this.childrenMenu.size(); j++) {
 					E_Menu intparamBoolean;
-					if (((intparamBoolean = (E_Menu) this.var_1142
-							.elementAt(j)).var_1032 >= m)
-							&& (intparamBoolean.var_1032 < bool5)) {
+					if (((intparamBoolean = (E_Menu) this.childrenMenu
+							.elementAt(j)).menuTopY >= m)
+							&& (intparamBoolean.menuTopY < bool5)) {
 						intparamBoolean.sub_349e(paramGraphics, 0, bool3,
 								j == this.var_114a);
 					}

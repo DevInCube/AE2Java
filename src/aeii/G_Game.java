@@ -69,7 +69,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private byte[] var_464a;
 	private byte[] var_4652;
 	private byte[] var_465a;
-	private static byte[][] var_4662 = { { 0, 1 }, { 2, 3, 4 }, { 0, 1 }, { 5 } };
+	private static byte[][] frameSequencesCursorMb = { { 0, 1 }, { 2, 3, 4 }, { 0, 1 }, { 5 } };
 	private static byte[] someFrameSeq = { 0 };
 	private long var_4672;
 	private long var_467a;
@@ -137,32 +137,32 @@ public final class G_Game extends F_StringManager implements Runnable,
 	public int[] teamsUnitsCount;
 	public int[] var_486a;
 	private byte[][] kingsPositions;
-	private byte[] var_487a;
+	private byte[] someTeamValuesArr;
 	private E_Menu var_4882;
 	private Vector spritesOtherVector;
 	private Vector spritesVector;
-	private A_Unit var_489a;
+	private A_Unit dyingUnit;
 	private A_Unit var_48a2;
 	private long var_48aa;
-	private A_Unit var_48b2;
-	private byte var_48ba;
+	private A_Unit selectedTombUnit;
+	private byte activeTeamId;
 	private long var_48c2;
 	private int var_48ca;
 	private boolean canCancelMb;
 	private boolean canApplyMb;
 	private byte gameStateMb;
 	private D_ImageWrap msLogoImage;
-	private D_ImageWrap var_48f2;
-	private D_ImageWrap var_48fa;
-	private D_ImageWrap var_4902;
-	private int var_490a;
+	private D_ImageWrap splashImage;
+	private D_ImageWrap aeLogoImage;
+	private D_ImageWrap glowLightOnLogoImage;
+	private int startupBgState;
 	private boolean var_4912;
 	private int var_491a;
 	private int var_4922;
 	private int var_492a;
 	private long var_4932;
-	private A_Unit aUnit;
-	private A_Unit aUnit2;
+	private A_Unit attackingUnit;
+	private A_Unit attackedUnit;
 	private boolean var_494a;
 	private long var_4952;
 	private boolean var_495a;
@@ -196,7 +196,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	public G_Sprite hudIcons2Sprite;
 	private int var_4a32;
 	private int var_4a3a;
-	private int var_4a42;
+	private int glowLightXmb;
 	private boolean var_4a4a;
 	private int var_4a52;
 	private boolean var_4a5a;
@@ -218,7 +218,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private boolean var_4ada;
 	private Vector vectorOfSomeUnits;
 	private G_Sprite levelUpSprite;
-	private int var_4af2;
+	private int someUnknownVal;
 	public G_Sprite[] kingHeadsIcons;
 	private E_Menu var_4b02;
 	private E_Menu var_4b0a;
@@ -230,14 +230,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private int var_4b3a;
 	private boolean var_4b42;
 	private boolean var_4b4a;
-	private String var_4b52;
+	private String mapStartUpMessage;
 	private String[] saveSlotsDescriptions;
 	private byte[] saveSlotBytes;
 	private int[] saveSlotsMapIds;
 	private E_Menu var_4b72;
 	private E_Menu var_4b7a;
-	private E_Menu var_4b82;
-	private E_Menu var_4b8a;
+	private E_Menu sMenu;
+	private E_Menu slotDescriptionDialog;
 	private E_Menu var_4b92;
 	private E_Menu var_4b9a;
 	private E_Menu var_4ba2;
@@ -311,7 +311,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private Vector var_4dc2;
 	private boolean var_4dca;
 	private int var_4dd2;
-	private E_Menu var_4dda;
+	private E_Menu mapStartUpMessageBox;
 	private A_Unit var_4de2;
 	private A_Unit var_4dea;
 	private A_Unit var_4df2;
@@ -329,12 +329,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private int var_4e52;
 	private H_FightAnimation fAnim1;
 	private H_FightAnimation fAnim2;
-	private long var_4e6a;
+	private long someGameTime2;
 	private boolean var_4e72;
 	private Vector spritesList;
 	private boolean isShakingMB;
-	private long var_4e8a;
-	private long var_4e92;
+	private long shakingTimeMaxMb;
+	private long shakingTimeMb;
 	private boolean var_4e9a;
 	private boolean var_4ea2;
 	private boolean var_4eaa;
@@ -345,9 +345,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private String[] var_4ed2;
 	private String[] var_4eda;
 	private String[] var_4ee2;
-	private String[] var_4eea;
+	private String[] someMapsNamesMb;
 	private String[] var_4ef2;
-	private int[] var_4efa;
+	private int[] mapBytesSizeMb;
 	private String provisionHighscorePortalCodeAppProp;
 	private String provisionHighscoreGameCodeAppProp;
 	private String provisionHighscoreUrlAppProp;
@@ -455,7 +455,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.someUnitTeamId = 0;
 		this.var_486a = new int[4];
 		this.kingsPositions = new byte[4][2];
-		this.var_487a = new byte[4];
+		this.someTeamValuesArr = new byte[4];
 		this.spritesOtherVector = new Vector();
 		this.spritesVector = new Vector();
 		this.canCancelMb = false;
@@ -620,7 +620,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.someCanHeight = this.canvasHeight;
 		this.someCanWidthDiv2 = (this.someCanWidth >> 1);
 		this.someCanHeightDiv2 = (this.someCanHeight >> 1);
-		this.var_490a = 0;
+		this.startupBgState = 0;
 		for (int m = 0; m < 12; m++) {
 			originalSkirmishMapNames12[m] = F_StringManager.getLangString(m + 101);
 		}
@@ -744,9 +744,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 
 	private void sub_5dc1() {
 		this.msLogoImage = null;
-		this.var_48f2 = null;
-		this.var_48fa = null;
-		this.var_4902 = null;
+		this.splashImage = null;
+		this.aeLogoImage = null;
+		this.glowLightOnLogoImage = null;
 		System.gc();
 		this.someCanHeight = (this.canvasHeight - var_4592);
 		this.someCanHeightDiv2 = (this.someCanHeight >> 1);
@@ -798,9 +798,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.kingHeadsIcons[0] = new G_Sprite("king_head_icons");
 			this.kingHeadsIcons[1] = new G_Sprite("king_head_icons");//@todo load gray_ ("king_head_icons",
 																	// 0);
-			this.cursorSprite.setFrameSequence(var_4662[0]);
+			this.cursorSprite.setFrameSequence(frameSequencesCursorMb[0]);
 			this.currentCursorSpriteMaybe = new G_Sprite(this.cursorSprite);
-			this.currentCursorSpriteMaybe.setFrameSequence(var_4662[3]);
+			this.currentCursorSpriteMaybe.setFrameSequence(frameSequencesCursorMb[3]);
 			this.var_497a = new D_ImageWrap[2];
 			this.var_4972 = var_46aa[0];
 			this.var_497a[0] = this.tiles0Frames[var_46aa[0]];
@@ -834,7 +834,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.teamsCountMaybe = dis.readByte();
 			for (int i = 0; i < this.teamsCountMaybe; i++) {
 				this.var_483a[i] = dis.readByte();
-				this.var_487a[i] = dis.readByte();
+				this.someTeamValuesArr[i] = dis.readByte();
 				this.var_486a[i] = dis.readInt();
 				this.kingsPositions[i][0] = dis.readByte();
 				this.kingsPositions[i][1] = dis.readByte();
@@ -865,8 +865,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 				unit.var_e83 = k;
 				unit.experience = unitExp;
 				unit.setUnitLevel(unitLvl);
-				unit.var_e8b = b3;
-				unit.sub_160c();
+				unit.status = b3;
+				unit.calcStatusEffect();
 				unit.health = unitHealth;
 				unit.var_ecb = b5;
 				unit.var_ed3 = b6;
@@ -887,7 +887,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4e32 = (dis.readByte() != 0);
 			dis.close();
 			if ((this.scenarioMapIndex == 6) && (this.var_4e12 > 32)) {
-				this.gameMessageBox = showMessageBox(
+				this.gameMessageBox = newMessageBox(
 						F_StringManager.getLangString(121 + this.scenarioMapIndex),
 						F_StringManager.getLangString(138), this.someCanHeight, -1);
 				this.gameMessageBox.sub_132e((byte) 0, true);
@@ -897,7 +897,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					this.kingsPositions[this.someUnitTeamId][1]);
 			sub_efe5(this.kingsPositions[this.someUnitTeamId][0],
 					this.kingsPositions[this.someUnitTeamId][1]);
-			C_MainCanvas.sub_2bf1(var_4692[this.var_4832[this.someUnitTeamId]], 0);
+			C_MainCanvas.playMusic2(var_4692[this.var_4832[this.someUnitTeamId]], 0);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -954,8 +954,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.someActiveUnit.sub_26fe();
 			this.var_478a = 0;
 			sub_bc72();
-			this.cursorSprite.setFrameSequence(var_4662[0]);
-			if (this.var_487a[this.someUnitTeamId] == 0) {
+			this.cursorSprite.setFrameSequence(frameSequencesCursorMb[0]);
+			if (this.someTeamValuesArr[this.someUnitTeamId] == 0) {
 				this.var_4d5a = this.someGameTime;
 				this.var_4d22 = 6;
 			}
@@ -969,158 +969,156 @@ public final class G_Game extends F_StringManager implements Runnable,
 			} else {
 				this.var_478a = 13;
 				this.var_492a = 0;
-				this.cursorSprite.setFrameSequence(var_4662[0]);
+				this.cursorSprite.setFrameSequence(frameSequencesCursorMb[0]);
 			}
-			this.aUnit = paramClass_a_02601;
-			this.aUnit2 = paramClass_a_02602;
+			this.attackingUnit = paramClass_a_02601;
+			this.attackedUnit = paramClass_a_02602;
 		}
 	}
 
 	private void sub_6a9a() {
 		sub_bc72();
-		if (this.aUnit.health <= 0) {
-			this.var_489a = this.aUnit;
-		} else if (this.aUnit.unitGotNewLevel()) {
-			this.vectorOfSomeUnits.addElement(this.aUnit);
+		if (this.attackingUnit.health <= 0) {
+			this.dyingUnit = this.attackingUnit;
+		} else if (this.attackingUnit.unitGotNewLevel()) {
+			this.vectorOfSomeUnits.addElement(this.attackingUnit);
 		}
-		if (this.aUnit2.health <= 0) {
-			this.var_489a = this.aUnit2;
+		if (this.attackedUnit.health <= 0) {
+			this.dyingUnit = this.attackedUnit;
 		} else {
-			if (this.aUnit.hasProperty((short) 128)) { // wolf
-				showSpriteOnMap(this.sparkSprite, this.aUnit2.pixelX, this.aUnit2.pixelY, 0, 0,
+			if (this.attackingUnit.hasProperty((short) 128)) { // wolf
+				// poison
+				showSpriteOnMap(this.sparkSprite, this.attackedUnit.pixelX, this.attackedUnit.pixelY, 0, 0,
 						1, 50); // m n
 				G_Sprite sSprite = G_Sprite.getSpriteWithParams(this.statusSprite, 0, 0,
 						-4, -1, 800, (byte) 5);
-				sSprite.setPixelPosition(this.aUnit2.pixelX
-						+ (this.aUnit2.spriteFrameWidth - sSprite.spriteFrameWidth) / 2,
-						this.aUnit2.pixelY - sSprite.spriteFrameHeight);
+				sSprite.setPixelPosition(this.attackedUnit.pixelX
+						+ (this.attackedUnit.spriteFrameWidth - sSprite.spriteFrameWidth) / 2,
+						this.attackedUnit.pixelY - sSprite.spriteFrameHeight);
 				sSprite.setFrameSequence(someFrameSeq);
 				this.spritesOtherVector.addElement(sSprite);
-				this.aUnit2.sub_1595((byte) 1);
+				this.attackedUnit.applyPoisonStatus((byte) 1);
 			}
-			if (this.aUnit2.unitGotNewLevel()) {
-				this.vectorOfSomeUnits.addElement(this.aUnit2);
+			if (this.attackedUnit.unitGotNewLevel()) {
+				this.vectorOfSomeUnits.addElement(this.attackedUnit);
 			}
 		}
-		if (this.var_489a != null) {
-			moveCursorToPos(this.var_489a.posX, this.var_489a.posY);
-			showSpriteOnMap(this.sparkSprite, this.var_489a.pixelX, this.var_489a.pixelY, 0, 0, 1,
+		if (this.dyingUnit != null) {
+			//show unit dying on map
+			moveCursorToPos(this.dyingUnit.posX, this.dyingUnit.posY);
+			showSpriteOnMap(this.sparkSprite, this.dyingUnit.pixelX, this.dyingUnit.pixelY, 0, 0, 1,
 					50);
 			C_MainCanvas.playMusicLooped(12, 1);
 		}
 		this.var_48aa = this.someGameTime;
-		if (this.var_487a[this.someUnitTeamId] == 0) {
+		if (this.someTeamValuesArr[this.someUnitTeamId] == 0) {
 			this.var_4d5a = this.someGameTime;
 			this.var_4d22 = 6;
 		}
-		this.cursorSprite.setFrameSequence(var_4662[0]);
+		this.cursorSprite.setFrameSequence(frameSequencesCursorMb[0]);
 		this.var_478a = 0;
-		this.aUnit.sub_26fe();
-		this.aUnit2 = null;
-		this.aUnit = null;
+		this.attackingUnit.sub_26fe();
+		this.attackedUnit = null;
+		this.attackingUnit = null;
 	}
 
 	public final G_Sprite showSpriteOnMap(G_Sprite inSpite,
-			int pixX, int pixY, int paramInt3, int paramInt4,
-			int paramInt5, int paramInt6) {
+			int pixX, int pixY, int mapPOsX, int mapPosY,
+			int paramInt5, int frameDelay) {
 		G_Sprite sprite = G_Sprite.getSpriteWithParams(inSpite,
-				paramInt3, paramInt4, 0, paramInt5, paramInt6, (byte) 0);
+				mapPOsX, mapPosY, 0, paramInt5, frameDelay, (byte) 0);
 		sprite.setPixelPosition(pixX, pixY);
 		this.spritesVector.addElement(sprite);
 		return sprite;
 	}
 
-	private void sub_6c83(A_Unit paramClass_a_0260) {
+	private void showWhereUnitCanMoveMb(A_Unit unit) {
 		this.canApplyMb = true;
 		this.canCancelMb = (!this.var_49ea);
 		this.var_4c8a = 12;
 		this.var_478a = 1;
 		this.var_495a = true;
 		sub_bcb2(this.var_47da, 0);
-		paramClass_a_0260.fillWhereUnitCanMove(this.var_47da);
+		unit.fillWhereUnitCanMove(this.var_47da);
 		this.var_47e2 = true;
 		this.var_47ea = false;
-		this.cursorSprite.setFrameSequence(var_4662[2]);
+		this.cursorSprite.setFrameSequence(frameSequencesCursorMb[2]);
 	}
 
 	private void sub_6d11(byte[] paramArrayOfByte, int paramInt1,
-			int paramInt2, F_StringManager paramClass_f_0145) {
-		E_Menu localClass_e_0134 = new E_Menu((byte) 0, 0);
+			int paramInt2, F_StringManager sman) {
+		E_Menu mMenu = new E_Menu((byte) 0, 0);
 		this.var_4a32 = paramInt1;
 		this.var_4a3a = paramInt2;
-		paramInt1 = paramArrayOfByte.length;
-		Vector vec2;
-		vec2 = new Vector(paramInt1);
-		Vector localVector = new Vector(paramInt1);
-		for (int i = 0; i < paramInt1; i++) {
+		int arrLength = paramArrayOfByte.length;
+		Vector vec2 = new Vector(arrLength);
+		Vector localVector = new Vector(arrLength);
+		for (int i = 0; i < arrLength; i++) {
 			int j = paramArrayOfByte[i];
 			if ((this.msHighScoreUploadAppProp) || (j != 6)) {
 				vec2.addElement(this.var_462a[j]);
 				localVector.addElement(this.menuIconsFrames[j]);
 			}
 		}
-		String[] arrayOfString = new String[vec2.size()];
-		D_ImageWrap[] arrayOfClass_d_0033 = new D_ImageWrap[localVector
-				.size()];
-		vec2.copyInto(arrayOfString);
-		localVector.copyInto(arrayOfClass_d_0033);
-		localClass_e_0134.sub_224f(arrayOfString, arrayOfClass_d_0033,
+		String[] stringsArr = new String[vec2.size()];
+		D_ImageWrap[] imagesArr = new D_ImageWrap[localVector.size()];
+		vec2.copyInto(stringsArr);
+		localVector.copyInto(imagesArr);
+		mMenu.sub_224f(stringsArr, imagesArr,
 				this.canvasWidthShift, this.var_4a32, this.var_4a3a, 3, (byte) 1);
-		localClass_e_0134.sub_1350(paramClass_f_0145);
-		F_StringManager.mainCanvas.sub_220e(localClass_e_0134);
+		mMenu.sub_1350(sman);
+		F_StringManager.mainCanvas.showMessageBox(mMenu);
 	}
 
 	private void sub_6e49(byte[] paramArrayOfByte) {
 		this.var_4882 = new E_Menu((byte) 0, 0);
-		int i;
-		String[] arrayOfString = new String[i = paramArrayOfByte.length];
-		D_ImageWrap[] arrayOfClass_d_0033 = new D_ImageWrap[i];
+		int arrLen = paramArrayOfByte.length;
+		String[] stringsArr = new String[arrLen];
+		D_ImageWrap[] imagesArr = new D_ImageWrap[arrLen];
 		for (int j = 0; j < paramArrayOfByte.length; j++) {
-			arrayOfString[j] = this.var_461a[paramArrayOfByte[j]];
-			arrayOfClass_d_0033[j] = this.actionIconsFrames[paramArrayOfByte[j]];
+			stringsArr[j] = this.var_461a[paramArrayOfByte[j]];
+			imagesArr[j] = this.actionIconsFrames[paramArrayOfByte[j]];
 		}
 		if (this.cursorPosY * 24 <= this.someCanHeight / 2 - 24) {
-			this.var_4882.sub_1e54(arrayOfString, arrayOfClass_d_0033, 0,
+			this.var_4882.sub_1e54(stringsArr, imagesArr, 0,
 					this.someCanHeight - this.buttonsSprite.spriteFrameHeight, 36);
 		} else {
-			this.var_4882.sub_1e54(arrayOfString, arrayOfClass_d_0033,
+			this.var_4882.sub_1e54(stringsArr, imagesArr,
 					this.someCanWidth, 0, 8);
 		}
 		this.var_4882.sub_1350(this);
-		F_StringManager.mainCanvas.sub_220e(this.var_4882);
+		F_StringManager.mainCanvas.showMessageBox(this.var_4882);
 	}
 
-	private E_Menu sub_6f4c(String paramString,
-			D_ImageWrap paramClass_d_0033) {
-		String[] arrayOfString = new String[10];
-		for (int j = 0; j < 10; j++) {
-			arrayOfString[j] = ("SLOT " + (j + 1) + "/" + 10);
+	private E_Menu createSlotsMenu(String slotsMenuHeader, D_ImageWrap inImage) {
+		String[] slotHeaders = new String[10];
+		for (int sIndex = 0; sIndex < 10; sIndex++) {
+			slotHeaders[sIndex] = ("SLOT " + (sIndex + 1) + "/" + 10);
 		}
-		this.var_4b82 = new E_Menu((byte) 14, 0);
-		this.var_4b82.sub_1f72(arrayOfString, this.someCanWidth, -1);
-		this.var_4b8a = new E_Menu((byte) 10, 0);
-		this.var_4b8a.sub_1ca8(null, this.saveSlotsDescriptions[0], this.someCanWidth, -1);
+		this.sMenu = new E_Menu((byte) 14, 0);
+		this.sMenu.initSlotsMenues(slotHeaders, this.someCanWidth, -1);
+		this.slotDescriptionDialog = new E_Menu((byte) 10, 0);
+		this.slotDescriptionDialog.initMessageBox(null, this.saveSlotsDescriptions[0], this.someCanWidth, -1);
 		if (this.saveSlotBytes[0] != -1) {
-			this.var_4b8a.var_11a2 = var_468a[this.saveSlotBytes[0]];
+			this.slotDescriptionDialog.var_11a2 = var_468a[this.saveSlotBytes[0]]; // color?
 		}
-		E_Menu localClass_e_01341 = new E_Menu((byte) 15, 15);
-		int i = (this.someCanHeight - this.var_4b82.mapPrevPixelHeight - this.var_4b8a.mapPrevPixelHeight) / 2;
-		E_Menu localClass_e_01342;
-		(localClass_e_01342 = new E_Menu((byte) 10, 0)).sub_1ca8(null,
-				paramString, this.someCanWidth, -1);
-		localClass_e_01342.someImage1 = paramClass_d_0033;
-		localClass_e_01341.sub_1698(localClass_e_01342, 0, 0, 0);
-		i += localClass_e_01342.mapPrevPixelHeight / 2;
-		localClass_e_01341.sub_1698(this.var_4b82, 0, i, 0);
-		i += this.var_4b82.mapPrevPixelHeight;
-		localClass_e_01341.sub_1698(this.var_4b8a, 0, i, 20);
-		localClass_e_01341.var_115a = true;
-		localClass_e_01341.sub_132e((byte) 0, true);
-		return localClass_e_01341;
+		E_Menu lMenu = new E_Menu((byte) 15, 15);
+		int lHeight = (this.someCanHeight - this.sMenu.mapPrevPixelHeight - this.slotDescriptionDialog.mapPrevPixelHeight) / 2;
+		E_Menu captionMenu = new E_Menu((byte) 10, 0);
+		captionMenu.initMessageBox(null, slotsMenuHeader, this.someCanWidth, -1);
+		captionMenu.menuImage = inImage;
+		lMenu.addChildMenu(captionMenu, 0, 0, 0);
+		lHeight += captionMenu.mapPrevPixelHeight / 2;
+		lMenu.addChildMenu(this.sMenu, 0, lHeight, 0);
+		lHeight += this.sMenu.mapPrevPixelHeight;
+		lMenu.addChildMenu(this.slotDescriptionDialog, 0, lHeight, 20);
+		lMenu.var_115a = true;
+		lMenu.sub_132e((byte) 0, true);
+		return lMenu;
 	}
 
 	private void sub_70c0(F_StringManager sManager) {
-		int sLength = this.var_4eea.length;
+		int sLength = this.someMapsNamesMb.length;
 		String[] localObject1 = new String[sLength];
 		int[] arrayOfInt2 = new int[sLength];
 		int strCount = 0;
@@ -1128,29 +1126,29 @@ public final class G_Game extends F_StringManager implements Runnable,
 			int n = 0;
 			int i1 = 0;
 			while (i1 < this.settingsCountMaybe) {
-				if (!this.var_4eea[m].equals(this.downloadedMapsNames[i1])) {
+				if (!this.someMapsNamesMb[m].equals(this.downloadedMapsNames[i1])) {
 					i1++;
 				} else {
 					n = 1;
 				}
 			}
 			if (n == 0) {
-				localObject1[strCount] = this.var_4eea[m];
+				localObject1[strCount] = this.someMapsNamesMb[m];
 				arrayOfInt2[strCount] = m;
 				strCount++;
 			}
 		}
 		this.var_4c0a = new E_Menu((byte) 15, 15);
 		E_Menu sMenu = new E_Menu((byte) 10, 0);
-		sMenu.sub_1ca8(null,
+		sMenu.initMessageBox(null,
 				F_StringManager.getLangString(48), this.someCanWidth, -1); //DOWNLOAD
 		
 		if (strCount == 0) {
 			//EMPTY
 			E_Menu menu2 = new E_Menu((byte) 10, 0);
-			menu2.sub_1ca8(null,
+			menu2.initMessageBox(null,
 					F_StringManager.getLangString(52), this.someCanWidth, this.someCanHeightDiv2); 
-			this.var_4c0a.sub_1698((E_Menu) menu2, 0,
+			this.var_4c0a.addChildMenu((E_Menu) menu2, 0,
 					(this.someCanHeight + sMenu.mapPrevPixelHeight) / 2, 6);
 		} else {
 			Object localObject2 = new String[strCount];
@@ -1158,13 +1156,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 			System.arraycopy(localObject1, 0, localObject2, 0, strCount);
 			System.arraycopy(arrayOfInt2, 0, arrayOfInt1, 0, strCount);
 			this.var_4c1a = new E_Menu((byte) 10, 0);
-			String stringIt;
-			stringIt = bytesSizeToString(this.downloadAvailableSize);
-			String freeStr = F_StringManager.getStrByIdAndReplaceUWith(53, (String) stringIt); //Free: %U KBytes
-			this.var_4c1a.sub_1ca8(
+			String availableBSize = bytesSizeToString(this.downloadAvailableSize);
+			String freeStr = F_StringManager.getStrByIdAndReplaceUWith(53, (String) availableBSize); //Free: %U KBytes
+			this.var_4c1a.initMessageBox(
 					null,
 					F_StringManager.getStrByIdAndReplaceUWith(54,
-							bytesSizeToString(this.var_4efa[arrayOfInt1[0]]))
+							bytesSizeToString(this.mapBytesSizeMb[arrayOfInt1[0]]))
 							+ "\n"
 							+ freeStr, this.someCanWidth, -1); // Needed: %U KBytes
 			this.someMenu = new E_Menu((byte) 11, 0);
@@ -1175,13 +1172,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.someMenu.var_11c2 = arrayOfInt1;
 			int j = (this.someCanHeight - this.var_4c1a.mapPrevPixelHeight
 					- this.someMenu.mapPrevPixelHeight + sMenu.mapPrevPixelHeight) / 2;
-			this.var_4c0a.sub_1698(this.someMenu, 0, j, 20);
+			this.var_4c0a.addChildMenu(this.someMenu, 0, j, 20);
 			j += this.someMenu.mapPrevPixelHeight;
-			this.var_4c0a.sub_1698(this.var_4c1a, 0, j, 20);
+			this.var_4c0a.addChildMenu(this.var_4c1a, 0, j, 20);
 			this.var_4c0a.var_115a = true;
 			this.var_4c0a.sub_132e((byte) 0, true);
 		}
-		this.var_4c0a.sub_1698(sMenu, 0, 0, 20);
+		this.var_4c0a.addChildMenu(sMenu, 0, 0, 20);
 		this.var_4c0a.sub_1350(sManager);
 	}
 
@@ -1190,10 +1187,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 		if (this.downloadedMapsNames.length == 0) {
 			menu1 = new E_Menu((byte) 10, 0);
 			menu1.sub_165b(F_StringManager.getLangString(49)); //DELETE
-			menu1.someImage1 = this.menuIconsFrames[6]; // about Icon or Earth icon
-			menu1.sub_1ca8(null, F_StringManager.getLangString(52),
+			menu1.menuImage = this.menuIconsFrames[6]; // about Icon or Earth icon
+			menu1.initMessageBox(null, F_StringManager.getLangString(52),
 					this.canvasWidth, -1); // EMPTY
-			menu1.sub_1930(0,
+			menu1.setLocation(0,
 					(this.someCanHeight + menu1.mapPrevPixelHeight) / 2, 6);
 			menu1.sub_1350(inSM);
 			this.someHoverMenu = null;
@@ -1202,7 +1199,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		// menu with list of downloaded maps
 		this.someHoverMenu = new E_Menu((byte) 11, 0);
 		menu1 = this.someHoverMenu.sub_165b(F_StringManager.getLangString(49));//DELETE
-		menu1.someImage1 = this.menuIconsFrames[6]; // about Icon or Earth icon
+		menu1.menuImage = this.menuIconsFrames[6]; // about Icon or Earth icon
 		this.someHoverMenu.setMenuListStringActionsMb(this.downloadedMapsNames, this.canvasWidth / 2,
 				(this.someCanHeight + menu1.mapPrevPixelHeight) / 2,
 				this.someCanWidth, this.someCanHeight - menu1.mapPrevPixelHeight, 3,
@@ -1292,9 +1289,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4f32 = true;
 			if ((paramClass_e_0134 == this.var_4882) && (paramByte == 1)) {
 				if (this.var_478a == 3) {
-					this.someActiveUnit.sub_1686(this.var_47ca, this.var_47d2);
+					this.someActiveUnit.setOnMapPosition(this.var_47ca, this.var_47d2);
 					this.someActiveUnit.fillWhereUnitCanMove(this.var_47da);
-					sub_6c83(this.someActiveUnit);
+					showWhereUnitCanMoveMb(this.someActiveUnit);
 					this.var_495a = true;
 					return;
 				}
@@ -1344,10 +1341,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 											.toByteArray());
 							((ByteArrayOutputStream) localObject5).close();
 							E_Menu clas;
-							(clas = showMessageBox(null, F_StringManager.getStrByIdAndReplaceUWith(45,
+							(clas = newMessageBox(null, F_StringManager.getStrByIdAndReplaceUWith(45,
 									(String) localObject1), this.someCanHeight, 2000))
 									.sub_1350(this.var_4f4a);
-							F_StringManager.mainCanvas.sub_220e((F_StringManager) clas);
+							F_StringManager.mainCanvas.showMessageBox((F_StringManager) clas);
 						} else {
 							this.var_4f6a.changeDirectory((String) localObject1);
 							this.var_4f72 = B_FilesManager.mergeThese(B_FilesManager
@@ -1359,7 +1356,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							E_Menu lo3;
 							(lo3 = this.var_4f4a.sub_165b(sub_7696(
 									this.var_4f6a.sub_877(),
-									F_StringManager.getLangString(290)))).someImage1 = this.menuIconsFrames[6];
+									F_StringManager.getLangString(290)))).menuImage = this.menuIconsFrames[6];
 							this.var_4f52 = new E_Menu((byte) 0, 0);
 							this.var_4f52.setMenuListStringActionsMb(this.var_4f72, 0, 0,
 									this.someCanWidth, this.someCanHeight
@@ -1371,7 +1368,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								this.var_4f52.var_105a = 1;
 							}
 							this.var_4f4a
-									.sub_1698(
+									.addChildMenu(
 											this.var_4f52,
 											this.someCanWidthDiv2,
 											(this.someCanHeight + ((E_Menu) lo3).mapPrevPixelHeight) / 2,
@@ -1379,7 +1376,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							this.var_4f4a.sub_132e((byte) 0, true);
 							this.var_4f4a.var_115a = true;
 							this.var_4f4a.sub_1350(this.var_4bea);
-							F_StringManager.mainCanvas.sub_220e(this.var_4f4a);
+							F_StringManager.mainCanvas.showMessageBox(this.var_4f4a);
 							return;
 						}
 					} else {
@@ -1391,7 +1388,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				} else if (paramClass_e_0134 == this.var_4f5a) {
 					if (paramByte == 0) {
 						if (this.var_4f62.var_105a == 0) {
-							localObject1 = this.var_4b52 + ".aem";
+							localObject1 = this.mapStartUpMessage + ".aem";
 						} else {
 							localObject1 = this.var_4f72[this.var_4f62.var_105a];
 						}
@@ -1417,7 +1414,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							E_Menu loc5;
 							(loc5 = this.var_4f5a.sub_165b(sub_7696(
 									this.var_4f6a.sub_877(),
-									F_StringManager.getLangString(299)))).someImage1 = this.menuIconsFrames[6];
+									F_StringManager.getLangString(299)))).menuImage = this.menuIconsFrames[6];
 							this.var_4f62 = new E_Menu((byte) 0, 0);
 							this.var_4f62.setMenuListStringActionsMb(this.var_4f72, 0, 0,
 									this.someCanWidth, this.someCanHeight
@@ -1429,7 +1426,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								this.var_4f62.var_105a = 2;
 							}
 							this.var_4f5a
-									.sub_1698(
+									.addChildMenu(
 											this.var_4f62,
 											this.someCanWidthDiv2,
 											(this.someCanHeight + ((E_Menu) loc5).mapPrevPixelHeight) / 2,
@@ -1438,11 +1435,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 							this.var_4f5a.var_115a = true;
 							this.var_4f5a.sub_1350(this.var_4faa);
 							E_Menu localClass_e_01344;
-							(localClass_e_01344 = showMessageBox(null,
-									F_StringManager.getStrByIdAndReplaceUWith(45, this.var_4b52),
+							(localClass_e_01344 = newMessageBox(null,
+									F_StringManager.getStrByIdAndReplaceUWith(45, this.mapStartUpMessage),
 									this.someCanHeight, 2000))
 									.sub_1350(this.var_4f5a);
-							F_StringManager.mainCanvas.sub_220e(localClass_e_01344);
+							F_StringManager.mainCanvas.showMessageBox(localClass_e_01344);
 						} else {
 							this.var_4f6a.changeDirectory((String) localObject1);
 							this.var_4f72 = B_FilesManager.mergeThese(B_FilesManager
@@ -1454,7 +1451,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							E_Menu theflocalObject3;
 							(theflocalObject3 = this.var_4f5a
 									.sub_165b(sub_7696(this.var_4f6a.sub_877(),
-											F_StringManager.getLangString(290)))).someImage1 = this.menuIconsFrames[6];
+											F_StringManager.getLangString(290)))).menuImage = this.menuIconsFrames[6];
 							this.var_4f62 = new E_Menu((byte) 0, 0);
 							this.var_4f62
 									.setMenuListStringActionsMb(
@@ -1471,7 +1468,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								this.var_4f62.var_105a = 2;
 							}
 							this.var_4f5a
-									.sub_1698(
+									.addChildMenu(
 											this.var_4f62,
 											this.someCanWidthDiv2,
 											(this.someCanHeight + ((E_Menu) theflocalObject3).mapPrevPixelHeight) / 2,
@@ -1479,7 +1476,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							this.var_4f5a.sub_132e((byte) 0, true);
 							this.var_4f5a.var_115a = true;
 							this.var_4f5a.sub_1350(this.var_4faa);
-							F_StringManager.mainCanvas.sub_220e(this.var_4f5a);
+							F_StringManager.mainCanvas.showMessageBox(this.var_4f5a);
 							return;
 						}
 					} else {
@@ -1491,7 +1488,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				} else {
 					if (paramClass_e_0134 == this.var_4ba2) {
 						if (paramByte == 0) {
-							int i = this.var_4b82.var_105a;
+							int i = this.sMenu.var_105a;
 							sub_6431(i, this.var_4b7a);
 						}
 						this.var_4ba2 = null;
@@ -1500,7 +1497,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					if (paramClass_e_0134 == this.var_4b12) {
 						if ((paramByte == 2) || (paramByte == 3)) {
 							this.var_4b1a
-									.sub_1ca8(
+									.initMessageBox(
 											null,
 											F_StringManager
 													.getLangString(184 + this.var_4b12.someUnits[paramInt].unitType),
@@ -1524,8 +1521,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 										(A_Unit) olocalObject3,
 										this.cursorPosX, this.cursorPosY);
 								this.var_49ea = true;
-								sub_6c83(this.someActiveUnit);
-								F_StringManager.mainCanvas.sub_220e(this);
+								showWhereUnitCanMoveMb(this.someActiveUnit);
+								F_StringManager.mainCanvas.showMessageBox(this);
 							}
 							this.var_4b02 = null;
 							this.var_4b12 = null;
@@ -1537,7 +1534,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							if ((paramByte == 2) || (paramByte == 3)) {
 								String yylocalObject3 = F_StringManager.getLangString(
 										var_499a[paramInt], true);
-								this.var_49ba.sub_1ca8(null,
+								this.var_49ba.initMessageBox(null,
 										(String) yylocalObject3, this.someCanWidth,
 										this.var_49ba.mapPrevPixelHeight);
 								this.var_49ba.sub_1272();
@@ -1552,7 +1549,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							}
 							if (paramClass_e_0134 == this.gameMessageBox) {
 								if (paramByte == 0) {
-									F_StringManager.mainCanvas.sub_220e(this);
+									F_StringManager.mainCanvas.showMessageBox(this);
 									return;
 								}
 							} else {
@@ -1569,11 +1566,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 											15);
 									E_Menu localClass_e_01341;
 									(localClass_e_01341 = new E_Menu(
-											(byte) 10, 0)).someImage1 = this.menuIconsFrames[4];
-									localClass_e_01341.sub_1ca8(null,
+											(byte) 10, 0)).menuImage = this.menuIconsFrames[4];
+									localClass_e_01341.initMessageBox(null,
 											F_StringManager.getLangString(34),
 											this.someCanWidth, -1);
-									this.var_4a82.sub_1698(localClass_e_01341,
+									this.var_4a82.addChildMenu(localClass_e_01341,
 											0, 0, 20);
 									String[] str22;
 									str22 = new String[this.var_4baa];
@@ -1590,11 +1587,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 										this.var_4a9a[paramInt] = new E_Menu(
 												(byte)14, 6);
 										this.var_4a9a[paramInt]
-												.sub_1f72(this.var_463a,
+												.initSlotsMenues(this.var_463a,
 														this.canvasWidthShift, -1);
 										this.var_4aa2[paramInt] = new E_Menu(
 												(byte)14, 5);
-										this.var_4aa2[paramInt].sub_1f72(str22,
+										this.var_4aa2[paramInt].initSlotsMenues(str22,
 												this.canvasWidthShift, -1);
 										this.var_4aa2[paramInt].var_105a = paramInt;
 										int i5 = Math
@@ -1603,18 +1600,18 @@ public final class G_Game extends F_StringManager implements Runnable,
 										i3 = this.canvasWidth - i5;
 										this.var_4a9a[paramInt].mapPrevPixelWidth = i5;
 										this.var_4aa2[paramInt].mapPrevPixelWidth = i5;
-										this.var_4a82.sub_1698(
+										this.var_4a82.addChildMenu(
 												this.var_4a9a[paramInt], i3,
 												i2, 20);
 										i2 += this.var_4a9a[paramInt].mapPrevPixelHeight;
-										this.var_4a82.sub_1698(
+										this.var_4a82.addChildMenu(
 												this.var_4aa2[paramInt], i3,
 												i2, 20);
 										i2 += this.var_4aa2[paramInt].mapPrevPixelHeight;
 										olocObj3[paramInt] = new E_Menu(
 												(byte)10, 8);
 										olocObj3[paramInt]
-												.sub_1ca8(
+												.initMessageBox(
 														null,
 														F_StringManager
 																.getLangString(this.var_4bb2[paramInt] - 1 + 89),
@@ -1622,16 +1619,16 @@ public final class G_Game extends F_StringManager implements Runnable,
 														this.var_4a9a[paramInt].mapPrevPixelHeight
 																+ this.var_4aa2[paramInt].mapPrevPixelHeight);
 										olocObj3[paramInt].var_11a2 = var_468a[this.var_4bb2[paramInt]];
-										this.var_4a82.sub_1698(
+										this.var_4a82.addChildMenu(
 												olocObj3[paramInt], 0, i2, 36);
 									}
 									this.var_4a82.var_114a = 1;
 									E_Menu localClass_e_01345;
 									(localClass_e_01345 = new E_Menu(
-											(byte) 10, 8)).sub_1ca8(null,
+											(byte) 10, 8)).initMessageBox(null,
 											F_StringManager.getLangString(40),
 											this.someCanWidthDiv2, -1);
-									this.var_4a82.sub_1698(localClass_e_01345,
+									this.var_4a82.addChildMenu(localClass_e_01345,
 											0, i2, 20);
 									this.var_4a8a = new E_Menu((byte) 14,
 											4);
@@ -1640,17 +1637,17 @@ public final class G_Game extends F_StringManager implements Runnable,
 									for (i3 = 0; i3 < ssparamInt.length; i3++) {
 										ssparamInt[i3] = ("" + var_45da[i3]);
 									}
-									this.var_4a8a.sub_1f72(ssparamInt,
+									this.var_4a8a.initSlotsMenues(ssparamInt,
 											this.someCanWidthDiv2,
 											localClass_e_01345.mapPrevPixelHeight);
-									this.var_4a82.sub_1698(this.var_4a8a,
+									this.var_4a82.addChildMenu(this.var_4a8a,
 											this.canvasWidthShift, i2, 20);
 									i2 += localClass_e_01345.mapPrevPixelHeight;
 									(localClass_e_01341 = new E_Menu(
-											(byte) 10, 8)).sub_1ca8(null,
+											(byte) 10, 8)).initMessageBox(null,
 											F_StringManager.getLangString(41),
 											this.someCanWidthDiv2, -1);
-									this.var_4a82.sub_1698(localClass_e_01341,
+									this.var_4a82.addChildMenu(localClass_e_01341,
 											0, i2, 20);
 									this.var_4a92 = new E_Menu((byte) 14,
 											4);
@@ -1658,16 +1655,16 @@ public final class G_Game extends F_StringManager implements Runnable,
 									for (i6 = 0; i6 < slocalObject6.length; i6++) {
 										slocalObject6[i6] = ("" + var_45e2[i6]);
 									}
-									this.var_4a92.sub_1f72(
+									this.var_4a92.initSlotsMenues(
 											(String[]) slocalObject6,
 											this.someCanWidthDiv2,
 											localClass_e_01341.mapPrevPixelHeight);
-									this.var_4a82.sub_1698(this.var_4a92,
+									this.var_4a82.addChildMenu(this.var_4a92,
 											this.canvasWidthShift, i2, 20);
 									this.var_4a82.sub_1350(paramClass_e_0134);
 									this.var_4a82.sub_132e((byte) 0, true);
 									F_StringManager.mainCanvas
-											.sub_220e(this.var_4a82);
+											.showMessageBox(this.var_4a82);
 									return;
 								}
 								int j;
@@ -1680,13 +1677,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 										boolean[] booparamInt = new boolean[this.var_4baa];
 										for (n = 0; n < this.var_4baa; n++) {
 											if (this.var_4a9a[n].var_105a == 2) {
-												this.var_487a[n] = 2;
+												this.someTeamValuesArr[n] = 2;
 											} else {
 												j++;
 												if (this.var_4a9a[n].var_105a == 0) {
-													this.var_487a[n] = 1;
+													this.someTeamValuesArr[n] = 1;
 												} else if (this.var_4a9a[n].var_105a == 1) {
-													this.var_487a[n] = 0;
+													this.someTeamValuesArr[n] = 0;
 												}
 												this.var_483a[n] = ((byte) this.var_4aa2[n].var_105a);
 												if (booparamInt[this.var_483a[n]] == false) {
@@ -1696,17 +1693,17 @@ public final class G_Game extends F_StringManager implements Runnable,
 											}
 										}
 										if ((j < 2) || (i6 < 2)) {
-											((E_Menu) (localObject6 = showMessageBox(null,
+											((E_Menu) (localObject6 = newMessageBox(null,
 													F_StringManager.getLangString(39),
 													this.someCanHeight, 2000)))
 													.sub_1350(this.var_4a82);
 											F_StringManager.mainCanvas
-													.sub_220e((F_StringManager) localObject6);
+													.showMessageBox((F_StringManager) localObject6);
 											return;
 										}
 										this.var_4a82 = null;
 										this.var_4a7a = null;
-										F_StringManager.mainCanvas.sub_220e(this);
+										F_StringManager.mainCanvas.showMessageBox(this);
 										this.var_45ea = var_45da[this.var_4a8a.var_105a];
 										this.var_45f2 = var_45e2[this.var_4a92.var_105a];
 										this.var_4a9a = null;
@@ -1760,14 +1757,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 											}
 											((DataInputStream) localObject6)
 													.close();
-											this.var_4b52 = this.var_49d2.menuActionsListString[j];
+											this.mapStartUpMessage = this.var_49d2.menuActionsListString[j];
 											this.var_4a7a = new E_Menu(
 													(byte) 15, 15);
 											E_Menu localClass_e_01342;
 											(localClass_e_01342 = new E_Menu(
-													(byte) 10, 0)).someImage1 = this.menuIconsFrames[4];
-											localClass_e_01342.sub_1ca8(null,
-													this.var_4b52,
+													(byte) 10, 0)).menuImage = this.menuIconsFrames[4];
+											localClass_e_01342.initMessageBox(null,
+													this.mapStartUpMessage,
 													this.someCanWidth, -1);
 											localObject10 = new E_Menu(
 													(byte) 8, 0);
@@ -1779,14 +1776,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	- this.buttonsSprite.spriteFrameHeight,
 															arrayOfByte, null);
 											this.var_4a7a
-													.sub_1698(
+													.addChildMenu(
 															(E_Menu) localObject10,
 															this.someCanWidthDiv2,
 															this.someCanHeightDiv2
 																	+ (localClass_e_01342.mapPrevPixelHeight - this.buttonsSprite.spriteFrameHeight)
 																	/ 2, 3);
 											this.var_4a7a
-													.sub_1698(
+													.addChildMenu(
 															localClass_e_01342,
 															0, 0, 0);
 											this.var_4a7a
@@ -1795,7 +1792,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 													true);
 											this.var_4a7a.var_115a = true;
 											F_StringManager.mainCanvas
-													.sub_220e(this.var_4a7a);
+													.showMessageBox(this.var_4a7a);
 										}
 									} else if (paramClass_e_0134 == this.var_4f9a) {
 										k = this.var_4fa2.var_105a - 1;
@@ -1813,10 +1810,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 										if ((k >= originalSkirmishMapNames12.length)
 												|| (this.var_45d2[k] == false)) {
 											this.var_47aa = getDownloadedMapNewIndex(k);
-											this.var_4b52 = this.var_4fa2.menuActionsListString[k];
+											this.mapStartUpMessage = this.var_4fa2.menuActionsListString[k];
 											this.var_4f9a = null;
 											this.var_4fa2 = null;
-											F_StringManager.mainCanvas.sub_220e(this);
+											F_StringManager.mainCanvas.showMessageBox(this);
 											this.scenarioModeIf0 = 1;
 											this.var_49ca = 8;
 											this.var_4f92 = 1;
@@ -1838,7 +1835,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 										if ((k >= originalSkirmishMapNames12.length)
 												|| (this.var_45d2[k] == false)) {
 											this.var_47aa = getDownloadedMapNewIndex(k);
-											this.var_4b52 = this.var_4fb2.menuActionsListString[k];
+											this.mapStartUpMessage = this.var_4fb2.menuActionsListString[k];
 											if (this.var_4f6a == null) {
 												this.var_4f6a = new B_FilesManager();
 											}
@@ -1860,7 +1857,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	.sub_877(),
 															F_StringManager
 																	.getLangString(299)));
-											localObject61.someImage1 = this.menuIconsFrames[6];
+											localObject61.menuImage = this.menuIconsFrames[6];
 											this.var_4f62 = new E_Menu(
 													(byte) 0, 0);
 											this.var_4f62
@@ -1878,7 +1875,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_4f62.var_105a = 2;
 											}
 											this.var_4f5a
-													.sub_1698(
+													.addChildMenu(
 															this.var_4f62,
 															this.someCanWidthDiv2,
 															(this.someCanHeight + ((E_Menu) localObject61).mapPrevPixelHeight) / 2,
@@ -1889,7 +1886,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 											this.var_4f5a
 													.sub_1350(this.var_4faa);
 											F_StringManager.mainCanvas
-													.sub_220e(this.var_4f5a);
+													.showMessageBox(this.var_4f5a);
 										}
 									} else if (paramClass_e_0134 == this.var_4aaa) {
 										if (paramByte == 1) {
@@ -1933,11 +1930,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 									Object localObject7 = null;
 									if (paramClass_e_0134 == this.var_4b7a) {
 										if (paramByte == 0) {
-											k = this.var_4b82.var_105a;
+											k = this.sMenu.var_105a;
 											if (this.saveSlotBytes[k] == -1) {
 												sub_6431(k, paramClass_e_0134);
 											} else {
-												this.var_4ba2 = showMessageBox(null,
+												this.var_4ba2 = newMessageBox(null,
 														F_StringManager
 																.getLangString(88),
 														this.someCanHeight, -1);
@@ -1946,12 +1943,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_4ba2
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(this.var_4ba2);
+														.showMessageBox(this.var_4ba2);
 											}
 										} else {
 											this.var_4b7a = null;
-											this.var_4b82 = null;
-											this.var_4b8a = null;
+											this.sMenu = null;
+											this.slotDescriptionDialog = null;
 										}
 									} else if (paramClass_e_0134 == this.var_4b72) {
 										if (paramByte == 0) {
@@ -1960,16 +1957,16 @@ public final class G_Game extends F_StringManager implements Runnable,
 												localObject7 = C_MainCanvas
 														.getRecordData(
 																"save",
-																this.var_4b82.var_105a);
+																this.sMenu.var_105a);
 											} catch (Exception localException) {
 											}
 											if (localObject7 != null) {
 												this.var_4b72 = null;
 												sub_1af6c();
-												this.var_4b82 = null;
-												this.var_4b8a = null;
+												this.sMenu = null;
+												this.slotDescriptionDialog = null;
 												F_StringManager.mainCanvas
-														.sub_220e(this);
+														.showMessageBox(this);
 												this.isLoadingBlackMb = true;
 												F_StringManager.mainCanvas.repaintAll();
 												sub_5dc1();
@@ -1982,21 +1979,21 @@ public final class G_Game extends F_StringManager implements Runnable,
 											}
 										} else {
 											this.var_4b72 = null;
-											this.var_4b82 = null;
-											this.var_4b8a = null;
+											this.sMenu = null;
+											this.slotDescriptionDialog = null;
 										}
-									} else if (paramClass_e_0134 == this.var_4b82) {
+									} else if (paramClass_e_0134 == this.sMenu) {
 										if ((paramByte == 2)
 												|| (paramByte == 3)) {
-											this.var_4b8a.sub_1ca8(null,
+											this.slotDescriptionDialog.initMessageBox(null,
 													this.saveSlotsDescriptions[paramInt],
 													this.someCanWidth, -1);
 											if (this.saveSlotBytes[paramInt] == -1) {
-												this.var_4b8a.var_11a2 = 2370117;
+												this.slotDescriptionDialog.var_11a2 = 2370117;
 											} else {
-												this.var_4b8a.var_11a2 = var_468a[this.saveSlotBytes[paramInt]];
+												this.slotDescriptionDialog.var_11a2 = var_468a[this.saveSlotBytes[paramInt]];
 											}
-											this.var_4b8a.sub_1272();
+											this.slotDescriptionDialog.sub_1272();
 										}
 										return;
 									}
@@ -2023,7 +2020,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_4bea = new E_Menu(
 														(byte) 11, 0);
 												(localClass_e_01343 = this.var_4bea
-														.sub_165b(paramString)).someImage1 = this.menuIconsFrames[6];
+														.sub_165b(paramString)).menuImage = this.menuIconsFrames[6];
 												this.var_4bea
 														.setMenuListStringActionsMb(
 																this.var_4bda,
@@ -2036,7 +2033,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_4bea
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(this.var_4bea);
+														.showMessageBox(this.var_4bea);
 											}
 											if (paramString
 													.equals(this.var_4bd2[2])) {
@@ -2044,11 +2041,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 														(byte) 15, 15);
 												(localClass_e_01343 = new E_Menu(
 														(byte) 10, 0))
-														.sub_1ca8(null,
+														.initMessageBox(null,
 																paramString,
 																this.someCanWidth,
 																-1);
-												localClass_e_01343.someImage1 = this.menuIconsFrames[6];
+												localClass_e_01343.menuImage = this.menuIconsFrames[6];
 												this.var_45d2 = new boolean[12];
 												for (i6 = this.someSetting; i6 <= 7; i6++) {
 													if (var_45ca[i6] >= 0) {
@@ -2086,12 +2083,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		- (this.buttonsSprite.spriteFrameHeight << 1),
 																3, 4);
 												this.var_4f9a
-														.sub_1698(
+														.addChildMenu(
 																this.var_4fa2,
 																this.someCanWidthDiv2,
 																(this.someCanHeight + localClass_e_01343.mapPrevPixelHeight) / 2,
 																3);
-												this.var_4f9a.sub_1698(
+												this.var_4f9a.addChildMenu(
 														localClass_e_01343, 0,
 														0, 0);
 												this.var_4f9a.var_115a = true;
@@ -2100,7 +2097,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_4f9a
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(this.var_4f9a);
+														.showMessageBox(this.var_4f9a);
 											}
 										} else if (paramByte == 1) {
 											this.var_4be2 = null;
@@ -2130,7 +2127,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																this.var_4f6a
 																		.sub_877(),
 																F_StringManager
-																		.getLangString(290)))).someImage1 = this.menuIconsFrames[6];
+																		.getLangString(290)))).menuImage = this.menuIconsFrames[6];
 												this.var_4f52 = new E_Menu(
 														(byte) 0, 0);
 												this.var_4f52
@@ -2148,7 +2145,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 													this.var_4f52.var_105a = 1;
 												}
 												this.var_4f4a
-														.sub_1698(
+														.addChildMenu(
 																this.var_4f52,
 																this.someCanWidthDiv2,
 																(this.someCanHeight + ((E_Menu) clas).mapPrevPixelHeight) / 2,
@@ -2159,20 +2156,20 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_4f4a
 														.sub_1350(this.var_4bea);
 												F_StringManager.mainCanvas
-														.sub_220e(this.var_4f4a);
+														.showMessageBox(this.var_4f4a);
 											} else if (paramString
 													.equals(this.var_4bda[1])) {
 												this.var_4faa = new E_Menu(
 														(byte) 15, 15);
 												(localClass_e_01343 = new E_Menu(
 														(byte) 10, 0))
-														.sub_1ca8(
+														.initMessageBox(
 																null,
 																F_StringManager
 																		.getLangString(299),
 																this.someCanWidth,
 																-1);
-												localClass_e_01343.someImage1 = this.menuIconsFrames[6];
+												localClass_e_01343.menuImage = this.menuIconsFrames[6];
 												this.var_45d2 = new boolean[12];
 												for (i6 = this.someSetting; i6 <= 7; i6++) {
 													if (var_45ca[i6] >= 0) {
@@ -2208,12 +2205,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		- (this.buttonsSprite.spriteFrameHeight << 1),
 																3, 4);
 												this.var_4faa
-														.sub_1698(
+														.addChildMenu(
 																this.var_4fb2,
 																this.someCanWidthDiv2,
 																(this.someCanHeight + localClass_e_01343.mapPrevPixelHeight) / 2,
 																3);
-												this.var_4faa.sub_1698(
+												this.var_4faa.addChildMenu(
 														localClass_e_01343, 0,
 														0, 0);
 												this.var_4faa.var_115a = true;
@@ -2222,10 +2219,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_4faa
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(this.var_4faa);
+														.showMessageBox(this.var_4faa);
 											} else if (paramString
 													.equals(this.var_4bda[2])) {
-												if (this.var_4eea == null) {
+												if (this.someMapsNamesMb == null) {
 													sub_18c91(
 															2,
 															"levels",
@@ -2235,12 +2232,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 												} else {
 													sub_70c0(paramClass_e_0134);
 													F_StringManager.mainCanvas
-															.sub_220e(this.var_4c0a);
+															.showMessageBox(this.var_4c0a);
 												}
 											} else if (paramString
 													.equals(this.var_4bda[3])) {
 												F_StringManager.mainCanvas
-														.sub_220e(createMenuForDeleteDownloadedMaps(paramClass_e_0134));
+														.showMessageBox(createMenuForDeleteDownloadedMaps(paramClass_e_0134));
 											}
 										} else if (paramByte == 1) {
 											this.var_4bea = null;
@@ -2262,7 +2259,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 														this.someCanHeight / 2, -1))
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(localClass_e_01343);
+														.showMessageBox(localClass_e_01343);
 											}
 										} else if (paramByte == 1) {
 											this.var_4bf2 = null;
@@ -2270,21 +2267,21 @@ public final class G_Game extends F_StringManager implements Runnable,
 									} else if (paramClass_e_0134 == this.var_4c0a) {
 										if (paramByte == 0) {
 											this.var_4eca = this.someMenu.var_11c2[this.someMenu.var_105a];
-											if (this.downloadAvailableSize >= this.var_4efa[this.var_4eca]) {
+											if (this.downloadAvailableSize >= this.mapBytesSizeMb[this.var_4eca]) {
 												sub_18c91(
 														3,
 														this.var_4ef2[this.var_4eca],
 														F_StringManager.getLangString(0),
 														paramClass_e_0134);
 											} else {
-												(localClass_e_01343 = showMessageBox(
+												(localClass_e_01343 = newMessageBox(
 														null,
 														F_StringManager
 																.getLangString(55),
 														this.someCanHeight, -1))
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(localClass_e_01343);
+														.showMessageBox(localClass_e_01343);
 											}
 										} else if (paramByte == 1) {
 											this.var_4c1a = null;
@@ -2296,12 +2293,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 												|| (paramByte == 3)) {
 											String str = bytesSizeToString(this.downloadAvailableSize);
 											this.var_4c1a
-													.sub_1ca8(
+													.initMessageBox(
 															null,
 															F_StringManager
 																	.getStrByIdAndReplaceUWith(
 																			54,
-																			bytesSizeToString(this.var_4efa[this.someMenu.var_11c2[paramInt]]))
+																			bytesSizeToString(this.mapBytesSizeMb[this.someMenu.var_11c2[paramInt]]))
 																	+ "\n"
 																	+ F_StringManager
 																			.getStrByIdAndReplaceUWith(
@@ -2314,14 +2311,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 										if (paramByte == 0) {
 											if (this.settingsIntListMaybe[paramInt]
 													+ originalSkirmishMapNames12.length == this.scenarioMapIndex) {
-												(localClass_e_01343 = showMessageBox(
+												(localClass_e_01343 = newMessageBox(
 														null,
 														F_StringManager
 																.getLangString(56),
 														this.someCanHeight, -1))
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(localClass_e_01343);
+														.showMessageBox(localClass_e_01343);
 											} else {
 												this.var_4c22 = paramInt;
 												this.var_4c2a = paramString;
@@ -2337,7 +2334,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_4c02.sub_132e(
 														(byte) 0, true);
 												F_StringManager.mainCanvas
-														.sub_220e(this.var_4c02);
+														.showMessageBox(this.var_4c02);
 											}
 										} else if (paramByte == 1) {
 											this.someHoverMenu = null;
@@ -2346,19 +2343,19 @@ public final class G_Game extends F_StringManager implements Runnable,
 										if (paramByte == 0) {
 											sub_19031(this.var_4c22);
 											E_Menu cl0134 = createMenuForDeleteDownloadedMaps(this.someHoverMenu.stringManager);
-											E_Menu cll = showMessageBox(null,
+											E_Menu cll = newMessageBox(null,
 													F_StringManager.getStrByIdAndReplaceUWith(51,
 															this.var_4c2a),
 													this.someCanHeight, -1);
 											cll.sub_1350(cl0134); 
 											F_StringManager.mainCanvas
-													.sub_220e((F_StringManager) cll);
+													.showMessageBox((F_StringManager) cll);
 										}
 										this.var_4c02 = null;
 										this.var_4c2a = null;
 									}
 									if (paramClass_e_0134.typeMB == 7) {
-										F_StringManager.mainCanvas.sub_220e(this);
+										F_StringManager.mainCanvas.showMessageBox(this);
 										return;
 									}
 									if ((paramString != null)
@@ -2367,7 +2364,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												.equals(this.var_462a[0])) {
 											if ((this.gameStateMb != 0)
 													&& (this.var_478a == 0)) {
-												this.var_4b9a = showMessageBox(null,
+												this.var_4b9a = newMessageBox(null,
 														F_StringManager
 																.getLangString(87),
 														this.someCanHeight, -1);
@@ -2376,7 +2373,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_4b9a
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(this.var_4b9a);
+														.showMessageBox(this.var_4b9a);
 												return;
 											}
 											sub_6d11(this.var_465a,
@@ -2405,7 +2402,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												}
 												E_Menu locOb;
 												(locOb = this.var_49e2
-														.sub_165b(paramString)).someImage1 = this.menuIconsFrames[3];
+														.sub_165b(paramString)).menuImage = this.menuIconsFrames[3];
 												this.var_49e2
 														.setMenuListStringActionsMb(
 																strs,
@@ -2418,29 +2415,29 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_49e2
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(this.var_49e2);
+														.showMessageBox(this.var_49e2);
 												return;
 											}
 											if (paramString.equals(F_StringManager
 													.getLangString(4))) {
-												this.var_4b7a = sub_6f4c(
+												this.var_4b7a = createSlotsMenu(
 														paramString,
 														this.menuIconsFrames[10]);
 												this.var_4b7a
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(this.var_4b7a);
+														.showMessageBox(this.var_4b7a);
 												return;
 											}
 											if (paramString.equals(F_StringManager
 													.getLangString(5))) {
-												this.var_4b72 = sub_6f4c(
+												this.var_4b72 = createSlotsMenu(
 														paramString,
 														this.menuIconsFrames[2]);
 												this.var_4b72
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(this.var_4b72);
+														.showMessageBox(this.var_4b72);
 												return;
 											}
 											int i1;
@@ -2454,7 +2451,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 															(byte) 11, 0);
 													E_Menu locOb2;
 													(locOb2 = this.var_4be2
-															.sub_165b(paramString)).someImage1 = this.menuIconsFrames[6];
+															.sub_165b(paramString)).menuImage = this.menuIconsFrames[6];
 													this.var_4be2
 															.setMenuListStringActionsMb(
 																	this.var_4bd2,
@@ -2467,7 +2464,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 													this.var_4be2
 															.sub_1350(paramClass_e_0134);
 													F_StringManager.mainCanvas
-															.sub_220e(this.var_4be2);
+															.showMessageBox(this.var_4be2);
 													return;
 												}
 												if (paramString
@@ -2477,15 +2474,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 															(byte) 15, 15);
 													E_Menu locOb2;
 													(locOb2 = new E_Menu(
-															(byte) 10, 0)).someImage1 = this.menuIconsFrames[5];
+															(byte) 10, 0)).menuImage = this.menuIconsFrames[5];
 													((E_Menu) locOb2)
-															.sub_1ca8(
+															.initMessageBox(
 																	null,
 																	paramString,
 																	this.someCanWidth,
 																	-1);
 													this.var_4aaa
-															.sub_1698(
+															.addChildMenu(
 																	(E_Menu) locOb2,
 																	0, 0, 20);
 													i6 = ((E_Menu) locOb2).mapPrevPixelHeight;
@@ -2504,12 +2501,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 																(byte) 10,
 																iparamInt);
 														localObjs[i1]
-																.sub_1ca8(
+																.initMessageBox(
 																		null,
 																		C_MainCanvas.var_1807[i1],
 																		this.someCanWidthDiv2,
 																		-1);
-														this.var_4aaa.sub_1698(
+														this.var_4aaa.addChildMenu(
 																localObjs[i1],
 																0, i6, 20);
 														int int4 = 4;
@@ -2522,14 +2519,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 														this.var_4ab2[i1] = new E_Menu(
 																(byte) 14, int4);
 														this.var_4ab2[i1]
-																.sub_1f72(
+																.initSlotsMenues(
 																		this.var_4642,
 																		this.someCanWidthDiv2,
 																		localObjs[i1].mapPrevPixelHeight);
 														this.var_4ab2[i1].var_105a = (C_MainCanvas.settings[i1] != false ? 0
 																: 1);
 														this.var_4aaa
-																.sub_1698(
+																.addChildMenu(
 																		this.var_4ab2[i1],
 																		this.canvasWidthShift,
 																		i6, 20);
@@ -2539,7 +2536,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 													this.var_4aaa
 															.sub_1350(paramClass_e_0134);
 													F_StringManager.mainCanvas
-															.sub_220e(this.var_4aaa);
+															.showMessageBox(this.var_4aaa);
 													return;
 												}
 												if (paramString
@@ -2550,12 +2547,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 													E_Menu lo2;
 													(lo2 = new E_Menu(
 															(byte) 10, 0))
-															.sub_1ca8(
+															.initMessageBox(
 																	null,
 																	paramString,
 																	this.someCanWidth,
 																	-1);
-													((E_Menu) lo2).someImage1 = this.menuIconsFrames[7];
+													((E_Menu) lo2).menuImage = this.menuIconsFrames[7];
 													String[] strParam2 = new String[20];
 													for (i2 = 0; i2 < var_4992.length; i2++) {
 														strParam2[i2] = (F_StringManager
@@ -2566,13 +2563,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 													}
 													this.var_49b2 = new E_Menu(
 															(byte) 14, 2);
-													this.var_49b2.sub_1f72(
+													this.var_49b2.initSlotsMenues(
 															strParam2,
 															this.someCanWidth, -1);
 													this.var_49ba = new E_Menu(
 															(byte) 10, 1);
 													this.var_49ba
-															.sub_1ca8(
+															.initMessageBox(
 																	null,
 																	F_StringManager
 																			.getLangString(var_499a[0]),
@@ -2583,23 +2580,23 @@ public final class G_Game extends F_StringManager implements Runnable,
 																			- (this.buttonsSprite.spriteFrameHeight << 1));
 													i2 = ((E_Menu) lo2).mapPrevPixelHeight
 															+ this.buttonsSprite.spriteFrameHeight;
-													this.var_49aa.sub_1698(
+													this.var_49aa.addChildMenu(
 															this.var_49b2,
 															this.someCanWidthDiv2, i2,
 															17);
 													i2 += this.var_49b2.mapPrevPixelHeight;
-													this.var_49aa.sub_1698(
+													this.var_49aa.addChildMenu(
 															this.var_49ba,
 															this.someCanWidthDiv2, i2,
 															17);
-													this.var_49aa.sub_1698(
+													this.var_49aa.addChildMenu(
 															(E_Menu) lo2,
 															0, 0, 0);
 													this.var_49aa
 															.sub_1350(paramClass_e_0134);
 													this.var_49aa.var_115a = true;
 													F_StringManager.mainCanvas
-															.sub_220e(this.var_49aa);
+															.showMessageBox(this.var_49aa);
 													return;
 												}
 												if (paramString
@@ -2611,12 +2608,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 													E_Menu lo7;
 													(lo7 = new E_Menu(
 															(byte) 10, 0))
-															.sub_1ca8(
+															.initMessageBox(
 																	null,
 																	paramString,
 																	this.someCanWidth,
 																	-1);
-													((E_Menu) lo7).someImage1 = this.menuIconsFrames[8];
+													((E_Menu) lo7).menuImage = this.menuIconsFrames[8];
 													localObject8 = new E_Menu(
 															(byte) 10, 0);
 													String lo9;
@@ -2625,7 +2622,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	16,
 																	this.midletVersionAppProp);
 													((E_Menu) localObject8)
-															.sub_1ca8(
+															.initMessageBox(
 																	null,
 																	(String) lo9,
 																	this.someCanWidth,
@@ -2633,26 +2630,26 @@ public final class G_Game extends F_StringManager implements Runnable,
 																			- ((E_Menu) lo7).mapPrevPixelHeight
 																			- (this.buttonsSprite.spriteFrameHeight << 1));
 													((E_Menu) lo2)
-															.sub_1698(
+															.addChildMenu(
 																	(E_Menu) localObject8,
 																	0,
 																	(this.someCanHeight + ((E_Menu) lo7).mapPrevPixelHeight) / 2,
 																	6);
 													((E_Menu) lo2)
-															.sub_1698(
+															.addChildMenu(
 																	(E_Menu) lo7,
 																	0, 0, 0);
 													((E_Menu) lo2)
 															.sub_1350(paramClass_e_0134);
 													((E_Menu) lo2).var_115a = true;
 													F_StringManager.mainCanvas
-															.sub_220e((F_StringManager) lo2);
+															.showMessageBox((F_StringManager) lo2);
 													return;
 												}
 												if (paramString
 														.equals(F_StringManager
 																.getLangString(11))) {
-													this.var_4b92 = showMessageBox(
+													this.var_4b92 = newMessageBox(
 															null,
 															F_StringManager
 																	.getLangString(86),
@@ -2662,7 +2659,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 													this.var_4b92
 															.sub_1350(paramClass_e_0134);
 													F_StringManager.mainCanvas
-															.sub_220e(this.var_4b92);
+															.showMessageBox(this.var_4b92);
 													return;
 												}
 												if (paramString
@@ -2678,9 +2675,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 														.equals(F_StringManager
 																.getLangString(61))) {
 													this.var_49ea = false;
-													sub_6c83(this.someActiveUnit);
+													showWhereUnitCanMoveMb(this.someActiveUnit);
 													F_StringManager.mainCanvas
-															.sub_220e(this);
+															.showMessageBox(this);
 													return;
 												}
 												if (paramString
@@ -2704,14 +2701,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	this.someActiveUnit.posX,
 																	this.someActiveUnit.posY);
 													this.cursorSprite
-															.setFrameSequence(var_4662[1]);
+															.setFrameSequence(frameSequencesCursorMb[1]);
 													moveCursorToPos(
 															this.var_47ba[this.var_47b2].posX,
 															this.var_47ba[this.var_47b2].posY);
 													this.canCancelMb = true;
 													this.canApplyMb = true;
 													F_StringManager.mainCanvas
-															.sub_220e(this);
+															.showMessageBox(this);
 													return;
 												}
 												if (paramString
@@ -2729,7 +2726,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 													this.var_4b1a.var_1152 = true;
 													this.var_4b0a.someUnit0 = this.var_4b12.someUnits[0];
 													this.var_4b1a
-															.sub_1ca8(
+															.initMessageBox(
 																	null,
 																	F_StringManager
 																			.getLangString(184 + this.var_4b12.someUnits[0].unitType),
@@ -2737,16 +2734,16 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	this.someCanHeight
 																			- this.var_4b0a.mapPrevPixelHeight
 																			- this.var_4b12.mapPrevPixelHeight);
-													this.var_4b02.sub_1698(
+													this.var_4b02.addChildMenu(
 															this.var_4b0a, 0,
 															0, 0);
 													this.var_4b02
-															.sub_1698(
+															.addChildMenu(
 																	this.var_4b1a,
 																	0,
 																	this.var_4b0a.mapPrevPixelHeight,
 																	0);
-													this.var_4b02.sub_1698(
+													this.var_4b02.addChildMenu(
 															this.var_4b12, 0,
 															this.someCanHeight, 32);
 													this.var_4b02.var_115a = true;
@@ -2755,7 +2752,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 													this.var_4b02.sub_132e(
 															(byte) 0, true);
 													F_StringManager.mainCanvas
-															.sub_220e(this.var_4b02);
+															.showMessageBox(this.var_4b02);
 													return;
 												}
 												if (paramString
@@ -2769,7 +2766,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 															(byte) 0);
 													this.var_478a = 0;
 													F_StringManager.mainCanvas
-															.sub_220e(this);
+															.showMessageBox(this);
 													return;
 												}
 												if (paramString
@@ -2777,7 +2774,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																.getLangString(66))) {
 													sub_11699();
 													F_StringManager.mainCanvas
-															.sub_220e(this);
+															.showMessageBox(this);
 													return;
 												}
 												if (paramString
@@ -2788,7 +2785,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 															this.someActiveUnit.posX,
 															this.someActiveUnit.posY);
 													F_StringManager.mainCanvas
-															.sub_220e(showMessageBox(
+															.showMessageBox(newMessageBox(
 																	null,
 																	F_StringManager
 																			.getLangString(74),
@@ -2808,7 +2805,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																this.someActiveUnit.posY,
 																this.var_4832[this.someActiveUnit.teamId]);
 														F_StringManager.mainCanvas
-																.sub_220e(showMessageBox(
+																.showMessageBox(newMessageBox(
 																		null,
 																		F_StringManager
 																				.getLangString(73),
@@ -2840,7 +2837,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	this.someActiveUnit.posY);
 													this.canCancelMb = true;
 													F_StringManager.mainCanvas
-															.sub_220e(this);
+															.showMessageBox(this);
 													return;
 												}
 												if (paramString
@@ -2850,9 +2847,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 															(byte) 15, 15);
 													E_Menu localObject71 = new E_Menu(
 															(byte) 10, 0);
-													localObject71.sub_1ca8(
+													localObject71.initMessageBox(
 																	null,
-																	this.var_4b52,
+																	this.mapStartUpMessage,
 																	this.someCanWidth,
 																	-1);
 													E_Menu localObject81 = new E_Menu(
@@ -2865,7 +2862,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	this.mapTilesIds,
 																	this.mapUnitsMaybe);
 													((E_Menu) localObject2)
-															.sub_1698(
+															.addChildMenu(
 																	(E_Menu) localObject81,
 																	this.someCanWidthDiv2,
 																	this.someCanHeightDiv2
@@ -2873,14 +2870,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 																			/ 2,
 																	3);
 													((E_Menu) localObject2)
-															.sub_1698(
+															.addChildMenu(
 																	(E_Menu) localObject71,
 																	0, 0, 0);
 													((E_Menu) localObject2)
 															.sub_1350(paramClass_e_0134);
 													((E_Menu) localObject2).var_115a = true;
 													F_StringManager.mainCanvas
-															.sub_220e((F_StringManager) localObject2);
+															.showMessageBox((F_StringManager) localObject2);
 													return;
 												}
 												if (paramString
@@ -2891,24 +2888,24 @@ public final class G_Game extends F_StringManager implements Runnable,
 													this.gameMessageBox
 															.sub_1350(paramClass_e_0134);
 													F_StringManager.mainCanvas
-															.sub_220e(this.gameMessageBox);
+															.showMessageBox(this.gameMessageBox);
 													return;
 												}
 												if (paramString
 														.equals(F_StringManager
 																.getLangString(293))) {
-													sub_19157(this.var_4b52,
+													sub_19157(this.mapStartUpMessage,
 															sub_bb13());
-													E_Menu fAnima = showMessageBox(
+													E_Menu fAnima = newMessageBox(
 															null,
 															F_StringManager
 																	.getStrByIdAndReplaceUWith(
 																			45,
-																			this.var_4b52),
+																			this.mapStartUpMessage),
 																			this.someCanHeight, 2000);
 													fAnima.sub_1350(this);
 													F_StringManager.mainCanvas
-															.sub_220e((F_StringManager) fAnima);
+															.showMessageBox((F_StringManager) fAnima);
 													return;
 												}
 												if (paramString
@@ -2958,11 +2955,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 												E_Menu lo2;
 												(lo2 = new E_Menu(
 														(byte) 10, 0))
-														.sub_1ca8(null,
+														.initMessageBox(null,
 																paramString,
 																this.someCanWidth,
 																-1);
-												((E_Menu) lo2).someImage1 = this.menuIconsFrames[4];
+												((E_Menu) lo2).menuImage = this.menuIconsFrames[4];
 												this.var_45d2 = new boolean[12];
 												for (i6 = this.someSetting; i6 <= 7; i6++) {
 													if (var_45ca[i6] >= 0) {
@@ -2998,13 +2995,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 																		- (this.buttonsSprite.spriteFrameHeight << 1),
 																3, 4);
 												this.var_49da
-														.sub_1698(
+														.addChildMenu(
 																this.var_49d2,
 																this.someCanWidthDiv2,
 																(this.someCanHeight + ((E_Menu) lo2).mapPrevPixelHeight) / 2,
 																3);
 												this.var_49da
-														.sub_1698(
+														.addChildMenu(
 																(E_Menu) lo2,
 																0, 0, 0);
 												this.var_49da.var_115a = true;
@@ -3013,11 +3010,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_49da
 														.sub_1350(paramClass_e_0134);
 												F_StringManager.mainCanvas
-														.sub_220e(this.var_49da);
+														.showMessageBox(this.var_49da);
 												return;
 											}
 										} else {
-											F_StringManager.mainCanvas.sub_220e(this);
+											F_StringManager.mainCanvas.showMessageBox(this);
 											if (paramClass_e_0134 == this.var_49e2) {
 												this.scenarioMapIndex = paramInt;
 												this.var_49e2 = null;
@@ -3026,14 +3023,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 											}
 											sub_1af6c();
 											this.scenarioModeIf0 = 0;
-											this.var_487a[1] = 0;
+											this.someTeamValuesArr[1] = 0;
 											this.isLoadingBlackMb = true;
 											F_StringManager.mainCanvas.repaintAll();
 											System.gc();
 											sub_5dc1();
 											loadMapById(this.scenarioMapIndex);
 											this.isLoadingBlackMb = false;
-											sub_143ce();
+											initMap();
 											this.var_478a = 0;
 										}
 									}
@@ -3053,7 +3050,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			int paramInt1, int paramInt2) {
 		this.var_486a[this.someUnitTeamId] -= paramClass_a_0260.cost;
 		paramClass_a_0260.health = 100;
-		paramClass_a_0260.sub_1686(paramInt1, paramInt2);
+		paramClass_a_0260.setOnMapPosition(paramInt1, paramInt2);
 		if (!this.mapUnitsMaybe.contains(paramClass_a_0260)) {
 			this.mapUnitsMaybe.addElement(paramClass_a_0260);
 		}
@@ -3088,10 +3085,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4912 = false;
 			this.var_4b4a = false;
 			this.somePositions = null;
-			this.var_489a = null;
+			this.dyingUnit = null;
 			this.var_4b32 = null;
 			this.var_48a2 = null;
-			this.var_48b2 = null;
+			this.selectedTombUnit = null;
 			this.vectorOfSomeUnits.removeAllElements();
 			this.var_484a = 0;
 			this.someUnitTeamId = 0;
@@ -3109,11 +3106,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 			C_MainCanvas.initResPak();
 			DataInputStream localObject;
 			if (this.scenarioModeIf0 == 0) {
-				this.var_4b52 = F_StringManager.getLangString(mapIndex + 113); //0+113 //SKIRMISH The Temple of Courage 
+				this.mapStartUpMessage = F_StringManager.getLangString(mapIndex + 113); //0+113 //SKIRMISH The Temple of Courage 
 				localObject = new DataInputStream(C_MainCanvas.getResourceStream("m"
 						+ mapIndex + ".aem"));
 			} else {
-				this.var_4b52 = sub_75cb(mapIndex);
+				this.mapStartUpMessage = sub_75cb(mapIndex);
 				localObject = getMapDataInputStream(mapIndex);
 			}
 			this.mapWidth = ((DataInputStream) localObject).readInt();
@@ -3174,14 +3171,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4832[1] = 2;
 			this.var_483a[0] = 0;
 			this.var_483a[1] = 1;
-			this.var_487a[0] = 1;
-			this.var_487a[1] = 0;
+			this.someTeamValuesArr[0] = 1;
+			this.someTeamValuesArr[1] = 0;
 			this.var_45f2 = 100;
 			int i2;
 			for (int n = 0; n < this.somePositionsOrTilesData.length; n = (short) (n + 1)) {
 				byte i1 = this.somePositionsOrTilesData[n][2];
 				i2 = sub_11c17(i1);
-				if ((i1 > 0) && ((i2 < 0) || (this.var_487a[i2] == 2))) {
+				if ((i1 > 0) && ((i2 < 0) || (this.someTeamValuesArr[i2] == 2))) {
 					int pX = this.somePositionsOrTilesData[n][0];
 					int pY = this.somePositionsOrTilesData[n][1];
 					changeTileToOccupiedByTeam(pX, pY, 0);
@@ -3199,7 +3196,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				int uPosY = ((DataInputStream) localObject).readShort() / 24;
 				byte uType = (byte) (someVal1 % 12);
 				byte uTeam = (byte) sub_11c17(1 + someVal1 / 12);
-				if (this.var_487a[uTeam] != 2) {
+				if (this.someTeamValuesArr[uTeam] != 2) {
 					A_Unit unit1 = A_Unit.createUnit(uType,
 							uTeam, uPosX, uPosY);
 					if (uType == 9) {
@@ -3210,13 +3207,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 			((DataInputStream) localObject).close();
 			if (this.scenarioModeIf0 == 0) {
 				// scenario
-				this.gameMessageBox = showMessageBox(
+				this.gameMessageBox = newMessageBox(
 						F_StringManager.getLangString(121 + this.scenarioMapIndex),
 						F_StringManager.getLangString(129 + this.scenarioMapIndex),
 						this.someCanHeight, -1);
 			} else {
 				// OBJECTIVE for skirmish
-				this.gameMessageBox = showMessageBox(
+				this.gameMessageBox = newMessageBox(
 						F_StringManager.getLangString(71), F_StringManager.getLangString(137),
 						this.someCanHeight, -1);
 			}
@@ -3240,7 +3237,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				this.var_4e12 = 100;
 				this.var_4a4a = true;
 				for (short n = 0; n < this.teamsCountMaybe; n = (short) (n + 1)) {
-					if (this.var_487a[n] != 2) {
+					if (this.someTeamValuesArr[n] != 2) {
 						this.someUnitTeamId = ((byte) n);
 						break;
 					}
@@ -3266,11 +3263,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 					this.aSomeSpritesArr[n].isVisibleMb = false;
 				}
 			}
-			if (this.var_487a[this.someUnitTeamId] == 0) {
+			if (this.someTeamValuesArr[this.someUnitTeamId] == 0) {
 				sub_122cc();
 			}
 			if ((this.var_4f92 != 0) || (this.teamsCountMaybe == 0)) {
-				C_MainCanvas.sub_2bf1(var_4692[1], 0);
+				C_MainCanvas.playMusic2(var_4692[1], 0);
 			}
 			if (this.var_4f92 != 0) {
 				this.mapLeftX = 0;
@@ -3324,7 +3321,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		for (int itt = 0; itt < this.mapUnitsMaybe.size(); itt++) {
 			A_Unit localClass_a_0260;
 			(localClass_a_0260 = (A_Unit) this.mapUnitsMaybe.elementAt(itt))
-					.sub_1686(localClass_a_0260.posX + paramInt1,
+					.setOnMapPosition(localClass_a_0260.posX + paramInt1,
 							localClass_a_0260.posY + paramInt3);
 		}
 		this.mapTilesIds = arrayOfByte;
@@ -3457,16 +3454,16 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.var_4c6a = null;
 		sub_bcb2(this.var_47da, 0);
 		this.var_47e2 = false;
-		if (this.var_487a[this.someUnitTeamId] == 1) {
+		if (this.someTeamValuesArr[this.someUnitTeamId] == 1) {
 			this.var_4c7a = 1;
 			this.var_47f2 = true;
-			this.cursorSprite.setFrameSequence(var_4662[0]);
+			this.cursorSprite.setFrameSequence(frameSequencesCursorMb[0]);
 			this.var_478a = 3;
 			sub_6e49(sub_bddb(paramClass_a_0260, (byte) 0));
 			C_MainCanvas.playMusicLooped(11, 1);
 			return;
 		}
-		if (this.var_487a[this.someUnitTeamId] == 0) {
+		if (this.someTeamValuesArr[this.someUnitTeamId] == 0) {
 			this.var_4d22 = 4;
 			this.var_478a = 0;
 		}
@@ -3508,81 +3505,82 @@ public final class G_Game extends F_StringManager implements Runnable,
 		return bytes;
 	}
 
-	private void sub_bf69() {
-		if ((C_MainCanvas.propDisableIntroOn) && (this.var_490a < 4)) {
-			this.var_48fa = new D_ImageWrap("logo", this.canvasWidth, -1); // @todo j?
-			this.var_490a = 3;
+	private void showStartupBackgrounds() {
+		if ((C_MainCanvas.propDisableIntroOn) && (this.startupBgState < 4)) {
+			this.aeLogoImage = new D_ImageWrap("logo", this.canvasWidth, -1); // @todo j?
+			this.startupBgState = 3;
 			this.var_491a = 40;
 		}
-		switch (this.var_490a) {
+		switch (this.startupBgState) {
 		case 0:
 			if (this.someGameTime >= 1200L) {
-				this.var_490a = 1;
+				this.startupBgState = 1;
 			}
 			this.var_491a = 40;
 			return;
-		case 1:
+		case 1: // intro 0
 			if (this.var_491a <= 0) {
 				this.msLogoImage = null;
 				this.var_491a = 0;
-				this.var_490a += 1;
+				this.startupBgState += 1;
 				initIntro(0, 0, 3);
 				return;
 			}
 			this.var_491a -= 1;
 			return;
-		case 2:
+		case 2: // intro 1
 			initIntro(1, 2, 3);
-			this.var_48fa = new D_ImageWrap("logo", this.canvasWidth, -1); // j
-			this.var_490a += 1;
+			this.aeLogoImage = new D_ImageWrap("logo", this.canvasWidth, -1); // j
+			this.startupBgState += 1;
 			return;
-		case 3:
+		case 3: //logo
 			if (++this.var_491a > 40) {
 				try {
-					this.var_48f2 = new D_ImageWrap("splash", this.someCanWidth,
+					this.splashImage = new D_ImageWrap("splash", this.someCanWidth,
 							-1);
-					this.var_4902 = new D_ImageWrap("glow");
-				} catch (Exception localException) {
+					this.glowLightOnLogoImage = new D_ImageWrap("glow"); // glow light on logo
+				} catch (Exception ex) {
+					//
 				}
-				if (this.var_48f2 != null) {
+				if (this.splashImage != null) {
 					this.var_491a = 0;
 				} else {
 					this.var_491a = 11;
 				}
-				this.var_490a += 1;
-				F_StringManager.mainCanvas.sub_26ad();
+				this.startupBgState += 1;
+				F_StringManager.mainCanvas.clearActionCodesMb();
 				return;
 			}
 			break;
-		case 4:
+		case 4: // start menu
 			if (this.var_491a < 16) {
 				this.var_491a += 1;
 				this.var_4922 += 1;
-				if (this.var_4902 != null) {
-					this.var_4a42 = (-this.var_4902.imageWidth);
+				if (this.glowLightOnLogoImage != null) {
+					this.glowLightXmb = (-this.glowLightOnLogoImage.imageWidth);
 				}
 			} else {
-				if (this.var_4a42 >= this.canvasWidth << 2) {
-					if (this.var_4902 != null) {
-						this.var_4a42 = (-this.var_4902.imageWidth);
+				if (this.glowLightXmb >= this.canvasWidth << 2) {
+					if (this.glowLightOnLogoImage != null) {
+						this.glowLightXmb = (-this.glowLightOnLogoImage.imageWidth);
 					}
 				} else {
-					this.var_4a42 += this.var_48fa.imageWidth / 6;
+					this.glowLightXmb += this.aeLogoImage.imageWidth / 6;
 				}
 				if (this.someGameTime % 100L == 0L) {
-					this.var_498a = (!this.var_498a);
+					this.var_498a = (!this.var_498a);//Press any key image vis?
 				}
-				if (((this.var_48f2 == null) || (F_StringManager.mainCanvas
+				if (((this.splashImage == null) || (F_StringManager.mainCanvas
 						.sub_2677())) && (sub_5d81())) {
-					if (this.var_4902 != null) {
-						this.var_4a42 = (-this.var_4902.imageWidth);
+					if (this.glowLightOnLogoImage != null) {
+						this.glowLightXmb = (-this.glowLightOnLogoImage.imageWidth);
 					}
 					this.var_498a = false;
-					int i = this.var_48fa.imageHeight + 1;
+					int i = this.aeLogoImage.imageHeight + 1;
 					sub_6d11(this.var_464a, (this.canvasHeight + i) / 2,
-							this.canvasHeight - i, this.var_48f2 == null ? null
+							this.canvasHeight - i, this.splashImage == null ? null
 									: this);
-					F_StringManager.mainCanvas.sub_26ad();
+					F_StringManager.mainCanvas.clearActionCodesMb();
 				}
 			}
 			break;
@@ -3592,109 +3590,108 @@ public final class G_Game extends F_StringManager implements Runnable,
 	//@Override
 	public final void paintScene() {
 		this.someGameTime += 50L;
-		G_Game localObject1;
+		G_Game rGame;
 		int m;
-		if (this.gameStateMb == 2) {
-			localObject1 = this;
+		if (this.gameStateMb == 2) { // GAME STATE Fight animation 
+			rGame = this;
 			if ((this.isShakingMB)
-					&& (((G_Game) localObject1).someGameTime
-							- ((G_Game) localObject1).var_4e92 >= ((G_Game) localObject1).var_4e8a)) {
-				((G_Game) localObject1).isShakingMB = false;
+					&& (rGame.someGameTime
+							- rGame.shakingTimeMb >= rGame.shakingTimeMaxMb)) {
+				rGame.isShakingMB = false;
 			}
-			for (m = 0; m < ((G_Game) localObject1).spritesList.size(); m++) {
-				((G_Sprite) ((G_Game) localObject1).spritesList
-						.elementAt(m)).sub_21f3();
+			for (int m1 = 0; m1 < rGame.spritesList.size(); m1++) {
+				((G_Sprite) rGame.spritesList
+						.elementAt(m1)).sub_21f3();
 			}
-			for (m = 0; m < ((G_Game) localObject1).spritesList.size(); m++) {
-				G_Sprite localClass_g_25175;
-				if (!(localClass_g_25175 = (G_Sprite) ((G_Game) localObject1).spritesList
-						.elementAt(m)).isVisibleMb) {
-					((G_Game) localObject1).removeSomeSprite(localClass_g_25175);
+			for (int m1 = 0; m1 <  rGame.spritesList.size(); m1++) {
+				G_Sprite sprite1 = (G_Sprite) rGame.spritesList.elementAt(m1);
+				if (!sprite1.isVisibleMb) {
+					rGame.removeSomeSprite(sprite1);
 				}
 			}
-			((G_Game) localObject1).fAnim1.runUnitFightAnimation();
-			((G_Game) localObject1).fAnim2.runUnitFightAnimation();
-			if (((G_Game) localObject1).var_4ea2) {
-				((G_Game) localObject1).var_491a += 1;
-				if (((G_Game) localObject1).var_491a >= 16) {
-					((G_Game) localObject1).var_4ea2 = false;
-					((G_Game) localObject1).fAnim1.sub_1688();
+			rGame.fAnim1.runUnitFightAnimation();
+			rGame.fAnim2.runUnitFightAnimation();
+			if (rGame.var_4ea2) {
+				rGame.var_491a += 1;
+				if (rGame.var_491a >= 16) {
+					rGame.var_4ea2 = false;
+					rGame.fAnim1.sub_1688();
 				}
-				((G_Game) localObject1).var_4eaa = true;
-				((G_Game) localObject1).var_4eb2 = true;
-			} else if (((G_Game) localObject1).var_4e72) {
-				if (((G_Game) localObject1).someGameTime
-						- ((G_Game) localObject1).var_4e6a >= 300L) {
-					((G_Game) localObject1).spritesList.removeAllElements();
-					((G_Game) localObject1).fAnim2 = null;
-					((G_Game) localObject1).fAnim1 = null;
-					((G_Game) localObject1).spritesOtherVector = new Vector();
-					((G_Game) localObject1).sub_6a9a();
-					((G_Game) localObject1).gameStateMb = 1;
+				rGame.var_4eaa = true;
+				rGame.var_4eb2 = true;
+			} else if (rGame.var_4e72) {
+				if (rGame.someGameTime
+						- rGame.someGameTime2 >= 300L) {
+					rGame.spritesList.removeAllElements();
+					rGame.fAnim2 = null;
+					rGame.fAnim1 = null;
+					rGame.spritesOtherVector = new Vector();
+					rGame.sub_6a9a();
+					rGame.gameStateMb = 1;
 					C_MainCanvas.stopCurrentMusicPlayer();
 					C_MainCanvas
 							.playMusicLooped(
-									var_4692[localObject1.var_4832[localObject1.someUnitTeamId]],
+									var_4692[rGame.var_4832[rGame.someUnitTeamId]],
 									0);
-					F_StringManager.mainCanvas.sub_26ad();
-					((G_Game) localObject1).var_4c42 = true;
-					((G_Game) localObject1).var_4c4a = true;
+					F_StringManager.mainCanvas.clearActionCodesMb();
+					rGame.var_4c42 = true;
+					rGame.var_4c4a = true;
 					return;
 				}
-			} else if (((G_Game) localObject1).fAnim1.var_b5f) {
-				if ((((G_Game) localObject1).var_4e9a)
-						&& (((G_Game) localObject1).fAnim2.unitHealthAfterAttack > 0)) {
-					if (!((G_Game) localObject1).fAnim2.var_b57) {
-						((G_Game) localObject1).fAnim2.sub_1688();
+			} else if (rGame.fAnim1.var_b5f) {
+				if ((rGame.var_4e9a)
+						&& (rGame.fAnim2.unitHealthAfterAttack > 0)) {
+					if (!rGame.fAnim2.var_b57) {
+						rGame.fAnim2.sub_1688();
 					}
-					if (!((G_Game) localObject1).fAnim2.var_b5f) {
+					if (!rGame.fAnim2.var_b5f) {
 					}
 				} else {
-					((G_Game) localObject1).var_4e72 = true;
-					((G_Game) localObject1).var_4e6a = ((G_Game) localObject1).someGameTime;
+					rGame.var_4e72 = true;
+					rGame.someGameTime2 = rGame.someGameTime;
 				}
 			}
-		} else if (this.gameStateMb == 3) {
-			localObject1 = this;
+		} else if (this.gameStateMb == 3) { // GAME STATE ?
+			rGame = this;
 			if (this.var_4cc2) {
-				localObject1.var_491a -= 1;
-				if (((G_Game) localObject1).var_491a < 0) {
-					((G_Game) localObject1).var_491a = 0;
-					((G_Game) localObject1).gameStateMb = ((G_Game) localObject1).var_4cca;
-					((G_Game) localObject1).introImage = null;
-					((G_Game) localObject1).introTextWrapped = null;
+				rGame.var_491a -= 1;
+				if (rGame.var_491a < 0) {
+					rGame.var_491a = 0;
+					rGame.gameStateMb = rGame.var_4cca;
+					rGame.introImage = null;
+					rGame.introTextWrapped = null;
 					return;
 				}
 			} else {
-				if (((((G_Game) localObject1).var_4cd2 != 2) || (((G_Game) localObject1).var_491a >= 40))
-						&& ((((G_Game) localObject1).var_4cd2 == 2) || (((G_Game) localObject1).var_491a >= 16))) {
-					localObject1.var_4c9a -= 1;
-					if (((G_Game) localObject1).var_4c9a < ((G_Game) localObject1).introImageHeight) {
-						((G_Game) localObject1).var_4c9a = (((G_Game) localObject1).introImageHeight
-								+ ((G_Game) localObject1).var_4c92 - (((G_Game) localObject1).introImageHeight - ((G_Game) localObject1).var_4c9a));
-						localObject1.var_4caa += 1;
+				if (((rGame.var_4cd2 != 2) || (rGame.var_491a >= 40))
+						&& ((rGame.var_4cd2 == 2) || (rGame.var_491a >= 16))) {
+					rGame.var_4c9a -= 1;
+					if (rGame.var_4c9a < rGame.introImageHeight) {
+						rGame.var_4c9a = (rGame.introImageHeight
+								+ rGame.var_4c92 - (rGame.introImageHeight - rGame.var_4c9a));
+						rGame.var_4caa += 1;
 					}
 				} else {
-					localObject1.var_491a += 1;
+					rGame.var_491a += 1;
 				}
-				if ((((G_Game) localObject1).var_4caa >= ((G_Game) localObject1).introTextWrapped.length)
+				if ((rGame.var_4caa >= rGame.introTextWrapped.length)
 						|| (F_StringManager.mainCanvas.sub_272b(var_4602))) {
-					((G_Game) localObject1).var_4cc2 = true;
-					if ((((G_Game) localObject1).introImage != null)
-							|| (((G_Game) localObject1).var_4caa < ((G_Game) localObject1).introTextWrapped.length)) {
-						if (((G_Game) localObject1).var_4cda == 2) {
-							((G_Game) localObject1).var_491a = 40;
+					rGame.var_4cc2 = true;
+					if ((rGame.introImage != null)
+							|| (rGame.var_4caa < rGame.introTextWrapped.length)) {
+						if (rGame.var_4cda == 2) {
+							rGame.var_491a = 40;
 							return;
 						}
-						((G_Game) localObject1).var_491a = 16;
+						rGame.var_491a = 16;
 						return;
 					}
-					((G_Game) localObject1).var_491a = 0;
+					rGame.var_491a = 0;
 				}
 			}
 		} else {
-			if (this.gameStateMb == 0) {
-				sub_bf69();
+			if (this.gameStateMb == 0) { // showStartupBackgrounds
+				showStartupBackgrounds();
 				return;
 			}
 			sub_155a2();
@@ -3732,7 +3729,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					this.var_4952 = this.someGameTime;
 				}
 				if ((this.isShakingMB)
-						&& (this.someGameTime - this.var_4e92 >= this.var_4e8a)) {
+						&& (this.someGameTime - this.shakingTimeMb >= this.shakingTimeMaxMb)) {
 					this.isShakingMB = false;
 				}
 				if (this.var_4912) {
@@ -3749,7 +3746,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							this.var_49f2 = 0;
 							this.var_481a = this.someGameTime;
 						} else {
-							sub_18762(this.aUnit, this.aUnit2);
+							sub_18762(this.attackingUnit, this.attackedUnit);
 							this.var_4d3a = null;
 							sub_bc72();
 						}
@@ -3819,28 +3816,28 @@ public final class G_Game extends F_StringManager implements Runnable,
 						this.var_4c42 = true;
 						this.var_4c4a = true;
 					} else {
-						A_Unit localClass_a_0260;
+						A_Unit someUnit;
 						if (this.var_478a == 8) {
 							if (this.var_4812 == 0) {
 								if (this.var_4a52 >= var_4592) {
 									this.var_4812 = 1;
 									sub_116cf();
 									Object localObject2;
-									if (this.var_487a[this.someUnitTeamId] == 1) {
+									if (this.someTeamValuesArr[this.someUnitTeamId] == 1) {
 										localObject2 = "" + this.var_4d12;
 									} else {
 										localObject2 = "?";
 									}
-									localObject2 = showMessageBox(
+									localObject2 = newMessageBox(
 											F_StringManager.getLangString(75),
 											F_StringManager.getStrByIdAndReplaceUWith(76,
 													(String) localObject2),
 											this.someCanHeight, 1500);
 									F_StringManager.mainCanvas
-											.sub_220e((F_StringManager) localObject2);
+											.showMessageBox((F_StringManager) localObject2);
 									((E_Menu) localObject2).var_11a2 = var_468a[this.var_4832[this.someUnitTeamId]];
 									C_MainCanvas
-											.sub_2bf1(
+											.playMusic2(
 													var_4692[this.var_4832[this.someUnitTeamId]],
 													0);
 									return;
@@ -3855,30 +3852,30 @@ public final class G_Game extends F_StringManager implements Runnable,
 								this.var_4c4a = true;
 							} else {
 								for (i = this.mapUnitsMaybe.size() - 1; i >= 0; i--) {
-									if (((localClass_a_0260 = (A_Unit) this.mapUnitsMaybe
+									if (((someUnit = (A_Unit) this.mapUnitsMaybe
 											.elementAt(i)).var_e83 != 3)
-											&& (this.someUnitTeamId == localClass_a_0260.teamId)
+											&& (this.someUnitTeamId == someUnit.teamId)
 											&& ((getMapTileType(
-													localClass_a_0260.posX,
-													localClass_a_0260.posY) == 7) || (sub_11c55(
-													localClass_a_0260.posX,
-													localClass_a_0260.posY,
-													this.var_483a[localClass_a_0260.teamId])))
-											&& (localClass_a_0260.health < 100)) {
+													someUnit.posX,
+													someUnit.posY) == 7) || (sub_11c55(
+													someUnit.posX,
+													someUnit.posY,
+													this.var_483a[someUnit.teamId])))
+											&& (someUnit.health < 100)) {
 										int n;
-										if ((n = 100 - localClass_a_0260.health) > 20) {
+										if ((n = 100 - someUnit.health) > 20) {
 											n = 20;
 										}
-										localClass_a_0260.health += n;
+										someUnit.health += n;
 										G_Sprite localClass_g_25171;
 										(localClass_g_25171 = G_Sprite
 												.createSomeSprite("+" + n, 0, -4,
 														(byte) 1)).setPixelPosition(
-												localClass_a_0260.pixelX
-														+ localClass_a_0260.spriteFrameWidth
+												someUnit.pixelX
+														+ someUnit.spriteFrameWidth
 														/ 2,
-												localClass_a_0260.pixelY
-														+ localClass_a_0260.spriteFrameHeight); // m
+												someUnit.pixelY
+														+ someUnit.spriteFrameHeight); // m
 																				// n
 										this.spritesOtherVector
 												.addElement(localClass_g_25171);
@@ -3908,15 +3905,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 							if (this.var_478a == 13) {
 								if (this.var_492a == 0) {
 									C_MainCanvas.sub_2af6(200);
-									int i1 = this.aUnit
-											.getDamageWhenAttack(this.aUnit2);
-									this.aUnit2.sub_108f(400);
+									int i1 = this.attackingUnit
+											.getDamageWhenAttack(this.attackedUnit);
+									this.attackedUnit.sub_108f(400);
 									C_MainCanvas.playMusicLooped(14, 1);
-									showSpriteOnMap(this.redsparkSprite, this.aUnit2.pixelX,
-											this.aUnit2.pixelY, 0, 0, 2, 50);
+									showSpriteOnMap(this.redsparkSprite, this.attackedUnit.pixelX,
+											this.attackedUnit.pixelY, 0, 0, 2, 50);
 									G_Sprite localClass_g_25172 = G_Sprite
 											.createSomeSprite("-" + i1, 0, -4, (byte) 1);
-									if ((i = this.aUnit2.pixelX + this.aUnit2.spriteFrameWidth
+									if ((i = this.attackedUnit.pixelX + this.attackedUnit.spriteFrameWidth
 											/ 2)
 											+ localClass_g_25172.spriteFrameWidth / 2 > this.var_46d2) {
 										i = this.var_46d2
@@ -3927,32 +3924,32 @@ public final class G_Game extends F_StringManager implements Runnable,
 										i = localClass_g_25172.spriteFrameWidth / 2;
 									}
 									localClass_g_25172.setPixelPosition(i,
-											this.aUnit2.pixelY + this.aUnit2.spriteFrameHeight);
+											this.attackedUnit.pixelY + this.attackedUnit.spriteFrameHeight);
 									this.spritesOtherVector
 											.addElement(localClass_g_25172);
 									this.var_4932 = this.someGameTime;
 									this.var_492a += 1;
 								} else if (this.var_492a == 1) {
 									if (this.someGameTime - this.var_4932 >= 800L) {
-										moveCursorToPos(this.aUnit.posX,
-												this.aUnit.posY);
-										if (this.aUnit2.canAttackPosition(
-												this.aUnit.posX,
-												this.aUnit.posY)) {
+										moveCursorToPos(this.attackingUnit.posX,
+												this.attackingUnit.posY);
+										if (this.attackedUnit.canAttackPosition(
+												this.attackingUnit.posX,
+												this.attackingUnit.posY)) {
 											C_MainCanvas.sub_2af6(200);
-											int i2 = this.aUnit2
-													.getDamageWhenAttack(this.aUnit);
-											this.aUnit.sub_108f(400);
+											int i2 = this.attackedUnit
+													.getDamageWhenAttack(this.attackingUnit);
+											this.attackingUnit.sub_108f(400);
 											C_MainCanvas.playMusicLooped(14, 1);
 											showSpriteOnMap(this.redsparkSprite,
-													this.aUnit.pixelX,
-													this.aUnit.pixelY, 0, 0, 2,
+													this.attackingUnit.pixelX,
+													this.attackingUnit.pixelY, 0, 0, 2,
 													50);
 											G_Sprite localClass_g_25173 = G_Sprite
 													.createSomeSprite("-" + i2, 0, -4,
 															(byte) 1);
-											if ((i = this.aUnit.pixelX
-													+ this.aUnit.spriteFrameWidth / 2)
+											if ((i = this.attackingUnit.pixelX
+													+ this.attackingUnit.spriteFrameWidth / 2)
 													+ localClass_g_25173.spriteFrameWidth
 													/ 2 > this.var_46d2) {
 												i = this.var_46d2
@@ -3964,8 +3961,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 												i = localClass_g_25173.spriteFrameWidth / 2;
 											}
 											localClass_g_25173.setPixelPosition(i,
-													this.aUnit.pixelY
-															+ this.aUnit.spriteFrameHeight);
+													this.attackingUnit.pixelY
+															+ this.attackingUnit.spriteFrameHeight);
 											this.spritesOtherVector
 													.addElement(localClass_g_25173);
 											this.var_4932 = this.someGameTime;
@@ -3988,15 +3985,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 													-this.mapTopY, 0, 12, -1,
 													0);
 											E_Menu localClass_e_01342;
-											(localClass_e_01342 = showMessageBox(
+											(localClass_e_01342 = newMessageBox(
 															null,
 															F_StringManager
 																	.getLangString(280),
 															this.someCanHeight, 2000))
-													.sub_1930(this.someCanWidthDiv2, 2,
+													.setLocation(this.someCanWidthDiv2, 2,
 															17);
 											F_StringManager.mainCanvas
-													.sub_220e(localClass_e_01342);
+													.showMessageBox(localClass_e_01342);
 											this.var_4b3a = 1;
 										}
 									} else if (this.var_4b3a == 1) {
@@ -4042,10 +4039,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 										}
 									} else if (++this.var_4b3a >= 20) {
 										if (this.var_4b32.health <= 0) {
-											this.var_489a = this.var_4b32;
+											this.dyingUnit = this.var_4b32;
 											showSpriteOnMap(this.sparkSprite,
-													this.var_489a.pixelX,
-													this.var_489a.pixelY, 0, 0, 1,
+													this.dyingUnit.pixelX,
+													this.dyingUnit.pixelY, 0, 0, 1,
 													50);
 											C_MainCanvas.playMusicLooped(12, 1);
 											this.var_48aa = this.someGameTime;
@@ -4061,73 +4058,73 @@ public final class G_Game extends F_StringManager implements Runnable,
 												this.var_48a2.posY);
 										this.var_48a2 = null;
 									}
-								} else if (this.var_489a != null) {
+								} else if (this.dyingUnit != null) {
 									if ((this.someGameTime - this.var_48aa >= 300L)
-											&& (sub_ee85(this.var_489a.posX,
-													this.var_489a.posY))) {
+											&& (sub_ee85(this.dyingUnit.posX,
+													this.dyingUnit.posY))) {
 										if ((this.scenarioModeIf0 == 0)
 												&& (this.scenarioMapIndex == 7)
-												&& (this.var_489a == this.maybeTeamKings[1])) {
+												&& (this.dyingUnit == this.maybeTeamKings[1])) {
 											this.var_4b4a = true;
 										} else {
 											showSpriteOnMap(this.smokeSprite,
-													this.var_489a.pixelX,
-													this.var_489a.pixelY, 0, -3, 1,
+													this.dyingUnit.pixelX,
+													this.dyingUnit.pixelY, 0, -3, 1,
 													100);
-											this.var_489a.var_e83 = 3;
-											this.var_489a.var_ecb = 3;
-											if ((this.var_489a.unitType != 10)
-													&& (this.var_489a.unitType != 11)) {
-												if (this.var_489a.unitType == 9) {
-													this.var_489a.sub_1686(-10,
+											this.dyingUnit.var_e83 = 3;
+											this.dyingUnit.var_ecb = 3;
+											if ((this.dyingUnit.unitType != 10)
+													&& (this.dyingUnit.unitType != 11)) {
+												if (this.dyingUnit.unitType == 9) {
+													this.dyingUnit.setOnMapPosition(-10,
 															-10);
-													this.var_489a.var_e8b = 0;
-													this.var_489a.sub_160c();
+													this.dyingUnit.status = 0;
+													this.dyingUnit.calcStatusEffect();
 												}
 											} else {
-												this.var_489a.killUnitMaybe();
+												this.dyingUnit.killUnitMaybe();
 											}
-											if ((this.var_489a.unitType == 9)
-													&& (this.var_489a.cost < 1000)) {
-												this.var_489a.cost += 200;
+											if ((this.dyingUnit.unitType == 9)
+													&& (this.dyingUnit.cost < 1000)) {
+												this.dyingUnit.cost += 200;
 											}
 										}
-										this.var_489a = null;
+										this.dyingUnit = null;
 									}
 								} else {
 									int i10;
 									if (this.vectorOfSomeUnits.size() > 0) {
-										localClass_a_0260 = (A_Unit) this.vectorOfSomeUnits
+										someUnit = (A_Unit) this.vectorOfSomeUnits
 												.elementAt(0);
-										if (this.var_4af2 == 0) {
-											moveCursorToPos(localClass_a_0260.posX,
-													localClass_a_0260.posY);
-											this.var_4af2 = 1;
+										if (this.someUnknownVal == 0) {
+											moveCursorToPos(someUnit.posX,
+													someUnit.posY);
+											this.someUnknownVal = 1;
 										} else if (sub_ee85(
-												localClass_a_0260.posX,
-												localClass_a_0260.posY)) {
+												someUnit.posX,
+												someUnit.posY)) {
 											showSpriteOnMap(
 													this.smallSparkSprite,
-													localClass_a_0260.pixelX
+													someUnit.pixelX
 															+ C_MainCanvas
-																	.getRandomMax(localClass_a_0260.spriteFrameWidth),
-													localClass_a_0260.pixelY
+																	.getRandomMax(someUnit.spriteFrameWidth),
+													someUnit.pixelY
 															+ C_MainCanvas
-																	.getRandomMax(localClass_a_0260.spriteFrameHeight),
+																	.getRandomMax(someUnit.spriteFrameHeight),
 													0, 0, 1, 50);
-											if (this.var_4af2 == 1) {
+											if (this.someUnknownVal == 1) {
 												C_MainCanvas.playMusicLooped(13, 1);
 											}
-											if (this.var_4af2 <= 5) {
+											if (this.someUnknownVal <= 5) {
 												i10 = 200;
-												if (this.var_4af2 == 5) {
+												if (this.someUnknownVal == 5) {
 													i10 = 1000;
 												}
-												i = localClass_a_0260.pixelX
-														+ (localClass_a_0260.spriteFrameWidth - this.levelUpSprite.spriteFrameWidth)
+												i = someUnit.pixelX
+														+ (someUnit.spriteFrameWidth - this.levelUpSprite.spriteFrameWidth)
 														/ 2;
-												int i11 = localClass_a_0260.pixelY
-														- (this.var_4af2 << 2);
+												int i11 = someUnit.pixelY
+														- (this.someUnknownVal << 2);
 												if (i < 0) {
 													i = 0;
 												} else if (i
@@ -4141,35 +4138,36 @@ public final class G_Game extends F_StringManager implements Runnable,
 												showSpriteOnMap(this.levelUpSprite, i, i11,
 														0, 0, 1, i10);
 											}
-											this.var_4af2 += 1;
-											if (this.var_4af2 >= 20) {
+											this.someUnknownVal += 1;
+											if (this.someUnknownVal >= 20) {
 												this.vectorOfSomeUnits
-														.removeElement(localClass_a_0260);
-												this.var_4af2 = 0;
-												if ((localClass_a_0260.unitType != 9)
-														&& (localClass_a_0260.level <= 6)
-														&& (localClass_a_0260.level % 2 == 0)) {
+														.removeElement(someUnit);
+												this.someUnknownVal = 0;
+												if ((someUnit.unitType != 9)
+														&& (someUnit.level <= 6)
+														&& (someUnit.level % 2 == 0)) {
+													//show level up message
 													F_StringManager.mainCanvas
-															.sub_220e(showMessageBox(
+															.showMessageBox(newMessageBox(
 																			null,
 																			F_StringManager
 																					.getLangString(80)
 																					+ "\n"
-																					+ localClass_a_0260.unitName,
+																					+ someUnit.unitName,
 																			this.someCanWidth,
 																			2000));
 												}
 											}
 										}
-									} else if (this.var_48b2 != null) {
+									} else if (this.selectedTombUnit != null) {
 										if (this.someGameTime - this.var_48c2 >= 400L) {
-											this.var_48b2.killUnitMaybe();
-											A_Unit.createUnit((byte) 10,
-													this.var_48ba,
-													this.var_48b2.posX,
-													this.var_48b2.posY)
-													.sub_26fe();
-											this.var_48b2 = null;
+											this.selectedTombUnit.killUnitMaybe();//remove tomb
+											A_Unit skeleton = A_Unit.createUnit((byte) 10,
+													this.activeTeamId,
+													this.selectedTombUnit.posX,
+													this.selectedTombUnit.posY);
+											skeleton.sub_26fe();
+											this.selectedTombUnit = null;
 										}
 									} else if (!this.var_4e3a) {
 										if (this.var_478a == 2) {
@@ -4178,7 +4176,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 												sub_bd39(this.someActiveUnit);
 											}
 										} else if ((this.var_4f92 == 0)
-												&& (this.var_487a[this.someUnitTeamId] == 0)) {
+												&& (this.someTeamValuesArr[this.someUnitTeamId] == 0)) {
 											sub_1240c();
 										} else if (sub_5d81()) {
 											if ((this.canApplyMb)
@@ -4261,7 +4259,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 														&& (this.var_4f92 == 0)
 														&& (F_StringManager.mainCanvas
 																.sub_26d7(256))) {
-													if ((localClass_a_0260 = getUnitAtPos(
+													if ((someUnit = getUnitAtPos(
 															this.cursorPosX,
 															this.cursorPosY,
 															(byte) 0)) != null) {
@@ -4274,19 +4272,19 @@ public final class G_Game extends F_StringManager implements Runnable,
 														(localClass_e_01341 = new E_Menu(
 																(byte) 10, 1)).var_1152 = true;
 														String str = F_StringManager
-																.getLangString(184 + localClass_a_0260.unitType);
-														if (localClass_a_0260.var_e8b != 0) {
+																.getLangString(184 + someUnit.unitType);
+														if (someUnit.status != 0) {
 															StringBuffer localStringBuffer = new StringBuffer(
 																	F_StringManager
 																			.getLangString(98));
-															if ((localClass_a_0260.var_e8b & 0x2) != 0) {
+															if ((someUnit.status & 0x2) != 0) {
 																localStringBuffer
 																		.append('\n');
 																localStringBuffer
 																		.append(F_StringManager
 																				.getLangString(100));
 															}
-															if ((localClass_a_0260.var_e8b & 0x1) != 0) {
+															if ((someUnit.status & 0x1) != 0) {
 																localStringBuffer
 																		.append('\n');
 																localStringBuffer
@@ -4300,18 +4298,18 @@ public final class G_Game extends F_StringManager implements Runnable,
 																	+ str;
 														}
 														localClass_e_01341
-																.sub_1ca8(
+																.initMessageBox(
 																		null,
 																		str,
 																		this.someCanWidth,
 																		this.someCanHeight
 																				- localClass_e_01343.mapPrevPixelHeight);
 														((E_Menu) localObject31)
-																.sub_1698(
+																.addChildMenu(
 																		localClass_e_01343,
 																		0, 0, 0);
 														((E_Menu) localObject31)
-																.sub_1698(
+																.addChildMenu(
 																		localClass_e_01341,
 																		0,
 																		localClass_e_01343.mapPrevPixelHeight,
@@ -4320,7 +4318,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 														((E_Menu) localObject31)
 																.sub_1350(this);
 														F_StringManager.mainCanvas
-																.sub_220e((F_StringManager) localObject31);
+																.showMessageBox((F_StringManager) localObject31);
 													}
 													F_StringManager.mainCanvas
 															.releaseGameAction(256);
@@ -4329,16 +4327,16 @@ public final class G_Game extends F_StringManager implements Runnable,
 													if ((F_StringManager.mainCanvas
 															.sub_26d7(16))
 															&& (this.someActiveUnit != null)) {
-														localClass_a_0260 = getUnitAtPos(
+														someUnit = getUnitAtPos(
 																this.cursorPosX,
 																this.cursorPosY,
 																(byte) 0);
 														if ((this.var_47da[this.cursorPosX][this.cursorPosY] > 0)
-																&& ((localClass_a_0260 == null) || (localClass_a_0260 == this.someActiveUnit))) {
+																&& ((someUnit == null) || (someUnit == this.someActiveUnit))) {
 															this.var_47ca = this.someActiveUnit.posX;
 															this.var_47d2 = this.someActiveUnit.posY;
 															this.someActiveUnit
-																	.fillAttOrMovePositions(
+																	.setHiddenPositions(
 																			this.cursorPosX,
 																			this.cursorPosY,
 																			true);
@@ -4532,7 +4530,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																this.var_4882
 																		.sub_1350(this);
 																F_StringManager.mainCanvas
-																		.sub_220e(this.var_4882);
+																		.showMessageBox(this.var_4882);
 															}
 														}
 													} else {
@@ -4665,7 +4663,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																this.var_4882
 																		.sub_1350(this);
 																F_StringManager.mainCanvas
-																		.sub_220e(this.var_4882);
+																		.showMessageBox(this.var_4882);
 															}
 														} else if (F_StringManager.mainCanvas
 																.sub_26d7(512)) {
@@ -4741,7 +4739,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 																					1);
 																} else {
 																	this.var_49ea = false;
-																	sub_6c83(this.someActiveUnit);
+																	showWhereUnitCanMoveMb(this.someActiveUnit);
 																}
 															} else if ((getMapTileType(
 																	this.cursorPosX,
@@ -4774,14 +4772,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 																this.var_4882
 																		.sub_1350(this);
 																F_StringManager.mainCanvas
-																		.sub_220e(this.var_4882);
+																		.showMessageBox(this.var_4882);
 																C_MainCanvas
 																		.playMusicLooped(
 																				11,
 																				1);
 															}
 															F_StringManager.mainCanvas
-																	.sub_26ad();
+																	.clearActionCodesMb();
 														}
 													}
 												}
@@ -4866,7 +4864,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								}
 								if (this.scenarioMapIndex <= 7) {
 									loadMapById(this.scenarioMapIndex);
-									sub_143ce();
+									initMap();
 									this.var_478a = 0;
 								}
 							}
@@ -4876,12 +4874,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 								Object localObject4;
 								if (var_45ca[this.someSetting] >= 0) {
 									localObject4 = originalSkirmishMapNames12[var_45ca[this.someSetting]];
-									localObject4 = showMessageBox(null,
+									localObject4 = newMessageBox(null,
 											F_StringManager.getStrByIdAndReplaceUWith(82,
 													(String) localObject4),
 											this.canvasHeight, 3000);
 									F_StringManager.mainCanvas
-											.sub_220e((F_StringManager) localObject4);
+											.showMessageBox((F_StringManager) localObject4);
 								}
 								this.someSetting = this.scenarioMapIndex;
 								try {
@@ -4905,15 +4903,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 						this.tiles0Frames[this.var_4972] = this.var_497a[this.var_496a];
 						this.var_4962 = this.someGameTime;
 					}
-					G_Game localClass_g_1956 = this;
+					G_Game llGame = this;
 					if (this.var_4c6a == null) {
-						localClass_g_1956.sub_f012(
-								localClass_g_1956.cursorSprite.pixelX + 12,
-								localClass_g_1956.cursorSprite.pixelY + 12);
+						llGame.sub_f012(
+								llGame.cursorSprite.pixelX + 12,
+								llGame.cursorSprite.pixelY + 12);
 					} else {
-						localClass_g_1956.sub_f012(
-								localClass_g_1956.var_4c6a.pixelX + 12,
-								localClass_g_1956.var_4c6a.pixelY + 12);
+						llGame.sub_f012(
+								llGame.var_4c6a.pixelX + 12,
+								llGame.var_4c6a.pixelY + 12);
 					}
 					if ((this.canCancelMb)
 							&& (F_StringManager.mainCanvas.sub_272b(var_460a))) {
@@ -4921,17 +4919,17 @@ public final class G_Game extends F_StringManager implements Runnable,
 							this.var_478a = 0;
 							sub_bcb2(this.var_47da, 0);
 							this.somePositions = null;
-							this.cursorSprite.setFrameSequence(var_4662[0]);
+							this.cursorSprite.setFrameSequence(frameSequencesCursorMb[0]);
 							moveCursorToPos(this.someActiveUnit.posX,
 									this.someActiveUnit.posY);
 							this.someActiveUnit = null;
 						} else if ((this.var_478a == 6) || (this.var_478a == 7)) {
 							this.var_478a = this.var_4792;
 							sub_bcb2(this.var_47da, 0);
-							this.cursorSprite.setFrameSequence(var_4662[0]);
+							this.cursorSprite.setFrameSequence(frameSequencesCursorMb[0]);
 							moveCursorToPos(this.someActiveUnit.posX,
 									this.someActiveUnit.posY);
-							F_StringManager.mainCanvas.sub_220e(this.var_4882);
+							F_StringManager.mainCanvas.showMessageBox(this.var_4882);
 						}
 						this.var_47e2 = false;
 						this.var_47ea = false;
@@ -4974,8 +4972,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 	}
 
 	private void sub_ed9f(A_Unit paramClass_a_0260, byte paramByte) {
-		this.var_48b2 = paramClass_a_0260;
-		this.var_48ba = paramByte;
+		this.selectedTombUnit = paramClass_a_0260;
+		this.activeTeamId = paramByte;
 		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.pixelX - 8,
 				paramClass_a_0260.pixelY - 8, 1, 1, 3, 50);
 		showSpriteOnMap(this.sparkSprite, paramClass_a_0260.pixelX + 8,
@@ -5199,7 +5197,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.var_4c9a = (this.canvasHeight - this.var_4c92);
 		this.var_4caa = 0;
 		this.var_4cc2 = false;
-		F_StringManager.mainCanvas.sub_26ad();
+		F_StringManager.mainCanvas.clearActionCodesMb();
 		this.gameStateMb = 3;
 	}
 
@@ -5216,7 +5214,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.var_4ca2 = (this.canvasHeight / this.var_4c92);
 		this.var_4c9a = (this.canvasHeight - this.var_4c92);
 		this.var_4caa = 0;
-		F_StringManager.mainCanvas.sub_26ad();
+		F_StringManager.mainCanvas.clearActionCodesMb();
 		this.gameStateMb = 3;
 	}
 
@@ -5303,7 +5301,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private void runWavingImageState(Graphics graphics) {
 		/* intro images waving? */
 		
-		if (this.var_490a == 0) {
+		if (this.startupBgState == 0) {
 			graphics.setColor(16777215); // white
 			graphics.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 			sub_11f87(graphics, this.var_491a, 40, 0, this.msLogoImage,
@@ -5311,7 +5309,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					(this.canvasHeight - this.msLogoImage.imageHeight) / 2, 4);
 			return;
 		}
-		if (this.var_490a == 1) {
+		if (this.startupBgState == 1) {
 			graphics.setColor(16777215); // white
 			graphics.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 			sub_11f87(graphics, this.var_491a, 40, 0, this.msLogoImage,
@@ -5319,34 +5317,34 @@ public final class G_Game extends F_StringManager implements Runnable,
 					(this.canvasHeight - this.msLogoImage.imageHeight) / 2, 4);
 			return;
 		}
-		if (this.var_490a == 3) {
+		if (this.startupBgState == 3) {
 			graphics.setColor(0);
 			graphics.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
-			sub_11f87(graphics, this.var_491a, 40, 0, this.var_48fa, 0, 0,
+			sub_11f87(graphics, this.var_491a, 40, 0, this.aeLogoImage, 0, 0,
 					1);
 			graphics.setClip(0, 0, this.canvasWidth, this.canvasHeight);
 			return;
 		}
-		if (this.var_490a == 4) {
+		if (this.startupBgState == 4) {
 			if (this.var_491a >= 16) {
-				if (this.var_48f2 != null) {
-					this.var_48fa.drawOnGraphics(graphics, 0, 0);
-					if (this.var_4a42 != -1) {
-						int i = (this.var_48fa.imageHeight + this.var_4902.imageHeight - 1)
-								/ this.var_4902.imageHeight;
+				if (this.splashImage != null) {
+					this.aeLogoImage.drawOnGraphics(graphics, 0, 0);
+					if (this.glowLightXmb != -1) {
+						int i = (this.aeLogoImage.imageHeight + this.glowLightOnLogoImage.imageHeight - 1)
+								/ this.glowLightOnLogoImage.imageHeight;
 						for (int j = 0; j < i; j++) {
-							this.var_4902.drawOnGraphics(graphics, 4
-									+ this.var_4a42 - j * 38, 6
-									+ this.var_4902.imageHeight * j);
+							this.glowLightOnLogoImage.drawOnGraphics(graphics, 4
+									+ this.glowLightXmb - j * 38, 6
+									+ this.glowLightOnLogoImage.imageHeight * j);
 						}
 					}
-					this.var_48f2.drawOnGraphics(graphics, 0, 0);
+					this.splashImage.drawOnGraphics(graphics, 0, 0);
 				} else {
 					graphics.setColor(0);
 					graphics.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
-					this.var_48fa.drawOnGraphics(graphics, 0, 0);
+					this.aeLogoImage.drawOnGraphics(graphics, 0, 0);
 				}
-				if ((this.var_498a) && (this.var_48f2 != null)) {
+				if ((this.var_498a) && (this.splashImage != null)) {
 					graphics.setColor(16777215);
 					graphics.setFont(C_MainCanvas.theFont);
 					sub_fdce(graphics, F_StringManager.getLangString(59),
@@ -5354,8 +5352,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 									- 1, 33, 16777215, 0);
 				}
 			} else {
-				if (this.var_48f2 != null) {
-					this.var_48f2.drawOnGraphics(graphics, 0, 0);
+				if (this.splashImage != null) {
+					this.splashImage.drawOnGraphics(graphics, 0, 0);
 				} else {
 					graphics.setColor(0);
 					graphics.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
@@ -5363,7 +5361,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				C_MainCanvas.sub_1edc(graphics,
 						255 * (16 - this.var_491a) / 16 << 24, 0, 0,
 						this.canvasWidth, this.canvasHeight);
-				this.var_48fa.drawOnGraphics(graphics, 0, 0);
+				this.aeLogoImage.drawOnGraphics(graphics, 0, 0);
 			}
 		}
 	}
@@ -5724,7 +5722,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 						this.hudIcons2Sprite.drawFrame(graphics, 1, i5, i2, 6);
 						i3count = i5 + this.hudIcons2Sprite.spriteFrameWidth + 1;
 						if ((!C_MainCanvas.propDeveloperModeOn)
-								&& (this.var_487a[this.someUnitTeamId] != 1)) {
+								&& (this.someTeamValuesArr[this.someUnitTeamId] != 1)) {
 							C_MainCanvas.sub_2007(graphics, "- - -", i3count,
 									i2, 1, 6);
 						} else {
@@ -5785,7 +5783,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				drawButtonIcon(graphics, var_4602, 0, this.someCanHeight); // ok/apply
 			}
 			if ((this.gameStateMb == 1)
-					&& ((this.var_487a[this.someUnitTeamId] == 0) || (this.var_478a == 0))
+					&& ((this.someTeamValuesArr[this.someUnitTeamId] == 0) || (this.var_478a == 0))
 					&& (this.var_478a != 11)) {
 				drawButtonIcon(graphics, var_4602, 3, this.someCanHeight); //openmenu
 			}
@@ -5904,13 +5902,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 							6);
 				}
 				int i3 = j + i1 - 2;
-				if ((m == 0) && ((localClass_a_0260.var_e8b & 0x2) != 0)) {
+				if ((m == 0) && ((localClass_a_0260.status & 0x2) != 0)) {
 					this.statusSprite
 							.drawFrame(gr, 1, i3, n + i4 / 2, 10);
 					i3 -= this.statusSprite.spriteFrameWidth;
 				}
 				if (((m == 0) || (m == 1))
-						&& ((localClass_a_0260.var_e8b & 0x1) != 0)) {
+						&& ((localClass_a_0260.status & 0x1) != 0)) {
 					this.statusSprite
 							.drawFrame(gr, 0, i3, n + i4 / 2, 10);
 				}
@@ -5983,7 +5981,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.kingsPositions[this.someUnitTeamId][1] = ((byte) this.cursorPosY);
 			this.var_484a = ((short) (this.var_484a + 1));
 			this.someUnitTeamId = ((byte) ((this.someUnitTeamId + 1) % this.teamsCountMaybe));
-			if (this.var_487a[this.someUnitTeamId] == 2) {
+			if (this.someTeamValuesArr[this.someUnitTeamId] == 2) {
 				sub_116cf();
 				return;
 			}
@@ -5997,12 +5995,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 					}
 				} else {
 					localClass_a_0260.var_e83 = 0;
-					if (((localClass_a_0260.var_e8b & 0x1) != 0)
+					if (((localClass_a_0260.status & 0x1) != 0)
 							&& (localClass_a_0260.var_ed3 == this.someUnitTeamId)) {
-						localClass_a_0260.sub_15e0((byte) 1);
+						localClass_a_0260.applyInvertedStatMbWTF((byte) 1);
 					}
 					if (localClass_a_0260.teamId == this.someUnitTeamId) {
-						localClass_a_0260.sub_15e0((byte) 2);
+						localClass_a_0260.applyInvertedStatMbWTF((byte) 2);
 					}
 					localClass_a_0260.var_f03 = 0;
 				}
@@ -6023,13 +6021,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 			for (int i = 0; i < this.somePositionsOrTilesData.length; i++) {
 				this.var_4d82[i] = 0;
 			}
-			if (this.var_487a[this.someUnitTeamId] == 1) {
+			if (this.someTeamValuesArr[this.someUnitTeamId] == 1) {
 				moveCursorToPos(this.kingsPositions[this.someUnitTeamId][0],
 						this.kingsPositions[this.someUnitTeamId][1]);
 			}
 			this.var_495a = true;
 			this.var_4c42 = true;
-			if (this.var_487a[this.someUnitTeamId] == 0) {
+			if (this.someTeamValuesArr[this.someUnitTeamId] == 0) {
 				sub_122cc();
 			} else {
 				A_Unit.var_de3 = A_Unit.var_ddb;
@@ -6271,7 +6269,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private void sub_1240c() {
 		if (F_StringManager.mainCanvas.sub_26d7(var_4602)) {
 			sub_6d11(this.var_4652, this.someCanHeightDiv2, this.someCanHeight, this);
-			F_StringManager.mainCanvas.sub_26ad();
+			F_StringManager.mainCanvas.clearActionCodesMb();
 			return;
 		}
 		if (this.var_4d22 == 4) {
@@ -6287,7 +6285,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							this.var_4832[this.someActiveUnit.teamId]);
 					String occupyMsg = F_StringManager.getLangString(73);
 					int showTime = 1000;
-					F_StringManager.mainCanvas.sub_220e(showMessageBox(null, occupyMsg,
+					F_StringManager.mainCanvas.showMessageBox(newMessageBox(null, occupyMsg,
 							this.someCanHeight, showTime)); //OCCUPIED!
 					C_MainCanvas.playMusicLooped(9, 1); // game complete?
 					this.var_478a = 9;
@@ -6300,7 +6298,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					}
 					setMapTileId((byte) 37, this.someActiveUnit.posX,
 							this.someActiveUnit.posY);
-					F_StringManager.mainCanvas.sub_220e(showMessageBox(null,
+					F_StringManager.mainCanvas.showMessageBox(newMessageBox(null,
 							F_StringManager.getLangString(74), this.someCanHeight, 1000));
 					C_MainCanvas.playMusicLooped(9, 1);
 					this.var_478a = 0;
@@ -6319,7 +6317,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				this.var_47e2 = true;
 				this.var_4d5a = this.someGameTime;
 				if (this.var_4d3a != null) {
-					this.cursorSprite.setFrameSequence(var_4662[1]);
+					this.cursorSprite.setFrameSequence(frameSequencesCursorMb[1]);
 					moveCursorToPos(this.var_4d3a.posX, this.var_4d3a.posY);
 				} else if (this.var_4d42 != null) {
 					moveCursorToPos(this.var_4d42.posX, this.var_4d42.posY);
@@ -6342,7 +6340,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				this.var_47ea = false;
 			}
 		} else if (this.var_4d22 == 7) {
-			if (this.var_48b2 == null) {
+			if (this.selectedTombUnit == null) {
 				this.var_4d22 = 0;
 				this.var_478a = 0;
 			}
@@ -6397,7 +6395,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				} else if ((this.var_4d52 == 3)
 						&& (this.someGameTime - this.var_4d5a >= 200L)) {
 					this.somePositions = null;
-					this.someActiveUnit.fillAttOrMovePositions(this.var_4d2a, this.var_4d32, true);
+					this.someActiveUnit.setHiddenPositions(this.var_4d2a, this.var_4d32, true);
 					this.var_4d22 = 2;
 					this.var_4d52 = 0;
 					this.var_478a = 2;
@@ -6563,14 +6561,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 						localClass_a_02601 = null;
 					} else if ((this.var_483a[localClass_a_02601.teamId] != this.var_483a[this.someUnitTeamId])
 							&& (this.maybeTeamKings[this.someUnitTeamId] == null)) {
-						this.var_4d7a[i][2] += (localClass_a_02601.sub_1713(
+						this.var_4d7a[i][2] += (localClass_a_02601.getUnitTotalExpGainMb(
 								localClass_a_02601.posX,
 								localClass_a_02601.posY, null) << 1);
 					} else if ((this.var_484a >= 15)
 							&& (this.var_483a[localClass_a_02601.teamId] != this.var_483a[this.someUnitTeamId])
 							&& (countSomeTeamUnitsOfType(-1, -1, localClass_a_02601.teamId) < 4)
 							&& (countSomeTeamUnitsOfType(-1, -1, this.someUnitTeamId) >= 8)) {
-						this.var_4d7a[i][2] += (localClass_a_02601.sub_1713(
+						this.var_4d7a[i][2] += (localClass_a_02601.getUnitTotalExpGainMb(
 								localClass_a_02601.posX,
 								localClass_a_02601.posY, null) << 1);
 					} else if (localClass_a_02601.teamId != this.someUnitTeamId) {
@@ -6590,14 +6588,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 					for (int m = 0; m < arrayOfClass_a_02601.length; m++) {
 						if (arrayOfClass_a_02601[m].var_e83 != 4) {
 							this.var_4d7a[i][2] += arrayOfClass_a_02601[m]
-									.sub_1713(arrayOfClass_a_02601[m].posX,
+									.getUnitTotalExpGainMb(arrayOfClass_a_02601[m].posX,
 											arrayOfClass_a_02601[m].posY,
 											localClass_a_02601);
 						}
 					}
 				}
 				if (this.var_4d7a[i][2] > 0) {
-					this.var_4d7a[i][4] += localClass_a_02601.sub_1713(
+					this.var_4d7a[i][4] += localClass_a_02601.getUnitTotalExpGainMb(
 							localClass_a_02601.posX,
 							localClass_a_02601.posY, null);
 					this.var_4d7a[i][4] += localClass_a_02601.var_f03;
@@ -6646,7 +6644,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 											.hasProperty((short) 8))) || ((i8 == 9) && (arrayOfClass_a_02602[i3]
 									.hasProperty((short) 16))))) {
 						this.var_4d7a[i][2] += arrayOfClass_a_02602[i3]
-								.sub_1713(arrayOfClass_a_02602[i3].posX,
+								.getUnitTotalExpGainMb(arrayOfClass_a_02602[i3].posX,
 										arrayOfClass_a_02602[i3].posY, null);
 					}
 				}
@@ -6739,7 +6737,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				}
 			}
 			if (i2 != -1) {
-				int i7 = paramClass_a_0260.sub_1713(paramClass_a_0260.posX,
+				int i7 = paramClass_a_0260.getUnitTotalExpGainMb(paramClass_a_0260.posX,
 						paramClass_a_0260.posY, null);
 				if (i2 < this.var_4d62.length) {
 					this.var_4d62[i2].var_f03 += i7;
@@ -6889,19 +6887,19 @@ public final class G_Game extends F_StringManager implements Runnable,
 				k = sub_14272(paramClass_a_02602.posX,
 						paramClass_a_02602.posY);
 				if ((j != 0) && (k != -1) && (this.aSomeUnitsArr[k] == null)) {
-					i += paramClass_a_02601.sub_1713(paramInt1, paramInt2,
+					i += paramClass_a_02601.getUnitTotalExpGainMb(paramInt1, paramInt2,
 							paramClass_a_02602) / 2;
 				}
 			} else {
 				if (!paramClass_a_02602.canAttackPosition(paramInt1, paramInt2)) {
-					i += (paramClass_a_02601.sub_1713(paramInt1, paramInt2,
+					i += (paramClass_a_02601.getUnitTotalExpGainMb(paramInt1, paramInt2,
 							paramClass_a_02602) << 1);
 				} else {
-					i += paramClass_a_02601.sub_1713(paramInt1, paramInt2,
+					i += paramClass_a_02601.getUnitTotalExpGainMb(paramInt1, paramInt2,
 							paramClass_a_02602)
 							* 3
 							/ 2
-							- paramClass_a_02602.sub_1713(paramInt1, paramInt2,
+							- paramClass_a_02602.getUnitTotalExpGainMb(paramInt1, paramInt2,
 									paramClass_a_02601);
 				}
 				if (paramClass_a_02602.unitType == 9) {
@@ -6966,12 +6964,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 		E_Menu cll = new E_Menu((byte) 7, 12);
 		int i = C_MainCanvas.var_1767 * 3;
 		cll.sub_19f5(message, this.canvasWidth, i, paramByte1);
-		cll.sub_1930(0, this.canvasHeight - i, 0);
-		F_StringManager.mainCanvas.sub_220e(cll);
+		cll.setLocation(0, this.canvasHeight - i, 0);
+		F_StringManager.mainCanvas.showMessageBox(cll);
 		return cll;
 	}
 
-	private E_Menu showMessageBox(String header, String message,
+	private E_Menu newMessageBox(String header, String message,
 			int canvHeight, int showTime) {
 		return sub_1437e(header, message, canvHeight, -1, showTime);
 	}
@@ -6979,21 +6977,21 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private E_Menu sub_1437e(String header, String message,
 			int canvHeight, int paramInt2, int showTime) {
 		E_Menu msgBox = new E_Menu((byte) 10, 12);
-		msgBox.sub_1ca8(header, message, this.canvasWidth, paramInt2);
-		msgBox.sub_1930(this.canvasWidthShift, canvHeight / 2, 3);
+		msgBox.initMessageBox(header, message, this.canvasWidth, paramInt2);
+		msgBox.setLocation(this.canvasWidthShift, canvHeight / 2, 3);
 		msgBox.stringManager = this;
 		msgBox.showTime = showTime;
 		return msgBox;
 	}
 
-	private void sub_143ce() {
+	private void initMap() {
 		this.var_4e02 = null;
 		if (this.scenarioModeIf0 == 0) {
 			this.var_4a52 = var_4592;
 			this.var_4a5a = true;
 			this.var_4a4a = false;
-			this.var_4dda = showMessageBox(null, this.var_4b52, this.canvasHeight, 2000);
-			this.var_4dda.sub_1930(this.canvasWidthShift, this.canvasHeightShift, 3);
+			this.mapStartUpMessageBox = newMessageBox(null, this.mapStartUpMessage, this.canvasHeight, 2000);
+			this.mapStartUpMessageBox.setLocation(this.canvasWidthShift, this.canvasHeightShift, 3);
 			this.var_4ada = true;
 			this.var_4ad2 = true;
 			this.var_4ac2 = 0;
@@ -7007,7 +7005,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			sub_efe5(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			moveCursorToPos(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			initIntro(2, 3, 3);
-			C_MainCanvas.sub_2bf1(1, 1);
+			C_MainCanvas.playMusic2(1, 1);
 			this.var_4ada = false;
 			this.var_47f2 = false;
 			this.var_4e12 = 0;
@@ -7022,11 +7020,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.maybeTeamKings[0].setKingName(2);
 			sub_efe5(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			moveCursorToPos(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
-			getUnitAtPos(7, 12, (byte) 0).fillAttOrMovePositions(7, 10, false);
-			getUnitAtPos(8, 11, (byte) 0).fillAttOrMovePositions(8, 9, false);
-			getUnitAtPos(9, 12, (byte) 0).fillAttOrMovePositions(9, 10, false);
+			getUnitAtPos(7, 12, (byte) 0).setHiddenPositions(7, 10, false);
+			getUnitAtPos(8, 11, (byte) 0).setHiddenPositions(8, 9, false);
+			getUnitAtPos(9, 12, (byte) 0).setHiddenPositions(9, 10, false);
 			sub_186a6(7, 3);
-			F_StringManager.mainCanvas.sub_220e(this.var_4dda);
+			F_StringManager.mainCanvas.showMessageBox(this.mapStartUpMessageBox);
 			return;
 		}
 		if (this.scenarioMapIndex == 2) {
@@ -7040,12 +7038,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4de2 = getUnitAtPos(8, 17, (byte) 0);
 			this.var_4dea = getUnitAtPos(8, 18, (byte) 0);
 			this.var_4df2 = getUnitAtPos(8, 19, (byte) 0);
-			this.var_4de2.fillAttOrMovePositions(8, 15, false);
-			this.var_4dea.fillAttOrMovePositions(8, 15, false);
-			this.var_4df2.fillAttOrMovePositions(8, 15, false);
-			this.maybeTeamKings[0].fillAttOrMovePositions(8, 14, false);
+			this.var_4de2.setHiddenPositions(8, 15, false);
+			this.var_4dea.setHiddenPositions(8, 15, false);
+			this.var_4df2.setHiddenPositions(8, 15, false);
+			this.maybeTeamKings[0].setHiddenPositions(8, 14, false);
 			this.var_47f2 = false;
-			F_StringManager.mainCanvas.sub_220e(this.var_4dda);
+			F_StringManager.mainCanvas.showMessageBox(this.mapStartUpMessageBox);
 			this.var_4e12 = 0;
 			return;
 		}
@@ -7057,15 +7055,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4de2 = A_Unit.createUnit((byte) 0, (byte) 0, -1, 5);
 			this.var_4dea = A_Unit.createUnit((byte) 2, (byte) 0, -2, 5);
 			this.var_4df2 = A_Unit.createUnit((byte) 3, (byte) 0, -3, 5);
-			this.var_4de2.fillAttOrMovePositions(3, 4, false);
-			this.var_4dea.fillAttOrMovePositions(4, 4, false);
-			this.var_4df2.fillAttOrMovePositions(2, 4, false);
-			this.maybeTeamKings[0].fillAttOrMovePositions(3, 3, false);
+			this.var_4de2.setHiddenPositions(3, 4, false);
+			this.var_4dea.setHiddenPositions(4, 4, false);
+			this.var_4df2.setHiddenPositions(2, 4, false);
+			this.maybeTeamKings[0].setHiddenPositions(3, 3, false);
 			sub_efe5(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			moveCursorToPos(3, 3);
 			this.var_4c6a = this.maybeTeamKings[0];
 			initIntro(3, 3, 3);
-			C_MainCanvas.sub_2bf1(1, 1);
+			C_MainCanvas.playMusic2(1, 1);
 			this.var_4ada = false;
 			this.var_47f2 = false;
 			this.var_4e12 = 0;
@@ -7079,19 +7077,19 @@ public final class G_Game extends F_StringManager implements Runnable,
 			sub_efb8(this.maybeTeamKings[0].pixelX + 12, this.maybeTeamKings[0].pixelY + 12); // m n pos
 			moveCursorToPos(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			A_Unit.var_de3 = 4;
-			(localClass_a_02601 = getUnitAtPos(11, 2, (byte) 0)).sub_1686(11, -3);
-			localClass_a_02601.fillAttOrMovePositions(11, 2, false);
-			(localClass_a_02601 = getUnitAtPos(10, 1, (byte) 0)).sub_1686(10, -5);
-			localClass_a_02601.fillAttOrMovePositions(10, 1, false);
-			(localClass_a_02601 = getUnitAtPos(11, 1, (byte) 0)).sub_1686(11, -5);
-			localClass_a_02601.fillAttOrMovePositions(11, 1, false);
-			(localClass_a_02601 = getUnitAtPos(12, 1, (byte) 0)).sub_1686(12, -5);
-			localClass_a_02601.fillAttOrMovePositions(12, 1, false);
-			(localClass_a_02601 = getUnitAtPos(11, 0, (byte) 0)).sub_1686(11, -7);
-			localClass_a_02601.fillAttOrMovePositions(11, 0, false);
-			(localClass_a_02601 = getUnitAtPos(12, 0, (byte) 0)).sub_1686(12, -7);
-			localClass_a_02601.fillAttOrMovePositions(12, 0, false);
-			F_StringManager.mainCanvas.sub_220e(this.var_4dda);
+			(localClass_a_02601 = getUnitAtPos(11, 2, (byte) 0)).setOnMapPosition(11, -3);
+			localClass_a_02601.setHiddenPositions(11, 2, false);
+			(localClass_a_02601 = getUnitAtPos(10, 1, (byte) 0)).setOnMapPosition(10, -5);
+			localClass_a_02601.setHiddenPositions(10, 1, false);
+			(localClass_a_02601 = getUnitAtPos(11, 1, (byte) 0)).setOnMapPosition(11, -5);
+			localClass_a_02601.setHiddenPositions(11, 1, false);
+			(localClass_a_02601 = getUnitAtPos(12, 1, (byte) 0)).setOnMapPosition(12, -5);
+			localClass_a_02601.setHiddenPositions(12, 1, false);
+			(localClass_a_02601 = getUnitAtPos(11, 0, (byte) 0)).setOnMapPosition(11, -7);
+			localClass_a_02601.setHiddenPositions(11, 0, false);
+			(localClass_a_02601 = getUnitAtPos(12, 0, (byte) 0)).setOnMapPosition(12, -7);
+			localClass_a_02601.setHiddenPositions(12, 0, false);
+			F_StringManager.mainCanvas.showMessageBox(this.mapStartUpMessageBox);
 			this.var_47f2 = false;
 			this.var_4e12 = 0;
 			return;
@@ -7105,7 +7103,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			moveCursorToPos(5, 0);
 			this.var_4c72 = 4;
 			sub_186a6(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
-			F_StringManager.mainCanvas.sub_220e(this.var_4dda);
+			F_StringManager.mainCanvas.showMessageBox(this.mapStartUpMessageBox);
 			this.var_47f2 = false;
 			this.var_4e12 = 0;
 			return;
@@ -7129,11 +7127,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 			localClass_a_02602.someUnit0 = localClass_a_02603;
 			localClass_a_02603.someUnit0 = localClass_a_02604;
 			this.maybeTeamKings[0].fillWhereUnitCanMove(this.var_47da);
-			this.maybeTeamKings[0].fillAttOrMovePositions(14, 3, true);
+			this.maybeTeamKings[0].setHiddenPositions(14, 3, true);
 			sub_efe5(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			moveCursorToPos(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			this.var_4c6a = this.maybeTeamKings[0];
-			F_StringManager.mainCanvas.sub_220e(this.var_4dda);
+			F_StringManager.mainCanvas.showMessageBox(this.mapStartUpMessageBox);
 			this.var_47f2 = false;
 			this.var_4e12 = 0;
 			return;
@@ -7152,7 +7150,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			sub_efb8(this.maybeTeamKings[0].pixelX + 12, this.maybeTeamKings[0].pixelY + 12); // m n pos
 			moveCursorToPos(this.maybeTeamKings[0].posX, this.maybeTeamKings[0].posY);
 			initIntro(4, 3, 3);
-			C_MainCanvas.sub_2bf1(1, 1);
+			C_MainCanvas.playMusic2(1, 1);
 			this.var_4ada = false;
 			this.var_47f2 = false;
 			this.var_4e12 = 0;
@@ -7266,7 +7264,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			} else if (localObject1[0].equalsIgnoreCase("NextState")) {
 				this.var_4e12 += 1;
 			} else if (localObject1[0].equalsIgnoreCase("ShowMapName")) {
-				F_StringManager.mainCanvas.sub_220e(this.var_4dda);
+				F_StringManager.mainCanvas.showMessageBox(this.mapStartUpMessageBox);
 			} else if (localObject1[0].equalsIgnoreCase("StartPlay")) {
 				sub_1864a();
 			} else if (localObject1[0].equalsIgnoreCase("CompleteMission")) {
@@ -7314,7 +7312,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				} else if (localObject1[0].equalsIgnoreCase("GetUnitPlotRoute")) {
 					getUnitAtPos(Integer.parseInt(localObject1[1]),
 							Integer.parseInt(localObject1[2]),
-							(byte) Integer.parseInt(localObject1[3])).fillAttOrMovePositions(
+							(byte) Integer.parseInt(localObject1[3])).setHiddenPositions(
 							Integer.parseInt(localObject1[4]),
 							Integer.parseInt(localObject1[5]),
 							"true".equalsIgnoreCase(localObject1[6]));
@@ -7324,7 +7322,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							(byte) Integer.parseInt(localObject1[1]),
 							(byte) Integer.parseInt(localObject1[2]),
 							Integer.parseInt(localObject1[3]),
-							Integer.parseInt(localObject1[4])).fillAttackAorMovePositions(
+							Integer.parseInt(localObject1[4])).setHiddenPositions(
 							Integer.parseInt(localObject1[5]),
 							Integer.parseInt(localObject1[6]),
 							"true".equalsIgnoreCase(localObject1[7]),
@@ -7379,11 +7377,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 				Object localObject2;
 				if (this.scenarioModeIf0 == 1) {
 					if (this.var_4e12 == 100) {
-						C_MainCanvas.sub_2bf1(
+						C_MainCanvas.playMusic2(
 								var_4692[this.var_4832[this.someUnitTeamId]], 0);
 						this.gameMessageBox.sub_132e((byte) 0, true);
 						this.gameMessageBox.sub_1350(null);
-						F_StringManager.mainCanvas.sub_220e(this.gameMessageBox);
+						F_StringManager.mainCanvas.showMessageBox(this.gameMessageBox);
 						this.var_4e12 += 1;
 						return;
 					}
@@ -7392,7 +7390,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 						i = -1;
 						int n = 1;
 						for (int i2 = 0; i2 < this.teamsCountMaybe; i2++) {
-							if ((this.var_487a[i2] != 2)
+							if ((this.someTeamValuesArr[i2] != 2)
 									&& (((this.maybeTeamKings[i2] != null) && (this.maybeTeamKings[i2].var_e83 != 3)) || (sub_11cef(i2) != 0))) {
 								i = i2;
 								if ((j != -1) && (j != this.var_483a[i2])) {
@@ -7410,7 +7408,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							String str = F_StringManager.getStrByIdAndReplaceUWith(81,
 									(String) localObject3) + "\n(";
 							for (n = 0; n < this.teamsCountMaybe; n++) {
-								if ((this.var_487a[n] != 2)
+								if ((this.someTeamValuesArr[n] != 2)
 										&& (this.var_483a[n] == this.var_483a[i])) {
 									str = str
 											+ " "
@@ -7423,11 +7421,11 @@ public final class G_Game extends F_StringManager implements Runnable,
 							E_Menu lo2 = sub_1437e(null, str, this.someCanHeight,
 									this.someCanHeightDiv2, -1);
 							lo2.sub_1350(this);
-							F_StringManager.mainCanvas.sub_220e((F_StringManager) lo2);
-							if (this.var_487a[i] == 1) {
-								C_MainCanvas.sub_2bf1(6, 1);
+							F_StringManager.mainCanvas.showMessageBox((F_StringManager) lo2);
+							if (this.someTeamValuesArr[i] == 1) {
+								C_MainCanvas.playMusic2(6, 1);
 							} else {
-								C_MainCanvas.sub_2bf1(7, 1);
+								C_MainCanvas.playMusic2(7, 1);
 							}
 							sub_142e5(15);
 							this.var_4e12 += 1;
@@ -7473,15 +7471,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 1:
-								F_StringManager.mainCanvas.sub_220e(this.var_4dda);
+								F_StringManager.mainCanvas.showMessageBox(this.mapStartUpMessageBox);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 2:
 								this.var_4ada = true;
-								getUnitAtPos(0, 8, (byte) 0).fillAttOrMovePositions(3, 8, false);
-								getUnitAtPos(1, 9, (byte) 0).fillAttOrMovePositions(4, 9, false);
-								getUnitAtPos(0, 10, (byte) 0).fillAttOrMovePositions(3, 10,
+								getUnitAtPos(0, 8, (byte) 0).setHiddenPositions(3, 8, false);
+								getUnitAtPos(1, 9, (byte) 0).setHiddenPositions(4, 9, false);
+								getUnitAtPos(0, 10, (byte) 0).setHiddenPositions(3, 10,
 										false);
 								sub_186a6(5, 9);
 								break;
@@ -7620,7 +7618,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								break;
 							case 24:
 								A_Unit.createUnit((byte) 1, (byte) 1, 1, 1)
-										.fillAttackAorMovePositions(1, 2, false, true);
+										.setHiddenPositions(1, 2, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
@@ -7629,7 +7627,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								break;
 							case 26:
 								A_Unit.createUnit((byte) 0, (byte) 1, 10,
-										10).fillAttackAorMovePositions(10, 9, false, true);
+										10).setHiddenPositions(10, 9, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
@@ -7728,7 +7726,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 										(byte) 1, 7, 3);
 								this.var_4de2.someUnit0 = this.var_4dea;
 								this.var_4dea.someUnit0 = this.var_4df2;
-								this.var_4de2.fillAttOrMovePositions(6, -2, false);
+								this.var_4de2.setHiddenPositions(6, -2, false);
 								sub_142e5(30);
 								this.var_4e12 += 1;
 								break;
@@ -7738,7 +7736,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									A_Unit.var_de3 = 4;
 									this.var_4dfa = A_Unit.createUnit(
 											(byte) 0, (byte) 0, 7, 3);
-									this.var_4dfa.fillAttOrMovePositions(6, 2, false);
+									this.var_4dfa.setHiddenPositions(6, 2, false);
 									this.var_4dea.someUnit0 = null;
 									showUnitDialog(F_StringManager.getLangString(234),
 											(byte) 2, (byte) 4);
@@ -7864,13 +7862,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 							switch (this.var_4e12) {
 							case 0:
 								if (this.var_4de2.var_e83 != 1) {
-									this.var_4de2.fillAttOrMovePositions(7, 14, false);
+									this.var_4de2.setHiddenPositions(7, 14, false);
 									this.var_4e12 += 1;
 								}
 								break;
 							case 1:
 								if (this.var_4dea.var_e83 != 1) {
-									this.var_4dea.fillAttOrMovePositions(7, 15, false);
+									this.var_4dea.setHiddenPositions(7, 15, false);
 									sub_142e5(20);
 									this.var_4e12 += 1;
 								}
@@ -7929,30 +7927,30 @@ public final class G_Game extends F_StringManager implements Runnable,
 								sub_186a6(0, 8);
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, -1, 8)
-										.fillAttOrMovePositions(0, 8, false);
+										.setHiddenPositions(0, 8, false);
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, -2, 7)
-										.fillAttOrMovePositions(1, 7, false);
+										.setHiddenPositions(1, 7, false);
 								sub_142e5(20);
 								break;
 							case 10:
 								sub_186a6(8, 6);
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 12, 6)
-										.fillAttOrMovePositions(8, 6, false);
+										.setHiddenPositions(8, 6, false);
 								sub_142e5(20);
 								break;
 							case 11:
 								sub_186a6(2, 1);
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 1, -2)
-										.fillAttOrMovePositions(1, 2, false);
+										.setHiddenPositions(1, 2, false);
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 3, -2)
-										.fillAttOrMovePositions(3, 2, false);
+										.setHiddenPositions(3, 2, false);
 								A_Unit
 										.createUnit((byte) 4, (byte) 1, 2, -1)
-										.fillAttOrMovePositions(2, 1, false);
+										.setHiddenPositions(2, 1, false);
 								sub_142e5(20);
 								break;
 							case 12:
@@ -8006,7 +8004,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 18:
-								F_StringManager.mainCanvas.sub_220e(showMessageBox(
+								F_StringManager.mainCanvas.showMessageBox(newMessageBox(
 										null, F_StringManager.getLangString(248),
 										this.someCanHeight, 1500));
 								this.var_4e12 += 1;
@@ -8055,7 +8053,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 						} else if (this.scenarioMapIndex == 3) {
 							switch (this.var_4e12) {
 							case 0:
-								F_StringManager.mainCanvas.sub_220e(this.var_4dda);
+								F_StringManager.mainCanvas.showMessageBox(this.mapStartUpMessageBox);
 								this.var_4ada = true;
 								this.var_4e12 += 1;
 								break;
@@ -8090,10 +8088,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 										(byte) 5, (byte) 4);
 								moveCursorToPos(13, 3);
 								sub_efb8(312, 72);
-								this.maybeTeamKings[0].sub_1686(7, 1);
-								this.var_4de2.sub_1686(5, 4);
-								this.var_4dea.sub_1686(7, 5);
-								this.var_4df2.sub_1686(3, 3);
+								this.maybeTeamKings[0].setOnMapPosition(7, 1);
+								this.var_4de2.setOnMapPosition(5, 4);
+								this.var_4dea.setOnMapPosition(7, 5);
+								this.var_4df2.setOnMapPosition(3, 3);
 								this.var_4de2 = null;
 								this.var_4dea = null;
 								this.var_4df2 = null;
@@ -8115,7 +8113,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								A_Unit.var_de3 = 2;
 								this.var_4c72 = 4;
 								this.var_4de2 = getUnitAtPos(10, 10, (byte) 0);
-								this.var_4de2.fillAttOrMovePositions(6, 10, false);
+								this.var_4de2.setHiddenPositions(6, 10, false);
 								moveCursorToPos(6, 10);
 								sub_186a6(6, 10);
 								break;
@@ -8242,20 +8240,20 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 6:
 								A_Unit
 										.createUnit((byte) 10, (byte) 1, 4, 4)
-										.fillAttackAorMovePositions(4, 1, false, true);
+										.setHiddenPositions(4, 1, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 7:
 								A_Unit.createUnit((byte) 1, (byte) 1, 4, 4)
-										.fillAttackAorMovePositions(5, 2, false, true);
+										.setHiddenPositions(5, 2, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 8:
 								A_Unit
 										.createUnit((byte) 10, (byte) 1, 4, 4)
-										.fillAttackAorMovePositions(4, 3, false, true);
+										.setHiddenPositions(4, 3, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
@@ -8284,21 +8282,21 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 12:
 								A_Unit
 										.createUnit((byte) 1, (byte) 1, 6, 10)
-										.fillAttackAorMovePositions(5, 10, false, true);
+										.setHiddenPositions(5, 10, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 13:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 6, 10)
-										.fillAttackAorMovePositions(7, 8, false, true);
+										.setHiddenPositions(7, 8, false, true);
 								sub_142e5(15);
 								this.var_4e12 += 1;
 								break;
 							case 14:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 6, 10)
-										.fillAttackAorMovePositions(7, 9, false, true);
+										.setHiddenPositions(7, 9, false, true);
 								this.var_4a4a = true;
 								this.var_47f2 = true;
 								this.var_4e12 += 1;
@@ -8318,21 +8316,21 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 16:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 12, 5)
-										.fillAttackAorMovePositions(12, 7, false, true);
+										.setHiddenPositions(12, 7, false, true);
 								sub_142e5(15);
 								this.var_4e12 += 1;
 								break;
 							case 17:
 								A_Unit
 										.createUnit((byte) 6, (byte) 1, 12, 5)
-										.fillAttackAorMovePositions(12, 6, false, true);
+										.setHiddenPositions(12, 6, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 18:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 12, 5)
-										.fillAttackAorMovePositions(12, 5, false, true);
+										.setHiddenPositions(12, 5, false, true);
 								this.var_4a4a = true;
 								this.var_47f2 = true;
 								this.var_4e12 += 1;
@@ -8352,28 +8350,28 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 20:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 18, 8)
-										.fillAttackAorMovePositions(16, 10, false, true);
+										.setHiddenPositions(16, 10, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 21:
 								A_Unit
 										.createUnit((byte) 6, (byte) 1, 18, 8)
-										.fillAttackAorMovePositions(17, 10, false, true);
+										.setHiddenPositions(17, 10, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 22:
 								A_Unit
 										.createUnit((byte) 5, (byte) 1, 18, 8)
-										.fillAttackAorMovePositions(18, 10, false, true);
+										.setHiddenPositions(18, 10, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
 							case 23:
 								A_Unit
 										.createUnit((byte) 1, (byte) 1, 18, 8)
-										.fillAttackAorMovePositions(18, 9, false, true);
+										.setHiddenPositions(18, 9, false, true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
 								break;
@@ -8484,7 +8482,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								A_Unit localObject111 = A_Unit.createUnit((byte) 5,
 										(byte) 1, 11, 8);
 								localObject111.fillWhereUnitCanMove(this.var_47da);
-								localObject111.fillAttOrMovePositions(14, 7,
+								localObject111.setHiddenPositions(14, 7,
 										true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8493,7 +8491,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								A_Unit localObject21= A_Unit.createUnit((byte) 0,
 										(byte) 1, 11, 8);
 								localObject21.fillWhereUnitCanMove(this.var_47da);
-								localObject21.fillAttOrMovePositions(13, 7,
+								localObject21.setHiddenPositions(13, 7,
 										true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8502,7 +8500,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								A_Unit localObject31 = A_Unit.createUnit((byte) 3,
 										(byte) 1, 11, 8);
 								localObject31.fillWhereUnitCanMove(this.var_47da);
-								((A_Unit) localObject31).fillAttOrMovePositions(12, 7,
+								((A_Unit) localObject31).setHiddenPositions(12, 7,
 										true);
 								sub_142e5(10);
 								this.var_4e12 += 1;
@@ -8510,7 +8508,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 8:
 								A_Unit
 										.createUnit((byte) 1, (byte) 1, 11, 8)
-										.fillAttOrMovePositions(13, 8, false);
+										.setHiddenPositions(13, 8, false);
 								sub_142e5(20);
 								this.var_4e12 += 1;
 								break;
@@ -8550,7 +8548,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								this.var_47f2 = false;
 								break;
 							case 12:
-								this.var_4dea.fillAttOrMovePositions(this.var_4de2.posX,
+								this.var_4dea.setHiddenPositions(this.var_4de2.posX,
 										this.var_4de2.posY, false);
 								sub_142e5(5);
 								this.var_4e12 += 1;
@@ -8565,14 +8563,14 @@ public final class G_Game extends F_StringManager implements Runnable,
 								if (this.var_4dea.var_e83 != 1) {
 									showUnitDialog(F_StringManager.getLangString(266),
 											(byte) 0, (byte) 4);
-									this.var_4dea.fillAttOrMovePositions(-1,
+									this.var_4dea.setHiddenPositions(-1,
 											this.var_4dea.posY, false);
 									sub_142e5(3);
 									this.var_4e12 += 1;
 								}
 								break;
 							case 15:
-								this.var_4de2.fillAttOrMovePositions(-1,
+								this.var_4de2.setHiddenPositions(-1,
 										this.var_4dea.posY, false);
 								this.var_4e12 += 1;
 								break;
@@ -8594,26 +8592,26 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 18:
 								this.maybeTeamKings[1] = A_Unit.createUnit((byte)9, (byte)1,
 										-2, 8);
-								this.maybeTeamKings[1].fillAttOrMovePositions(0, 8, false);
+								this.maybeTeamKings[1].setHiddenPositions(0, 8, false);
 								A_Unit
 										.createUnit((byte) 0, (byte) 1, -1, 8)
-										.fillAttOrMovePositions(3, 8, false);
+										.setHiddenPositions(3, 8, false);
 								A_Unit.createUnit((byte) 0, (byte) 1, -1,
-										10).fillAttOrMovePositions(1, 10, false);
+										10).setHiddenPositions(1, 10, false);
 								A_Unit
 										.createUnit((byte) 8, (byte) 1, -3, 7)
-										.fillAttOrMovePositions(4, 8, false);
+										.setHiddenPositions(4, 8, false);
 								A_Unit.createUnit((byte) 8, (byte) 1, -3,
-										11).fillAttOrMovePositions(2, 10, false);
+										11).setHiddenPositions(2, 10, false);
 								A_Unit
 										.createUnit((byte) 4, (byte) 1, -2, 9)
-										.fillAttOrMovePositions(2, 9, false);
+										.setHiddenPositions(2, 9, false);
 								A_Unit
 										.createUnit((byte) 6, (byte) 1, -4, 9)
-										.fillAttOrMovePositions(4, 9, false);
+										.setHiddenPositions(4, 9, false);
 								A_Unit
 										.createUnit((byte) 6, (byte) 1, -6, 9)
-										.fillAttOrMovePositions(5, 10, false);
+										.setHiddenPositions(5, 10, false);
 								sub_142e5(50);
 								this.var_4e12 += 1;
 								break;
@@ -8627,25 +8625,25 @@ public final class G_Game extends F_StringManager implements Runnable,
 								break;
 							case 21:
 								A_Unit.createUnit((byte) 0, (byte) 1, 13,
-										14).fillAttOrMovePositions(12, 14, false);
+										14).setHiddenPositions(12, 14, false);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 22:
 								A_Unit.createUnit((byte) 6, (byte) 1, 13,
-										14).fillAttOrMovePositions(14, 14, false);
+										14).setHiddenPositions(14, 14, false);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 23:
 								A_Unit.createUnit((byte) 2, (byte) 1, 13,
-										14).fillAttOrMovePositions(13, 12, false);
+										14).setHiddenPositions(13, 12, false);
 								sub_142e5(5);
 								this.var_4e12 += 1;
 								break;
 							case 24:
 								A_Unit.createUnit((byte) 3, (byte) 1, 13,
-										14).fillAttOrMovePositions(13, 15, false);
+										14).setHiddenPositions(13, 15, false);
 								sub_142e5(15);
 								this.var_4e12 += 1;
 								break;
@@ -8669,15 +8667,15 @@ public final class G_Game extends F_StringManager implements Runnable,
 								(localClass_a_0260 = A_Unit.createUnit(
 										(byte) 9, (byte) 0, 13, 18))
 										.setKingName(2);
-								localClass_a_0260.fillAttOrMovePositions(13, 16, false);
+								localClass_a_0260.setHiddenPositions(13, 16, false);
 								A_Unit.createUnit((byte) 6, (byte) 0, 12,
-										18).fillAttOrMovePositions(12, 16, false);
+										18).setHiddenPositions(12, 16, false);
 								A_Unit.createUnit((byte) 8, (byte) 0, 14,
-										19).fillAttOrMovePositions(14, 16, false);
+										19).setHiddenPositions(14, 16, false);
 								A_Unit.createUnit((byte) 4, (byte) 0, 13,
-										19).fillAttOrMovePositions(13, 17, false);
+										19).setHiddenPositions(13, 17, false);
 								A_Unit.createUnit((byte) 1, (byte) 0, 12,
-										19).fillAttOrMovePositions(12, 17, false);
+										19).setHiddenPositions(12, 17, false);
 								sub_142e5(20);
 								this.var_4e12 += 1;
 								break;
@@ -8698,13 +8696,13 @@ public final class G_Game extends F_StringManager implements Runnable,
 							case 32:
 								this.var_4a4a = true;
 								this.var_47f2 = true;
-								this.gameMessageBox = showMessageBox(F_StringManager
+								this.gameMessageBox = newMessageBox(F_StringManager
 										.getLangString(121 + this.scenarioMapIndex),
 										F_StringManager.getLangString(138),
 										this.someCanHeight, -1);
 								this.gameMessageBox.sub_132e((byte) 0, true);
 								this.gameMessageBox.sub_1350(null);
-								F_StringManager.mainCanvas.sub_220e(this.gameMessageBox);
+								F_StringManager.mainCanvas.showMessageBox(this.gameMessageBox);
 								this.var_4e12 += 1;
 								break;
 							case 33:
@@ -8722,7 +8720,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 						} else if (this.scenarioMapIndex == 7) {
 							switch (this.var_4e12) {
 							case 0:
-								F_StringManager.mainCanvas.sub_220e(this.var_4dda);
+								F_StringManager.mainCanvas.showMessageBox(this.mapStartUpMessageBox);
 								this.var_4ada = true;
 								this.var_4e12 += 1;
 								break;
@@ -8756,7 +8754,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								break;
 							case 6:
 								this.var_4de2 = getUnitAtPos(5, 2, (byte) 0);
-								this.var_4de2.fillAttOrMovePositions(7, 2, false);
+								this.var_4de2.setHiddenPositions(7, 2, false);
 								this.var_4e12 += 1;
 								break;
 							case 7:
@@ -8764,7 +8762,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									this.var_4de2.killUnitMaybe();
 									this.var_4de2 = null;
 									this.var_4dea = getUnitAtPos(7, 3, (byte) 0);
-									this.var_4dea.fillAttOrMovePositions(7, 2, false);
+									this.var_4dea.setHiddenPositions(7, 2, false);
 									this.var_4e12 += 1;
 								}
 								break;
@@ -8773,7 +8771,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									this.var_4dea.killUnitMaybe();
 									this.var_4dea = null;
 									this.var_4df2 = getUnitAtPos(9, 2, (byte) 0);
-									this.var_4df2.fillAttOrMovePositions(7, 2, false);
+									this.var_4df2.setHiddenPositions(7, 2, false);
 									this.var_4e12 += 1;
 								}
 								break;
@@ -8781,7 +8779,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								if (this.var_4df2.var_e83 != 1) {
 									this.var_4df2.killUnitMaybe();
 									this.var_4df2 = null;
-									this.maybeTeamKings[1].fillAttOrMovePositions(7, 2, false);
+									this.maybeTeamKings[1].setHiddenPositions(7, 2, false);
 									sub_142e5(20);
 									this.var_4e12 += 1;
 								}
@@ -8792,12 +8790,12 @@ public final class G_Game extends F_StringManager implements Runnable,
 								break;
 							case 11:
 								E_Menu localClass_e_0134;
-								(localClass_e_0134 = showMessageBox(null,
+								(localClass_e_0134 = newMessageBox(null,
 										F_StringManager.getLangString(279),
-										this.someCanHeight, 2000)).sub_1930(
+										this.someCanHeight, 2000)).setLocation(
 										this.someCanWidthDiv2, 2, 17);
 								F_StringManager.mainCanvas
-										.sub_220e(localClass_e_0134);
+										.showMessageBox(localClass_e_0134);
 								this.var_4e12 += 1;
 								break;
 							case 12:
@@ -8878,7 +8876,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 											8, 1);
 									sub_142e5(10);
 									this.var_4e12 += 1;
-									C_MainCanvas.sub_2bf1(8, 0);
+									C_MainCanvas.playMusic2(8, 0);
 								}
 								break;
 							case 23:
@@ -8956,7 +8954,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								this.var_4e12 += 1;
 								break;
 							case 35:
-								C_MainCanvas.sub_2bf1(0, 0);
+								C_MainCanvas.playMusic2(0, 0);
 								sub_f6d8(F_StringManager.getLangString(288));
 								this.var_4e12 += 1;
 								break;
@@ -8974,16 +8972,16 @@ public final class G_Game extends F_StringManager implements Runnable,
 	}
 
 	private void sub_1864a() {
-		this.var_4dda = null;
+		this.mapStartUpMessageBox = null;
 		this.var_4c72 = 12;
 		A_Unit.var_de3 = A_Unit.var_ddb;
 		this.gameMessageBox.sub_132e((byte) 0, true);
 		this.gameMessageBox.sub_132e((byte) 1, false);
-		F_StringManager.mainCanvas.sub_220e(this.gameMessageBox);
+		F_StringManager.mainCanvas.showMessageBox(this.gameMessageBox);
 		this.var_47f2 = true;
 		this.var_4a4a = true;
 		this.var_4a5a = false;
-		C_MainCanvas.sub_2bf1(2, 0);
+		C_MainCanvas.playMusic2(2, 0);
 	}
 
 	private void sub_186a6(int paramInt1, int paramInt2) {
@@ -8996,7 +8994,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 	private void sub_186db() {
 		C_MainCanvas.stopCurrentMusicPlayer();
 		C_MainCanvas.playMusicLooped(6, 1);
-		F_StringManager.mainCanvas.sub_220e(showMessageBox(null, F_StringManager.getLangString(72),
+		F_StringManager.mainCanvas.showMessageBox(newMessageBox(null, F_StringManager.getLangString(72),
 				this.someCanHeight, 3000));
 		this.var_481a = this.someGameTime;
 		this.var_4e12 = -1;
@@ -9019,8 +9017,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 		this.var_4ea2 = true;
 		this.var_491a = 0;
 		this.var_4e72 = false;
-		this.aUnit = unit1;
-		this.aUnit2 = unit2;
+		this.attackingUnit = unit1;
+		this.attackedUnit = unit2;
 		C_MainCanvas.initResPak();
 		this.fAnim1 = new H_FightAnimation(this, unit1, null);
 		this.fAnim2 = new H_FightAnimation(this, unit2,
@@ -9053,8 +9051,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 
 	public final void sub_188ce(int paramInt) {
 		this.isShakingMB = true;
-		this.var_4e8a = paramInt;
-		this.var_4e92 = this.someGameTime;
+		this.shakingTimeMaxMb = paramInt;
+		this.shakingTimeMb = this.someGameTime;
 	}
 
 	private E_Menu sub_188fc(F_StringManager strMan) {
@@ -9062,19 +9060,19 @@ public final class G_Game extends F_StringManager implements Runnable,
 		if (this.var_4ed2.length > 0) {
 			E_Menu localClass_e_01342;
 			(localClass_e_01342 = (localClass_e_01341 = new E_Menu(
-					(byte) 11, 0)).sub_165b(F_StringManager.getLangString(46))).someImage1 = this.menuIconsFrames[6];
+					(byte) 11, 0)).sub_165b(F_StringManager.getLangString(46))).menuImage = this.menuIconsFrames[6];
 			localClass_e_01341.setMenuListStringActionsMb(this.var_4ed2, this.someCanWidth / 2,
 					(this.someCanHeight + localClass_e_01342.mapPrevPixelHeight) / 2,
 					this.someCanWidth, this.someCanHeight - localClass_e_01342.mapPrevPixelHeight,
 					3, 4);
 		} else {
 			(localClass_e_01341 = new E_Menu((byte) 10, 0))
-					.sub_165b(F_StringManager.getLangString(46)).someImage1 = this.menuIconsFrames[6];
-			localClass_e_01341.sub_1ca8(null, F_StringManager.getLangString(52),
+					.sub_165b(F_StringManager.getLangString(46)).menuImage = this.menuIconsFrames[6];
+			localClass_e_01341.initMessageBox(null, F_StringManager.getLangString(52),
 					this.someCanWidth, -1);
 		}
 		localClass_e_01341.sub_1350(strMan);
-		F_StringManager.mainCanvas.sub_220e(localClass_e_01341);
+		F_StringManager.mainCanvas.showMessageBox(localClass_e_01341);
 		return localClass_e_01341;
 	}
 
@@ -9113,30 +9111,30 @@ public final class G_Game extends F_StringManager implements Runnable,
 							this.var_4ed2[this.var_4ec2],
 							this.var_4ee2[this.var_4ec2], this.someCanHeight,
 							this.someCanHeight / 2, -1)).sub_1350(this.var_4f3a);
-					F_StringManager.mainCanvas.sub_220e(localClass_e_0134);
+					F_StringManager.mainCanvas.showMessageBox(localClass_e_0134);
 				} else if (this.var_4f42 == 2) {
 					i = paramArrayOfByte.readInt() / 3;
-					this.var_4eea = new String[i];
+					this.someMapsNamesMb = new String[i];
 					this.var_4ef2 = new String[i];
-					this.var_4efa = new int[i];
+					this.mapBytesSizeMb = new int[i];
 					for (int j = 0; j < i; j++) {
-						this.var_4eea[j] = paramArrayOfByte.readUTF();
+						this.someMapsNamesMb[j] = paramArrayOfByte.readUTF();
 						this.var_4ef2[j] = paramArrayOfByte.readUTF();
-						this.var_4efa[j] = Integer.parseInt(paramArrayOfByte
+						this.mapBytesSizeMb[j] = Integer.parseInt(paramArrayOfByte
 								.readUTF());
 					}
 					sub_70c0(this.var_4f3a);
-					F_StringManager.mainCanvas.sub_220e(this.var_4c0a);
+					F_StringManager.mainCanvas.showMessageBox(this.var_4c0a);
 				} else if (this.var_4f42 == 3) {
-					String str = this.var_4eea[this.var_4eca];
+					String str = this.someMapsNamesMb[this.var_4eca];
 					byte[] arrayOfByte = new byte[i];
 					paramArrayOfByte.readFully(arrayOfByte);
 					sub_19157(str, arrayOfByte);
 					sub_70c0(this.var_4c0a.stringManager);
 					E_Menu cll;
-					(cll = showMessageBox(null, F_StringManager.getStrByIdAndReplaceUWith(45, str),
+					(cll = newMessageBox(null, F_StringManager.getStrByIdAndReplaceUWith(45, str),
 							this.someCanHeight, 2000)).sub_1350(this.var_4c0a);
-					F_StringManager.mainCanvas.sub_220e(cll);
+					F_StringManager.mainCanvas.showMessageBox(cll);
 				}
 				this.var_4f3a = null;
 				return;
@@ -9146,10 +9144,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 			ex.printStackTrace();
 		}
 		E_Menu bbc;
-		(bbc = showMessageBox(null, F_StringManager.getLangString(44), this.someCanHeight, -1))
+		(bbc = newMessageBox(null, F_StringManager.getLangString(44), this.someCanHeight, -1))
 				.sub_1350(this.var_4f3a);
 		this.var_4f3a = null;
-		F_StringManager.mainCanvas.sub_220e(bbc);
+		F_StringManager.mainCanvas.showMessageBox(bbc);
 	}
 
 	private void sub_18c91(int paramInt, String paramString1,
@@ -9174,9 +9172,9 @@ public final class G_Game extends F_StringManager implements Runnable,
 			this.var_4f22.writeUTF("0");
 			this.var_4f22.writeUTF("requestId");
 			this.var_4f22.writeUTF("0");
-			E_Menu cl = showMessageBox(null, F_StringManager.getLangString(43), this.someCanHeight, -1);
+			E_Menu cl = newMessageBox(null, F_StringManager.getLangString(43), this.someCanHeight, -1);
 			cl.sub_1350(paramClass_f_0145);
-			F_StringManager.mainCanvas.sub_220e(cl);
+			F_StringManager.mainCanvas.showMessageBox(cl);
 
 			new Thread(this).start(); // THREAD here (broken)
 
@@ -9279,7 +9277,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 				}
 				try {
 					C_MainCanvas.setDisplayableAsCurrent(F_StringManager.mainCanvas);
-					F_StringManager.mainCanvas.sub_220e(this);
+					F_StringManager.mainCanvas.showMessageBox(this);
 					this.scenarioModeIf0 = 1;
 					this.var_4f92 = 1;
 					this.isLoadingBlackMb = true;
@@ -9298,10 +9296,10 @@ public final class G_Game extends F_StringManager implements Runnable,
 						paramCommand.var_4912 = false;
 						paramCommand.var_4b4a = false;
 						paramCommand.somePositions = null;
-						paramCommand.var_489a = null;
+						paramCommand.dyingUnit = null;
 						paramCommand.var_4b32 = null;
 						paramCommand.var_48a2 = null;
-						paramCommand.var_48b2 = null;
+						paramCommand.selectedTombUnit = null;
 						paramCommand.vectorOfSomeUnits.removeAllElements();
 						paramCommand.var_484a = 0;
 						paramCommand.someUnitTeamId = 0;
@@ -9317,7 +9315,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 						}
 						paramCommand.var_495a = true;
 						C_MainCanvas.initResPak();
-						paramCommand.var_4b52 = paramDisplayable;
+						paramCommand.mapStartUpMessage = paramDisplayable;
 						paramCommand.mapWidth = j;
 						paramCommand.mapHeight = i1;
 						paramCommand.mapTilesIds = new byte[paramCommand.mapWidth][paramCommand.mapHeight];
@@ -9390,7 +9388,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 								paramCommand.aSomeSpritesArr[i4].isVisibleMb = false;
 							}
 						}
-						C_MainCanvas.sub_2bf1(var_4692[1], 0);
+						C_MainCanvas.playMusic2(var_4692[1], 0);
 						paramCommand.mapLeftX = 0;
 						paramCommand.mapTopY = 0;
 						paramCommand.cursorPosX = 0;
@@ -9433,7 +9431,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					return;
 				}
 				C_MainCanvas.setDisplayableAsCurrent(F_StringManager.mainCanvas);
-				F_StringManager.mainCanvas.sub_220e(this);
+				F_StringManager.mainCanvas.showMessageBox(this);
 				sub_1ae50();
 			}
 		} else {
@@ -9451,7 +9449,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					}
 					itemStateChanged(this.var_501a);
 					C_MainCanvas.setDisplayableAsCurrent(F_StringManager.mainCanvas);
-					F_StringManager.mainCanvas.sub_220e(this);
+					F_StringManager.mainCanvas.showMessageBox(this);
 					return;
 				}
 				if (inparamCommand == this.var_508a) {
@@ -9478,7 +9476,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					return;
 				}
 				C_MainCanvas.setDisplayableAsCurrent(F_StringManager.mainCanvas);
-				F_StringManager.mainCanvas.sub_220e(this);
+				F_StringManager.mainCanvas.showMessageBox(this);
 				return;
 			}
 			if (inparamDisplayable == this.var_4fe2) {
@@ -9487,8 +9485,8 @@ public final class G_Game extends F_StringManager implements Runnable,
 						return;
 					}
 					C_MainCanvas.setDisplayableAsCurrent(F_StringManager.mainCanvas);
-					F_StringManager.mainCanvas.sub_220e(this);
-					this.var_4b52 = this.var_5002.getString();
+					F_StringManager.mainCanvas.showMessageBox(this);
+					this.mapStartUpMessage = this.var_5002.getString();
 					return;
 				}
 				if (inparamCommand == this.var_5092) {
@@ -9497,7 +9495,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 					return;
 				}
 				C_MainCanvas.setDisplayableAsCurrent(F_StringManager.mainCanvas);
-				F_StringManager.mainCanvas.sub_220e(this);
+				F_StringManager.mainCanvas.showMessageBox(this);
 				return;
 			}
 			if (inparamDisplayable == this.var_4fea) {
@@ -9515,7 +9513,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 							this.var_4fba);
 				}
 				C_MainCanvas.setDisplayableAsCurrent(F_StringManager.mainCanvas);
-				F_StringManager.mainCanvas.sub_220e(this);
+				F_StringManager.mainCanvas.showMessageBox(this);
 				return;
 			}
 			if (inparamDisplayable == this.var_4ff2) {
@@ -9554,7 +9552,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 						}
 					}
 					C_MainCanvas.setDisplayableAsCurrent(F_StringManager.mainCanvas);
-					F_StringManager.mainCanvas.sub_220e(this);
+					F_StringManager.mainCanvas.showMessageBox(this);
 					return;
 				}
 				if (inparamDisplayable == this.var_505a) {
@@ -9582,7 +9580,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									}
 									if (theppc[2].equals("enemy")) {
 										for (int paramDisplayable = 0; paramDisplayable < 4; paramDisplayable++) {
-											if (this.var_487a[paramDisplayable] == 0) {
+											if (this.someTeamValuesArr[paramDisplayable] == 0) {
 												this.var_486a[paramDisplayable] += Integer
 														.parseInt(theppc[3]);
 											}
@@ -9604,7 +9602,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 									}
 									if (theppc[2].equals("enemy")) {
 										for (int paramDisplayable = 0; paramDisplayable < 4; paramDisplayable++) {
-											if (this.var_487a[paramDisplayable] == 0) {
+											if (this.someTeamValuesArr[paramDisplayable] == 0) {
 												this.var_486a[paramDisplayable] -= Integer
 														.parseInt(theppc[3]);
 											}
@@ -9781,7 +9779,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 						}
 					}
 					label3051: C_MainCanvas.setDisplayableAsCurrent(F_StringManager.mainCanvas);
-					F_StringManager.mainCanvas.sub_220e(this);
+					F_StringManager.mainCanvas.showMessageBox(this);
 				}
 			}
 		}
@@ -9835,7 +9833,7 @@ public final class G_Game extends F_StringManager implements Runnable,
 			return;
 		}
 		this.var_4fe2 = new Form(F_StringManager.getLangString(304));
-		this.var_5002 = new TextField(F_StringManager.getLangString(294), this.var_4b52,
+		this.var_5002 = new TextField(F_StringManager.getLangString(294), this.mapStartUpMessage,
 				100, 0);
 		this.var_4fe2.append(this.var_5002);
 		this.var_4fe2.addCommand(this.var_506a);

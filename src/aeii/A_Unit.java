@@ -33,14 +33,14 @@ public final class A_Unit extends G_Sprite {
 	public int moveRange;
 	public int health;
 	public byte var_e83;
-	public byte var_e8b;
-	private short var_e93;
-	private short attackValueSome;
-	private short var_ea3;
+	public byte status;
+	private short movementStatusValMb;
+	private short attackStatusVal;
+	private short defenceStatusVal;
 	private boolean var_eab;
 	private boolean var_eb3 = true;
 	private int var_ebb;
-	private long var_ec3;
+	private long sTimeMb;
 	public byte var_ecb;
 	public byte var_ed3;
 	private int var_edb;
@@ -96,10 +96,10 @@ public final class A_Unit extends G_Sprite {
 		}
 	}
 
-	public final void sub_108f(int paramInt) {
+	public final void sub_108f(int inVal) {
 		this.var_eab = true;
-		this.var_ec3 = game.someGameTime;
-		this.var_ebb = paramInt;
+		this.sTimeMb = game.someGameTime;
+		this.var_ebb = inVal;
 	}
 
 	public static final A_Unit createUnit(byte inType, byte inTeam, int inX, int inY) {
@@ -153,7 +153,7 @@ public final class A_Unit extends G_Sprite {
 	}
 
 	private int getExtraAttackOnPos(A_Unit unit, int pX, int pY) {
-		int someAttackValue = this.attackValueSome;
+		int someAttackValue = this.attackStatusVal;
 		if (unit != null) {
 			if ((hasProperty((short) 64)) && (unit.hasProperty((short) 1))) { // archer and dragon
 				someAttackValue += 15;
@@ -178,7 +178,7 @@ public final class A_Unit extends G_Sprite {
 
 	private int getExtraDefenceOnPos(int x, int y) {
 		int tileType = game.getMapTileType(x, y);
-		int resist = this.var_ea3 + G_Game.tilesExtraDefence[tileType];
+		int resist = this.defenceStatusVal + G_Game.tilesExtraDefence[tileType];
 		if ((hasProperty((short) 2)) && (tileType == 5)) {  //lizard & 5 - water type
 			resist += 15;
 		}
@@ -227,37 +227,38 @@ public final class A_Unit extends G_Sprite {
 		return (this.var_e83 != 4) && (this.health > 0) && isNear && (unitsAttackRangeMin[this.unitType] == 1);
 	}
 
-	public final void sub_1595(byte paramByte) {
-		this.var_e8b = ((byte) (this.var_e8b | paramByte));
-		sub_160c();
-		if (paramByte == 1) {
+	public final void applyPoisonStatus(byte pStat) {
+		this.status = ((byte) (this.status | pStat));
+		calcStatusEffect();
+		if (pStat == 1) {
 			this.var_ed3 = game.someUnitTeamId;
 		}
 	}
 
-	public final void sub_15e0(byte paramByte) {
-		this.var_e8b = ((byte) (this.var_e8b & (paramByte ^ 0xFFFFFFFF)));
-		sub_160c();
+	public final void applyInvertedStatMbWTF(byte stat) {
+		byte invertedStat = (byte)(stat ^ 0xFFFFFFFF);
+		this.status = ((byte) (this.status & invertedStat));
+		calcStatusEffect();
 	}
 
-	public final void sub_160c() {
-		this.var_e93 = 0;
-		this.attackValueSome = 0;
-		this.var_ea3 = 0;
-		if ((this.var_e8b & 0x1) != 0) {
-			this.attackValueSome = ((short) (this.attackValueSome - 10));
-			this.var_ea3 = ((short) (this.var_ea3 - 10));
+	public final void calcStatusEffect() {
+		this.movementStatusValMb = 0;
+		this.attackStatusVal = 0;
+		this.defenceStatusVal = 0;
+		if ((this.status & 0x1) != 0) { // poison
+			this.attackStatusVal = ((short) (this.attackStatusVal - 10));
+			this.defenceStatusVal = ((short) (this.defenceStatusVal - 10));
 		}
-		if ((this.var_e8b & 0x2) != 0) {
-			this.attackValueSome = ((short) (this.attackValueSome + 10));
+		if ((this.status & 0x2) != 0) { //wisp
+			this.attackStatusVal = ((short) (this.attackStatusVal + 10));
 		}
 	}
 
-	public final void sub_1686(int paramInt1, int paramInt2) {
-		this.posX = ((short) paramInt1);
-		this.posY = ((short) paramInt2);
-		this.pixelX = ((short) (paramInt1 * 24));
-		this.pixelY = ((short) (paramInt2 * 24));
+	public final void setOnMapPosition(int mapX, int mapY) {
+		this.posX = ((short) mapX);
+		this.posY = ((short) mapY);
+		this.pixelX = ((short) (mapX * 24));
+		this.pixelY = ((short) (mapY * 24));
 	}
 
 	public final int getSomeHealthManipulationVal() {
@@ -269,8 +270,8 @@ public final class A_Unit extends G_Sprite {
 		return j;
 	}
 
-	public final int sub_1713(int paramInt1, int paramInt2, A_Unit unit) {
-		return (this.attackMin + this.attackMax + this.defence + getExtraAttackOnPos(unit, paramInt1, paramInt2) + getExtraDefenceOnPos(paramInt1, paramInt2)) * this.health / 100;
+	public final int getUnitTotalExpGainMb(int mX, int mY, A_Unit unit) {
+		return (this.attackMin + this.attackMax + this.defence + getExtraAttackOnPos(unit, mX, mY) + getExtraDefenceOnPos(mX, mY)) * this.health / 100;
 	}
 
 	public final void setAttackMaskForPosition(byte[][] inAttackMask, int inX, int inY) {
@@ -378,11 +379,11 @@ public final class A_Unit extends G_Sprite {
 		return units2;
 	}
 
-	public final void fillAttOrMovePositions(int inX, int inY, boolean paramBoolean) {
-		fillAttackAorMovePositions(inX, inY, paramBoolean, false);
+	public final void setHiddenPositions(int inX, int inY, boolean paramBoolean) {
+		setHiddenPositions(inX, inY, paramBoolean, false);
 	}
 
-	public final void fillAttackAorMovePositions(int inX, int inY, boolean paramBoolean1, boolean paramBoolean2) {
+	public final void setHiddenPositions(int inX, int inY, boolean paramBoolean1, boolean paramBoolean2) {
 		if (paramBoolean1) {
 			this.somePositionsList = sub_1ef5(this.posX, this.posY, inX, inY);
 		} else {
@@ -525,7 +526,7 @@ public final class A_Unit extends G_Sprite {
 
 	public final void sub_238a() {
 		if (this.var_eab) {
-			if (game.someGameTime - this.var_ec3 >= this.var_ebb) {
+			if (game.someGameTime - this.sTimeMb >= this.var_ebb) {
 				this.var_eab = false;
 			} else {
 				this.var_eb3 = (!this.var_eb3);
@@ -540,7 +541,7 @@ public final class A_Unit extends G_Sprite {
 				this.var_e1b = 0;
 			} else {
 				if ((this.someUnit0 != null) && (this.pixelX % 24 == 0) && (this.pixelY % 24 == 0)) {
-					this.someUnit0.fillAttOrMovePositions(this.posX, this.posY, false);
+					this.someUnit0.setHiddenPositions(this.posX, this.posY, false);
 				}
 				short[] arrayOfShort = (short[])this.somePositionsList
 						.elementAt(this.var_e1b);
@@ -611,7 +612,7 @@ public final class A_Unit extends G_Sprite {
 		if (hasProperty((short) 256)) { // 1 << 8 - Wisp
 			A_Unit[] unitsInAttRange = getUnitsInAttackRange(this.posX, this.posY, 1, 2, (byte) 2);
 			for (int i = 0; i < unitsInAttRange.length; i++) {
-				unitsInAttRange[i].sub_1595((byte) 2);
+				unitsInAttRange[i].applyPoisonStatus((byte) 2);
 				game.showSpriteOnMap(game.sparkSprite, unitsInAttRange[i].pixelX, unitsInAttRange[i].pixelY, 0, 0, 1, 50);
 			}
 		}
