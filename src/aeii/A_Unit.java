@@ -10,9 +10,9 @@ import javax.microedition.lcdui.Graphics;
 
 public final class A_Unit extends G_Sprite {
 
-	public static byte unitsTypesCountMb = 12;
-	public static byte var_ddb;
-	public static byte var_de3 = A_Unit.var_ddb = 6;
+	public static byte unitSpeedFastVal = 12;
+	public static byte unitSpeedSlowVal;
+	public static byte unitSpeed = A_Unit.unitSpeedSlowVal = 6;
 	private static G_Game game;
 	public String unitName;
 	public short level;
@@ -96,7 +96,7 @@ public final class A_Unit extends G_Sprite {
 		}
 	}
 
-	public final void sub_108f(int inVal) {
+	public final void scheduleAnimationStop(int inVal) {
 		this.var_eab = true;
 		this.sTimeMb = game.someGameTime;
 		this.var_ebb = inVal;
@@ -139,7 +139,7 @@ public final class A_Unit extends G_Sprite {
 		return unit;
 	}
 
-	public final void killUnitMaybe() {
+	public final void removeUnit() {
 		game.mapUnitsMaybe.removeElement(this);
 	}
 
@@ -231,7 +231,7 @@ public final class A_Unit extends G_Sprite {
 		this.status = ((byte) (this.status | pStat));
 		calcStatusEffect();
 		if (pStat == 1) {
-			this.var_ed3 = game.someUnitTeamId;
+			this.var_ed3 = game.currentPlayerId;
 		}
 	}
 
@@ -548,32 +548,32 @@ public final class A_Unit extends G_Sprite {
 				int i = arrayOfShort[0] * 24;
 				int j = arrayOfShort[1] * 24;
 				G_Sprite bSmokeSprite = null;
-				if ((this.someUnit0 == null) && (++this.var_edb >= 24 / var_de3 / 2)) {
+				if ((this.someUnit0 == null) && (++this.var_edb >= 24 / unitSpeed / 2)) {
 					bSmokeSprite = game
 							.showSpriteOnMap(game.bSmokeSprite, this.pixelX, this.pixelY, 0, 0, 1, C_MainCanvas
 									.getRandomWithin(1, 4) * 50);
 					this.var_edb = 0;
 				}
 				if (i < this.pixelX) {
-					this.pixelX -= var_de3;
+					this.pixelX -= unitSpeed;
 					if (bSmokeSprite != null) {
 						bSmokeSprite
 								.setPixelPosition(this.pixelX + this.spriteFrameWidth, this.pixelY + this.spriteFrameHeight - bSmokeSprite.spriteFrameHeight);
 					}
 				} else if (i > this.pixelX) {
-					this.pixelX += var_de3;
+					this.pixelX += unitSpeed;
 					if (bSmokeSprite != null) {
 						bSmokeSprite
 								.setPixelPosition(this.pixelX - bSmokeSprite.spriteFrameWidth, this.pixelY + this.spriteFrameHeight - bSmokeSprite.spriteFrameHeight);
 					}
 				} else if (j < this.pixelY) {
-					this.pixelY -= var_de3;
+					this.pixelY -= unitSpeed;
 					if (bSmokeSprite != null) {
 						bSmokeSprite
 								.setPixelPosition(this.pixelX + (this.spriteFrameWidth - bSmokeSprite.spriteFrameWidth) / 2, this.pixelY + this.spriteFrameHeight);
 					}
 				} else if (j > this.pixelY) {
-					this.pixelY += var_de3;
+					this.pixelY += unitSpeed;
 					if (bSmokeSprite != null) {
 						bSmokeSprite
 								.setPixelPosition(this.pixelX + (this.spriteFrameWidth - bSmokeSprite.spriteFrameWidth) / 2, this.pixelY - bSmokeSprite.spriteFrameHeight);
@@ -607,7 +607,7 @@ public final class A_Unit extends G_Sprite {
 		this.var_e83 = 2;
 		A_Unit unit = game.getUnitAtPos(this.posX, this.posY, (byte) 1);
 		if (unit != null) {
-			unit.killUnitMaybe();
+			unit.removeUnit();
 		}
 		if (hasProperty((short) 256)) { // 1 << 8 - Wisp
 			A_Unit[] unitsInAttRange = getUnitsInAttackRange(this.posX, this.posY, 1, 2, (byte) 2);
@@ -616,7 +616,7 @@ public final class A_Unit extends G_Sprite {
 				game.showSpriteOnMap(game.sparkSprite, unitsInAttRange[i].pixelX, unitsInAttRange[i].pixelY, 0, 0, 1, 50);
 			}
 		}
-		game.someUnitHere = this;
+		game.unitFinishedMove = this;
 	}
 
 	public static final A_Unit[] sub_27b7(byte teamID) {
@@ -624,8 +624,8 @@ public final class A_Unit extends G_Sprite {
 		A_Unit[] units = new A_Unit[unitsCount];
 		int countSomeUnits = 0;
 		for (int it = 0; it < units.length; it++) {
-			if ((game.teamsUnits[game.someUnitTeamId][it] != null) && (game.teamsUnits[game.someUnitTeamId][it].var_e83 == 3)) {
-				units[(countSomeUnits++)] = game.teamsUnits[game.someUnitTeamId][it];
+			if ((game.teamsUnits[game.currentPlayerId][it] != null) && (game.teamsUnits[game.currentPlayerId][it].var_e83 == 3)) {
+				units[(countSomeUnits++)] = game.teamsUnits[game.currentPlayerId][it];
 			}
 		}
 		A_Unit[] units2 = new A_Unit[countSomeUnits + game.var_49ca + 1];

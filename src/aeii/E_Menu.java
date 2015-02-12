@@ -105,7 +105,7 @@ public final class E_Menu extends F_StringManager {
 				if ((paramInt & 0x2) == 0) {
 					this.mapPrevPixelHeight += 5;
 				}
-				this.someUnits = A_Unit.sub_27b7(theGame.someUnitTeamId);
+				this.someUnits = A_Unit.sub_27b7(theGame.currentPlayerId);
 				this.var_1062 = this.someUnits.length;
 				int pInt = (int) (this.mapPrevPixelWidth - (theGame.sideArrowSprite.spriteFrameWidth << 1));
 				if ((paramInt & 0x4) == 0) {
@@ -1271,7 +1271,7 @@ public final class E_Menu extends F_StringManager {
 										paramGraphics,
 										theXpos,
 										theYPos,
-										localClass_a_0260.cost > theGame.var_486a[theGame.someUnitTeamId]);
+										localClass_a_0260.cost > theGame.var_486a[theGame.currentPlayerId]);
 						if (bool5 == this.var_105a) {
 							k = m - this.bigCircleSprite.spriteFrameWidth / 2;
 							int bool11int = bool3 - this.bigCircleSprite.spriteFrameWidth / 2;

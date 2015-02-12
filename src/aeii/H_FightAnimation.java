@@ -481,7 +481,7 @@ public final class H_FightAnimation {
 					this.var_ba7 = 6;
 					this.hclass.drawAfterAttackEffects();
 					this.game.sub_188ce(200);
-					C_MainCanvas.sub_2af6(200);
+					C_MainCanvas.vibrate(200);
 					C_MainCanvas.playMusicLooped(14, 1);
 					this.someFATime = this.game.someGameTime;
 					break;
@@ -601,7 +601,7 @@ public final class H_FightAnimation {
 								if (fightAnim.someUnitsSprites[it].currentFrameIndex == 1) {
 									fightAnim.someUnitsSprites[it].var_c38 = 0;
 									fightAnim.someUnitsSprites[it].var_ca8 = 1;
-									C_MainCanvas.sub_2af6(200);
+									C_MainCanvas.vibrate(200);
 									fightAnim.game.sub_188ce(1200);
 									C_MainCanvas.playMusicLooped(14, 1);
 									for (int it2 = 0; it2 < 2; it2++) {
@@ -821,7 +821,7 @@ public final class H_FightAnimation {
 																			fightAnim.someUnitsSprites[fightAnim.var_ca7].spriteFrameWidth + 2),
 													fightAnim.someUnitsSprites[fightAnim.var_ca7].pixelY + 30);
 									fightAnim.var_c97[fightAnim.var_ca7].var_c88 = true;
-									C_MainCanvas.sub_2af6(200);
+									C_MainCanvas.vibrate(200);
 									fightAnim.game.sub_188ce(1200);
 									C_MainCanvas.playMusicLooped(14, 1);
 									fightAnim.game
@@ -924,7 +924,7 @@ public final class H_FightAnimation {
 					if (fightAnim.someUnit1Type != 1) {
 						fightAnim.game.sub_188ce(200);
 					}
-					C_MainCanvas.sub_2af6(200);
+					C_MainCanvas.vibrate(200);
 					C_MainCanvas.playMusicLooped(14, 1);
 					if (fightAnim.castEffectSprite != null) {
 						fightAnim.var_c9f = A_Unit.unitsFACharacterPositions[fightAnim.someUnit1Type].length;

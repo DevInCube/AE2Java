@@ -593,7 +593,7 @@ public final class C_MainCanvas extends Canvas implements Runnable,
 		}
 	}
 
-	public static final void sub_2af6(int paramInt) {
+	public static final void vibrate(int paramInt) {
 		try {
 			if (settings[1] != false) {
 				midletDisplay.vibrate(paramInt << 2);
